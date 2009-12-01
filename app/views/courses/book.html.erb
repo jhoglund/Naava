@@ -1,0 +1,14 @@
+<h3>Anmälan till kursen <%= @booker.name %></h3>
+
+<% form_for(@booking, :url => book_course_path) do |f| %>
+  <%= f.hidden_field :booker_type %>
+  <%= f.hidden_field :booker_id %>
+  
+  <%= render :partial => '/bookings/form', :object => f %>
+  
+  <p>
+    <%= f.submit 'Anmäl' %>
+  </p>
+<% end %>
+
+<%= link_to 'Tillbaks till kursen', course_path(@booker) %>

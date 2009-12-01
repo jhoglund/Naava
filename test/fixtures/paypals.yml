@@ -1,0 +1,37 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  transaction_id: MyString
+  gross: 1.5
+  fee: 1.5
+  currency: MyString
+  item_id: MyString
+  item_type: MyString
+  item_name: MyString
+  status: MyString
+  type: MyString
+  custom: MyString
+  pending_reason: MyString
+  reason_code: MyString
+  memo: MyText
+  payment_type: MyString
+  exchange_rate: 1.5
+  received_at: 2009-11-30 22:18:58
+
+two:
+  transaction_id: MyString
+  gross: 1.5
+  fee: 1.5
+  currency: MyString
+  item_id: MyString
+  item_type: MyString
+  item_name: MyString
+  status: MyString
+  type: MyString
+  custom: MyString
+  pending_reason: MyString
+  reason_code: MyString
+  memo: MyText
+  payment_type: MyString
+  exchange_rate: 1.5
+  received_at: 2009-11-30 22:18:58

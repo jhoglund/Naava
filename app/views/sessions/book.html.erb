@@ -1,0 +1,14 @@
+<h3>Anmälan till klassen <%= @booker.name %> den <%= l(@booker.starts_at, :format => :long) %></h3>
+
+<% form_for(@booking, :url => book_session_path) do |f| %>
+  <%= f.hidden_field :booker_type %>
+  <%= f.hidden_field :booker_id %>
+  
+  <%= render :partial => '/bookings/form', :object => f %>
+  
+  <p>
+    <%= f.submit 'Anmäl' %>
+  </p>
+<% end %>
+
+<%= link_to 'Tillbaks till klassen', session_path(@booker) %>

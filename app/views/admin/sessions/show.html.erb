@@ -1,0 +1,15 @@
+<h1><%=h @session.course.name %></h1>
+
+<p>
+  <b>Startar</b> <%=h @session.starts_at %>
+</p>
+
+<p>
+  <b>Slutar</b>
+  <%=h @session.ends_at %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_admin_session_path(@session) %> |
+<%= link_to 'Back', admin_course_path(@session.course) %>

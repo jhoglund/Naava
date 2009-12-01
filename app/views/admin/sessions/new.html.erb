@@ -1,0 +1,24 @@
+<h1>New session</h1>
+
+<% form_for(@session, :url => admin_sessions_path) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :starts_at %><br />
+    <%= f.datetime_select :starts_at %>
+  </p>
+  <p>
+    <%= f.label :ends_at %><br />
+    <%= f.datetime_select :ends_at %>
+  </p>
+  <p>
+    <%= f.label :course %><br />
+    <%= f.select :course_id, @cources.map{|c| [c.name, c.id ]}, { :selected => params[:course_id].to_i } %>
+  </p>
+  
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', sessions_path %>

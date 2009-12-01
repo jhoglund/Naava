@@ -1,0 +1,23 @@
+<h1>Editing course</h1>
+
+<% form_for(@course, :url => admin_course_path(@course)) do |f| %>
+  <%= render :partial => 'form', :object => f  %>
+  <p>
+    <b>Sessions:</b>
+    <% @course.sessions.each do |session| %>
+      <%=h session.starts_at %> -
+      <%=h session.ends_at %>
+      <%= link_to 'Show', session %>
+      <%= link_to 'Edit', edit_session_path(session) %>
+      <%= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete %><br>
+      
+    <% end %>
+  </p>
+  
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @course %> |
+<%= link_to 'Back', courses_path %>

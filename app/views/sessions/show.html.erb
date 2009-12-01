@@ -1,0 +1,16 @@
+<h1><%=h @session.course.name %></h1>
+
+<p>
+  <b>Startar</b> <%=h @session.starts_at %>
+</p>
+
+<p>
+  <b>Slutar</b>
+  <%=h @session.ends_at %>
+</p>
+
+<p>
+  <%= link_to 'Boka drop-in', book_session_path(@session) %>
+</p>
+
+<%= link_to 'Back', course_path(@session.course) %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cource: 
+  starts_at: 2009-11-27 11:06:27
+  ends_at: 2009-11-27 11:06:27
+
+two:
+  cource: 
+  starts_at: 2009-11-27 11:06:27
+  ends_at: 2009-11-27 11:06:27

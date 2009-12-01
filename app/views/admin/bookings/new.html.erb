@@ -1,0 +1,18 @@
+<% if @booking.booker.is_a? Course %>
+<h3>Bokning för kursen <%= @booking.booker.name %></h3>
+<% else %>
+<h3>Bokning för drop-in tid för klass <%= @booking.booker.course.name %> den <%= l(@booking.booker.starts_at, :format => :short) %></h3>
+<% end %>
+<% form_for(@booking) do |f| %>
+  <%= f.error_messages %>
+  
+  <%= f.hidden_field :booker_type %>
+  <%= f.hidden_field :booker_id %>
+  
+  <%= render :partial => 'form', :object => f %>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', bookings_path %>

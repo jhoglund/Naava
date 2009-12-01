@@ -1,0 +1,20 @@
+<h1>Editing booking</h1>
+
+<% form_for(@booking) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= @booking.booker.name %>
+  </p>
+  <p>
+    Participant<br />
+    <%= @booking.participant.name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Destroy', @booking, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Show', @booking %> |
+<%= link_to 'Back', bookings_path %>

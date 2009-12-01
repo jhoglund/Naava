@@ -1,0 +1,14 @@
+DEFAULTS: &DEFAULTS
+  key: <%=  File.join(RAILS_ROOT,'config','paypal','nava_key.pem') %>
+  cert: <%= File.join(RAILS_ROOT,'config','paypal','nava_cert.pem') %>
+  certid: YZUA2ZBT7MB96
+
+development:
+  host: web1.tunnlr.com:10236
+  business: jonas_1259594659_biz@stixy.com
+  <<: *DEFAULTS
+
+production:
+  host: web1.tunnlr.com:10236
+  business: jonas_1259594659_biz@stixy.com
+  <<: *DEFAULTS

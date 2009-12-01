@@ -1,0 +1,28 @@
+<h1>Listing sessions</h1>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Starts at</th>
+    <th>Ends at</th>
+  </tr>
+
+<% @sessions.each do |session| %>
+  <tr>
+    <td><%=h session.course.name %></td>
+    <td><%=h session.starts_at %></td>
+    <td><%=h session.ends_at %></td>
+    <td><%= link_to 'Show', session %></td>
+    <% if logged_in? %>
+    <td><%= link_to 'Edit', edit_session_path(session) %></td>
+    <td><%= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if logged_in? %>
+<%= link_to 'New session', new_session_path %>
+<% end %>

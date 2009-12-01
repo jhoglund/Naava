@@ -1,0 +1,22 @@
+<div class="stixy-calendar" id="calendar">
+	<%#= generate_calendar(:month ,nil, []) %>
+</div>
+
+
+<h1>Klasser</h1>
+
+<table>
+  <tr>
+    <th>Kurs</th>
+    <th>Börjar</th>
+    <th>Slutar</th>
+  </tr>
+
+<% @sessions.each do |session| %>
+  <tr>
+    <td><%=link_to session.course.name, session %></td>
+    <td><%=l session.starts_at, :format => :long %></td>
+    <td><%=l session.ends_at, :format => :long %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,18 @@
+<h1>Bokningar</h1>
+<p>Totalt anmälda: <%= @bookings.size %></p>
+<table>
+
+<% @bookings.each do |booking| %>
+  <tr>
+    <td><%=h booking.participant.name %></td>
+    <td><%=h booking.participant.email %></td>
+    <td><%=h booking.participant.phone %></td>
+    <!-- <td><%=h booking.drop_in? %></td> -->
+    <td><%= link_to 'Ta bort', booking, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Ny bokning', new_booking_path %>

@@ -1,0 +1,13 @@
+<h1>Naava Yoga</h1>
+<p>Det går alltid bra att  xxx till våra pågående klasser, i mån av plats. Våra pågående klasser är:</p>
+
+<% @current_courses.each do |course| %>
+  <%= link_to course.name, course %>
+<% end %>
+
+<p>Planerade kurser som det går bra att anmäla sig till är:</p>
+
+<% @planned_courses.each do |course| %>
+  <%= link_to course.name, course %>
+<% end %>
+  

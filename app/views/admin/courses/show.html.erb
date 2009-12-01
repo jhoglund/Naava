@@ -1,0 +1,30 @@
+<h1><%=h @course.name %></h1>
+<p>
+  <%=h @course.description %>
+</p>
+
+<p>Kursen passar för <%=h @course.level.downcase %> nivåer</p>
+
+<p>Antal kurstillfällen är <%= @course.sessions.count %></p>
+
+<% unless @course.starts_at.nil? or @course.ends_at.nil? %>
+<p>Första kurstillfället är <%= l(@course.starts_at, :format => :day) %> och sista är <%= l(@course.ends_at, :format => :day) %> </p>
+
+<p>Klasserna startar klockan <%= l(@course.starts_at, :format => :time) %> tills klockan <%= l(@course.starts_at, :format => :time) %> </p>
+<% end %>
+<p>
+  <%= link_to 'Boka klass', book_course_path(@course) %>
+</p>
+
+
+<h3>Tillfällen</h3>  
+  <% @course.sessions.each do |session| %>
+    <%= link_to l(session.starts_at, :format => :short), admin_session_path(session) %> <br>
+  <% end %>
+</p>
+
+
+<% if logged_in? %>
+<%= link_to 'Edit', edit_admin_course_path(@course) %> |
+<% end %>
+<%= link_to 'Kurser', admin_courses_path %>
