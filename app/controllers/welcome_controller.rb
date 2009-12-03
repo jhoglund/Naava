@@ -6,8 +6,7 @@ class WelcomeController < ApplicationController
     @sessions = Session.by_date.week.all
   end
   
-  def about_ashtanga_yoga
-    
-  end
+  def about_ashtanga_yoga; end
+  def good_to_know; end
   
 end
