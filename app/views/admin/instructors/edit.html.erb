@@ -3,7 +3,7 @@
 <h3><%= @instructor.name %></h3>
 <%= image_tag @instructor.avatar.url(:thumb) %><br>
 
-<% form_for(@instructor, :html => { :multipart => true }) do |f| %>
+<% form_for(@instructor, :url => admin_instructor_path(@instructor), :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
   <%= render :partial => 'form', :object => f %>
   <p>
@@ -11,5 +11,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @instructor %> |
-<%= link_to 'Back', instructors_path %>
+<%= link_to 'Show', admin_instructor_path(@instructor) %> |
+<%= link_to 'Back', admin_instructors_path %>

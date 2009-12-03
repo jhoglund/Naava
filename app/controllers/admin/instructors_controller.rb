@@ -45,7 +45,7 @@ class Admin::InstructorsController < Admin::AdminController
     respond_to do |format|
       if @instructor.save
         flash[:notice] = 'Instructor was successfully created.'
-        format.html { redirect_to(@instructor) }
+        format.html { redirect_to(admin_instructor_path(@instructor)) }
         format.xml  { render :xml => @instructor, :status => :created, :location => @instructor }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::InstructorsController < Admin::AdminController
     respond_to do |format|
       if @instructor.update_attributes(params[:instructor])
         flash[:notice] = 'Instructor was successfully updated.'
-        format.html { redirect_to(@instructor) }
+        format.html { redirect_to(admin_instructor_path(@instructor)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class Admin::InstructorsController < Admin::AdminController
     @instructor.destroy
 
     respond_to do |format|
-      format.html { redirect_to(instructors_url) }
+      format.html { redirect_to(admin_instructors_url) }
       format.xml  { head :ok }
     end
   end
