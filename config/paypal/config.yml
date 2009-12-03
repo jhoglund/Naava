@@ -9,6 +9,6 @@ development:
   <<: *DEFAULTS
 
 production:
-  host: web1.tunnlr.com:10236
+  host: www.naava.se
   business: jonas_1259594659_biz@stixy.com
   <<: *DEFAULTS

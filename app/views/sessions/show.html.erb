@@ -1,12 +1,17 @@
 <h2><%=h @session.course.name %>, <%=l @session.starts_at, :format => :day %></h2>
-<p><%=h @session.course.description %></p>
+<p>
+<%= image_tag @session.course.instructor.avatar.url(:thumb) , :style => 'float:left;margin:0 10px 10px 0'%>
+<%=h @session.course.description %>
+</p>
+<p>
+  Passets är <%= reformat_time(@session.duration) %> långt, och det leds av <%= link_to @session.course.instructor.name, @session.course.instructor %>
+  
+</p>
+
 <p>
   Vi börjar klockan <%=l @session.starts_at, :format => :time %>
 </p>
 
-<p>
-  Passets är <%= reformat_time(@session.duration) %> långt.
-</p>
 
 <p>
   Varje klass kostar <%=  number_to_currency(@session.price) %>.
