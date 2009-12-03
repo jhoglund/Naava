@@ -27,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.about_ashtanga_yoga '/about_ashtanga_yoga', :controller => 'welcome', :action => 'about_ashtanga_yoga'
   map.good_to_know '/good_to_know', :controller => 'welcome', :action => 'good_to_know'
+  map.our_studio '/our_studio', :controller => 'welcome', :action => 'our_studio'
   map.root :controller => "welcome"
   
   # The priority is based upon order of creation: first created -> highest priority.
