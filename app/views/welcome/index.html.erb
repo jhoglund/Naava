@@ -1,18 +1,35 @@
+<% content_for :header do %>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=sv-SE"></script>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(56.171958,14.860564);
+      var myOptions = {
+        zoom: 8,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      console.log(map)
+    }
+    window.onload = initialize
+  </script>
+<% end %>
+
 <h1>Naava Yoga</h1>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-<p>Det går alltid bra att  xxx till våra pågående klasser, i mån av plats. Våra pågående klasser är:</p>
+<!-- <p>Det går alltid bra att  xxx till våra pågående klasser, i mån av plats. Våra pågående klasser är:</p> -->
 
-<% @current_courses.each do |course| %>
-<%= link_to course.name, course %><br>
-<% end %>
+<%# @current_courses.each do |course| %>
+<%#= link_to course.name, course %>
+<%# end %>
 
-<p>Planerade kurser som det går bra att anmäla sig till är:</p>
+<!-- <p>Planerade kurser som det går bra att anmäla sig till är:</p> -->
 
-<% @planned_courses.each do |course| %>
-<%= link_to course.name, course %><br>
-<% end %>
+<%# @planned_courses.each do |course| %>
+<%#= link_to course.name, course %>
+<%# end %>
 
 <p>Hitta en klass som passar dig:</p>
 <p><%= link_to 'Se vårat schema', sessions_path %></p>
@@ -23,4 +40,10 @@
 <% end %>
 </p>
 <% end %>
-  
+
+<h3>Vad är Ashtanga Yoga?</h3>
+Lorem ipsum dolor sit amet. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<p><%= link_to 'Läs mer...', url_for(:action => 'about_ashtanga_yoga') %></p>
+
+<h3>Här hittar du oss</h3>
+<div id="map_canvas" style="width:300px; height:300px"></div>
