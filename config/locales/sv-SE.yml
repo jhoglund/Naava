@@ -161,7 +161,7 @@ sv-SE:
       format: 
         delimiter: ""
         format: "%n %u"
-        separator: ""
+        separator: ","
         unit: kr
     format: 
       delimiter: "."
@@ -212,6 +212,14 @@ sv-SE:
       long: "%A den %d %B, %Y %H:%M"
       short: "%d %b, klockan %H:%M"
       day: "%A den %d %B"
+      longtime_one_minute: "%M minut"
+      longtime_other_minutes: "%M minuter"
+      longtime_one_hour: "%H timme"
+      longtime_one_hour_one_minute: "%H timme och %M minut"
+      longtime_one_hour_other_minutes: "%H timme och %M minuter"
+      longtime_other_hours: "%H timmar"
+      longtime_other_hours_one_minute: "%H timmar och %M minut"
+      longtime_other_hours_other_minutes: "%H timmar och %M minuter"
       time: "%H:%M"
     pm: ""
   user: 

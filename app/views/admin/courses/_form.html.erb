@@ -6,11 +6,11 @@
 </p>
 <p>
   <%= form.label :description %><br />
-  <%= form.text_area :description %>
+  <%= form.text_area :description, :rows => 10 %>
 </p>
 <p>
-  <%= form.label :teatcher %><br />
-  <%= form.text_field :teatcher %>
+  <%= form.label :instructor %><br />
+  <%= form.select :instructor_id, Instructor.all.map{|i| [i.name, i.id]}, :selected => form.object.instructor.id %>
 </p>
 <p>
   <%= form.label :level %><br />
@@ -20,3 +20,8 @@
   <%= form.label :status %><br />
   <%= form.check_box :status %>
 </p>
+<div id="session">
+  <%= render :partial => 'sessions', :object => form %>
+</div>
+<%= add_session_link 'New session', form %>
+

@@ -1,0 +1,29 @@
+<%= image_tag @instructor.avatar.url(:thumb) %>
+<p>
+  <b>Name:</b>
+  <%=h @instructor.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @instructor.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @instructor.phone %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%=h @instructor.bio %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @instructor.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_instructor_path(@instructor) %> |
+<%= link_to 'Back', admin_instructors_path %>

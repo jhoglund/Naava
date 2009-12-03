@@ -1,22 +1,30 @@
-<div class="stixy-calendar" id="calendar">
-	<%#= generate_calendar(:month ,nil, []) %>
-</div>
+<!-- <div class="nava-calendar" id="calendar">
+  <%#= generate_calendar(:week ,Date.today, []) %>
+</div> -->
 
 
 <h1>Klasser</h1>
 
 <table>
-  <tr>
-    <th>Kurs</th>
-    <th>Börjar</th>
-    <th>Slutar</th>
-  </tr>
 
+<%   
+  past_week = nil 
+%>
 <% @sessions.each do |session| %>
+  <% 
+    week = Date.parse(session.starts_at.to_s).cweek.to_i
+    new_week = week != past_week
+    past_week = week
+  %>
+  <% if new_week %>
+  <tr>
+    <td colspan="3" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
+  </tr>
+  <% end %>
   <tr>
     <td><%=link_to session.course.name, session %></td>
-    <td><%=l session.starts_at, :format => :long %></td>
-    <td><%=l session.ends_at, :format => :long %></td>
+    <td style="padding-left:10px"><%=l session.starts_at, :format => :short %></td>
+    <td style="padding-left:10px"><%=l session.duration, :format => :time %></td>
   </tr>
 <% end %>
 </table>

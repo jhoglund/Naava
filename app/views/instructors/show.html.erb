@@ -1,0 +1,10 @@
+<h2><%=h @instructor.name %></h2>
+<%= image_tag @instructor.avatar.url(:thumb) %>
+<p>
+  <%=h @instructor.bio %>
+</p>
+
+<p>
+  Du når <%= h @instructor.first_name %> bäst på <strong><%=mail_to @instructor.email %></strong> eller på telefon <strong><%=h @instructor.phone %></strong>.
+</p>
+

@@ -1,0 +1,14 @@
+DEFAULTS: &DEFAULTS
+  dropin: 120
+  course_per_class: 80
+  support_mail: yoga@naava.se
+  support_mail_title: Naava Yoga
+  support_phone: 0709-961600
+  
+development:
+  host: localhost:3000
+  <<: *DEFAULTS
+
+production:
+  host: www.naava.se
+  <<: *DEFAULTS

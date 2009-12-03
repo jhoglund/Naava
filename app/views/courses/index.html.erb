@@ -1,5 +1,5 @@
-<h1>Kurser</h1>
 
+<h1>Kurser</h1>
 <% @courses.each do |course| %>
   <h3><%= link_to course.name, course %></h3>
   <%=h course.description %>
@@ -11,13 +11,5 @@
   
   <p>Klasserna startar klockan <%= l(course.starts_at, :format => :time) %> tills klockan <%= l(course.starts_at, :format => :time) %> </p>
   <% end %>
-  <% if logged_in? %>
-  <%= link_to 'Edit', edit_course_path(course) %> | 
-  <%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %>
-  <% end %>
-  
-<% end %>
-
-<% if logged_in? %>
-<%= link_to 'Ny Kurs', new_course_path %>
+  <hr>
 <% end %>

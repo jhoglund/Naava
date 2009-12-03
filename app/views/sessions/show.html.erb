@@ -1,16 +1,38 @@
-<h1><%=h @session.course.name %></h1>
-
+<h2><%=h @session.course.name %>, <%=l @session.starts_at, :format => :day %></h2>
+<p><%=h @session.course.description %></p>
 <p>
-  <b>Startar</b> <%=h @session.starts_at %>
+  Vi börjar klockan <%=l @session.starts_at, :format => :time %>
 </p>
 
 <p>
-  <b>Slutar</b>
-  <%=h @session.ends_at %>
+  Passets är <%= reformat_time(@session.duration) %> långt.
+</p>
+
+<p>
+  Varje klass kostar <%=  number_to_currency(@session.price) %>.
 </p>
 
 <p>
   <%= link_to 'Boka drop-in', book_session_path(@session) %>
 </p>
 
-<%= link_to 'Back', course_path(@session.course) %>
+<p>
+  Det går även bra att anmäla sig till hela kursen. I kursen ingår totalt <%= @session.course.sessions.count %> klasser. 
+  En kurs kostar <%= number_to_currency(@session.course.original_price) %>, 
+  vilket är <%= number_to_currency(@session.course.original_price_per_session) %> (<%= @session.course.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
+  <%=  number_to_currency(@session.price) %>/klass.
+</p>
+<% if @session.course.started? %>
+<p>
+  Denna kursen har redan börjat och vi har hittills hunnit med <%= @session.course.sessions.expired.count %> klasser. 
+  Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(@session.course.price) %> vilket
+  är <%=  number_to_currency(@session.course.price_per_session) %>  (<%= @session.course.discount %>%)  per återstående klass.
+</p>
+<% end %>
+
+<p>
+  <%= link_to 'Anmäl dig till kursen', book_course_path(@session.course) %>
+</p>
+
+
+<%= link_to 'Se hela vårt schema', sessions_path %>

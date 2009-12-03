@@ -1,4 +1,22 @@
+<% content_for :title do %>
+  Anmälan till kursen <%= @booker.name %>
+<% end %>
 <h3>Anmälan till kursen <%= @booker.name %></h3>
+<p><%=h @booker.description %></p>
+<p>
+  I kursen ingår totalt <%= @booker.sessions.count %> klasser. 
+  Kursen kostar <%= number_to_currency(@booker.original_price) %>, 
+  vilket är <%= number_to_currency(@booker.original_price_per_session) %> (<%= @booker.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
+  <%=  number_to_currency(@booker.sessions.first.price) %>/klass.
+</p>
+<% if @booker.started? %>
+<p>
+  Denna kursen har redan börjat och vi har hittills hunnit med <%= @booker.sessions.expired.count %> klasser. 
+  Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(@booker.price) %> vilket
+  är <%=  number_to_currency(@booker.price_per_session) %>  (<%= @booker.discount %>%)  per återstående klass.
+</p>
+<% end %>
+
 
 <% form_for(@booking, :url => book_course_path) do |f| %>
   <%= f.hidden_field :booker_type %>

@@ -1,6 +1,6 @@
 Vi har tagit emot din anmälan för <%=h @booking.participant.name %> till klassen <%= @booker.name %>, med kursstart <%= l(@booker.starts_at, :format => :long) %>
 <p>
-Du kan alltid nå din anmälan på addresses: <%= link_to course_bookings_url(@booker, @booking), course_bookings_url(@booker, @booking) %>
+Du kan alltid nå din anmälan på addresses: <%= link_to booking_url(@booking), booking_url(@booking) %>
 <p>
 <%= link_to t('labels.destroy'), @booking, :confirm => t('messages.destroy_confirmation'), :method => :delete %>
 <%= link_to t('labels.back'), polymorphic_path(@booking.booker) %>

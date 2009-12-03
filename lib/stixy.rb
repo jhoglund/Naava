@@ -297,26 +297,24 @@ module Stixy
   
 
   class Calendar
-    attr_accessor :dates, :day_names, :first_weekday, :last_weekday, :start, :stop, :year, :month, :day
-    def initialize date=Date.new.year, view=:month, start_week=0
+    attr_accessor :dates, :day_names, :first_weekday, :last_weekday, :start, :stop, :year, :month, :day, :view
+    def initialize date=Date.new.year, view = :month, start_week=1
       start_week = start_week==0 ? 1 : 0
       @day = date.day 
       @month = date.month 
       @year = date.year 
       @day_names = Date::DAYNAMES.dup
       @start = Date.civil(@year, @month, 1)
-      #p @start.to_s
       start_offset = (@start.wday - start_week)
       @start -= start_offset >= 0 ? start_offset : 6
-      #p @start.to_s
       @stop = Date.civil(@year, @month, -1)
-      view = view.to_sym if view
-      case view
+      @view = view.to_sym if view
+      case @view
       when :day
         @start = date
         @stop = date
       when :week
-        @stop = @start + 7
+        @stop = @start + 6
       when :year
         @start = Date.civil(@year, 1, 1)
         @stop = Date.civil(@year, 12, 31)
@@ -325,10 +323,12 @@ module Stixy
       end
       setStartDay(start_week)
       @dates = []
-      #@first_weekday = start_week-1
-      #@last_weekday = (@first_weekday+7)
       @start.upto(@stop) do |d|
-        @dates << CalendarDate.new(d,@month,@year,@first_weekday,@last_weekday)
+        times = []
+        48.times do |n|
+          times << CalendarTime.new(n.to_f/2,d)
+        end
+        @dates << CalendarDate.new(d,@month,@year,@first_weekday,@last_weekday,times)
       end
     end
     
@@ -367,24 +367,31 @@ module Stixy
       return days
     end
     
+    def showTime?
+      @view == :day || @view == :week
+    end
+    
     def to_html_table options={}, &block
       table = Html::Table.new(*day_names)
-      dates.each do |date|
-        cell = table.addCell
-        spacer = Html::Element.new("div")
-        spacer.addAttribute(:class, "day-height")
-        cell.addChildNode(spacer)
-        cell.addAttribute(:class, "calendar-day")
-        cell.addAttribute(:class, "calendar-other-month") if date.other_month?
-        cell.addAttribute(:class, "calendar-today-day") if date.today?
-        cell.addAttribute(:class, "calendar-first-day-of-week") if date.first_weekday?
-        cell.addAttribute(:class, "calendar-last-day-of-week") if date.last_weekday?
-        cell.addAttribute(:class, "calendar-weekend-day") if date.weekend?
-        cell.setAttribute(:id, "#{date.day.year}-#{Date::MONTHNAMES[date.day.month]}-#{Date::DAYNAMES[date.day.wday]}-#{date.day.day}")
-        if block_given?
-          block.call(date, date.day, cell)
-        else
-          cell.content = date.day
+      (showTime? ? 48 : 1).times do |time|
+        dates.each do |date|
+          cell = table.addCell
+          spacer = Html::Element.new("div")
+          spacer.addAttribute(:class, "day-height")
+          cell.addChildNode(spacer)
+          cell.addAttribute(:class, "calendar-day")
+          cell.addAttribute(:class, "calendar-other-month") if date.other_month?
+          cell.addAttribute(:class, "calendar-today-day") if date.today?
+          #cell.addAttribute(:class, "calendar-now") if date.times? and date.time.now?
+          cell.addAttribute(:class, "calendar-first-day-of-week") if date.first_weekday?
+          cell.addAttribute(:class, "calendar-last-day-of-week") if date.last_weekday?
+          cell.addAttribute(:class, "calendar-weekend-day") if date.weekend?
+          cell.setAttribute(:id, "#{date.day.year}-#{Date::MONTHNAMES[date.day.month]}-#{Date::DAYNAMES[date.day.wday]}-#{date.day.day}")
+          if block_given?
+            block.call(date, date.day, date.time(time), cell)
+          else
+            cell.content = date.day
+          end
         end
       end
       table.setAttribute(:class, "calendar")
@@ -396,16 +403,25 @@ module Stixy
     
   
     class CalendarDate
-      attr :day
+      attr :day, :times
     
-      def initialize day,month,year,start_week,last_weekday
+      def initialize day,month,year,start_week,last_weekday,times
         @day = day
         @month = month 
         @year = year 
         @first_weekday = start_week
         @last_weekday = last_weekday
+        @times = times
       end
-    
+      
+      def time index
+        @times[index].time
+      end
+      
+      def times?
+        !@times.empty?
+      end
+          
       def first_weekday?
          @day.wday == @first_weekday
       end
@@ -440,6 +456,29 @@ module Stixy
         @day == Date.today
       end
     end
+    
+    class CalendarTime
+      attr :time
+    
+      def initialize time, date
+        @start = Time.local(date.year,date.month,date.day,time.to_i,(time % 1 * 60).to_i)
+        @stop = @start + (30*60)
+        @time = @start
+      end
+      
+      def first?
+        @start.hour == 0 && @start.min == 0
+      end
+      
+      def last?
+        @stop.day != @start.day
+      end
+      
+      def now?
+        false
+      end
+    end
+    
   
   end
     

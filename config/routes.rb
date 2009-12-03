@@ -9,12 +9,14 @@ ActionController::Routing::Routes.draw do |map|
     session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
   end
 
-  map.resources :courses, :member => { :book => [ :get, :post ] }
+  map.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+  map.resources :instructors
   
   
   map.namespace(:admin) do |admin|
   	admin.resources :sessions, :has_many => [ :bookings ]
 	  admin.resources :bookings
+	  admin.resources :instructors
     admin.resources :users
 	  admin.resources :courses do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]

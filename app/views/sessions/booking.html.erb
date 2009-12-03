@@ -1,0 +1,32 @@
+
+<h2>Bokning för drop-in</h2>
+<p>
+  För klass <%= @booking.booker.name %>, <%= l(@booking.booker.starts_at, :format => :short) %>
+</p>
+
+<%- unless @booking.payment -%>
+<p>
+  Kostnad: <%= number_to_currency(@booking.booker.price) %>    
+</p>
+
+  <p>
+  Du kan betala för klassen snabbt och säkert via <%= link_to_function 'PayPal', 'forms[0].submit()' %>. Har du inget PayPal konto
+  kan enkelt betala med ett kreditkort.
+  </p>
+  <%= render :partial => "/bookings/paypal_button", :locals => { :id => @booking.id, :ammount => @booking.booker.price, :item_name => "Kursanmälan för #{ @booking.booker.name }  med kursstart #{ l(@booking.booker.starts_at, :format => :day) }" }   %>  
+  <p>
+  Det går även bra att betala till vårt bankgiro 5091-8051. Märk inbetalningen "<%= @booking.booker.name %> (ref.nr <%= @booking.id %>)"
+  </p>
+  <%- else -%>
+    <p>
+     Klassavgiften är betald och ditt PayPal referencenummer för din betalning är <%= @booking.payment.transaction_id %>
+    </p>
+<%- end -%>
+
+<p>
+  Om du har några frågor så maila oss gärna på <%= mail_to AppConfig[:support_mail] %> eller ring oss på <%= AppConfig[:support_phone] %>.   
+</p>
+
+
+<%= link_to t('labels.destroy'), @booking, :confirm => t('messages.destroy_confirmation'), :method => :delete %>
+<%= link_to t('labels.back'), polymorphic_path(@booking.booker) %>

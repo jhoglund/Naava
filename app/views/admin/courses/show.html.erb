@@ -18,10 +18,9 @@
 
 
 <h3>Tillfällen</h3>  
-  <% @course.sessions.each do |session| %>
-    <%= link_to l(session.starts_at, :format => :short), admin_session_path(session) %> <br>
-  <% end %>
-</p>
+<% @course.sessions.each do |session| %>
+  <%= link_to l(session.starts_at, :format => :short), admin_session_path(session) %> | <%= l(session.duration, :format => :time) %> <br>
+<% end %>
 
 
 <% if logged_in? %>

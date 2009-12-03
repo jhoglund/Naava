@@ -7,6 +7,11 @@ class Booking < ActiveRecord::Base
   before_create :make_token
   after_create :reset_attributes
   
+  before_update :disabling?
+    
+  named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
+  named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
+  
   validates_presence_of :name, :on => :create
   validate :phone_or_email
   
@@ -32,6 +37,10 @@ class Booking < ActiveRecord::Base
     self.errors.add(:email, I18n.t('activerecord.errors.messages.invalid')) unless valid_mail
     self.errors.add(:phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone
     return false
+  end
+  
+  def disabling?
+    self.status_changed? && self.status_was == Status::ACTIVE && self.status == Status::DISABLED
   end
     
   private  

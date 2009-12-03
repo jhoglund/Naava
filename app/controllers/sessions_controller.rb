@@ -1,8 +1,11 @@
 class SessionsController < BookingsController  
 
   def index
-    @sessions = Session.all
-
+    if params[:week]
+      @sessions = Session.by_date.week(Date.parse(params[:week])).all
+    else
+      @sessions = Session.by_date.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sessions }

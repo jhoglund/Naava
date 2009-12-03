@@ -8,13 +8,11 @@ describe "/courses/index.html.erb" do
       stub_model(Course,
         :name => "value for name",
         :description => "value for description",
-        :teatcher => "value for teatcher",
         :level => "value for level"
       ),
       stub_model(Course,
         :name => "value for name",
         :description => "value for description",
-        :teatcher => "value for teatcher",
         :level => "value for level"
       )
     ]
@@ -24,7 +22,6 @@ describe "/courses/index.html.erb" do
     render
     response.should have_tag("tr>td", "value for name".to_s, 2)
     response.should have_tag("tr>td", "value for description".to_s, 2)
-    response.should have_tag("tr>td", "value for teatcher".to_s, 2)
     response.should have_tag("tr>td", "value for level".to_s, 2)
   end
 end

@@ -2,21 +2,24 @@ class BookingsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [ :paypal_ipn, :paypal_success, :paypal_cancel ]
 
   def show
-    @booking = Booking.find_by_token(params[:id])
+    @booking = Booking.active.find_by_token(params[:id])
 
     respond_to do |format|
-      format.html { render :template => "/#{@booking.booker.class.name.tableize}/booking"}
+      format.html { 
+        if @booking
+          render :template => "/#{@booking.booker.class.name.tableize}/booking"
+        end
+      }
       format.xml  { render :xml => @booking }
     end
   end
   
   def destroy
-    @booking = Booking.find_by_token(params[:id])
+    @booking = Booking.active.find_by_token(params[:id])
     @booking.update_attribute(:status, Status::DISABLED)
 
     respond_to do |format|
-      flash[:notice] = 'Bokningen är borttagen.'
-      format.html { redirect_to(polymorphic_url(@booking.booker)) }
+      format.html { render :template => "/#{@booking.booker.class.name.tableize}/destroy" }
       format.xml  { head :ok }
     end
   end
@@ -29,10 +32,11 @@ class BookingsController < ApplicationController
       end
     else
       @booking.attributes = params[:booking]
+      @booking.status = Status::ACTIVE
       respond_to do |format|
         if @booking.save
           flash[:notice] = 'Bokningen är sparad.'
-          format.html { render :booked }
+          format.html { redirect_to @booking }
           format.xml  { render :xml => @booking, :status => :created, :location => @booking }
         else
           flash[:error] = 'Bokningen kunde inte sparas.'
@@ -76,7 +80,7 @@ class BookingsController < ApplicationController
     if @booking.payment
       flash[:notice] = "Din betalning har motagits"
     else
-      flash[:notice] = "Betalningen kunde inte genomföras. Ditt konto har inte blivit krediterat. Du kan antinge prova igen, eller betala till vårat bankgiro."
+      flash[:error] = "Betalningen kunde inte genomföras. Ditt konto har inte blivit krediterat. Du kan antinge prova igen, eller betala till vårat bankgiro."
      end 
     redirect_to booking_path(@booking)
   end

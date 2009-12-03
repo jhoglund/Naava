@@ -1,0 +1,5 @@
+.nava-calendar table { border-collapse:inset; border:1px solid black; margin-left:100px; }
+.nava-calendar table tbody { height:500px; overflow:auto; }
+.nava-calendar td { border:1px solid black; width:14.285%; height:20px; padding:0; }
+.nava-calendar td div { display:inline; }
+.nava-calendar td .time { position:relative; left:-70px; }

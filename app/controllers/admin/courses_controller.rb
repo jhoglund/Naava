@@ -22,7 +22,8 @@ class Admin::CoursesController < Admin::AdminController
 
   def new
     @course = Course.new
-
+    @course.sessions.build
+    @course.instructor = Instructor.first
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @course }
@@ -31,6 +32,7 @@ class Admin::CoursesController < Admin::AdminController
 
   def edit
     @course = Course.find(params[:id])
+    #@course.sessions.build
   end
 
   def create

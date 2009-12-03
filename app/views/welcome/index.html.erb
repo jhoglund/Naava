@@ -1,13 +1,26 @@
 <h1>Naava Yoga</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
 <p>Det går alltid bra att  xxx till våra pågående klasser, i mån av plats. Våra pågående klasser är:</p>
 
 <% @current_courses.each do |course| %>
-  <%= link_to course.name, course %>
+<%= link_to course.name, course %><br>
 <% end %>
 
 <p>Planerade kurser som det går bra att anmäla sig till är:</p>
 
 <% @planned_courses.each do |course| %>
-  <%= link_to course.name, course %>
+<%= link_to course.name, course %><br>
+<% end %>
+
+<p>Hitta en klass som passar dig:</p>
+<p><%= link_to 'Se vårat schema', sessions_path %></p>
+<% unless @sessions.empty? %>
+<p>Veckans klasser:<br>
+<% @sessions.each do |session| %>
+  <%= link_to session.course.name, session %> <%= l(session.starts_at, :format => :short) %> (<%= l(session.duration, :format => :time) %>)<br>
+<% end %>
+</p>
 <% end %>
   

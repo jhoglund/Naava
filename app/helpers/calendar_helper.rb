@@ -35,19 +35,20 @@ module CalendarHelper
     return table.to_s
   end
   
-  def calendar_date name=:calendar, time=nil
+  def calendar_date name = :calendar, time=nil
+    return Date.parse(Time.now.to_s)
     session[:calendars] ||= {}
 	  session[:calendars][name] ||= {}
-    session[:calendars][name] = if session[:calendars][name].empty? and !time then current_user.adjusted_time.to_s
+    session[:calendars][name] = if session[:calendars][name].empty? and !time then Time.now.to_s
                                 elsif !time then session[:calendars][name]
                                 else time.to_s end
 	  Date.parse(session[:calendars][name])
   end
   
-  def calendar date=nil, view=:month
+  def calendar date=nil, view = :month
     return @calendar if @calendar
     date = date ? to_date(date) : calendar_date(:calendar, params[:calendar_date])
-    @calendar = Stixy::Calendar.new(date, view, current_user.time_format.get(:offset)) 
+    @calendar = Stixy::Calendar.new(date, view, 0) 
   end
   
   def activities start=nil, stop=nil, options = { :reload => false, :cache => true }
@@ -59,13 +60,13 @@ module CalendarHelper
       stop ||= start
     end
     # Create a array of all activities to be included in the calendar
-	  activities = options[:activities] || CALENDAR.collect{ |c| c.get_for_calendar(current_user.id, to_date(current_user.adjusted_time(start)), to_date(current_user.adjusted_time(stop)), :build_recurring => true) }
+	  activities = options[:activities] || CALENDAR.collect{ |c| c.get_for_calendar(current_user.id, to_date(start), to_date(stop), :build_recurring => true) }
     @activities = activities.flatten.sort_by{ |a| a.start }
     arranged_activities = {}
     @activities.each do |activity|
       index = nil
-      activity.start = current_user.adjusted_time(activity.start)
-      activity.stop = current_user.adjusted_time(activity.stop)
+      activity.start = activity.start
+      activity.stop = activity.stop
 	    to_date(activity.start).upto(to_date(activity.stop)) do |date|
 	      date_name = date.to_s
 	      arranged_activities[date_name] ||= []
@@ -89,7 +90,7 @@ module CalendarHelper
   def generate_calendar view = :month, date = nil, calendar_activities = nil
     case view.to_sym
     when :day   : generate_day_calendar(date)
-    when :week  : generate_month_calendar(calendar_activities)
+    when :week  : generate_week_calendar(date)
     when :year  : generate_year_calendar
     else generate_month_calendar(calendar_activities)
     end
@@ -98,12 +99,12 @@ module CalendarHelper
   def generate_day_calendar date = Date.new
     # Generate a list of all activities as a multi dimenssional array. 
     # One entry per day, including a array with the events for the specific day
-  	@calendar_table = calendar(to_date(date)).to_html_table do |calendar_day, date, cell|
+  	@calendar_table = calendar(to_date(date)).to_html_table do |calendar_day, date, time, cell|
   		@date, @calendar_day = date, calendar_day
   		day_num = Stixy::Html::Element.new("div")
   		day_num.setAttribute(:class, "calendar-day-number")
   		day_num.content = date.day
-  		day_num.content = "Today " + date.day.to_s if compare_dates(current_user.adjusted_time(Time.now), date)
+  		day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
   		cell.addChildNode(day_num)
       cell.setAttribute(:title, date.to_s)
       cell.setAttribute("sx:date", date.to_s)
@@ -137,12 +138,61 @@ module CalendarHelper
     return @calendar_table.to_s
   end
   
+  def generate_week_calendar date = Date.new
+    # Generate a list of all activities as a multi dimenssional array. 
+    # One entry per day, including a array with the events for the specific day
+  	@calendar_table = calendar(to_date(date), :week).to_html_table do |calendar_day, date, time, cell|
+  		#@date, @calendar_day = date, calendar_day
+  		day_num = Stixy::Html::Element.new("div")
+  		#day_num.setAttribute(:class, "calendar-day-number")
+  		day_num.content = date.day
+  		#day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
+  		cell.addChildNode(day_num)
+  		if calendar_day.first_weekday? and (time.min==0)
+  		  timeElement = Stixy::Html::Element.new("div")
+  		  timeElement.content = l(time, :format => :time)
+    		timeElement.setAttribute(:class, 'time')
+    		cell.addChildNode(timeElement)
+		  end
+      #cell.setAttribute(:title, date.to_s)
+      #cell.setAttribute("sx:date", date.to_s)
+      #if @selected_day and compare_dates(@selected_day, date)
+      #  cell.addAttribute(:class, "calendar-selected-day")
+      #  cell.setAttribute("sx:id", "selected-day")
+      #end
+      #if current_day = activities(nil, nil, :activities => calendar_activities)[date.to_s]
+  		#  current_day.each_with_index do |event, index|
+      #    @event, @index = event, index
+      #    unless  @event.nil?
+      #      entryTag = Stixy::Html::Element.new("sx:entry")
+      #		  entryTag.setAttribute("sx:entry-id", (event.nil? ? 0 : event.id))
+      #		  entryTag.setAttribute("sx:entry-type", event.class.to_s.underscore)
+      #		  if do_not_print_event?
+    	#	    	entryTag.content = "&nbsp;"
+      #  	  else
+      #  	    entryTag.addAttribute(:class, class_names)
+      #        entryTag.setAttribute(:title, event.calendar_text)
+      #        labelTag = Stixy::Html::Element.new("sx:label")
+      #  		  labelTag.content = render(:partial => get_partial(@event,:calendar), :object => @event)
+    	#	    	entryTag.addChildNode(labelTag)
+      #  		end
+      #      cell.addChildNode(entryTag)
+      #    end
+    	#	end
+  		#end
+  	end
+    @calendar_table.setHeaders(*@calendar.offsetDays(Date::DAYNAMES.dup))
+    @calendar_table.addAttribute(:class, "stixy-calendar")
+    return  @calendar_table.to_s
+  end
+  
+  
   def generate_month_calendar calendar_activities = nil
     # Generate a list of all activities as a multi dimenssional array. 
     # One entry per day, including a array with the events for the specific day
-  	@calendar_table = calendar.to_html_table do |calendar_day, date, cell|
+  	@calendar_table = calendar.to_html_table do |calendar_day, date, time, cell|
   		@date, @calendar_day = date, calendar_day
-  		if current_user.time_format.week? and date.wday==1
+  		if true and date.wday==1
   		  week_num = Stixy::Html::Element.new("div")
     		week_num.setAttribute(:class, "calendar-week-number")
     		week_num.content = "Week " + date.cweek.to_s
@@ -152,7 +202,7 @@ module CalendarHelper
   		day_num.setAttribute(:class, "calendar-day-number")
   		#day_num.content = @calendar_day.start_of_week
   		day_num.content = date.day
-  		day_num.content = "Today " + date.day.to_s if compare_dates(current_user.adjusted_time(Time.now), date)
+  		day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
   		cell.addChildNode(day_num)
       cell.setAttribute(:title, date.to_s)
       cell.setAttribute("sx:date", date.to_s)
@@ -195,12 +245,12 @@ module CalendarHelper
   def generate_year_calendar
     # Generate a list of all activities as a multi dimenssional array. 
     # One entry per day, including a array with the events for the specific day
-  	@calendar_table = calendar.to_html_table do |calendar_day, date, cell|
+  	@calendar_table = calendar.to_html_table do |calendar_day, date, time, cell|
   		@date, @calendar_day = date, calendar_day
   		day_num = Stixy::Html::Element.new("div")
   		day_num.setAttribute(:class, "calendar-day-number")
   		day_num.content = date.day
-  		day_num.content = "Today " + date.day.to_s if compare_dates(current_user.adjusted_time(Time.now), date)
+  		day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
   		cell.addChildNode(day_num)
       cell.setAttribute(:title, date.to_s)
       cell.setAttribute("sx:date", date.to_s)

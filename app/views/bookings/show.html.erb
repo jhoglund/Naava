@@ -1,14 +1,1 @@
-
-<p>
-  <b>Participant:</b>
-  <%=h @booking.participant.name %>
-</p>
-
-<p>
-  <b>Token:</b>
-  <%=h @booking.token %>
-</p>
-
-
-<%= link_to t('labels.destroy'), @booking, :confirm => t('messages.destoy_confirmation'), :method => :delete %>
-<%= link_to t('labels.back'), polymorphic_path(@booking.booker) %>
+Det finns ingen bokning
