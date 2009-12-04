@@ -13,11 +13,14 @@
     <%= yield :header %>
 </head>
 <body>
-
-  <% if logged_in? %><p><%= link_to "Logout", user_session_path, :method => :delete %></p><% end %>
+  <p>
+    <%= link_to 'Naava Yoga', root_path %> | 
+    <%= link_to 'Schema', sessions_path %> |
+    <%= link_to 'Kurser', courses_path %>
+  <% if logged_in? %> | <%= link_to "Logout", user_session_path, :method => :delete %><% end %>
   <% if flash[:notice] %><p style="color: green"><%= flash[:notice] %></p><% end %>
   <% if flash[:error] %><p style="color: red"><%= flash[:error] %></p><% end %>
-
+  </p>
 <%= yield %>
 
 </body>
