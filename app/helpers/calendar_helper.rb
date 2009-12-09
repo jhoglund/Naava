@@ -1,39 +1,4 @@
 module CalendarHelper
-  CALENDAR_PARTIAL = {  "WidgetTodo" =>     {:calendar => { :path => "/widgets/todo/", :filename => "calendar"}, :panel => { :path => "/widgets/todo/", :filename => "calendar_panel"}, :activity_list => { :path => "/widgets/todo/", :filename => "activity_list_item"}},
-							          "CalendarEntry" =>  {:calendar => { :path => "/calendar/", :filename => "entry"}, :panel => {:path => "/calendar/", :filename => "edit"}, :activity_list => { :path => "/calendar/", :filename => "activity_list_item"}},
-							          "CalendarTodo" =>   {:calendar => { :path => "/calendar/", :filename => "todo_entry"}, :panel => {:path => "/calendar/", :filename => "todo_edit"}, :activity_list => { :path => "/calendar/", :filename => "activity_list_item"}}
-							        } unless const_defined?(:CALENDAR_PARTIAL)
-	CALENDAR = [] unless const_defined?(:CALENDAR)
-  
-	def subscription_address
-	  calendar_subscription_url(:privatekey => current_user.get_private_key.to_s)
-  end
-  
-  def get_partial(event, partial)
-    partial = CALENDAR_PARTIAL[event.class.to_s][partial]
-    # Find custom parials for the type of activity to be included, or return the default partial
-    unless partial[:path].nil? || partial[:filename].nil? || !File.exists?("#{RAILS_ROOT}/app/views#{partial[:path]}_#{partial[:filename]}.rhtml")
-			return partial[:path]+partial[:filename]
-		else
-			return "/calendar/edit"
-		end
-  end
-
-  def compare_dates left=Time.now, right=Time.now
-    left = left.class == Date ? left : Date.parse(left.to_s)
-    right = right.class == Date ? right : Date.parse(right.to_s)
-    return yield(left, right) if block_given?
-    return left == right
-  end
-  
-  def generate_widget_todo_calendar
-    date = calendar_date(:widget_todo, (params[:calendar_date] || (Date.civil(params[:year].to_i,Date::MONTHNAMES.index(params[:month_name])) rescue nil)))
-    @calendar = Stixy::Calendar.new(date)    
-    table = calendar.to_html_table { |date, day, cell| cell.content = day.day }
-    table.setHeaders(*calendar.offsetDays(Date::ABBR_DAYNAMES.dup))
-    table.addAttribute(:class, "todo-calendar")
-    return table.to_s
-  end
   
   def calendar_date name = :calendar, time=nil
     return Date.parse(Time.now.to_s)
@@ -60,10 +25,11 @@ module CalendarHelper
       stop ||= start
     end
     # Create a array of all activities to be included in the calendar
-	  activities = options[:activities] || CALENDAR.collect{ |c| c.get_for_calendar(current_user.id, to_date(start), to_date(stop), :build_recurring => true) }
+	  activities = options[:activities]
     @activities = activities.flatten.sort_by{ |a| a.start }
     arranged_activities = {}
-    @activities.each do |activity|
+    @activities.each do |a|
+      activity = Stixy::Calendar::Event.new(a.start, a.stop, a) 
       index = nil
       activity.start = activity.start
       activity.stop = activity.stop
@@ -83,66 +49,15 @@ module CalendarHelper
     return arranged_activities
   end
   
-  def todos
-    @todos ||= CalendarTodo.get_for_global_todolist(current_user)
-  end
-  
-  def generate_calendar view = :month, date = nil, calendar_activities = nil
-    case view.to_sym
-    when :day   : generate_day_calendar(date)
-    when :week  : generate_week_calendar(date)
-    when :year  : generate_year_calendar
-    else generate_month_calendar(calendar_activities)
-    end
-  end
-  
-  def generate_day_calendar date = Date.new
-    # Generate a list of all activities as a multi dimenssional array. 
-    # One entry per day, including a array with the events for the specific day
-  	@calendar_table = calendar(to_date(date)).to_html_table do |calendar_day, date, time, cell|
-  		@date, @calendar_day = date, calendar_day
-  		day_num = Stixy::Html::Element.new("div")
-  		day_num.setAttribute(:class, "calendar-day-number")
-  		day_num.content = date.day
-  		day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
-  		cell.addChildNode(day_num)
-      cell.setAttribute(:title, date.to_s)
-      cell.setAttribute("sx:date", date.to_s)
-      if @selected_day and compare_dates(@selected_day, date)
-        cell.addAttribute(:class, "calendar-selected-day")
-        cell.setAttribute("sx:id", "selected-day")
-      end
-      if current_day = activities()[date.to_s]
-  		  current_day.each_with_index do |event, index|
-          @event, @index = event, index
-          unless  @event.nil?
-            entryTag = Stixy::Html::Element.new("sx:entry")
-      		  entryTag.setAttribute("sx:entry-id", (event.nil? ? 0 : event.id))
-      		  entryTag.setAttribute("sx:entry-type", event.class.to_s.underscore)
-      		  if do_not_print_event?
-    		    	entryTag.content = "&nbsp;"
-        	  else
-        	    entryTag.addAttribute(:class, class_names)
-              entryTag.setAttribute(:title, event.calendar_text)
-              labelTag = Stixy::Html::Element.new("sx:label")
-        		  labelTag.content = render(:partial => get_partial(@event,:calendar), :object => @event)
-    		    	entryTag.addChildNode(labelTag)
-        		end
-            cell.addChildNode(entryTag)
-          end
-    		end
-  		end
-  	end
-    #@calendar_table.setHeaders(*@calendar.offsetDays(Date::DAYNAMES.dup))
-    @calendar_table.addAttribute(:class, "stixy-calendar")
-    return @calendar_table.to_s
+  def generate_calendar date = nil, calendar_activities = nil
+    generate_week_calendar(date)
   end
   
   def generate_week_calendar date = Date.new
     # Generate a list of all activities as a multi dimenssional array. 
     # One entry per day, including a array with the events for the specific day
   	@calendar_table = calendar(to_date(date), :week).to_html_table do |calendar_day, date, time, cell|
-  		#@date, @calendar_day = date, calendar_day
+  		@date, @calendar_day = date, calendar_day
   		day_num = Stixy::Html::Element.new("div")
   		#day_num.setAttribute(:class, "calendar-day-number")
   		day_num.content = date.day
@@ -160,132 +75,30 @@ module CalendarHelper
       #  cell.addAttribute(:class, "calendar-selected-day")
       #  cell.setAttribute("sx:id", "selected-day")
       #end
-      #if current_day = activities(nil, nil, :activities => calendar_activities)[date.to_s]
-  		#  current_day.each_with_index do |event, index|
-      #    @event, @index = event, index
-      #    unless  @event.nil?
-      #      entryTag = Stixy::Html::Element.new("sx:entry")
-      #		  entryTag.setAttribute("sx:entry-id", (event.nil? ? 0 : event.id))
-      #		  entryTag.setAttribute("sx:entry-type", event.class.to_s.underscore)
-      #		  if do_not_print_event?
-    	#	    	entryTag.content = "&nbsp;"
-      #  	  else
-      #  	    entryTag.addAttribute(:class, class_names)
-      #        entryTag.setAttribute(:title, event.calendar_text)
-      #        labelTag = Stixy::Html::Element.new("sx:label")
-      #  		  labelTag.content = render(:partial => get_partial(@event,:calendar), :object => @event)
-    	#	    	entryTag.addChildNode(labelTag)
-      #  		end
-      #      cell.addChildNode(entryTag)
-      #    end
-    	#	end
-  		#end
-  	end
-    @calendar_table.setHeaders(*@calendar.offsetDays(Date::DAYNAMES.dup))
-    @calendar_table.addAttribute(:class, "stixy-calendar")
-    return  @calendar_table.to_s
-  end
-  
-  
-  def generate_month_calendar calendar_activities = nil
-    # Generate a list of all activities as a multi dimenssional array. 
-    # One entry per day, including a array with the events for the specific day
-  	@calendar_table = calendar.to_html_table do |calendar_day, date, time, cell|
-  		@date, @calendar_day = date, calendar_day
-  		if true and date.wday==1
-  		  week_num = Stixy::Html::Element.new("div")
-    		week_num.setAttribute(:class, "calendar-week-number")
-    		week_num.content = "Week " + date.cweek.to_s
-    		cell.addChildNode(week_num)
-		  end
-  		day_num = Stixy::Html::Element.new("div")
-  		day_num.setAttribute(:class, "calendar-day-number")
-  		#day_num.content = @calendar_day.start_of_week
-  		day_num.content = date.day
-  		day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
-  		cell.addChildNode(day_num)
-      cell.setAttribute(:title, date.to_s)
-      cell.setAttribute("sx:date", date.to_s)
-      if @selected_day and compare_dates(@selected_day, date)
-        cell.addAttribute(:class, "calendar-selected-day")
-        cell.setAttribute("sx:id", "selected-day")
-      end
-      content_tag = cell.addChildNode(Stixy::Html::Element.new("sx:entries"))
-    	if current_day = activities(nil, nil, :activities => calendar_activities)[date.to_s]
-        current_day.each_with_index do |event, index|
+      if current_day = activities(nil, nil, :activities => Session.all)[date.to_s]
+  		  current_day.each_with_index do |event, index|
           @event, @index = event, index
-          if @event.nil? 
-            blankTag = Stixy::Html::Element.new("sx:blank")
-            blankTag.content = "&nbsp;"
-  		    	content_tag.addChildNode(blankTag)
-          else
+          unless  @event.nil?
             entryTag = Stixy::Html::Element.new("sx:entry")
       		  entryTag.setAttribute("sx:entry-id", (event.nil? ? 0 : event.id))
       		  entryTag.setAttribute("sx:entry-type", event.class.to_s.underscore)
-      		  #entryTag.setAttribute("sx:entry-selected", true) if calendar_entry_selected?
       		  if do_not_print_event?
     		    	entryTag.content = "&nbsp;"
         	  else
         	    entryTag.addAttribute(:class, class_names)
-              entryTag.setAttribute(:title, event.calendar_text)
+              entryTag.setAttribute(:title, event.object.course.description)
               labelTag = Stixy::Html::Element.new("sx:label")
-        		  labelTag.content = render(:partial => get_partial(@event,:calendar), :object => @event)
+        		  labelTag.content = "jonas"#render(:partial => get_partial(@event,:calendar), :object => @event)
     		    	entryTag.addChildNode(labelTag)
         		end
-            content_tag.addChildNode(entryTag)
+            cell.addChildNode(entryTag)
           end
     		end
   		end
   	end
     @calendar_table.setHeaders(*@calendar.offsetDays(Date::DAYNAMES.dup))
     @calendar_table.addAttribute(:class, "stixy-calendar")
-    return @calendar_table.to_s
-  end
-  
-  def generate_year_calendar
-    # Generate a list of all activities as a multi dimenssional array. 
-    # One entry per day, including a array with the events for the specific day
-  	@calendar_table = calendar.to_html_table do |calendar_day, date, time, cell|
-  		@date, @calendar_day = date, calendar_day
-  		day_num = Stixy::Html::Element.new("div")
-  		day_num.setAttribute(:class, "calendar-day-number")
-  		day_num.content = date.day
-  		day_num.content = "Today " + date.day.to_s if compare_dates(Time.now, date)
-  		cell.addChildNode(day_num)
-      cell.setAttribute(:title, date.to_s)
-      cell.setAttribute("sx:date", date.to_s)
-      #if @selected_day and compare_dates(@selected_day, date)
-      #  cell.addAttribute(:class, "calendar-selected-day")
-      #  cell.setAttribute("sx:id", "selected-day")
-      #end
-      #if current_day = activities()[date.to_s]
-  		#  current_day.each_with_index do |event, index|
-      #    @event, @index = event, index
-      #    if @event.nil? 
-      #      blankTag = Stixy::Html::Element.new("sx:blank")
-      #      blankTag.content = "&nbsp;"
-  		#    	cell.addChildNode(blankTag)
-      #    else
-      #      entryTag = Stixy::Html::Element.new("sx:entry")
-      #		  entryTag.setAttribute("sx:entry-id", (event.nil? ? 0 : event.id))
-      #		  entryTag.setAttribute("sx:entry-type", event.class.to_s.underscore)
-      #		  if do_not_print_event?
-    	#	    	entryTag.content = "&nbsp;"
-      #  	  else
-      #  	    entryTag.addAttribute(:class, class_names)
-      #        entryTag.setAttribute(:title, event.calendar_text)
-      #        labelTag = Stixy::Html::Element.new("sx:label")
-      #  		  labelTag.content = render(:partial => get_partial(@event,:calendar), :object => @event)
-    	#	    	entryTag.addChildNode(labelTag)
-      #  		end
-      #      cell.addChildNode(entryTag)
-      #    end
-    	#	end
-  		#end
-  	end
-    @calendar_table.setHeaders(*Array.new(31))
-    @calendar_table.addAttribute(:class, "stixy-calendar")
-    return @calendar_table.to_s
+    return  @calendar_table.to_s
   end
   
   def class_names
@@ -355,6 +168,13 @@ module CalendarHelper
   
   def to_date klass
     return klass.class==Date ? klass : Date.parse(klass.to_s)
+  end
+  
+  def compare_dates left=Time.now, right=Time.now
+    left = left.class == Date ? left : Date.parse(left.to_s)
+    right = right.class == Date ? right : Date.parse(right.to_s)
+    return yield(left, right) if block_given?
+    return left == right
   end
   
   

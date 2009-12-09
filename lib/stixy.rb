@@ -479,6 +479,63 @@ module Stixy
       end
     end
     
+    class Event
+      attr_accessor :start, :stop
+      attr_reader :object
+      def initialize start, stop, object
+        @start = start
+        @stop = stop
+        @object = object
+      end
+      
+      def multi_day_event?
+        !compare_dates(@start, @stop)
+      end
+
+      #def event_first_week?
+      #  #compare_dates(@start, @date) || compare_dates(@start, @calendar_day.start_of_week){|left, right| left  >= right }
+      #end
+      #
+      #def event_last_week?
+      #  compare_dates(@event.stop, @date) || compare_dates(@event.stop, @calendar_day.end_of_week){|left, right| left <= right }
+      #end
+      #
+      #def event_middle_week?
+      #  !compare_dates(@event.start, @date) and !compare_dates(@event.stop, @date)
+      #end
+      #
+      #def event_last_day?
+      #  compare_dates(@event.stop, @date) || compare_dates(@event.stop, event_end_of_week){|left, right| left <= right }
+      #end
+      #
+      #def event_start_of_week
+      #  if compare_dates(@event.start,  @calendar_day.start_of_week){|left, right| left >= right }
+      #    return @event.start
+      #  else
+      #    return  @calendar_day.start_of_week
+      #  end
+      #end
+      #
+      #def event_end_of_week
+      #  if compare_dates(@event.stop, @calendar_day.end_of_week){|left, right| left <= right }
+      #    return @event.stop
+      #  else
+      #    return @calendar_day.end_of_week
+      #  end
+      #end
+      
+      private
+      
+      def compare_dates left=Time.now, right=Time.now
+        left = left.class == Date ? left : Date.parse(left.to_s)
+        right = right.class == Date ? right : Date.parse(right.to_s)
+        return yield(left, right) if block_given?
+        return left == right
+      end
+      
+    end
+    
+    
   
   end
     

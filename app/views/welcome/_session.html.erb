@@ -1,0 +1,12 @@
+<table class="compact-session-list">
+<%- session.each do |sess| -%>
+  <tr>
+    <th><%= sess.starts_at.strftime("%b") %> <%= sess.starts_at.strftime("%d").to_i %></th>
+    <td>
+      <%= link_to sess.course.name, sess %><br>
+      <%= truncate sess.course.description, 60 %><br>
+      <%= l(sess.starts_at, :format => :time) %> – <%= l(sess.ends_at, :format => :time) %>
+    </td>
+  </tr>
+<%- end -%>
+</table>

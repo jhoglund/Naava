@@ -4,24 +4,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Naava Yoga<% if yield :title %>:
+  <title>Nava Yoga<% if yield :title %>:
       <%= yield :title %>
     <% end %></title>
     <%= javascript_include_tag :defaults %>
-    <%= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'application' %>
     <%= yield :header %>
 </head>
 <body>
-  <p>
-    <%= link_to 'Naava Yoga', root_path %> | 
-    <%= link_to 'Schema', sessions_path %> |
-    <%= link_to 'Kurser', courses_path %>
-  <% if logged_in? %> | <%= link_to "Logout", user_session_path, :method => :delete %><% end %>
-  <% if flash[:notice] %><p style="color: green"><%= flash[:notice] %></p><% end %>
-  <% if flash[:error] %><p style="color: red"><%= flash[:error] %></p><% end %>
-  </p>
-<%= yield %>
+  <div class="canvas">
+    <div>
+    <% if flash[:notice] %><p style="color: green"><%= flash[:notice] %></p><% end %>
+    <% if flash[:error] %><p style="color: red"><%= flash[:error] %></p><% end %>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
+  <div class="footer">
+    <dl>
+      <dt>Nava Yoga</dt>
+      <dd><%= link_to "Hem", root_path %></dd>
+      <dd><%= link_to "Tider och priser", root_path %></dd>
+      <dd><%= link_to "Vår studio", root_path %></dd>
+      <dd><%= link_to "Här hittar du vår studio", root_path %></dd>
+      <dd><%= link_to "Kontakta oss", root_path %></dd>
+    </dl>
+    <dl>
+      <dt>Om Ashtanga Yoga</dt>
+      <dd><%= link_to "Detta är Ashtanga Yoga", root_path %></dd>
+      <dd><%= link_to "Ashtanga Yoga Research Center", root_path %></dd>
+      <dd><%= link_to "Lite historia", root_path %></dd>
+    </dl>
+    <% if logged_in? %>
+      <dl>
+        <dt>Admin</dt>
+        <dd><%= link_to "Logout", user_session_path, :method => :delete %></dd>
+      </dl>
+    <% end %>
+    
+  </div>
 
 </body>
 </html>

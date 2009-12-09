@@ -1,5 +1,36 @@
-.nava-calendar table { border-collapse:inset; border:1px solid black; margin-left:100px; }
-.nava-calendar table tbody { height:500px; overflow:auto; }
-.nava-calendar td { border:1px solid black; width:14.285%; height:20px; padding:0; }
-.nava-calendar td div { display:inline; }
-.nava-calendar td .time { position:relative; left:-70px; }
+html { background:rgb(30,30,30) }
+body { margin:0; font:normal 14px/22px georgia;}
+.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }
+.content { width:860px; padding:20px; }
+.top { padding:40px 0 10px 50px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
+.compact-session-list table { border-collapse:collapse; }
+.compact-session-list th,
+.compact-session-list td { vertical-align:top; }
+.compact-session-list th { padding-right:10px; white-space:nowrap;}
+
+.promotion-boxes { margin-left:-20px; vertical-align:top; border-top:1px solid rgb(235,235,235); padding:0 0 0; background:white; }
+.promotion-box { display:inline-block; vertical-align:top; padding:40px 0 0 20px; margin-right:10px; width:215px; }
+.promotion-boxes .promotion-box:first-child { width:280px; margin-right:0; border-right:1px solid rgb(222,222,210); padding-left:70px; padding-right:20px; }
+.promotion-box h3 { margin:0 0 10px; }
+
+dt { font-weight:bold; }
+dd { margin:0 0 20px 0; }
+
+.dec { font:normal 20px/30px georgia; color:rgb(60,60,30); }
+
+.footer { padding-bottom:80px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(80,80,80)), to(rgb(30,30,30))) }
+.footer dl { display:block; padding:20px 20px 10px; margin:0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.footer dl:first-child { background:-webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(200,100,200,0.2)), from(rgba(222,222,210,0))); }
+.footer dl { background:-webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(100,100,200,0.2)), from(rgba(222,222,210,0))); }
+.footer dt,
+.footer dd { display:inline-block; padding:0; margin:0 5px; }
+/*.footer dd:before { content: "|"; }
+*/
+.footer dt { opacity:0.5; margin-right:10px; }
+.footer dd { }
+.footer a { color:rgb(210,210,210); text-decoration:none; }
+.footer a:hover { text-decoration:underline; }
+
+.map { margin:-20px 0 10px 0; }
+.map > div { border:1px solid rgb(222,222,210); }
+

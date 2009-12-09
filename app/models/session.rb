@@ -5,7 +5,9 @@ class Session < ActiveRecord::Base
   
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :expired, :conditions => "sessions.starts_at < CAST('#{DateTime.now}' AS DATETIME)"
-  named_scope :by_date, :order => 'sessions.starts_at ASC'
+  named_scope :by_date, lambda{|asc|
+    { :order => "sessions.starts_at #{asc === false ? "DESC" : "ASC"}" }
+  }
   named_scope :week, lambda{|date|
     date ||= Date.today
     start = date - (date.wday - 1)
@@ -33,6 +35,7 @@ class Session < ActiveRecord::Base
     time = Time.now
     return time - (time.min*60) - time.sec
   end
+  alias :start :starts_at
   
   def ends_at
     time = read_attribute(:ends_at)
@@ -40,6 +43,7 @@ class Session < ActiveRecord::Base
     time = Time.now
     return starts_at + 5400
   end
+  alias :stop :ends_at
   
   
   def duration
