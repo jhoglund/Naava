@@ -1,39 +1,39 @@
-html { background:rgb(30,30,30) }
+html { background:rgb(245,245,245) }
 body { margin:0; font:normal 14px/22px georgia;}
 a { color:#00f;}
-.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }
-.content { width:860px; padding:20px; }
-.top { padding:80px 0 10px 50px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
+/*.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }*/
+/*.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(rgb(250,150,30))*, from(rgb(220,220,100))) }*/
+.canvas { background:rgb(240,240,150); background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#fff), from(rgb(240,240,100)), color-stop(0.7,#fff)) }
+.content { width:860px; padding:20px 20px 0; margin:0 auto; }
+.top { padding:80px 20px 10px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
 .compact-session-list table { border-collapse:collapse; }
 .compact-session-list th,
 .compact-session-list td { vertical-align:top; }
 .compact-session-list th { padding-right:10px; white-space:nowrap;}
 
-.promotion-boxes { margin-left:-20px; vertical-align:top; border-top:1px solid rgb(235,235,235); padding:0 0 0; background:white; }
-.promotion-box { display:inline-block; vertical-align:top; padding:40px 0 0 20px; margin-right:10px; width:215px; }
-.promotion-boxes .promotion-box:first-child { width:280px; margin-right:0; border-right:1px solid rgb(222,222,210); padding-left:70px; padding-right:20px; }
+.promotion-boxes { vertical-align:top; border-top:1px solid transparent; padding:30px 0px 0px 20px; background:white; overflow:hidden; }
+.promotion-box { display:inline-block; vertical-align:top; padding:10px 0 0 20px; margin-right:25px; width:215px; }
+.promotion-boxes .promotion-box:first-child { width:280px; margin-right:0; }
 .promotion-box h3 { margin:0 0 10px; }
 
 dt { font-weight:bold; }
 dd { margin:0 0 20px 0; }
 
-.dec { font:normal 20px/30px georgia; color:rgb(60,60,30); }
+.dec { font:normal 20px/30px georgia; color:rgb(60,30,30); }
 
-.footer { padding-bottom:80px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(80,80,80)), to(rgb(30,30,30))) }
-.footer dl { display:block; padding:20px 20px 10px; margin:0; border-bottom:1px solid rgba(255,255,255,0.05); }
-.footer dl:first-child { background:-webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(200,100,200,0.2)), from(rgba(222,222,210,0))); }
-.footer dl { background:-webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(100,100,200,0.2)), from(rgba(222,222,210,0))); }
+.footer { padding-bottom:80px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(63,26,38); overflow:hidden;  }
+.footer dl { display:block; width:auto; text-align:center; padding:15px 0px 15px 0px; margin:0; -webkit-box-shadow: 0px -4px 10px rgba(0,0,0,0.2); z-index:1; }
+.footer dl:first-child { background:rgb(204,35,88); z-index:2;}
+.footer dl { background:rgb(136,15,53); }
 .footer dt,
 .footer dd { display:inline-block; padding:0; margin:0 5px; }
-/*.footer dd:before { content: "|"; }
-*/
-.footer dt { opacity:0.5; margin-right:10px; }
+.footer dt { opacity:0.4; margin-right:10px; }
 .footer dd { }
 .footer a { color:rgb(210,210,210); text-decoration:none; }
 .footer a:hover { text-decoration:underline; }
 
-.map { margin:-20px 0 10px 0; }
+.map { margin:0px 0 10px 0; }
 .map > div { border:1px solid rgb(222,222,210); }
 
-h1 { position:absolute; top:-20px; left:70px; padding:30px; background:#c00; color:white; }
+h1 { position:absolute; top:-20px; margin-left:50%; left:-410px; padding:30px 30px 15px; background:rgb(250,150,30); color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
 
