@@ -1,5 +1,6 @@
 html { background:rgb(30,30,30) }
 body { margin:0; font:normal 14px/22px georgia;}
+a { color:#00f;}
 .canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }
 .content { width:860px; padding:20px; }
 .top { padding:40px 0 10px 50px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
