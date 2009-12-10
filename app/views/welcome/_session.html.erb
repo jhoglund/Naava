@@ -5,7 +5,7 @@
     <td>
       <%= link_to sess.course.name, sess %><br>
       <%= truncate sess.course.description, 60 %><br>
-      <%= l(sess.starts_at, :format => :time) %> – <%= l(sess.ends_at, :format => :time) %>
+      <strong style="display:blocK;margin-bottom:10px"><%= l(sess.starts_at, :format => :time) %> – <%= l(sess.ends_at, :format => :time) %></strong>
     </td>
   </tr>
 <%- end -%>
