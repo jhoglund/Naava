@@ -3,7 +3,7 @@ body { margin:0; font:normal 14px/22px georgia;}
 a { color:#00f;}
 .canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }
 .content { width:860px; padding:20px; }
-.top { padding:40px 0 10px 50px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
+.top { padding:80px 0 10px 50px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
 .compact-session-list table { border-collapse:collapse; }
 .compact-session-list th,
 .compact-session-list td { vertical-align:top; }
@@ -34,4 +34,6 @@ dd { margin:0 0 20px 0; }
 
 .map { margin:-20px 0 10px 0; }
 .map > div { border:1px solid rgb(222,222,210); }
+
+h1 { position:absolute; top:-20px; left:70px; padding:30px; background:#c00; color:white; }
 
