@@ -25,7 +25,7 @@ dd { margin:0 0 20px 0; }
 .footer { padding-bottom:80px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(63,26,38); overflow:hidden;  }
 .footer dl { padding-left: 0px; padding-bottom: 12px; padding-right: 0px; padding-top: 12px; display:block; width:auto; text-align:center; margin:0; z-index:1; }
 .footer dl:first-child { background:#cc2358; z-index:2;}
-.footer dl { background:rgb(136,15,53); }
+.footer dl { color: white; background:#880f35; }
 .footer dt,
 .footer dd { display:inline-block; padding:0; margin:0 5px; }
 .footer dt { opacity:0.4; margin-right:10px; }
@@ -36,7 +36,5 @@ dd { margin:0 0 20px 0; }
 .map { margin:0px 0 10px 0; }
 .map > div { border:1px solid rgb(222,222,210); }
 
-h1 { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, Arial;top:-20px; margin-left:50%; left:-410px; padding:30px 30px 15px; background:#fa3d5e; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
-
-.footer dl:first-child { background:#cc2358; z-index:2;}
+h1 { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, Arial;top:-20px; margin-left:50%; left:-410px; padding:30px 30px 15px; background:#880f35; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
 
