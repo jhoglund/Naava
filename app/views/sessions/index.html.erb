@@ -5,26 +5,27 @@
 
 <h1>Klasser</h1>
 
-<table>
+<table class="session-list">
 
 <%   
   past_week = nil 
 %>
 <% @sessions.each do |session| %>
   <% 
-    week = Date.parse(session.starts_at.to_s).cweek.to_i
+    week = session.starts_at.to_date.cweek.to_i
     new_week = week != past_week
     past_week = week
   %>
   <% if new_week %>
   <tr>
-    <td colspan="3" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
+      <td colspan="4" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
   </tr>
   <% end %>
   <tr>
-    <td><%=link_to session.course.name, session %></td>
-    <td style="padding-left:10px"><%=l session.starts_at, :format => :short %></td>
-    <td style="padding-left:10px"><%=l session.duration, :format => :time %></td>
+      <td><%=link_to session.course.name, session %></td>
+      <td style="padding-left:10px"><%=l session.date, :format => :long %></td>
+      <td style="padding-left:10px"><%=l session.starts_at, :format => :time %></td>
+      <td style="padding-left:10px"><%=l session.ends_at, :format => :time %></td>
   </tr>
 <% end %>
 </table>

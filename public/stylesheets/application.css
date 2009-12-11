@@ -1,18 +1,26 @@
-html { background:rgb(245,245,245) }
-body { margin:0; font:normal 14px/18px georgia; background:url(/images/wall_texture3.jpg); }
-a { color:#00f;}
-/*.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }*/
-/*.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(rgb(250,150,30))*, from(rgb(220,220,100))) }*/
-/*.canvas { background:rgb(240,240,150); background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#fff), from(rgb(240,240,100)), color-stop(0.7,#fff)) }*/
-.canvas { background:rgb(240,240,150); background:url(/images/wall_texture2.jpg)  no-repeat; }
-.content { width:860px; padding:20px 20px 0; margin:0 auto; }
-.top { padding:80px 20px 10px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
+html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
+body { margin:0; font:normal 14px/18px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; min-height:800px;  }
+a:link,
+a:visited { color: rgb(45,130,215); text-decoration: none; }
+a:link:hover { color: rgb(35,95,155); text-decoration: none; }
+.logo { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, Arial;top:-10px; left:-10px; padding:30px 30px 15px; background:#880f35; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
+.header,
+.top,
+.content { position:relative; width:860px; margin:0 auto; }
+.header { padding:50px 0px; }
+.top { }
+.dec { font:normal 20px/30px georgia; color:rgb(60,30,30); padding:0 20px 20px; margin:0; }
+/* .canvas { background:url(/images/background_wall_texture.jpg)  no-repeat; } */
+.content { background:rgba(255,255,255,0.5); border-top:1px solid transparent; padding:30px 0px 95px 20px;  }
 .compact-session-list table { border-collapse:collapse; }
 .compact-session-list th,
 .compact-session-list td { vertical-align:top; }
 .compact-session-list th { padding-right:10px; white-space:nowrap;}
 
-.promotion-boxes { vertical-align:top; border-top:1px solid transparent; padding:30px 0px 0px 20px; background:rgba(255,255,255,0.5); overflow:hidden; }
+.session-list { width:840px; }
+.session-list tbody { background:-webkit-gradient(linear,top left, bottom left, from(white) to(red); background:red; }
+
+.promotion-boxes { vertical-align:top; overflow:hidden; }
 .promotion-box { display:inline-block; vertical-align:top; padding:10px 0 0 20px; margin-right:25px; width:215px; }
 .promotion-boxes .promotion-box:first-child { width:280px; margin-right:0; }
 .promotion-box h3 { margin:0 0 10px; }
@@ -20,10 +28,9 @@ a { color:#00f;}
 dt { font-weight:bold; }
 dd { margin:0 0 20px 0; }
 
-.dec { font:normal 20px/30px georgia; color:rgb(60,30,30); }
 
-.footer { padding-bottom:80px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(63,26,38); overflow:hidden;  }
-.footer dl { padding-left: 0px; padding-bottom: 12px; padding-right: 0px; padding-top: 12px; display:block; width:auto; text-align:center; margin:0; z-index:1; }
+.footer { position:fixed; width:100%; bottom: 0px; padding-bottom:10px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(63,26,38); overflow:hidden;  }
+.footer dl { padding-left: 0px; padding-bottom: 10px; padding-right: 0px; padding-top: 10px; display:block; width:auto; text-align:center; margin:0; z-index:1; }
 .footer dl:first-child { background:#cc2358; z-index:2;}
 .footer dl { color: white; background:#880f35; }
 .footer dt,
@@ -31,10 +38,9 @@ dd { margin:0 0 20px 0; }
 .footer dt { opacity:0.4; margin-right:10px; }
 .footer dd { }
 .footer a { color:rgb(210,210,210); text-decoration:none; }
-.footer a:hover { text-decoration:underline; }
+.footer a:hover { color:white; color:rgba(255,255,255,0.7) }
 
 .map { margin:0px 0 10px 0; }
 .map > div { border:1px solid rgb(222,222,210); }
 
-h1 { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, Arial;top:-20px; margin-left:50%; left:-410px; padding:30px 30px 15px; background:#880f35; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
 

@@ -45,6 +45,10 @@ class Session < ActiveRecord::Base
   end
   alias :stop :ends_at
   
+  def date
+    starts_at.to_date
+  end
+  
   
   def duration
     Time.at(-3600 + (duration_as_int * 3600)) 
