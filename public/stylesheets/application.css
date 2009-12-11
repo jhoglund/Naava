@@ -23,7 +23,7 @@ dd { margin:0 0 20px 0; }
 .dec { font:normal 20px/30px georgia; color:rgb(60,30,30); }
 
 .footer { padding-bottom:80px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(63,26,38); overflow:hidden;  }
-.footer dl { display:block; width:auto; text-align:center; padding:15px 0px 15px 0px; margin:0; z-index:1; }
+.footer dl { padding-left: 0px; padding-bottom: 12px; padding-right: 0px; padding-top: 12px; display:block; width:auto; text-align:center; margin:0; z-index:1; }
 .footer dl:first-child { background:#cc2358; z-index:2;}
 .footer dl { background:rgb(136,15,53); }
 .footer dt,
