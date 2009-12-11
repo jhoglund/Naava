@@ -1,9 +1,10 @@
 html { background:rgb(245,245,245) }
-body { margin:0; font:normal 14px/22px georgia;}
+body { margin:0; font:normal 14px/18px georgia; background:url(/images/wall_texture3.jpg); }
 a { color:#00f;}
 /*.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#ffffff), from(rgb(222,222,210))) }*/
 /*.canvas { background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(rgb(250,150,30))*, from(rgb(220,220,100))) }*/
-.canvas { background:rgb(240,240,150); background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#fff), from(rgb(240,240,100)), color-stop(0.7,#fff)) }
+/*.canvas { background:rgb(240,240,150); background:-webkit-gradient(linear, 0% 0%, 0% 100%, to(#fff), from(rgb(240,240,100)), color-stop(0.7,#fff)) }*/
+.canvas { background:rgb(240,240,150); background:url(/images/wall_texture2.jpg)  no-repeat; }
 .content { width:860px; padding:20px 20px 0; margin:0 auto; }
 .top { padding:80px 20px 10px; background:url('xx/images/petri.png') no-repeat -170px 80px ;}
 .compact-session-list table { border-collapse:collapse; }
@@ -11,7 +12,7 @@ a { color:#00f;}
 .compact-session-list td { vertical-align:top; }
 .compact-session-list th { padding-right:10px; white-space:nowrap;}
 
-.promotion-boxes { vertical-align:top; border-top:1px solid transparent; padding:30px 0px 0px 20px; background:white; overflow:hidden; }
+.promotion-boxes { vertical-align:top; border-top:1px solid transparent; padding:30px 0px 0px 20px; background:rgba(255,255,255,0.5); overflow:hidden; }
 .promotion-box { display:inline-block; vertical-align:top; padding:10px 0 0 20px; margin-right:25px; width:215px; }
 .promotion-boxes .promotion-box:first-child { width:280px; margin-right:0; }
 .promotion-box h3 { margin:0 0 10px; }
