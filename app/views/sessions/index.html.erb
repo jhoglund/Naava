@@ -3,29 +3,37 @@
 </div> -->
 
 
-<h1>Klasser</h1>
+<h1>Vårens klasser, 2010</h1>
 
 <table class="session-list">
-
-<%   
+<%-   
   past_week = nil 
-%>
-<% @sessions.each do |session| %>
-  <% 
+-%>
+<%- @sessions.each_with_index do |session, index| -%>
+  <%- 
     week = session.starts_at.to_date.cweek.to_i
     new_week = week != past_week
     past_week = week
-  %>
-  <% if new_week %>
-  <tr>
-      <td colspan="4" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
-  </tr>
-  <% end %>
-  <tr>
-      <td><%=link_to session.course.name, session %></td>
-      <td style="padding-left:10px"><%=l session.date, :format => :long %></td>
-      <td style="padding-left:10px"><%=l session.starts_at, :format => :time %></td>
-      <td style="padding-left:10px"><%=l session.ends_at, :format => :time %></td>
-  </tr>
-<% end %>
+    end_week = session == @sessions.last || week != @sessions[index+1].starts_at.to_date.cweek.to_i
+  -%>
+  <%- if new_week -%>
+  <thead>
+    <tr>
+        <td colspan="4" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
+    </tr>
+  </thead>
+  <%- end -%>
+  <%- if new_week -%>
+  <tbody class="gradient-back">
+  <%- end -%>
+    <tr>
+        <td><%=link_to session.course.name, session %></td>
+        <td style="padding-left:10px"><%=l session.date, :format => :long %></td>
+        <td style="padding-left:10px"><%=l session.starts_at, :format => :time %></td>
+        <td style="padding-left:10px"><%=l session.ends_at, :format => :time %></td>
+    </tr>
+  <%- if end_week -%>
+  </tbody>
+  <%- end -%>
+<%- end -%>
 </table>

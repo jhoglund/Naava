@@ -3,7 +3,9 @@ body { margin:0; font:normal 14px/18px georgia; background:url(/images/backgroun
 a:link,
 a:visited { color: rgb(45,130,215); text-decoration: none; }
 a:link:hover { color: rgb(35,95,155); text-decoration: none; }
-.logo { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, Arial;top:-10px; left:-10px; padding:30px 30px 15px; background:#880f35; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
+.logo { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, 
+Arial;top:-10px; left:-10px; padding:30px 30px 15px; background:#880f35; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
+a.logo { color:white!important; } 
 .header,
 .top,
 .content { position:relative; width:860px; margin:0 auto; }
@@ -17,8 +19,12 @@ a:link:hover { color: rgb(35,95,155); text-decoration: none; }
 .compact-session-list td { vertical-align:top; }
 .compact-session-list th { padding-right:10px; white-space:nowrap;}
 
-.session-list { width:840px; }
-.session-list tbody { background:-webkit-gradient(linear,top left, bottom left, from(white) to(red); background:red; }
+.session-list { width:840px; border-collapse: collapse }
+.session-list td {padding:5px}
+.session-list thead td { font-size:16px }
+.session-list tbody tr td:first-child { padding-left:20px }
+.session-list tbody.gradient-back { background:rgba(255,255,255,0.5); }
+/* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
 
 .promotion-boxes { vertical-align:top; overflow:hidden; }
 .promotion-box { display:inline-block; vertical-align:top; padding:10px 0 0 20px; margin-right:25px; width:215px; }
@@ -42,5 +48,6 @@ dd { margin:0 0 20px 0; }
 
 .map { margin:0px 0 10px 0; }
 .map > div { border:1px solid rgb(222,222,210); }
+h1, h2, h3 { color: #880f35; font-style: normal; font-weight: normal; }
 
 
