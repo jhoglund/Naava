@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [ :paypal_ipn, :paypal_success, :paypal_cancel ]
+  include PaymentControllerModule
 
   def show
     @booking = Booking.active.find_by_token(params[:id])
@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       format.html { 
         if @booking
-          render :template => "/#{@booking.booker.class.name.tableize}/booking"
+          render :template => "/#{@booking.booker.class.name.tableize}/reciept"
         end
       }
       format.xml  { render :xml => @booking }
@@ -26,13 +26,23 @@ class BookingsController < ApplicationController
   
   def book
     @booking = @booker.bookings.build(:participant => Participant.new )
+    @user_gift_certificate = UserGiftCertificate.find_by_token(params[:user_gift_certificate_id])
     if request.get?
+      if @user_gift_certificate
+        @booking.participant.name = @user_gift_certificate.to_name
+        @booking.participant.email = @user_gift_certificate.to_email
+        @booking.participant.phone = @user_gift_certificate.to_phone
+      end
       respond_to do |format|
         format.html
       end
     else
       @booking.attributes = params[:booking]
       @booking.status = Status::ACTIVE
+      if @user_gift_certificate
+        @booking.payment ||= Payment.new
+        @booking.payment.update_attributes(:reciept => @user_gift_certificate, :value => @user_gift_certificate.gift_certificate.value)
+      end
       respond_to do |format|
         if @booking.save
           flash[:notice] = 'Bokningen är sparad.'
@@ -46,49 +56,4 @@ class BookingsController < ApplicationController
       end
     end
   end
-  
-  def paypal_ipn
-    notify = Paypal::Notification.new(request.raw_post)
-    if notify.acknowledge 
-      if notify.complete?
-        @booking = Booking.find(notify.item_id)
-        @booking.create_payment(
-          :transaction_id => notify.transaction_id,
-          :gross          => notify.gross         ,
-          :fee            => notify.fee           ,
-          :currency       => notify.currency      ,
-          :item_name      => notify.item_name     ,
-          :status         => notify.status        ,
-          :type           => notify.type          ,
-          :custom         => notify.custom        ,
-          :pending_reason => notify.pending_reason,
-          :reason_code    => notify.reason_code   ,
-          :memo           => notify.memo          ,
-          :payment_type   => notify.payment_type  ,
-          :exchange_rate  => notify.exchange_rate ,
-          :received_at    => notify.received_at
-        )
-        @booking.save
-        return head(:created)
-      end
-    end
-    return head(:bad_request)
-  end
-  
-  def paypal_success
-    @booking = Booking.find_by_token(params[:id])
-    if @booking.payment
-      flash[:notice] = "Din betalning har motagits"
-    else
-      flash[:error] = "Betalningen kunde inte genomföras. Ditt konto har inte blivit krediterat. Du kan antinge prova igen, eller betala till vårat bankgiro."
-     end 
-    redirect_to booking_path(@booking)
-  end
-  
-  def paypal_cancel
-    @booking = Booking.find_by_token(params[:id])
-    flash[:notice] = "Din betalning har avbrutits"
-    redirect_to booking_path(@booking)
-  end
-  
 end

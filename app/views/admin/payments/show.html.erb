@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @payment_reciept.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @payment_reciept.email %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @payment_reciept.note %>
+</p>
+
+<p>
+  <b>Meta:</b>
+  <%=h @payment_reciept.meta %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%=h @payment_reciept.item_id %>
+</p>
+
+<p>
+  <b>Item type:</b>
+  <%=h @payment_reciept.item_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_payment_reciept_path(@payment_reciept) %> |
+<%= link_to 'Back', payment_reciepts_path %>

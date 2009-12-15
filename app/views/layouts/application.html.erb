@@ -17,19 +17,19 @@
   	<div class="header">
   		<%= link_to "Nava Yoga", root_path, :class => "logo" %>
   	</div>
-	<% unless flash.empty? %>
-    <div class="flash">
-    <% if flash[:notice] %><p class="flash-notice"><%= flash[:notice] %></p><% end %>
-    <% if flash[:error] %><p class="flash-error"><%= flash[:error] %></p><% end %>
-    </div>
-    <% end %>
 	<% if yield :top %>
       <div class="top">
 		<%= yield :top %>
 	  </div>
     <% end %>
-    <div class="content">
-		<%= yield %>
+  <div class="content">
+		<% unless flash.empty? %>
+      <div class="flash">
+      <% if flash[:notice] %><p class="flash-notice"><%= flash[:notice] %></p><% end %>
+      <% if flash[:error] %><p class="flash-error"><%= flash[:error] %></p><% end %>
+      </div>
+    <% end %>
+  	<%= yield %>
 	</div>
   </div>
   <div class="footer">
@@ -37,6 +37,7 @@
       <dt>Nava Yoga</dt>
       <dd><%= link_to "Hem", root_path %></dd>
       <dd><%= link_to 'Tider och priser', sessions_path %></dd>
+      <dd><%= link_to 'Presentkort', user_gift_certificates_path %></dd>
       <dd><%= link_to "Vår studio", root_path %></dd>
       <dd><%= link_to "Här hittar du vår studio", root_path %></dd>
       <dd><%= link_to "Kontakta oss", root_path %></dd>
@@ -51,6 +52,10 @@
       <dl>
         <dt>Admin</dt>
         <dd><%= link_to "Logout", user_session_path, :method => :delete %></dd>
+        <dd><%= link_to "Klasser", admin_sessions_path %></dd>
+        <dd><%= link_to "Kurser", admin_courses_path %></dd>
+        <dd><%= link_to "Presentkort", admin_gift_certificates_path %></dd>
+        <dd><%= link_to "Presentkort (köpta)", admin_user_gift_certificates_path %></dd>
       </dl>
     <% end %>
     

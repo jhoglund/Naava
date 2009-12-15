@@ -2,38 +2,35 @@
   <%#= generate_calendar(Date.today, []) %>
 </div> -->
 
+<p>
+  Våra kurser består av totalt <%= @courses.first.sessions.count %> tillfällen
+  och kostar <%= number_to_currency(@courses.first.original_price) %>, 
+  vilket är <%= number_to_currency(@courses.first.original_price_per_session) %> (<%= @courses.first.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
+  <%=  number_to_currency(Session.first.price) %>/klass.
+</p>
 
-<h1>Vårens klasser, 2010</h1>
+<% @courses.each do |course| %>
+  <h3><%= link_to course.name, course %></h3>
+  <%=h course.description %>
+  <p><strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
+  klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
+  <strong><%=l course.next_session.ends_at, :format => :time %></strong> 
 
-<table class="session-list">
-<%-   
-  past_week = nil 
--%>
-<%- @sessions.each_with_index do |session, index| -%>
-  <%- 
-    week = session.starts_at.to_date.cweek.to_i
-    new_week = week != past_week
-    past_week = week
-    end_week = session == @sessions.last || week != @sessions[index+1].starts_at.to_date.cweek.to_i
-  -%>
-  <%- if new_week -%>
-  <thead>
-    <tr>
-        <td colspan="4" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
-    </tr>
-  </thead>
-  <%- end -%>
-  <%- if new_week -%>
-  <tbody class="gradient-back">
-  <%- end -%>
-    <tr>
-        <td><%=link_to session.course.name, session %></td>
-        <td style="padding-left:10px"><%=l session.date, :format => :long %></td>
-        <td style="padding-left:10px"><%=l session.starts_at, :format => :time %></td>
-        <td style="padding-left:10px"><%=l session.ends_at, :format => :time %></td>
-    </tr>
-  <%- if end_week -%>
-  </tbody>
-  <%- end -%>
-<%- end -%>
-</table>
+  <% if course.started? %>
+  <p>
+    Denna kursen har redan börjat och vi har hittills hunnit med <%= course.sessions.expired.count %> klasser. 
+    Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(course.price) %> vilket
+    är <%=  number_to_currency(course.price_per_session) %>  (<%= course.discount %>%)  per återstående klass.
+  </p>
+  <% end %>
+
+    <p>
+      <%= link_to 'Anmäl dig till kursen', book_course_path(course) %>
+    </p>
+    
+<% end %>
+
+<hr>
+
+<h2>Schema för vårens klasser, 2010</h2>
+<%= render :partial => 'sessions', :object => @sessions %>

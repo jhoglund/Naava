@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091203113324) do
+ActiveRecord::Schema.define(:version => 20091215075507) do
 
   create_table "bookings", :force => true do |t|
     t.integer  "booker_id"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(:version => 20091203113324) do
     t.datetime "updated_at"
     t.integer  "status",        :default => 0
     t.integer  "instructor_id"
+  end
+
+  create_table "gift_certificates", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "value"
+    t.datetime "valid_from"
+    t.datetime "valid_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "instructors", :force => true do |t|
@@ -53,13 +63,25 @@ ActiveRecord::Schema.define(:version => 20091203113324) do
     t.datetime "updated_at"
   end
 
+  create_table "payments", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "note"
+    t.text     "meta"
+    t.string   "token"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.integer  "reciept_id"
+    t.string   "reciept_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "paypal_reciepts", :force => true do |t|
     t.string   "transaction_id"
     t.float    "gross"
     t.float    "fee"
     t.string   "currency"
-    t.string   "item_id"
-    t.string   "item_type"
     t.string   "item_name"
     t.string   "status"
     t.string   "type"
@@ -72,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20091203113324) do
     t.datetime "received_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "payment_reciept_id"
   end
 
   create_table "sessions", :force => true do |t|
@@ -81,6 +104,22 @@ ActiveRecord::Schema.define(:version => 20091203113324) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status",     :default => 0
+  end
+
+  create_table "user_gift_certificates", :force => true do |t|
+    t.string   "to_name"
+    t.string   "to_email"
+    t.string   "to_phone"
+    t.string   "to_address"
+    t.string   "from_name"
+    t.string   "from_email"
+    t.string   "from_phone"
+    t.string   "from_address"
+    t.text     "message"
+    t.string   "token"
+    t.integer  "gift_certificate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

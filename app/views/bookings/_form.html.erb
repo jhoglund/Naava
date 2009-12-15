@@ -1,5 +1,5 @@
 <%= form.error_messages %>
-  
+<%= hidden_field_tag :user_gift_certificate, @user_gift_certificate.to_param %>
 <p>
   <%= form.label :name, t('activerecord.attributes.booking.name') %><br />
   <%= form.text_field :name %>

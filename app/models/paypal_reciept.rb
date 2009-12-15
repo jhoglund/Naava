@@ -1,3 +1,3 @@
 class PaypalReciept < ActiveRecord::Base
-  belongs_to :item, :polymorphic => true
+  has_one :payment, :as => :reciept
 end

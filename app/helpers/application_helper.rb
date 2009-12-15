@@ -28,5 +28,13 @@ module ApplicationHelper
     # Remove all preceding zeros
     formated.gsub(/\d+/){|m| m.map{|d| d.to_i }}
   end
+  
+  def base_errors_for obj=nil
+    unless obj.nil? or obj.errors.on_base.blank?
+        %(<div class="base-error">
+        #{ obj.errors.on_base.collect { |error| content_tag('div', error, :class => "base-error-item") } }
+      </div>)
+    end
+  end
 end
 

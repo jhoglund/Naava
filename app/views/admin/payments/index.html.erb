@@ -1,0 +1,30 @@
+<h1>Listing payment_reciepts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Note</th>
+    <th>Meta</th>
+    <th>Item</th>
+    <th>Item type</th>
+  </tr>
+
+<% @payment_reciepts.each do |payment_reciept| %>
+  <tr>
+    <td><%=h payment_reciept.name %></td>
+    <td><%=h payment_reciept.email %></td>
+    <td><%=h payment_reciept.note %></td>
+    <td><%=h payment_reciept.meta %></td>
+    <td><%=h payment_reciept.item_id %></td>
+    <td><%=h payment_reciept.item_type %></td>
+    <td><%= link_to 'Show', payment_reciept %></td>
+    <td><%= link_to 'Edit', edit_payment_reciept_path(payment_reciept) %></td>
+    <td><%= link_to 'Destroy', payment_reciept, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New payment_reciept', new_payment_reciept_path %>

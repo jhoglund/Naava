@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  to_name: MyString
+  to_email: MyString
+  to_phone: MyString
+  to_address: MyString
+  from_name: MyString
+  from_email: MyString
+  from_phone: MyString
+  from_address: MyString
+  message: MyText
+  gift_certificate: 
+  payment_id: 1
+  payment_type: MyString
+
+two:
+  to_name: MyString
+  to_email: MyString
+  to_phone: MyString
+  to_address: MyString
+  from_name: MyString
+  from_email: MyString
+  from_phone: MyString
+  from_address: MyString
+  message: MyText
+  gift_certificate: 
+  payment_id: 1
+  payment_type: MyString

@@ -6,6 +6,7 @@ class SessionsController < BookingsController
     else
       @sessions = Session.by_date.all
     end
+    @courses = Course.active.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sessions }

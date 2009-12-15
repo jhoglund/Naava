@@ -10,5 +10,9 @@ class Notification < ActionMailer::Base
     body(render_message(template, :object => object))
   end
   
+  def self.get_template instance, file_name
+    File.join(RAILS_ROOT,'app','views',instance.class.name.tableize,"#{file_name}.text.plain.erb")
+  end
+  
 end
   

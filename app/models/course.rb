@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
-  has_many :bookings, :as => :booker
+  has_many :bookings, :as => :booker, :dependent => :nullify
   has_many :users, :through => :bookings
-  has_many :sessions
+  has_many :sessions, :dependent => :destroy
   belongs_to :instructor
   
   named_scope :active, :conditions => "courses.status = #{ Status::ACTIVE }"
@@ -12,6 +12,10 @@ class Course < ActiveRecord::Base
   
   accepts_nested_attributes_for :sessions, :allow_destroy => true
   accepts_nested_attributes_for :instructor, :allow_destroy => true
+  
+  def next_session
+    sessions.current.first
+  end
   
   def starts_at
     sessions.first.starts_at if sessions.first

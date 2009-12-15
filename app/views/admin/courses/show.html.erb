@@ -10,20 +10,16 @@
 <% unless @course.starts_at.nil? or @course.ends_at.nil? %>
 <p>Första kurstillfället är <%= l(@course.starts_at, :format => :day) %> och sista är <%= l(@course.ends_at, :format => :day) %> </p>
 
-<p>Klasserna startar klockan <%= l(@course.starts_at, :format => :time) %> tills klockan <%= l(@course.starts_at, :format => :time) %> </p>
+<p>Klasserna startar klockan <%= l(@course.starts_at, :format => :time) %> tills klockan <%= l(@course.ends_at, :format => :time) %> </p>
 <% end %>
-<p>
-  <%= link_to 'Boka klass', book_course_path(@course) %>
-</p>
 
 
 <h3>Tillfällen</h3>  
 <% @course.sessions.each do |session| %>
-  <%= link_to l(session.starts_at, :format => :short), admin_session_path(session) %> | <%= l(session.duration, :format => :time) %> <br>
+  <%= l(session.starts_at, :format => :long)%>  (<%= l(session.duration, :format => :time) %>) <br>
 <% end %>
 
 
-<% if logged_in? %>
 <%= link_to 'Edit', edit_admin_course_path(@course) %> |
-<% end %>
+<%= link_to 'Clone', clone_admin_course_path(@course) %> |
 <%= link_to 'Kurser', admin_courses_path %>

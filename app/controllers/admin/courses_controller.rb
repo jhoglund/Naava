@@ -32,8 +32,19 @@ class Admin::CoursesController < Admin::AdminController
 
   def edit
     @course = Course.find(params[:id])
-    #@course.sessions.build
   end
+  
+  def clone
+    @original = Course.find(params[:id])
+    @course =  @original.clone
+    @course.status = Status::DISABLED
+    @original.sessions.each do |session|
+      @course.sessions << session.clone
+    end
+    @course.save
+    redirect_to edit_admin_course_path(@course)
+  end
+  
 
   def create
     @course = Course.new(params[:course])

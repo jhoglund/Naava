@@ -1,0 +1,60 @@
+<h1>Presentkort för <%= @user_gift_certificate.gift_certificate.name %></h1>
+<p><%= @user_gift_certificate.gift_certificate.description %></p>
+
+<% form_for(@user_gift_certificate) do |f| %>
+  <%= base_errors_for(@user_gift_certificate) %>
+<div class="columns three-columns gift-certificate">
+  <div class="column">
+    <h3>Presentkortet är till</h3>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:to_name) %>
+      <%= f.text_field :to_name %>
+    </p>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:to_email) %>
+      <%= f.text_field :to_email %>
+    </p>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:to_phone) %>
+      <%= f.text_field :to_phone %>
+    </p>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:to_address) %>
+      <%= f.text_area :to_address, :rows => 4 %>
+    </p>
+  </div>
+  <div class="column">
+    <h3>Presentkortet är från</h3>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:from_name) %>
+      <%= f.text_field :from_name %>
+    </p>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:from_email) %>
+      <%= f.text_field :from_email %>
+    </p>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:from_phone) %>
+      <%= f.text_field :from_phone %>
+    </p>
+    <p>
+      <%= f.label UserGiftCertificate.human_attribute_name(:from_address) %>
+      <%= f.text_area :from_address, :rows => 4 %>
+    </p>
+  </div>
+  <div class="column">
+    <h3><%= UserGiftCertificate.human_attribute_name(:message) %>:</h3>
+    <p>
+      <%= f.text_area :message, :rows => 13 %>
+    </p>
+  </div>
+</div>
+  <p>
+    <%= f.hidden_field :gift_certificate_id %>
+  </p>
+  <p>
+    <%= f.submit 'Fortsätt >>' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', user_gift_certificates_path %>

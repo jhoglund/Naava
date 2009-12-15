@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   config.action_mailer.smtp_settings = smtp_settings
   
   # Activate observers that should always be running
-  config.active_record.observers = :booking_observer, :paypal_reciept_observer
+  # config.active_record.observers = :booking_observer, :paypal_reciept_observer
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

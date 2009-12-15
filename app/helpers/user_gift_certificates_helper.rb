@@ -1,0 +1,2 @@
+module UserGiftCertificatesHelper
+end

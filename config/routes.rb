@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resource :user_session
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
@@ -11,6 +12,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   map.resources :instructors
+  map.resources :user_gift_certificates, :new => { :new => :post }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |gift_certificates|
+    gift_certificates.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
+      session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
+    end
+    gift_certificates.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+  end
+  map.resources :payments, :only => [ :show ]
   
   
   map.namespace(:admin) do |admin|
@@ -18,7 +26,10 @@ ActionController::Routing::Routes.draw do |map|
 	  admin.resources :bookings
 	  admin.resources :instructors
     admin.resources :users
-	  admin.resources :courses do |course| 
+	  admin.resources :user_gift_certificates
+    admin.resources :gift_certificates
+    admin.resources :payments
+    admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
   	  course.resources :bookings
       course.resources :participants

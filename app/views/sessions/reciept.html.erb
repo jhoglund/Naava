@@ -12,8 +12,15 @@
   <p>
   Du kan betala för klassen snabbt och säkert via <%= link_to_function 'PayPal', 'forms[0].submit()' %>. Har du inget PayPal konto
   kan enkelt betala med ett kreditkort.
-  </p>
-  <%= render :partial => "/bookings/paypal_button", :locals => { :id => @booking.id, :ammount => @booking.booker.price, :item_name => "Kursanmälan för #{ @booking.booker.name }  med kursstart #{ l(@booking.booker.starts_at, :format => :day) }" }   %>  
+  </p>  
+  <%= render :partial => "/paypal/button", :locals => { 
+    :item_id => @booking.payment.token, 
+    :notify_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_ipn'), 
+    :return_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_success', :id => @booking.payment.token),
+    :cancel_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_cancel', :id => @booking.payment.token),
+    :ammount => @booking.booker.price, 
+    :item_name => "Anmälan för klass #{ @booking.booker.name } som börjar #{ l(@booking.booker.starts_at, :format => :day) }" 
+  }   %>  
   <p>
   Det går även bra att betala till vårt bankgiro 5091-8051. Märk inbetalningen "<%= @booking.booker.name %> (ref.nr <%= @booking.id %>)"
   </p>

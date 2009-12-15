@@ -1,0 +1,22 @@
+<% content_for :header do %>
+  <% javascript_tag do %>
+    function forGiftCertificate(form,id){
+      form['user_gift_certificate_gift_certificate_id'].value = id
+      form.submit();
+    }
+  <% end %>
+<% end %>
+
+<h1>Presentkort</h1>
+
+<p>Ge bort ett presentkort på yoga i julklapp. Väl ett av följande alternativ:
+
+<% form_for @gift_certificate, :url => new_user_gift_certificate_path do |f| %>
+<%= f.hidden_field :gift_certificate_id %>
+<% @gift_certificates.each do |gift_certificate| %>
+<h3><%=h gift_certificate.name %></h3>
+<p><%=h gift_certificate.description %>
+<p>Pris: <%=  number_to_currency(gift_certificate.value)  %>
+<p><%=  button_to_function "Köp nu!", "forGiftCertificate(this.form, #{gift_certificate.id})"  %>
+<% end %>
+<% end %>

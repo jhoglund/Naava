@@ -1,0 +1,11 @@
+<h1>Editing user_gift_certificate</h1>
+
+<% form_for(@user_gift_certificate) do |f| %>
+  <%= render :partial => "form", :object => f  %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user_gift_certificate %> |
+<%= link_to 'Back', user_gift_certificates_path %>

@@ -1,0 +1,53 @@
+<p>
+  <b>To name:</b>
+  <%=h @user_gift_certificate.to_name %>
+</p>
+
+<p>
+  <b>To email:</b>
+  <%=h @user_gift_certificate.to_email %>
+</p>
+
+<p>
+  <b>To phone:</b>
+  <%=h @user_gift_certificate.to_phone %>
+</p>
+
+<p>
+  <b>To address:</b>
+  <%=h @user_gift_certificate.to_address %>
+</p>
+
+<p>
+  <b>From name:</b>
+  <%=h @user_gift_certificate.from_name %>
+</p>
+
+<p>
+  <b>From email:</b>
+  <%=h @user_gift_certificate.from_email %>
+</p>
+
+<p>
+  <b>From phone:</b>
+  <%=h @user_gift_certificate.from_phone %>
+</p>
+
+<p>
+  <b>From address:</b>
+  <%=h @user_gift_certificate.from_address %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @user_gift_certificate.message %>
+</p>
+
+<p>
+  <b>Gift certificate:</b>
+  <%=h @user_gift_certificate.gift_certificate %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_user_gift_certificate_path(@user_gift_certificate) %> |
+<%= link_to 'Back', admin_user_gift_certificates_path %>

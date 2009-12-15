@@ -1,13 +1,15 @@
 class Booking < ActiveRecord::Base
+  include PaymentModule
+  include TokenModule
+
   belongs_to :participant
   belongs_to :booker, :polymorphic => true
-  has_one :payment, :class_name => 'PaypalReciept', :as => :item
   accepts_nested_attributes_for :participant, :allow_destroy => true
   delegate :name, :email, :phone, :name=, :email=, :phone=, :to => :participant
-  before_create :make_token
-  after_create :reset_attributes
+  after_create :reset_attributes, :after_booking_created
+  after_update :after_booking_disabled
   
-  before_update :disabling?
+  #before_update :disabling?
     
   named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
   named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
@@ -17,10 +19,6 @@ class Booking < ActiveRecord::Base
   
   def drop_in?
     booker.is_a? Session
-  end
-  
-  def to_param
-    token
   end
   
   def valid_mail
@@ -38,19 +36,28 @@ class Booking < ActiveRecord::Base
     self.errors.add(:phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone
     return false
   end
+    
+  def after_payment_disabled
+    #Notification.deliver_mail("Refund needed for #{reciept.transaction_id}", AppConfig[:support_mail], reciept, 'refund')
+  end
+  
+  def after_booking_created
+    if email
+      Notification.deliver_mail("Vi har motagning din bokning för #{name}", email, self, Notification.get_template(self.booker, 'create'))
+    end
+  end
+  
+  
+  def after_booking_disabled
+    if disabling? and email
+      Notification.deliver_mail("Din bokning har blivit borttagen för #{name}", email, self, Notification.get_template(self.booker, 'destroy'))
+    end
+  end
+      
+  private  
   
   def disabling?
     self.status_changed? && self.status_was == Status::ACTIVE && self.status == Status::DISABLED
-  end
-    
-  private  
-  
-  def secure_digest(*args)
-    Digest::SHA1.hexdigest(args.flatten.join('--'))
-  end
-
-  def make_token
-    self.token = secure_digest(Time.now, (1..10).map{ rand.to_s })
   end
   
   def reset_attributes

@@ -23,6 +23,7 @@ sv-SE:
         too_short: "är för kort (minimum är {{count}} tecken)"
         wrong_length: "har fel längd (ska vara {{count}} tecken)"
         phone_or_email: "Antingen email eller telefon behövs anges"
+        gift_certificate_phone_or_email: "Antingen email eller telefon behövs anges till för både motagaren och avsändaren av presentkortet"
       template: 
         body: "Det var problem med följande fält:"
         header: 
@@ -30,15 +31,27 @@ sv-SE:
           other: "{{count}} fel förhindrade denna {{model}} från att sparas"
     models:
       participant: Deltagare
+      user_gift_certificate: Presentkort
     attributes:
       participant:
         phone: "telefon"
         name: "namn"
-        email: "Email"
+        email: "E-mail"
       booking:
         phone: "Telefon"
         name: "Namn"
-        email: "Email"
+        email: "E-mail"
+      user_gift_certificate:
+        to_phone: "Telefon"
+        to_name: "Namn"
+        to_email: "Email"
+        to_address: "Adress"
+        from_phone: "Telefon"
+        from_name: "Namn"
+        from_email: "Email"
+        from_address: "Adress"
+        message: "Hälsningsmedelande"
+      
       
   date: 
     abbr_day_names: 
@@ -73,8 +86,10 @@ sv-SE:
       - lördag
     formats: 
       default: "%Y-%m-%d"
+      long_day: "%Aen den %e %B"
       long: "%e %B, %Y"
       short: "%e %b"
+      day: "%A"
     month_names: 
       - ~
       - januari
@@ -156,6 +171,29 @@ sv-SE:
   misc: 
     and: och
     or: eller
+    day_names:
+      sunday:
+        one: söndag
+        other: söndagar
+      monday:
+        one: måndag
+        other: måndagar
+      tuesday:
+        one: tisdag
+        other: tisdagar
+      wednesday:
+        one: onsdag
+        other: onsdagar
+      thursday:
+        one: torsdag
+        other: torsdagar
+      friday:
+        one: fredag
+        other: fredagar
+      saturday:
+        one: lördag
+        other: lördagar
+  
   number: 
     currency: 
       format: 
@@ -209,9 +247,9 @@ sv-SE:
     am: ""
     formats: 
       default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%A den %d %B, %Y %H:%M"
+      long: "%Aen den %d %B, %Y  klockan %H:%M"
       short: "%d %b, klockan %H:%M"
-      day: "%A den %d %B"
+      day: "%Aen den %d %B"
       longtime_one_minute: "%M minut"
       longtime_other_minutes: "%M minuter"
       longtime_one_hour: "%H timme"
@@ -221,6 +259,7 @@ sv-SE:
       longtime_other_hours_one_minute: "%H timmar och %M minut"
       longtime_other_hours_other_minutes: "%H timmar och %M minuter"
       time: "%H:%M"
+  
     pm: ""
   user: 
     new: 

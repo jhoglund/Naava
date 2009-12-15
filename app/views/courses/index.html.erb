@@ -1,15 +1,3 @@
 
 <h1>Kurser</h1>
-<% @courses.each do |course| %>
-  <h3><%= link_to course.name, course %></h3>
-  <%=h course.description %>
-  <p>Kursen passar för <%=h course.level.downcase %> nivåer</p>
-  
-  <p>Antal kurstillfällen är <%= course.sessions.count %></p>
-  <% unless course.starts_at.nil? or course.ends_at.nil? %>
-  <p>Första kurstillfället är <%= l(course.starts_at, :format => :day) %> och sista är <%= l(course.ends_at, :format => :day) %> </p>
-  
-  <p>Klasserna startar klockan <%= l(course.starts_at, :format => :time) %> tills klockan <%= l(course.starts_at, :format => :time) %> </p>
-  <% end %>
-  <hr>
-<% end %>
+<%= render :partial => 'course', :collection => @courses %>
