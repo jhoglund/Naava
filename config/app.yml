@@ -1,8 +1,8 @@
 DEFAULTS: &DEFAULTS
   dropin: 120
   course_per_class: 80
-  support_mail: yoga@naava.se
-  support_mail_title: Naava Yoga
+  support_mail: jonas@navayoga.se
+  support_mail_title: Nava Yoga
   support_phone: 0709-961600
   
 development:

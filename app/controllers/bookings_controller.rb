@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.active.find_by_token(params[:id])
     @booking.update_attribute(:status, Status::DISABLED)
-
+    
     respond_to do |format|
       format.html { render :template => "/#{@booking.booker.class.name.tableize}/destroy" }
       format.xml  { head :ok }
@@ -26,12 +26,12 @@ class BookingsController < ApplicationController
   
   def book
     @booking = @booker.bookings.build(:participant => Participant.new )
-    @user_gift_certificate = UserGiftCertificate.find_by_token(params[:user_gift_certificate_id])
+    @coupon = Coupon.find_by_token(params[:coupon_id])
     if request.get?
-      if @user_gift_certificate
-        @booking.participant.name = @user_gift_certificate.to_name
-        @booking.participant.email = @user_gift_certificate.to_email
-        @booking.participant.phone = @user_gift_certificate.to_phone
+      if @coupon
+        @booking.participant.name = @coupon.to_name
+        @booking.participant.email = @coupon.to_email
+        @booking.participant.phone = @coupon.to_phone
       end
       respond_to do |format|
         format.html
@@ -39,12 +39,12 @@ class BookingsController < ApplicationController
     else
       @booking.attributes = params[:booking]
       @booking.status = Status::ACTIVE
-      if @user_gift_certificate
-        @booking.payment ||= Payment.new
-        @booking.payment.update_attributes(:reciept => @user_gift_certificate, :value => @user_gift_certificate.gift_certificate.value)
-      end
       respond_to do |format|
         if @booking.save
+          if @coupon and params[:pay_with_coupon]
+            @booking.payment ||= Payment.new(:item => @booking)
+            @booking.payment.update_attributes(:reciept => @coupon, :value => @coupon.coupon_type.value)
+          end
           flash[:notice] = 'Bokningen är sparad.'
           format.html { redirect_to @booking }
           format.xml  { render :xml => @booking, :status => :created, :location => @booking }

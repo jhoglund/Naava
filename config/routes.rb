@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
   
-  map.resources :bookings, :member => { :book => [ :get, :post ], :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] }
+  map.resources :bookings, :member => { :book => [ :get, :post ], :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] }, :except => [ :index ]
 
   map.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
     session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
@@ -12,13 +12,19 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   map.resources :instructors
-  map.resources :user_gift_certificates, :new => { :new => :post }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |gift_certificates|
-    gift_certificates.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
+  map.resources :gift_certificates, :new => { :new => :post }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
+    coupon_types.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
       session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
     end
-    gift_certificates.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+    coupon_types.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   end
-  map.resources :payments, :only => [ :show ]
+  map.resources :coupons, :new => { :new => :post }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
+    coupon_types.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
+      session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
+    end
+    coupon_types.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+  end
+  map.resources :payments, :only => [ :show, :update ] #, :show => { :show => [:get, :post] }
   
   
   map.namespace(:admin) do |admin|
@@ -26,8 +32,8 @@ ActionController::Routing::Routes.draw do |map|
 	  admin.resources :bookings
 	  admin.resources :instructors
     admin.resources :users
-	  admin.resources :user_gift_certificates
-    admin.resources :gift_certificates
+	  admin.resources :coupons
+    admin.resources :coupon_types
     admin.resources :payments
     admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
@@ -39,6 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   map.about_ashtanga_yoga '/about_ashtanga_yoga', :controller => 'welcome', :action => 'about_ashtanga_yoga'
   map.good_to_know '/good_to_know', :controller => 'welcome', :action => 'good_to_know'
   map.our_studio '/our_studio', :controller => 'welcome', :action => 'our_studio'
+  map.location '/location', :controller => 'welcome', :action => 'location'
   map.root :controller => "welcome"
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -31,9 +31,9 @@ class Booking < ActiveRecord::Base
   
   def phone_or_email
     return true if valid_mail or valid_phone
-    self.errors.add_to_base(I18n.t('activerecord.errors.messages.phone_or_email'))
     self.errors.add(:email, I18n.t('activerecord.errors.messages.invalid')) unless valid_mail
     self.errors.add(:phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone
+    self.errors.add_to_base(I18n.t('activerecord.errors.messages.phone_or_email'))
     return false
   end
     

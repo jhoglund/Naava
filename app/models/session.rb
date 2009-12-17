@@ -20,9 +20,13 @@ class Session < ActiveRecord::Base
   attr_writer :duration_hours, :duration_minutes
   
   before_save :save_duration
-    
-  def price
+  
+  def self.price
     AppConfig[:dropin]
+  end
+  
+  def price
+    Session.price
   end
   
   def expired?

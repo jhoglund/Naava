@@ -1,33 +1,33 @@
 require 'spec_helper'
 
-describe UserGiftCertificatesController do
+describe CouponsController do
   describe "routing" do
     it "recognizes and generates #index" do
-      { :get => "/user_gift_certificates" }.should route_to(:controller => "user_gift_certificates", :action => "index")
+      { :get => "/coupons" }.should route_to(:controller => "coupons", :action => "index")
     end
 
     it "recognizes and generates #new" do
-      { :get => "/user_gift_certificates/new" }.should route_to(:controller => "user_gift_certificates", :action => "new")
+      { :get => "/coupons/new" }.should route_to(:controller => "coupons", :action => "new")
     end
 
     it "recognizes and generates #show" do
-      { :get => "/user_gift_certificates/1" }.should route_to(:controller => "user_gift_certificates", :action => "show", :id => "1")
+      { :get => "/coupons/1" }.should route_to(:controller => "coupons", :action => "show", :id => "1")
     end
 
     it "recognizes and generates #edit" do
-      { :get => "/user_gift_certificates/1/edit" }.should route_to(:controller => "user_gift_certificates", :action => "edit", :id => "1")
+      { :get => "/coupons/1/edit" }.should route_to(:controller => "coupons", :action => "edit", :id => "1")
     end
 
     it "recognizes and generates #create" do
-      { :post => "/user_gift_certificates" }.should route_to(:controller => "user_gift_certificates", :action => "create") 
+      { :post => "/coupons" }.should route_to(:controller => "coupons", :action => "create") 
     end
 
     it "recognizes and generates #update" do
-      { :put => "/user_gift_certificates/1" }.should route_to(:controller => "user_gift_certificates", :action => "update", :id => "1") 
+      { :put => "/coupons/1" }.should route_to(:controller => "coupons", :action => "update", :id => "1") 
     end
 
     it "recognizes and generates #destroy" do
-      { :delete => "/user_gift_certificates/1" }.should route_to(:controller => "user_gift_certificates", :action => "destroy", :id => "1") 
+      { :delete => "/coupons/1" }.should route_to(:controller => "coupons", :action => "destroy", :id => "1") 
     end
   end
 end

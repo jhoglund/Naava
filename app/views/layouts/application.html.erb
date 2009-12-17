@@ -16,6 +16,14 @@
   <div class="canvas">
   	<div class="header">
   		<%= link_to "Nava Yoga", root_path, :class => "logo" %>
+  		<div class="global-navigation">
+  		  <dl>
+  		    <dd><%= link_to_unless_current 'Hem', root_path %></dd> |
+  		    <dd><%= link_to_unless_current 'Tider och priser', sessions_path %></dd> |
+          <dd><%= link_to_unless_current "Kontakt och adress", location_path %></dd> |
+          <dd><%= link_to_unless_current 'Om Ashtanga Yoga', about_ashtanga_yoga_path %></dd>
+  		  </dl>
+  		</div>
   	</div>
 	<% if yield :top %>
       <div class="top">
@@ -37,14 +45,14 @@
       <dt>Nava Yoga</dt>
       <dd><%= link_to "Hem", root_path %></dd>
       <dd><%= link_to 'Tider och priser', sessions_path %></dd>
-      <dd><%= link_to 'Presentkort', user_gift_certificates_path %></dd>
-      <dd><%= link_to "Vår studio", root_path %></dd>
-      <dd><%= link_to "Här hittar du vår studio", root_path %></dd>
+      <dd><%= link_to 'Presentkort', gift_certificates_path %></dd>
+      <dd><%= link_to "Vår studio", our_studio_path %></dd>
+      <dd><%= link_to "Här hittar du vår studio", location_path %></dd>
       <dd><%= link_to "Kontakta oss", root_path %></dd>
     </dl>
     <dl>
       <dt>Om Ashtanga Yoga</dt>
-      <dd><%= link_to "Detta är Ashtanga Yoga", root_path %></dd>
+      <dd><%= link_to "Detta är Ashtanga Yoga", about_ashtanga_yoga_path %></dd>
       <dd><%= link_to "Ashtanga Yoga Research Center", root_path %></dd>
       <dd><%= link_to "Lite historia", root_path %></dd>
     </dl>
@@ -54,8 +62,8 @@
         <dd><%= link_to "Logout", user_session_path, :method => :delete %></dd>
         <dd><%= link_to "Klasser", admin_sessions_path %></dd>
         <dd><%= link_to "Kurser", admin_courses_path %></dd>
-        <dd><%= link_to "Presentkort", admin_gift_certificates_path %></dd>
-        <dd><%= link_to "Presentkort (köpta)", admin_user_gift_certificates_path %></dd>
+        <dd><%= link_to "Presentkort", admin_coupon_types_path %></dd>
+        <dd><%= link_to "Presentkort (köpta)", admin_coupons_path %></dd>
       </dl>
     <% end %>
     

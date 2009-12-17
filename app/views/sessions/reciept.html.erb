@@ -25,9 +25,13 @@
   Det går även bra att betala till vårt bankgiro 5091-8051. Märk inbetalningen "<%= @booking.booker.name %> (ref.nr <%= @booking.id %>)"
   </p>
   <%- else -%>
+    <% if @booking.payment.type? :paypal_reciept  %>
     <p>
      Klassavgiften är betald och ditt PayPal referencenummer för din betalning är <%= @booking.payment.transaction_id %>
     </p>
+    <%- elsif @booking.payment.type? :gift_certificate -%>
+      Betald med presentkort
+    <% end %>
 <%- end -%>
 
 <p>
@@ -35,5 +39,4 @@
 </p>
 
 
-<%= link_to t('labels.destroy'), @booking, :confirm => t('messages.destroy_confirmation'), :method => :delete %>
-<%= link_to t('labels.back'), polymorphic_path(@booking.booker) %>
+<%= link_to t('labels.cancel_booking'), @booking, :confirm => t('messages.destroy_confirmation'), :method => :delete %>

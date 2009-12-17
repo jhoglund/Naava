@@ -1,11 +1,11 @@
 <table class="compact-session-list">
 <%- session.each do |sess| -%>
   <tr>
-    <th><%= sess.starts_at.strftime("%b") %> <%= sess.starts_at.strftime("%d").to_i %></th>
     <td>
-      <%= link_to sess.course.name, sess %><br>
-      <%= truncate sess.course.description, 60 %><br>
-      <strong style="display:blocK;margin-bottom:10px"><%= l(sess.starts_at, :format => :time) %> – <%= l(sess.ends_at, :format => :time) %></strong>
+      <!-- <div><%= link_to "#{sess.starts_at.strftime("%b")} #{ sess.starts_at.strftime("%d").to_i}, #{l(sess.starts_at, :format => :time)} -  #{l(sess.ends_at, :format => :time)}", sess %></div>
+      <%= truncate(sess.course.description, truncate_size(sess.course.description, 80)) %><br> -->
+      <div><%= "#{ l(sess.starts_at.to_date, :format => :long_day) },<br> klockan #{l(sess.starts_at, :format => :time)} -  #{l(sess.ends_at, :format => :time)}" %></div>
+    
     </td>
   </tr>
 <%- end -%>

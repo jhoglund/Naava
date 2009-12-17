@@ -12,13 +12,18 @@
 <p>
   Passet kostar <%=  number_to_currency(@booker.price) %>.
 </p>
-
-<% form_for(@booking, :url => book_session_path) do |f| %>
+<%-
+  path_to_booking = !params[:coupon_id].blank? ? book_coupon_session_path : book_session_path
+-%>
+<% form_for(@booking, :url => path_to_booking) do |f| %>
+  <%= base_errors_for(@booking) %>
   <%= f.hidden_field :booker_type %>
   <%= f.hidden_field :booker_id %>
-  
   <%= render :partial => '/bookings/form', :object => f %>
-  
+  <%- if params[:coupon_id] -%>
+    <%= check_box_tag :pay_with_coupon, 1, true %>
+    Jag vill betala med presentkort med referencenummber <strong><%= params[:coupon_id] %></strong>
+  <% end %>
   <p>
     <%= f.submit 'Anmäl' %>
   </p>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GiftCertificate do
+describe CouponType do
   before(:each) do
     @valid_attributes = {
       :name => "value for name",
@@ -12,6 +12,6 @@ describe GiftCertificate do
   end
 
   it "should create a new instance given valid attributes" do
-    GiftCertificate.create!(@valid_attributes)
+    CouponType.create!(@valid_attributes)
   end
 end

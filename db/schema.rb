@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20091215075507) do
     t.integer  "instructor_id"
   end
 
-  create_table "gift_certificates", :force => true do |t|
+  create_table "coupon_types", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "value"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20091215075507) do
     t.integer  "status",     :default => 0
   end
 
-  create_table "user_gift_certificates", :force => true do |t|
+  create_table "coupons", :force => true do |t|
     t.string   "to_name"
     t.string   "to_email"
     t.string   "to_phone"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20091215075507) do
     t.string   "from_address"
     t.text     "message"
     t.string   "token"
-    t.integer  "gift_certificate_id"
+    t.integer  "coupon_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,6 +13,14 @@ class Course < ActiveRecord::Base
   accepts_nested_attributes_for :sessions, :allow_destroy => true
   accepts_nested_attributes_for :instructor, :allow_destroy => true
   
+  def self.price_per_session
+    AppConfig[:course_per_class]
+  end
+  
+  def self.price times=1
+    Course.price_per_session * times
+  end
+    
   def next_session
     sessions.current.first
   end
@@ -26,11 +34,11 @@ class Course < ActiveRecord::Base
   end
   
   def price
-    original_price - ((sessions.count - sessions.current.count) * (AppConfig[:course_per_class]) * (0.01 * discount))
+    original_price - ((sessions.count - sessions.current.count) * Course.price_per_session * (0.01 * discount))
   end
   
   def original_price
-    AppConfig[:course_per_class] * sessions.count
+    Course.price(sessions.count)
   end
   
   def price_per_session
@@ -38,7 +46,7 @@ class Course < ActiveRecord::Base
   end
   
   def original_price_per_session
-    AppConfig[:course_per_class]
+    Course.price_per_session
   end
   
   def discount
@@ -46,7 +54,7 @@ class Course < ActiveRecord::Base
   end
   
   def original_discount
-    AppConfig[:course_per_class]*100 / AppConfig[:dropin]
+    Course.price_per_session*100 / AppConfig[:dropin]
   end
   
   def started?

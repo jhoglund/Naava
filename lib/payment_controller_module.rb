@@ -27,6 +27,7 @@ module PaymentControllerModule
             :exchange_rate  => notify.exchange_rate ,
             :received_at    => notify.received_at
           )
+          @payment.value = notify.gross
           @payment.save
           return head(:created)
         #rescue

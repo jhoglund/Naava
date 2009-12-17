@@ -23,7 +23,7 @@ sv-SE:
         too_short: "är för kort (minimum är {{count}} tecken)"
         wrong_length: "har fel längd (ska vara {{count}} tecken)"
         phone_or_email: "Antingen email eller telefon behövs anges"
-        gift_certificate_phone_or_email: "Antingen email eller telefon behövs anges till för både motagaren och avsändaren av presentkortet"
+        coupon_type_phone_or_email: "Antingen email eller telefon behövs anges till för både motagaren och avsändaren av presentkortet"
       template: 
         body: "Det var problem med följande fält:"
         header: 
@@ -31,7 +31,7 @@ sv-SE:
           other: "{{count}} fel förhindrade denna {{model}} från att sparas"
     models:
       participant: Deltagare
-      user_gift_certificate: Presentkort
+      coupon: Presentkort
     attributes:
       participant:
         phone: "telefon"
@@ -41,7 +41,7 @@ sv-SE:
         phone: "Telefon"
         name: "Namn"
         email: "E-mail"
-      user_gift_certificate:
+      coupon:
         to_phone: "Telefon"
         to_name: "Namn"
         to_email: "Email"
@@ -50,7 +50,7 @@ sv-SE:
         from_name: "Namn"
         from_email: "Email"
         from_address: "Adress"
-        message: "Hälsningsmedelande"
+        message: "Medelande"
       
       
   date: 
@@ -86,7 +86,7 @@ sv-SE:
       - lördag
     formats: 
       default: "%Y-%m-%d"
-      long_day: "%Aen den %e %B"
+      long_day: '<span class="date-day-name">%Aen</span> den <span class="date-day-number">%e</span> <span class="date-month-name">%B</span>'
       long: "%e %B, %Y"
       short: "%e %b"
       day: "%A"
@@ -166,6 +166,7 @@ sv-SE:
     edit: Ändra
     show: Visa
     back: "Tillbaks"
+    cancel_booking: Avboka
   messages:
     destroy_confirmation: "Är du säker?"
   misc: 
@@ -250,15 +251,15 @@ sv-SE:
       long: "%Aen den %d %B, %Y  klockan %H:%M"
       short: "%d %b, klockan %H:%M"
       day: "%Aen den %d %B"
-      longtime_one_minute: "%M minut"
-      longtime_other_minutes: "%M minuter"
-      longtime_one_hour: "%H timme"
-      longtime_one_hour_one_minute: "%H timme och %M minut"
-      longtime_one_hour_other_minutes: "%H timme och %M minuter"
-      longtime_other_hours: "%H timmar"
-      longtime_other_hours_one_minute: "%H timmar och %M minut"
-      longtime_other_hours_other_minutes: "%H timmar och %M minuter"
-      time: "%H:%M"
+      longtime_one_minute: '<span class="time-number">%M</span> minut'
+      longtime_other_minutes: '<span class="time-number">%M</span> minuter'
+      longtime_one_hour: '<span class="time-number">%H</span> timme'
+      longtime_one_hour_one_minute: '<span class="time-number">%H</span> timme och <span class="time-number">%M</span> minut'
+      longtime_one_hour_other_minutes: '<span class="time-number">%H</span> timme och <span class="time-number">%M</span> minuter'
+      longtime_other_hours: '<span class="time-number">%H</span> timmar'
+      longtime_other_hours_one_minute: '<span class="time-number">%H</span> timmar och <span class="time-number">%M</span> minut'
+      longtime_other_hours_other_minutes: '<span class="time-number">%H</span> timmar och <span class="time-number">%M</span> minuter'
+      time: '<span class="time-number">%H:%M</span>'
   
     pm: ""
   user: 

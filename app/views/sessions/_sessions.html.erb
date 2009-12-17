@@ -10,11 +10,9 @@
 <table class="session-list">
   
   <colgroup>
-  <col width="1">
-  <col width="1">
-  <col width="1">
-  <col width="1">
-  <col width="1000*">
+  <col width="200">
+  <col width="150">
+  <col width="10*">
   </colgroup>
 <%-   
   past_week = nil 
@@ -29,7 +27,7 @@
   <%- if new_week -%>
   <thead>
     <tr>
-        <td colspan="5" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
+        <td colspan="3" style="padding-top:30px;border-bottom:1px solid rgb(200,200,200)">Vecka <%= week %></td>
     </tr>
   </thead>
   <%- end -%>
@@ -37,12 +35,17 @@
   <tbody class="gradient-back">
   <%- end -%>
     <tr>
-        <td nowrap><%= yield(:booking_link) %> <%=link_to session.course.name, session %></td>
-        <td nowrap style="padding-left:10px"><%=l session.date, :format => :long_day %></td>
-        <td nowrap style="padding-left:10px"><%=l session.starts_at, :format => :time %> - <%=l session.ends_at, :format => :time %></td>
-        <td nowrap style="padding-left:10px"><%=l session.starts_at, :format => :time %> - <%=l session.ends_at, :format => :time %></td>
-        <%- path_to_booking = gift_certificate ? book_user_gift_certificate_session_path(gift_certificate, session) : book_session_path(session) -%>
-        <td nowrap style="padding-left:10px" align="right"><%=  button_to_function "Reservera plats", "bookSession('#{path_to_booking}')"  %></td>
+        <td nowrap style="padding-left:10px">
+          <%=l(session.date, :format => :long_day)  %>
+        </td>
+        <td nowrap style="padding-left:10px">
+          <%=l session.starts_at, :format => :time %> – <%=l session.ends_at, :format => :time %>
+        </td>
+        <%- path_to_booking = (defined?(booking_proc) and booking_proc.is_a?(Proc)) ? booking_proc.call(session) : book_session_path(session) -%>
+        <td nowrap style="padding-left:10px" align="left">
+          <%=  button_to_function "Reservera plats", "bookSession('#{path_to_booking}')"  %>
+          <%=link_to 'Läs mer...', session, :class => 'read-more' %>
+        </td>
     </tr>
   <%- if end_week -%>
   </tbody>

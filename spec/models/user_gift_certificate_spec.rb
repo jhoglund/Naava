@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UserGiftCertificate do
+describe Coupon do
   before(:each) do
     @valid_attributes = {
       :to_name => "value for to_name",
@@ -12,13 +12,13 @@ describe UserGiftCertificate do
       :from_phone => "value for from_phone",
       :from_address => "value for from_address",
       :message => "value for message",
-      :gift_certificate_id => 1,
+      :coupon_type_id => 1,
       :payment_id => 1,
       :payment_type => "value for payment_type"
     }
   end
 
   it "should create a new instance given valid attributes" do
-    UserGiftCertificate.create!(@valid_attributes)
+    Coupon.create!(@valid_attributes)
   end
 end

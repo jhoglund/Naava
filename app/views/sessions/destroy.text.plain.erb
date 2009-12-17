@@ -1,4 +1,14 @@
-Vi har tagit bort din anmälan för klassen <%= @object.booker.name %> med start <%= l(@object.booker.starts_at, :format => :long) %>.
+Din reservation för klassen <%= @object.booker.name %>, <%= l(@object.booker.starts_at, :format => :short) %>, har blivit borttagen.
 
-Välkommen,
+<%- if @object.payment -%>
+<%- if @object.payment.type? :gift_certificate -%>
+Ditt presentkort kommer att krediteras med <%= number_to_currency(@object.payment.value) %>    
+<%- else -%>
+Ditt konto kommer att krediteras med <%= number_to_currency(@object.payment.value) %>    
+<%- end -%>
+
+<%- end -%>
+Om du har några frågor så maila oss gärna på <%= mail_to AppConfig[:support_mail] %> eller ring oss på <%= AppConfig[:support_phone] %>.   
+
+Hälsningar,
 Jonas Höglund

@@ -2,35 +2,60 @@
   <%#= generate_calendar(Date.today, []) %>
 </div> -->
 
+<div class="sidebar">
+  <h3>Priser</h3>
+  <dl>
+    <dt>Kurser, 8 tillfällen</dt>
+    <dd><%= number_to_currency(Course.price(8)) %> (90 minuter per tillfälle)</dd>
+    <dt>Enstaka klasser</dt>
+    <dd><%= number_to_currency(Session.price) %> (90 minuter)</dd>
+    <dt>Privatlektioner</dt>
+    <dd><%= number_to_currency(500) %> per 60 minuter</dd>
+    <dt>Företagsyoga</dt>
+    <dd>Maila <%= mail_to AppConfig[:support_mail] %> för mer information, samt offert</dd>
+  </dl>
+</div>
+
+<h2>Våra kurser</h2>
+<p>Samtliga av våra kurser passar för alla. Vi anpassar var klass
+  efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna, likväl som dig som
+  har yogat förut att komma vidare i ditt utövande.</p>
+
 <p>
-  Våra kurser består av totalt <%= @courses.first.sessions.count %> tillfällen
-  och kostar <%= number_to_currency(@courses.first.original_price) %>, 
-  vilket är <%= number_to_currency(@courses.first.original_price_per_session) %> (<%= @courses.first.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
-  <%=  number_to_currency(Session.first.price) %>/klass.
+  Varje kurs inkluderar <strong>8 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(8)) %></strong> (90 minuter per tillfälle). 
+  Du betalar endast <strong><%=  number_to_currency(Course.price_per_session) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price) %>
+  om du väljer att betala vid varje tillfälle.
 </p>
-
-<% @courses.each do |course| %>
-  <h3><%= link_to course.name, course %></h3>
-  <%=h course.description %>
-  <p><strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
-  klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
-  <strong><%=l course.next_session.ends_at, :format => :time %></strong> 
-
-  <% if course.started? %>
-  <p>
-    Denna kursen har redan börjat och vi har hittills hunnit med <%= course.sessions.expired.count %> klasser. 
-    Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(course.price) %> vilket
-    är <%=  number_to_currency(course.price_per_session) %>  (<%= course.discount %>%)  per återstående klass.
-  </p>
+<% content_for :header do %>
+  <% javascript_tag do %>
+    function bookCourse(path){
+      document.location.href = path
+    }
   <% end %>
-
-    <p>
-      <%= link_to 'Anmäl dig till kursen', book_course_path(course) %>
-    </p>
-    
 <% end %>
 
-<hr>
+<h4>Välj en av följande kurser</h4>
+<table>
+<% @courses.each do |course| %>
+<tr>
+  <td>
+    <strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
+    klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
+    <strong><%=l course.next_session.ends_at, :format => :time %></strong><br>
+    <% if course.started? %>
+    <span class="course-started">Denna kursen började den <strong><%=l course.starts_at.to_date, :format => :long %></strong>. Vi har hittills hunnit med <%= course.sessions.expired.count %> klasser. 
+    Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast <strong><%= number_to_currency(course.price) %></strong> vilket
+    är <strong><%=  number_to_currency(course.price_per_session) %></strong>  (<%= course.discount %>%)  per återstående klass.</span>
+    <% else %>
+    Kursen börjar den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
+    <% end %>
+  </td>
+  <td align="top">
+    <%=  button_to_function "Anmäl dig till kursen", "bookSession('#{book_course_path(course)}')"  %>
+  </td>
+</tr>
+<% end %>
+</table>
 
-<h2>Schema för vårens klasser, 2010</h2>
+<h3>Schema för vårens klasser, 2010</h3>
 <%= render :partial => 'sessions', :object => @sessions %>
