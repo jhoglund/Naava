@@ -1,0 +1,26 @@
+<% content_for :header do %>
+  <% javascript_tag do %>
+    function buyGiftCertificate(form,id){
+      form['gift_certificate_coupon_type_id'].value = id
+      form.submit();
+    }
+  <% end %>
+<% end %>
+
+<h1>Presentkort</h1>
+
+<p>Överaska någon i jul med ett presentkort till någon av våra kurser eller klasser. Samtliga
+presentkort är personliga och gäller i ett år framåt från inköpsdatumet. Alla presentkorten går
+att använda till alla våra kurser och klasser.
+</p>
+<p>Välj någon av följande <%= @gift_certificate_types.size %> alternativ.</p>
+
+<% form_for @gift_certificate, :url => new_gift_certificate_path do |f| %>
+<%= f.hidden_field :coupon_type_id %>
+<% @gift_certificate_types.each do |gift_certificate_type| %>
+<h3><%=h gift_certificate_type.name %></h3>
+<p><%=h gift_certificate_type.description %>
+<p>Pris: <%=  number_to_currency(gift_certificate_type.value)  %>
+<p><%=  button_to_function "Köp nu!", "buyGiftCertificate(this.form, #{gift_certificate_type.id})"  %>
+<% end %>
+<% end %>

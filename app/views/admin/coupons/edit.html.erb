@@ -1,0 +1,11 @@
+<h1>Editing coupon</h1>
+
+<% form_for(@coupon) do |f| %>
+  <%= render :partial => "form", :object => f  %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @coupon %> |
+<%= link_to 'Back', coupons_path %>

@@ -1,0 +1,38 @@
+<h1>Listing coupons</h1>
+
+<table>
+  <tr>
+    <th>To name</th>
+    <th>To email</th>
+    <th>To phone</th>
+    <th>To address</th>
+    <th>From name</th>
+    <th>From email</th>
+    <th>From phone</th>
+    <th>From address</th>
+    <th>Message</th>
+    <th>Coupon type</th>
+  </tr>
+
+<% @coupons.each do |coupon| %>
+  <tr>
+    <td><%=h coupon.to_name %></td>
+    <td><%=h coupon.to_email %></td>
+    <td><%=h coupon.to_phone %></td>
+    <td><%=h coupon.to_address %></td>
+    <td><%=h coupon.from_name %></td>
+    <td><%=h coupon.from_email %></td>
+    <td><%=h coupon.from_phone %></td>
+    <td><%=h coupon.from_address %></td>
+    <td><%=h coupon.message %></td>
+    <td><%=h coupon.coupon_type %></td>
+    <td><%= link_to 'Show', admin_coupon_path(coupon) %></td>
+    <td><%= link_to 'Edit', edit_admin_coupon_path(coupon) %></td>
+    <td><%= link_to 'Destroy', user_admin_coupon_type_path(coupon), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nytt presentkort', new_admin_coupon_path %>

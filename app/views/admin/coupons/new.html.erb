@@ -1,0 +1,11 @@
+<h1>Nytt presentkort</h1>
+
+<% form_for(@coupon, :url => admin_coupons_path) do |f| %>
+  <%= render :partial => "form", :object => f  %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_coupons_path %>

@@ -1,0 +1,2 @@
+class GiftCertificateType < CouponType
+end
