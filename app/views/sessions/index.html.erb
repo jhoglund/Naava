@@ -24,7 +24,7 @@
 <p>
   Varje kurs inkluderar <strong>8 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(8)) %></strong> (90 minuter per tillfälle). 
   Du betalar endast <strong><%=  number_to_currency(Course.price_per_session) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price) %>
-  om du väljer att betala vid varje tillfälle.
+  om du väljer att betala vid varje enskilt tillfälle.
 </p>
 <% content_for :header do %>
   <% javascript_tag do %>
@@ -34,11 +34,11 @@
   <% end %>
 <% end %>
 
-<h4>Välj en av följande kurser</h4>
+<h3>Välj en av följande kurser</h3>
 <table>
 <% @courses.each do |course| %>
 <tr>
-  <td>
+  <td style="">
     <strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
     klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
     <strong><%=l course.next_session.ends_at, :format => :time %></strong><br>
@@ -47,15 +47,15 @@
     Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast <strong><%= number_to_currency(course.price) %></strong> vilket
     är <strong><%=  number_to_currency(course.price_per_session) %></strong>  (<%= course.discount %>%)  per återstående klass.</span>
     <% else %>
-    Kursen börjar den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
+    Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
     <% end %>
   </td>
-  <td align="top">
-    <%=  button_to_function "Anmäl dig till kursen", "bookSession('#{book_course_path(course)}')"  %>
+  <td style="vertical-align:bottom; padding:0 0 20px 20px">
+    <%=  link_to "Anmäl dig till kursen", book_course_path(course), :class => 'button button-default'  %>
   </td>
 </tr>
 <% end %>
 </table>
-
-<h3>Schema för vårens klasser, 2010</h3>
+<hr>
+<h2>Schema för vårens klasser, 2010</h2>
 <%= render :partial => 'sessions', :object => @sessions %>

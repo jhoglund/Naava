@@ -9,5 +9,5 @@
     :business_cert => File::read(PaypalConfig[:cert]), 
     :business_certid => PaypalConfig[:certid] %>  
     <%#=  Fake cc number: 4746191858504663 %>
-  <%= image_submit_tag 'paypal_button.gif'%>
+  <%= submit_tag 'Betala via PayPal'%>
 <% end %>

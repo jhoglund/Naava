@@ -1,10 +1,9 @@
-<h1>Presentkort för <%= @gift_certificate.coupon_type.name %></h1>
+<h2>Presentkort för <%= @gift_certificate.coupon_type.name %> (<%= number_to_currency(@gift_certificate.coupon_type.value) %>)</h2>
 <p><%= @gift_certificate.coupon_type.description %></p>
-
 <% form_for(@gift_certificate) do |f| %>
   <%= base_errors_for(@gift_certificate) %>
 <div class="columns three-columns gift-certificate">
-  <div class="column">
+  <div class="column" style="width:200px">
     <h3>Till</h3>
     <p>
       <%= f.label GiftCertificate.human_attribute_name(:to_name) %>
@@ -23,7 +22,7 @@
       <%= f.text_area :to_address, :rows => 4 %>
     </p> -->
   </div>
-  <div class="column">
+  <div class="column" style="width:200px">
     <h3>Från</h3>
     <p>
       <%= f.label GiftCertificate.human_attribute_name(:from_name) %>
@@ -42,17 +41,16 @@
       <%= f.text_area :from_address, :rows => 4 %>
     </p> -->
   </div>
-  <div class="column">
+  <div class="column" style="width:300px">
     <h3><%= GiftCertificate.human_attribute_name(:message) %>:</h3>
     <p>
-      <%= f.text_area :message, :rows => 13 %>
+      <%= f.text_area :message, :rows => 11 %>
     </p>
+    <p style="text-align:right; margin-top:30px">
+      <%= link_to_function "Köp present kort för <b>#{number_to_currency(@gift_certificate.coupon_type.value)}</b>", 'forms["new_gift_certificate"].submit()', :class => 'button button-default' %>
+    </p>
+    
   </div>
 </div>
-  <p>
     <%= f.hidden_field :coupon_type_id %>
-  </p>
-  <p style="text-align:right">
-    <%= f.submit 'Fortsätt >>' %>
-  </p>
 <% end %>

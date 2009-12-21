@@ -1,6 +1,5 @@
-<h3>Anmälan till klassen <%= @booker.name %> den <%= l(@booker.starts_at, :format => :long) %></h3>
+<h2>Anmälan till klassen den <%= l(@booker.starts_at, :format => :long) %></h2>
 
-<p><%=h @booker.course.description %></p>
 <p>
   Vi börjar klockan <%=l @booker.starts_at, :format => :time %>
 </p>
@@ -24,10 +23,14 @@
     <%= check_box_tag :pay_with_coupon, 1, true %>
     Jag vill betala med presentkort med referencenummber <strong><%= params[:coupon_id] %></strong>
   <% end %>
-  <p>
-    <%= f.submit 'Anmäl' %>
+  <p class="button-bar">
+    <%= link_to_function "Anmäl", 'forms["new_booking"].submit()', :class => 'button button-default' %>
   </p>
 <% end %>
+
+<h2>Anmäl dig till hela kursen <strong><%=t("misc.day_names.#{@booker.course.next_session.starts_at.strftime("%A").downcase}", :count => 2) %></strong>
+klockan <strong><%=l @booker.course.next_session.starts_at, :format => :time %></strong> till
+<strong><%=l @booker.course.next_session.ends_at, :format => :time %></strong></h2>
 
 <p>
   Det går även bra att anmäla sig till hela kursen. I kursen ingår totalt <%= @booker.course.sessions.count %> klasser. 
@@ -42,9 +45,9 @@
   är <%=  number_to_currency(@booker.course.price_per_session) %>  (<%= @booker.course.discount %>%)  per återstående klass.
 </p>
 <% end %>
-<p>
-  <%= link_to 'Anmäl dig till kursen', book_course_path(@booker.course) %>
+<p class="button-bar">
+  <%= link_to 'Anmäl dig till kursen', book_course_path(@booker.course), :class => 'button' %>
 </p>
 
 
-<%= link_to 'Tillbaks till klassen', session_path(@booker) %>
+<%#= link_to 'Tillbaks till klassen', session_path(@booker) %>

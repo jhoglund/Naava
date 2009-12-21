@@ -1,5 +1,9 @@
+<div class="gift-certificate-reciept">
 <%= render :partial => '/gift_certificates/gift_certificate', :object => @payment.item %>
 
+<p>
+  <%#= link_to_function 'Skriv ut',  %>
+</div>
 <%- unless @payment.item.paid? -%>
   <p>
     Att betala: <%= number_to_currency(@payment.item.coupon_type.value) %>    

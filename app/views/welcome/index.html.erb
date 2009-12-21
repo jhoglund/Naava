@@ -24,70 +24,84 @@
 <% end %>
 
 <% content_for :top do %>
-<p class="dec">Ashtanga Yoga är en fysisk form av yoga som synkroniserar rörelse och andning. 
+<div class="main-promotion">
+  <h1>Skänk yoga i julklapp</h1>
+  Överaska någon i jul med ett presentkort till någon av våra kurser eller klasser.
+  Om du vill kan du skriva ut presentkortet direkt på din skrivare.<br>
+  Välj ett av våra <%= @gift_certificate_types.size %> alternativ. 
+  <ul>
+    <% @gift_certificate_types.each do |gift_certificate| %>
+    <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
+    <% end %>
+  </ul>
+    
+</div>
+<!-- <p class="dec">Ashtanga Yoga är en fysisk form av yoga som synkroniserar rörelse och andning. 
 Det är en yogaform som ger styrka, kroppskontroll, smidighet och ett lugnt och fokuserat sinne.
 Varje individ har alla olika förutsättningar, men alla kan yoga. Därför är våra klasser anpassade 
-så att alla kan delta.</p>
-<% end %>
+så att alla kan delta.</p>-->
+<% end %> 
 
 
 <div class="promotion-boxes">
-  <div class="promotion-box">
+  <div class="promotion-box promotion-box-left">
     <% unless @sessions.empty? %>
-      <h3>Kommande klasser</h3>
+      <h2>Kommande klasser</h2>
     <%= render :partial => 'session', :object => @sessions %>
     <% end %>
     <p style="margin-top:-8px"><%= link_to 'Vårens alla tider och priser', sessions_path %></p>
     <hr>
-    <h4>Privatlektioner &amp; Företagsyoga</h4>
+    <h3>Privatlektioner &amp; Företagsyoga</h3>
     Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Utformar ett program efter ert behov. 
     Kontakta oss för priser.
+    
   </div>
   <div class="promotion-box">
-    <h3>Ge bort yoga i julklapp</h3>
-    Överaska någon i jul med ett presentkort till någon av våra kurser eller klasser. 
-    Välj någon av följande <%= @gift_certificate_types.size %> alternativ. 
     
-    <% content_for :header do %>
-      <% javascript_tag do %>
-        function buyGiftCertificate(form,id){
-          form['gift_certificate_coupon_type_id'].value = id
-          form.submit();
-        }
-      <% end %>
-    <% end %>
-    
-    <% form_for @gift_certificate, :url => new_gift_certificate_path do |f| %>
-      <%= f.hidden_field :coupon_type_id %>
-    <% @gift_certificate_types.each do |gift_certificate| %>
-    <p>
-      <%= link_to gift_certificate.title, gift_certificates_path(:anchor => "gift_certificate_#{gift_certificate.id}") %><br>
-      <%= gift_certificate.description %>
-      <%=  link_to('Läs mer', gift_certificates_path(:anchor => "gift_certificate_#{gift_certificate.id}"), :class => 'read-more') %>
-    </p>
-    <p> 
-      <%=  button_to_function "Köp presentkortet för #{number_to_currency(gift_certificate.value)}", "buyGiftCertificate(this.form, #{gift_certificate.id})"  %>
-    </p>
-    <% end %>
-    <!-- <p style="text-align:left"><%#= link_to 'Köp 8 klasser för 680,00 kr', sessions_path %></p> -->
-    <% end %>
-    <p style="position:relative">
-<!--     <img src="/images/placeholder_downdog.png" alt="placeholder_downdog" width="220"/> -->
-    <%#= image_tag 'gift_certificate2.png', :width => '220', :style => "position:relative; top:-0px; right:-40px" %>
-    <!-- <%= image_tag '20_badge.png', :style => "position:absolute; top:20px; right:-10px" %> -->
-    </p>
-  </div>
-  <div class="promotion-box">
+    <!-- <h3>Ge bort yoga i julklapp</h3>
+        Överaska någon i jul med ett presentkort till någon av våra kurser eller klasser. 
+        Välj någon av följande <%= @gift_certificate_types.size %> alternativ. 
+        
+        <% content_for :header do %>
+          <% javascript_tag do %>
+            function buyGiftCertificate(form,id){
+              form['gift_certificate_coupon_type_id'].value = id
+              form.submit();
+            }
+          <% end %>
+        <% end %>
+        
+        <% form_for @gift_certificate, :url => new_gift_certificate_path do |f| %>
+          <%= f.hidden_field :coupon_type_id %>
+        <% @gift_certificate_types.each do |gift_certificate| %>
+        <p>
+          <%= link_to gift_certificate.title, gift_certificates_path(:anchor => "gift_certificate_#{gift_certificate.id}") %><br>
+          <%= gift_certificate.description %>
+          <%=  link_to('Läs mer', gift_certificates_path(:anchor => "gift_certificate_#{gift_certificate.id}"), :class => 'read-more') %>
+        </p>
+        <p> 
+          <%=  button_to_function "Köp presentkortet för #{number_to_currency(gift_certificate.value)}", "buyGiftCertificate(this.form, #{gift_certificate.id})"  %>
+        </p>
+        <% end %>
+        <% end %>
+        <p style="position:relative">
+        </p> -->
     <div class="map">
       <div id="map_canvas" style="width:100%; height:200px"></div>
     </div>
     <dl>
       <dt>Address</dt>
-      <dd>Södra Fogdelyckegatan 28<br>37436 Karlshamn</dd>
+      <dd>Södra Fogdelyckegatan 28, 37436 Karlshamn</dd>
+    </dl>
+    <dl>
       <dt>Telefon</dt>
       <dd>+46-709-961600</dd>
+    </dl>
+    <dl>
       <dt>E-mail</dt>
       <dd><%= mail_to "jonas@navayoga.se" %></dd>
+    </dl>
+    
   </div>
 </div>
 

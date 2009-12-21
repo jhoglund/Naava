@@ -1,41 +1,35 @@
 <div class="gift-certificate-card">
-  <p>
-    <h2><%=h gift_certificate.coupon_type.title %></h2>
-    <%=h gift_certificate.coupon_type.description %>
-  </p>
-  <p>
-    <b>Presentkort för:</b>
-    <%=h gift_certificate.to_name %>
-  </p>
+  <div class="header">
+	  <%= image_tag "logo_444_white.png", :class => "logo" %>
+	</div>
+  <h2>Presentkort</h2> 
+  
+  <div class="gift-certificate-names">
+  	<div class="gift-certificate-to">
+      <b>Till</b>
+      <%=h gift_certificate.to_name %>
+    </div>
+    <div class="gift-certificate-from">
+	  <b>Från</b>
+      <%=h gift_certificate.from_name %>
+    </div>
+  </div>
 
-  <p>
-    <b>Från:</b>
-    <%=h gift_certificate.from_name %>
-  </p>
+  <div class="gift-certificate-value">
+    <b>Värde</b> <%=h number_to_currency(gift_certificate.original_funds) %>
+  </div>
 
-  <p>
-    <b>Presentkortets värde:</b> <%=h number_to_currency(gift_certificate.original_funds) %>
-  </p>
-  <%- if gift_certificate.no_funds?  -%>
-  <p>
-    Inga pengar finns kvar på presentkortet
-  </p>
-  <%- elsif !gift_certificate.full_funds?  -%>
-  <p>
-    <b>Presentkortets resterande värde är:</b> <%=h number_to_currency(gift_certificate.available_funds) %>
-  </p>
-  <%- end -%>
   <%- unless gift_certificate.message.blank? -%>
-  <p>
-    <b>Personligt medelande:</b> <%=h gift_certificate.message %>
-  </p>
+  <div class="gift-certificate-personal-message">
+    <b>Personligt medelande</b> <%= simple_format(gift_certificate.message) %>
+  </div>
   <%- end -%>
-  <p>
-    <b>Referencenummer:</b>
-    <%=gift_certificate.to_param %>    
-  </p>
-  <p>
-    <b>Adress:</b>
-    <%= link_to gift_certificate_url(gift_certificate), gift_certificate_url(gift_certificate), :target => 'gift_certificate' %>    
+  <p class="gift-certificate-footer">
+    När du bokar en kurs eller klass så anger du koden
+    <b><%=gift_certificate.to_param %></b><br>
+    Det går även bra att utnyttja
+    presentkortet direkt genom att besöka
+    <%= link_to gift_certificate_url(gift_certificate), gift_certificate_url(gift_certificate), :target => 'gift_certificate' %>
   </p>
 </div>
+

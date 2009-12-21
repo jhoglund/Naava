@@ -7,7 +7,13 @@ class BookingsController < ApplicationController
     respond_to do |format|
       format.html { 
         if @booking
-          render :template => "/#{@booking.booker.class.name.tableize}/reciept"
+          if params[:as_email]
+            @object = @booking
+            @object.payment.reciept = PaypalReciept.new
+            render :text => "<pre>#{render_to_string("/#{@booking.booker.class.name.tableize}/#{params[:as_email]}.text.plain.erb")}</pre>"
+          else
+            render :template => "/#{@booking.booker.class.name.tableize}/reciept"
+          end
         end
       }
       format.xml  { render :xml => @booking }
@@ -26,7 +32,7 @@ class BookingsController < ApplicationController
   
   def book
     @booking = @booker.bookings.build(:participant => Participant.new )
-    @coupon = Coupon.find_by_token(params[:coupon_id])
+    @coupon = Coupon.find_by_token(params[:gift_certificate_id])
     if request.get?
       if @coupon
         @booking.participant.name = @coupon.to_name
@@ -45,11 +51,9 @@ class BookingsController < ApplicationController
             @booking.payment ||= Payment.new(:item => @booking)
             @booking.payment.update_attributes(:reciept => @coupon, :value => @coupon.coupon_type.value)
           end
-          flash[:notice] = 'Bokningen är sparad.'
           format.html { redirect_to @booking }
           format.xml  { render :xml => @booking, :status => :created, :location => @booking }
         else
-          flash[:error] = 'Bokningen kunde inte sparas.'
           format.html { render :book }
           format.xml  { render :xml => @booking.errors, :status => :unprocessable_entity }
         end

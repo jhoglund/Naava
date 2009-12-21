@@ -14,7 +14,7 @@ class CoursesController < BookingsController
     @booking = Booking.new(:booker => @course)
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {  }# show.html.erb
       format.xml  { render :xml => @course }
     end
   end

@@ -1,15 +1,17 @@
 <%= hidden_field_tag :coupon, @coupon.to_param %>
-<p>
-  <%= form.label :name, t('activerecord.attributes.booking.name') %><br />
+<div class="columns three-columns">
+<div class="column">
+  <%= form.label :name, t('activerecord.attributes.booking.name') %>
   <%= form.text_field :name %>
-</p>
+</div>
 
-<p>
-  <%= form.label :email, t('activerecord.attributes.booking.email') %><br />
+<div class="column">
+  <%= form.label :email, t('activerecord.attributes.booking.email') %>
   <%= form.text_field :email %>
-</p>
+</div>
 
-<p>
-  <%= form.label :phone, t('activerecord.attributes.booking.phone') %><br />
+<div class="column">
+  <%= form.label :phone, t('activerecord.attributes.booking.phone') %>
   <%= form.text_field :phone %>
-</p>
+</div>
+</div>

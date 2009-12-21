@@ -1,6 +1,7 @@
 Vi har mottagit betalning för kursen <%= @object.booker.name %> med start <%= l(@object.booker.starts_at, :format => :long) %>.
 
-PayPal referencenummer för din betalning är <%= @object.payment.transaction_id %>
+
+PayPal referencenummer för din betalning är <%= @object.payment.reciept.transaction_id %>
 
 Du når din anmälan på <%= booking_url(@object) %>
 

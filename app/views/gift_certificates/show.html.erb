@@ -1,6 +1,17 @@
 <% unless @coupon.nil? %>
 <%= render :partial => '/gift_certificates/gift_certificate', :object => @coupon %>
 <p>
+<%- if @coupon.no_funds?  -%>
+<p>
+  Inga pengar finns kvar på presentkortet
+</p>
+<%- elsif !@coupon.full_funds?  -%>
+<p>
+  <b>Presentkortets resterande värde är:</b> <%=h number_to_currency(@coupon.available_funds) %>
+</p>
+<%- end -%>
+
+<p>
 <% if @coupon.original_funds ==  Course.price(8) %>
   <% if @coupon.available_funds == Course.price(8) %>
   Utnyttja ditt presentkort till någon av våra kommande kurser:

@@ -1,6 +1,9 @@
-Vi har mottagit din anmälan för kursen <%= @object.booker.name %> med start <%= l(@object.booker.starts_at, :format => :long) %>.
+Vi har mottagit din kursanmälan för <%=t("misc.day_names.#{@object.booker.next_session.starts_at.strftime("%A").downcase}", :count => 2) %> klockan <%=l @object.booker.next_session.starts_at, :format => :time %> till <%=l @object.booker.next_session.ends_at, :format => :time %>
 
-Du når din anmälan på <%= booking_url(@object) %>
+Du når din anmälan på <%= booking_url(@object) %>.
+
+<%= strip_tags(render(:partial => '/sessions/house_rules')).gsub!(/^\s+(\S)/,'- \1') %>
+Om du har några frågor så maila oss gärna på <%= mail_to AppConfig[:support_mail] %> eller ring oss på <%= AppConfig[:support_phone] %>.   
 
 Välkommen,
 Jonas Höglund

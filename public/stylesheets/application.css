@@ -1,41 +1,95 @@
+
+@font-face {
+	font-family: 'BitstreamVeraSansRoman';
+	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.eot');
+	src: local('Bitstream Vera Sans Roman'), local('BitstreamVeraSans-Roman'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.svg#BitstreamVeraSans-Roman') format('svg');
+}
+
+@font-face {
+	font-family: 'BitstreamVeraSansOblique';
+	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.eot');
+	src: local('Bitstream Vera Sans Oblique'), local('BitstreamVeraSans-Oblique'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.svg#BitstreamVeraSans-Oblique') format('svg');
+}
+
+@font-face {
+	font-family: 'BitstreamVeraSansBold';
+	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.eot');
+	src: local('Bitstream Vera Sans Bold'), local('BitstreamVeraSans-Bold'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.svg#BitstreamVeraSans-Bold') format('svg');
+}
+
+@font-face {
+	font-family: 'BitstreamVeraSansBoldOblique';
+	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.eot');
+	src: local('Bitstream Vera Sans Bold Oblique'), local('BitstreamVeraSans-BoldOblique'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.svg#BitstreamVeraSans-BoldOblique') format('svg');
+}
+
+@font-face {
+	font-family: 'BitstreamVeraSerifRoman';
+	src: url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.eot');
+	src: local('Bitstream Vera Serif Roman'), local('BitstreamVeraSerif-Roman'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.woff') format('woff'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.svg#BitstreamVeraSerif-Roman') format('svg');
+}
+
+@font-face {
+	font-family: 'BitstreamVeraSerifBold';
+	src: url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.eot');
+	src: local('Bitstream Vera Serif Bold'), local('BitstreamVeraSerif-Bold'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.woff') format('woff'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.svg#BitstreamVeraSerif-Bold') format('svg');
+}
+
 html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
-body { margin:0; font:normal 15px/22px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
+body { margin:0; font:normal 13px/18px BitstreamVeraSansRoman, georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
+.canvas { position:relative; width:860px; margin:0 auto; z-index:0; background:rgba(255,255,255,0.5); }
+.canvas .vertical-spacer { width:1px; overflow:0; height:800px; float:left; margin-left:-1px;}
+.canvas .vertical-spacer-break { clear:both; }
+
 a:link,
-a:visited { color:#cc2358; text-decoration: none; }
+a:visited { color:rgb(25,140,255); text-decoration: none; }
 a:link:hover { color:#880f35; text-decoration: none; }
-p {margin:12px 0;}
-h1, h2, h3, h4 { margin-top:2em; margin-bottom: 8px; font-family: "Lucida Grande", Verdana, Arial, sans-serif; color: #880f35; font-style: normal; font-weight: normal; }
+a.read-more { }
+p { margin:12px 0; }
+h1, h2, h3, h4 { margin-top:2em; margin-bottom: 12px; font-family: "Lucida Grande", Verdana, Arial, sans-serif; color:rgb(235,10,90); font-style: normal; font-weight: normal; }
 h1 + p, h2 + p, h3 + p, h4 + p,
 h1 + ul, h2 + ul, h3 + ul, h4 + ul { margin-top: 8px; }
 hr { margin:18px 0; border-bottom-color: #c8c8c8; border-bottom-width: 1px; border-left-style: none; border-bottom-style: solid; border-right-style: none; border-top-style: none; }
 h1 a, h2 a, h3 a { color: #880f35!important; }
 
-.logo { font-weight: bold; text-transform: uppercase; position:absolute; font-size: 30px ; font-family: Helvetica, BoomerCond, Knockout, sans-serif, Verdana, Arial;top:-10px; padding:30px 30px 15px; background:#880f35; color:white; -webkit-box-shadow: 4px 4px 15px rgba(0,0,0,0.3); }
-a.logo { color:white!important; } 
-a.read-more { font:12px verdana;}
+dl {  }
+dt { font-weight:bold;  }
+dd { margin:0 0 20px; }
+
+ul { margin:10px 0 0; padding:0; }
+li { margin:10px 0 0 20px; }
+li a { color:rgb(255,200,165); }
+
 .header,
 .top,
-.content { position:relative; width:860px; margin:0 auto;  }
-.header { padding:50px 0px; }
-.top { }
-.dec { padding-left: 0px; padding-bottom: 30px; padding-right: 20px; padding-top: 10px; line-height: 34px; font:normal 20px/30px georgia; color: #330000; margin:0; }
-/* .canvas { background:url(/images/background_wall_texture.jpg)  no-repeat; } */
-.content { background:rgba(255,255,255,0.5); min-height:400px;border-top:1px solid transparent; padding:30px 40px 30px 40px; width:780px;  }
-
+.content { }
+.header { position:relative; padding:75px 0px 50px; background:rgb(115,5,45); z-index:0; }
+.content { padding:30px 40px 30px 40px; width:780px;  }
 .content .sidebar { background:rgba(255,255,255,0.5); float:right; padding:40px; width:200px; margin:-31px -40px 20px 20px; }
+.dec { padding-left: 0px; padding-bottom: 30px; padding-right: 20px; padding-top: 10px; line-height: 34px; font:normal 20px/30px georgia; color: #330000; margin:0; }
+.logo { position:absolute; left:30px; top:20px; z-index:-1; }
+
+.global-navigation { position:absolute; width:840px; bottom:0; margin:0 auto; text-align:right; color:rgb(255,235,245);}
+.global-navigation dt { margin:0; padding:0; }
+.global-navigation dd { display:inline-block; margin:0 10px; }
+.global-navigation dd a { color:rgb(255,25,115); }
+
+.main-promotion { border-bottom:4px solid rgb(115,5,45); padding:40px 300px 40px 40px; letter-spacing:1px; font:normal 16px/24px BitstreamVeraSerifRoman, georgia; background:url('/images/gift_certificate3.png') no-repeat 350px -60px rgb(235,1,90); color:white!important; }
+.main-promotion h1 { margin:15px 0 10px; font:normal 40px/40px BitstreamVeraSerifRoman, georgia; color:rgb(115,5,45); }
+.main-promotion ul { margin:10px 0 0; padding:0; }
+.main-promotion li { margin:0 0 0 20px; font-size:14px; color:rgb(255,200,165); }
+.main-promotion li a { color:rgb(255,200,165); }
+
 
 table { border-collapse:collapse; }
 th,
 td { vertical-align:top; padding:0 12px 12px 0;}
 
-/*.compact-session-list table { border-collapse:collapse; }
-.compact-session-list th,
-.compact-session-list td { vertical-align:top; padding-bottom:12px;}*/
 .compact-session-list th { padding-right:10px; white-space:nowrap; }
 .compact-session-list td:first-letter { text-transform:capitalize; }
 .compact-session-list .date-day-name ,
 .compact-session-list .date-day-number { font-weight:bold; }
-.compact-session-list .time-number { font-weight:bold; color:#880f35;}
+.compact-session-list .time-number { font-weight:bold; color:rgb(235,10,90); }
 
 .session-list { width:780px; border-collapse: collapse }
 .session-list td { padding:5px; }
@@ -44,68 +98,114 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .session-list tbody tr td:first-child { padding-left:20px }
 .session-list tbody.gradient-back { background:rgba(255,255,255,0.5); }
 .session-list a.read-more { color:rgb(50,50,50); padding:0 10px; }
-.session-list .date-day-number { font-weight:bold; color:#880f35; font-size:18px; }
+.session-list .date-day-number { font-weight:bold; color:rgb(235,10,90); font-size:18px; }
 .session-list .time-number { font-weight:bold; }
 
 /* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
 
-.promotion-boxes { vertical-align:top; overflow:hidden; }
-.promotion-box { display:inline-block; vertical-align:top; padding:10px 0 0 25px; width:240px; }
-.promotion-boxes .promotion-box:first-child { padding-left:0; }
-.promotion-box h3 { margin:0 0 10px; }
+.promotion-boxes { vertical-align:top; }
+.promotion-box { display:inline-block; vertical-align:top; padding:0px 0 0 25px; width:450px; }
+.promotion-boxes .promotion-box-left { width:280px; padding:20px 30px; background:rgb(255,255,255); margin:-30px 0 -30px -40px; }
+.promotion-box h2 { margin:5px 0 20px; }
+.promotion-box h2,
+.promotion-box h3 { color:rgb(235,10,90);}
 /*.promotion-box a { font-size:16px; color:#cc2358; }
 */
-dt { font-weight:bold; }
-dd { margin:0 0 20px 0; }
+.promotion-boxes dl { display:block; margin:0; padding-top:5px; }
+.promotion-boxes dt { font-weight:bold; display:inline-block; margin-right:5px; }
+.promotion-boxes dd { display:inline-block; margin:0 0 0px 0; }
 
-.global-navigation { position:absolute; width:840px; top:0; margin:0 auto; text-align:right;}
-.global-navigation dt { margin:0; padding:0; }
-.global-navigation dd { display:inline-block; margin:0; }
 
-.footer { position:relative; width:860px; height:200px; margin:0 auto; bottom: 0px; padding-bottom:10px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(63,26,38); overflow:hidden;  }
+.footer { position:relative; width:860px; margin:0 auto; bottom: 0px; padding-bottom:10px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(75,0,30); overflow:hidden;  }
 .footer dl { padding:8px 40px; display:block; width:auto; text-align: left; margin:0; z-index:1; }
-.footer dl:first-child { background:#cc2358; z-index:2;}
-.footer dl { color: white; background:#880f35; }
+.footer dl:first-child { background:rgb(235,10,90); z-index:2;}
+.footer dl { color: white; background:rgb(145,5,55); }
 .footer dt,
-.footer dd { margin-bottom: 0; margin-right: 15px; margin-top: 0; display:inline-block; padding:0; }
+.footer dd { margin:0; margin-bottom: 0; margin-right: 15px; margin-top: 0; display:inline-block; padding:0; }
 .footer dt { opacity:0.4; margin-right:10px; }
 .footer dd { }
 .footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
 .footer a:hover { color:white; }
 
 .map { margin:0px 0 10px 0; }
-.map > div { border:1px solid rgb(222,222,210); }
+.map > div { border:4px solid white; }
+
+.message {  -webkit-border-radius:10px; margin-top:-10px; margin-bottom:20px; padding:10px; color:rgb(255,240,235); background-color:rgb(235,105,10); }
+.message b,
+.message strong {  color:rgb(75,30,0); }
+
 .flash-notice,
-.flash-error { -webkit-border-radius:10px; margin-top:-10px; margin-bottom:20px; padding:10px; }
-.flash-notice { color: #336600; background-color: #ccff99; }
-.flash-error { color: #660000; background-color: #ffcccc; }
+.flash-error { width:auto; -webkit-border-radius:10px; margin-top:-10px; margin-bottom:20px; padding:10px; }
+.flash-notice {  color:rgb(5,115,60); background-color:rgb(235,255,240); }
+.flash-error {  color:rgb(185,5,70); background-color:rgb(255,165,200); }
 
 .base-error,
-.validation-error { color: #660000; background-color: #ffcccc; -webkit-border-radius:10px; padding:10px;  }
+.validation-error { color:rgb(185,5,70); background-color:rgb(255,165,200); -webkit-border-radius:10px; padding:10px;  }
+.base-error { margin-bottom:20px;}
+.validation-error { padding-top:10px; margin-top:0px; }
 
-.validation-error { padding-top:10px; margin-top:-10px; }
-
-.content .three-columns .column { width:240px; margin-left:25px; }
+.content .three-columns .column { width:240px; margin:0; margin-left:25px; }
 .content .column { display:inline-block; vertical-align:top; }
 .content .column:first-child { margin-left:0; }
 .column input[type=text],
 .column textarea { width:100%; }
 
 .gift-certificate .column input[type=text],
-.gift-certificate .column textarea { width:240px; }
+.gift-certificate .column textarea { width:100%; }
 .gift-certificate .column label { display:block;  }
 
 /*.gift-certificate .validation-error { padding-left:66px; padding-top:10px; margin-top:-42px; }*/
-.gift-certificate .column .validation-error input[type=text],
-.gift-certificate .column .validation-error textarea { width:215px; }
+.gift-certificate-card { position:relative; color:white; background:rgb(185,5,70); border-bottom:10px solid rgb(115,5,45); width:444px; -webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.2); padding:20px 30px 20px 30px; }
 
-.gift-certificate-card { -webkit-border-radius:10px; padding:20px; background:white; }
+.gift-certificate-to,
+.gift-certificate-from,
+.gift-certificate-value,
+.gift-certificate-personal-message { position:relative; font-family:monospace; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }
+.gift-certificate-names,
+.gift-certificate-value,
+.gift-certificate-personal-message { margin:40px 0; }
+.gift-certificate-value,
+.gift-certificate-personal-message { width:400px; }
+.gift-certificate-to b,
+.gift-certificate-from b,
+.gift-certificate-value b,
+.gift-certificate-personal-message b { position:absolute; left:10px; top:-25px; font-family:Georgia; font-weight:normal; letter-spacing:1px; color:white; }
+.gift-certificate-names .gift-certificate-to,
+.gift-certificate-names .gift-certificate-from { display:inline-block; width:170px; }
+.gift-certificate-value,
+.gift-certificate-names .gift-certificate-to,
+.gift-certificate-names .gift-certificate-from { min-height:20px; }
+.gift-certificate-personal-message { min-height:120px; }
+
+.gift-certificate-names .gift-certificate-from { margin-left:20px; }
+.gift-certificate-card .logo { top:auto; bottom:15px; }
+.gift-certificate-card .header { margin:-30px;  }
+
+.gift-certificate-reciept { margin:0 0 0 80px;}
 
 .date-day-name,
 .date-day-number,
-.date-month-name {}
+.date-month-name { }
 
 .time-number { font-weight:bold; }
 
 .course-started { font:italic 11px/14px verdana; }
+
+.gift-certificate-card a { color: white; }
+
+.gift-certificate-card h2 { color: white; margin:80px 0 50px; font-size:26px; }
+.gift-certificate-footer { color:white; font:normal 12px/16px verdana; }
+.gift-certificate-footer a,
+.gift-certificate-footer b { color:rgb(255,110,25); }
+
+a.button { background:rgb(145,5,55); color:rgb(255,235,245); padding:5px 20px; -webkit-border-radius:5px; -webkit-box-shadow:3px 3px 5px rgba(0,0,0,0.2); }
+a.button:hover { color:rgb(75,30,0); }
+a.button-default { background:rgb(235,105,10); }
+a.button-default:hover { color:rgb(75,30,0); }
+.button-bar { text-align:right; padding:20px 0; margin:20px 0; border-top:1px solid #c8c8c8; }
+
+.reciept .date-day-name,
+.reciept .date-day-number,
+.reciept .date-month-name { font-weight:bold; }
+
 
