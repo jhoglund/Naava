@@ -31,7 +31,7 @@ class GiftCertificatesController < ApplicationController
         render :pdf => "file_name",
                :template => false,#{}"/show.pdf.erb", # OPTIONAL
                :layout => false,#{}"pdf.html", # OPTIONAL
-               :wkhtmltopdf => '/usr/local/bin/wkhtmltopdf' # OPTIONAL, path to binary
+               :wkhtmltopdf => Rails.env.production? ? 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf' : '/usr/local/bin/wkhtmltopdf' # OPTIONAL, path to binary
       end
     end
   end
