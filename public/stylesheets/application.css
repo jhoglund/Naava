@@ -65,7 +65,7 @@ li a { color:rgb(255,200,165); }
 .content { }
 .header { position:relative; padding:75px 0px 50px; background:rgb(115,5,45); z-index:0; }
 .content { padding:30px 40px 30px 40px; width:780px;  }
-.content .sidebar { background:rgba(255,255,255,0.5); float:right; padding:40px; width:200px; margin:-31px -40px 20px 20px; }
+.content .sidebar { background:rgb(236,235,234); float:right; padding:40px; width:200px; margin:-31px -40px 20px 20px; }
 .dec { padding-left: 0px; padding-bottom: 30px; padding-right: 20px; padding-top: 10px; line-height: 34px; font:normal 20px/30px georgia; color: #330000; margin:0; }
 .logo { position:absolute; left:30px; top:20px; z-index:-1; }
 
@@ -98,7 +98,7 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .session-list td:first-letter { text-transform:capitalize; }
 .session-list thead td { font-size:16px;  }
 .session-list tbody tr td:first-child { padding-left:20px }
-.session-list tbody.gradient-back { background:rgba(255,255,255,0.5); }
+.session-list tbody.gradient-back { background:rgb(236,235,234); background:rgba(255,255,255,0.5); }
 .session-list a.read-more { color:rgb(50,50,50); padding:0 10px; }
 .session-list .date-day-number { font-weight:bold; color:rgb(235,10,90); font-size:18px; }
 .session-list .time-number { font-weight:bold; }
