@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
   
   def book
     @booking = @booker.bookings.build(:participant => Participant.new )
-    @coupon = Coupon.find_by_token(params[:gift_certificate_id])
+    @coupon = Coupon.find_by_token(params[:coupon_id])
     if request.get?
       if @coupon
         @booking.participant.name = @coupon.to_name
