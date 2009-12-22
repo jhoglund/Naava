@@ -11,8 +11,8 @@ development:
   <<: *DEFAULTS
 
 production:
-  host: www.naava.se
-  business: jonas_1259594659_biz@stixy.com
+  host: www.navayoga.se
+  business: jonas@stixy.com
   paypal_cert: <%=  File.join(RAILS_ROOT,'config','paypal','paypal_cert_prod') %>
   certid: 6X69897RW98U2
   notification_url: 'https://www.paypal.com/cgi-bin/webscr'
