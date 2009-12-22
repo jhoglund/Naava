@@ -37,7 +37,8 @@
 
 html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
 body { margin:0; font:normal 13px/18px BitstreamVeraSansRoman, georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
-.canvas { position:relative; width:860px; margin:0 auto; z-index:0; background:rgba(255,255,255,0.5); }
+.canvas { position:relative; width:860px; margin:0 auto; z-index:0; z-index:0;}
+.canvas-background { position:absolute; top:0; left:0; width:860px; height:100%; background:rgb(255,255,255); opacity:0.5; filter:alpha(opacity=50%); z-index:-1; }
 .canvas .vertical-spacer { width:1px; overflow:0; height:800px; float:left; margin-left:-1px;}
 .canvas .vertical-spacer-break { clear:both; }
 
