@@ -26,6 +26,7 @@
   		  </dl>
   		  <% if logged_in? %>
   		  <dl>
+          <dd><%= link_to "Bokningar", admin_bookings_path %></dd> |
           <dd><%= link_to "Klasser", admin_sessions_path %></dd> |
           <dd><%= link_to "Kurser", admin_courses_path %></dd> |
           <dd><%= link_to "Presentkort", admin_coupon_types_path %></dd> |
