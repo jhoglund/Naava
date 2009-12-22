@@ -1,3 +1,4 @@
+<% unless @session.nil? %>
 <div class="sidebar">
   <dl>
     <dd>Klassens startar klockan <%=l @session.starts_at, :format => :time %>, den <%=l @session.starts_at.to_date, :format => :long %></dd>
@@ -44,3 +45,4 @@
 
 
 <%#= link_to 'Hela vårens schema', sessions_path %>
+<% end %>

@@ -38,7 +38,7 @@ class GiftCertificatesController < ApplicationController
   
 
   def new
-    @gift_certificate = GiftCertificate.new(params[:gift_certificate])
+    @gift_certificate = GiftCertificate.new(:coupon_type_id => params[:coupon_type_id])
     @gift_certificate.coupon_type ||= GiftCertificateType.first
      
     respond_to do |format|

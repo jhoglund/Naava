@@ -10,12 +10,16 @@ class CoursesController < BookingsController
   end
 
   def show
-    @course = Course.find(params[:id])
-    @booking = Booking.new(:booker => @course)
+    begin
+      @course = Course.find(params[:id])
+      @booking = Booking.new(:booker => @course)
     
-    respond_to do |format|
-      format.html {  }# show.html.erb
-      format.xml  { render :xml => @course }
+      respond_to do |format|
+        format.html {  }# show.html.erb
+        format.xml  { render :xml => @course }
+      end
+    rescue
+      flash[:error] = "Kursen du efterfrågade finns inte"
     end
   end
   

@@ -14,11 +14,15 @@ class SessionsController < BookingsController
   end
 
   def show
-    @session = Session.find(params[:id])
+    begin
+      @session = Session.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @session }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @session }
+      end
+    rescue # => ActiveRecord::RECORD_NOT_FOUND
+      flash[:error] = "Klassen du efterfrågade finns inte"
     end
   end
   
