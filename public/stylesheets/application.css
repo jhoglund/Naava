@@ -125,7 +125,7 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .footer dl { color: white; background:rgb(145,5,55); }
 .footer dt,
 .footer dd { margin:0; margin-bottom: 0; margin-right: 15px; margin-top: 0; display:inline-block; padding:0; }
-.footer dt { opacity:0.4; margin-right:10px; }
+.footer dt { opacity:0.4; filter:alpha(opacity=40%); margin-right:10px; }
 .footer dd { }
 .footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
 .footer a:hover { color:white; }
