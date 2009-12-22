@@ -10,5 +10,5 @@ development:
   <<: *DEFAULTS
 
 production:
-  host: www.naava.se
+  host: www.navayoga.se
   <<: *DEFAULTS
