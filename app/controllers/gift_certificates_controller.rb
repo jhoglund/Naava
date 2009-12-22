@@ -12,13 +12,30 @@ class GiftCertificatesController < ApplicationController
   end
   
   def show
-    @coupon = Coupon.find_by_token(params[:id])
-
+    unless @coupon = Coupon.find_by_token(params[:id])
+      flash[:error] = "Vi kan inte hitta något presentkort med koden: <strong>#{params[:id]}</strong>"
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @coupon }
     end
   end
+  
+  def print
+    @coupon = Coupon.find_by_token(params[:id])
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.xml  { render :xml => @coupon }
+      format.pdf do
+        render :pdf => "file_name",
+               :template => false,#{}"/show.pdf.erb", # OPTIONAL
+               :layout => false,#{}"pdf.html", # OPTIONAL
+               :wkhtmltopdf => '/usr/local/bin/wkhtmltopdf' # OPTIONAL, path to binary
+      end
+    end
+  end
+  
 
   def new
     @gift_certificate = GiftCertificate.new(params[:gift_certificate])

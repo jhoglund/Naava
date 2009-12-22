@@ -3,3 +3,5 @@ def load_paypal_config
   paypal_conf.symbolize_keys
 end
 PaypalConfig = load_paypal_config
+Paypal::Notification.paypal_cert = File::read(PaypalConfig[:paypal_cert])
+Paypal::Notification.ipn_url = PaypalConfig[:notification_url]

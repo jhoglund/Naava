@@ -23,15 +23,17 @@
   		    <dd><%= link_to_unless_current 'Tider och priser', sessions_path %></dd> |
           <dd><%= link_to_unless_current "Kontakt och adress", location_path %></dd> |
           <dd><%= link_to_unless_current 'Om Ashtanga Yoga', about_ashtanga_yoga_path %></dd>
-          <% if logged_in? %>
-              <dd><%= link_to "Logout", user_session_path, :method => :delete %></dd>
-              <dd><%= link_to "Klasser", admin_sessions_path %></dd>
-              <dd><%= link_to "Kurser", admin_courses_path %></dd>
-              <dd><%= link_to "Presentkort", admin_coupon_types_path %></dd>
-              <dd><%= link_to "Presentkort (köpta)", admin_coupons_path %></dd>
-          <% end %>
-          
   		  </dl>
+  		  <% if logged_in? %>
+  		  <dl>
+          <dd><%= link_to "Klasser", admin_sessions_path %></dd> |
+          <dd><%= link_to "Kurser", admin_courses_path %></dd> |
+          <dd><%= link_to "Presentkort", admin_coupon_types_path %></dd> |
+          <dd><%= link_to "Presentkort (köpta)", admin_coupons_path %></dd> |
+          <dd><%= link_to "Logout", user_session_path, :method => :delete %></dd>
+        </dl>
+        <% end %>
+        
   		</div>
   	</div>
 	<% if yield :top %>

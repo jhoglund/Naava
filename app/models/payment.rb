@@ -3,7 +3,7 @@ class Payment < ActiveRecord::Base
   belongs_to :item, :polymorphic => true
   belongs_to :reciept, :polymorphic => true
   before_save :add_common_attributes
-  after_create :payment_reciept_after_save
+  #after_create :payment_reciept_after_save
   after_update :payment_reciept_after_save
   
   def paid?
@@ -42,13 +42,13 @@ class Payment < ActiveRecord::Base
   end
   
   def payment_after_recieved
-    if item.class.send :method_defined?, :after_payment_recieved
-      if payment_paid?
+    if payment_paid?
+      if item.class.send :method_defined?, :after_payment_recieved
         item.after_payment_recieved
-      end
-    else
-      if email
-        Notification.deliver_mail("Vi har motagit betalning för din bokning för #{name}", email, self, Notification.get_template(self, 'reciept'))
+      else
+        if email
+          Notification.deliver_mail("Vi har motagit betalning för din bokning för #{name}", email, self, Notification.get_template(self, 'reciept'))
+        end
       end
     end
   end

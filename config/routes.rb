@@ -12,13 +12,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   map.resources :instructors
-  map.resources :gift_certificates, :new => { :new => :post }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
+  map.resources :gift_certificates, :new => { :new => :post }, :member => { :print => [ :any ] }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
     coupon_types.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
       session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
     end
     coupon_types.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   end
-  map.resources :coupons, :new => { :new => :post }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
+  map.resources :coupons, :new => { :new => :post }, :collection => { :print => [ :any ], :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
     coupon_types.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
       session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
     end

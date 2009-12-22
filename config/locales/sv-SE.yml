@@ -249,8 +249,8 @@ sv-SE:
     formats: 
       default: "%a, %d %b %Y %H:%M:%S %z"
       long: '<span class="date-day-name">%Aen</span> den <span class="date-day-number">%d</span> <span class="date-month-name">%B</span>, <span class="date-year-number">%Y</span>  klockan <span class="time-number">%H:%M</span>'
-      short: "%d %b, klockan %H:%M"
-      day: "%Aen den %d %B"
+      short: '<span class="date-day-number">%d</span> <span class="date-day-name">%b</span>, klockan <span class="time-number">%H:%M</span>'
+      day: '<span class="date-day-name">%Aen</span> den <span class="date-day-number">%d</span> <span class="date-month-name">%B</span>'
       longtime_one_minute: '<span class="time-number">%M</span> minut'
       longtime_other_minutes: '<span class="time-number">%M</span> minuter'
       longtime_one_hour: '<span class="time-number">%H</span> timme'

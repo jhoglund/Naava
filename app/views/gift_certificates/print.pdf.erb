@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" style="background:white; width:14cm; height:21cm">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <style>
+    .address-contact dl { display:block; margin:0; padding-top:5px; }
+    .address-contact dt { font-weight:bold; display:inline-block; margin-right:5px; }
+    .address-contact dd { display:inline-block; margin:0 0 0px 0; }
+    
+    .gift-certificate-card { position:relative; color:white; background:rgb(185,5,70); border-bottom:10px solid rgb(115,5,45); width:444px; padding:20px 30px 20px 30px; }
+
+    .gift-certificate-to,
+    .gift-certificate-from,
+    .gift-certificate-value,
+    .gift-certificate-personal-message { position:relative; font-family:courier, monospace; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }
+    .gift-certificate-names,
+    .gift-certificate-value,
+    .gift-certificate-personal-message { margin:40px 0; }
+    .gift-certificate-value,
+    .gift-certificate-personal-message { width:400px; }
+    .gift-certificate-to b,
+    .gift-certificate-from b,
+    .gift-certificate-value b,
+    .gift-certificate-personal-message b { position:absolute; left:10px; top:-25px; font-family:Georgia; font-weight:normal; letter-spacing:1px; color:white; }
+    .gift-certificate-names .gift-certificate-to,
+    .gift-certificate-names .gift-certificate-from { display:inline-block; width:170px; }
+    .gift-certificate-value,
+    .gift-certificate-names .gift-certificate-to,
+    .gift-certificate-names .gift-certificate-from { min-height:20px; }
+    .gift-certificate-personal-message { min-height:120px; }
+
+    .gift-certificate-names .gift-certificate-from { margin-left:20px; }
+    .gift-certificate-card .header { margin:-30px; padding:128px 0 0; background: no-repeat 30px 80px rgb(115,5,45) url('data:image/png;base64,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%3D'); }
+    
+    .gift-certificate-card a { color: white; }
+
+    .gift-certificate-card h2 { color: white; margin:80px 0 50px; font-size:26px; }
+    .gift-certificate-footer { color:white; font:normal 12px/16px verdana; }
+    .gift-certificate-footer a,
+    .gift-certificate-footer b { color:rgb(255,150,95); }
+    </style>
+</head>
+<body style="background:white;">
+		<%= render :partial => 'gift_certificate.html.erb', :object => @coupon %>
+</body>
+</html>

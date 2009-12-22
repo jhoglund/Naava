@@ -1,6 +1,6 @@
-Din reservation för klassen <%= @object.booker.name %>, <%= l(@object.booker.starts_at, :format => :short) %>, har blivit borttagen.
+Din reservation för klassen <%= strip_tags("#{l @object.booker.starts_at, :format => :day } klockan #{l @object.booker.starts_at, :format => :time} till #{l @object.booker.ends_at, :format => :time}") %> har blivit borttagen.
 
-<%- if @object.payment -%>
+<%- if @object.paid? -%>
 <%- if @object.payment.type? :gift_certificate -%>
 Ditt presentkort kommer att krediteras med <%= number_to_currency(@object.payment.value) %>    
 <%- else -%>

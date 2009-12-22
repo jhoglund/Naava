@@ -1,7 +1,5 @@
 <div class="gift-certificate-card">
-  <div class="header">
-	  <%= image_tag "logo_444_white.png", :class => "logo" %>
-	</div>
+  <div class="header">&nbsp;</div>
   <h2>Presentkort</h2> 
   
   <div class="gift-certificate-names">
@@ -24,12 +22,16 @@
     <b>Personligt medelande</b> <%= simple_format(gift_certificate.message) %>
   </div>
   <%- end -%>
-  <p class="gift-certificate-footer">
+  <div class="gift-certificate-footer">
     När du bokar en kurs eller klass så anger du koden
     <b><%=gift_certificate.to_param %></b><br>
     Det går även bra att utnyttja
     presentkortet direkt genom att besöka
     <%= link_to gift_certificate_url(gift_certificate), gift_certificate_url(gift_certificate), :target => 'gift_certificate' %>
-  </p>
+    <p>
+    
+    <%= render :partial => '/welcome/address_contact.html.erb' %>
+    
+  </div>
 </div>
 

@@ -46,7 +46,7 @@ a:visited { color:rgb(25,140,255); text-decoration: none; }
 a:link:hover { color:#880f35; text-decoration: none; }
 a.read-more { }
 p { margin:12px 0; }
-h1, h2, h3, h4 { margin-top:2em; margin-bottom: 12px; font-family: "Lucida Grande", Verdana, Arial, sans-serif; color:rgb(235,10,90); font-style: normal; font-weight: normal; }
+h1, h2, h3, h4 { margin-top:2em; margin-bottom: 12px; line-height:1.3em; font-family: BitstreamVeraSansRoman, "Lucida Grande", Verdana, Arial, sans-serif; color:rgb(235,10,90); font-style: normal; font-weight: normal; }
 h1 + p, h2 + p, h3 + p, h4 + p,
 h1 + ul, h2 + ul, h3 + ul, h4 + ul { margin-top: 8px; }
 hr { margin:18px 0; border-bottom-color: #c8c8c8; border-bottom-width: 1px; border-left-style: none; border-bottom-style: solid; border-right-style: none; border-top-style: none; }
@@ -70,15 +70,17 @@ li a { color:rgb(255,200,165); }
 .logo { position:absolute; left:30px; top:20px; z-index:-1; }
 
 .global-navigation { position:absolute; width:840px; bottom:0; margin:0 auto; text-align:right; color:rgb(255,235,245);}
+.global-navigation dl { margin:0 0 5px; padding:0; }
 .global-navigation dt { margin:0; padding:0; }
 .global-navigation dd { display:inline-block; margin:0 10px; }
-.global-navigation dd a { color:rgb(255,25,115); }
+.global-navigation dd a { color:rgb(255,165,200); }
+.global-navigation dd a:hover { color:rgb(255,25,115); }
 
-.main-promotion { border-bottom:4px solid rgb(115,5,45); padding:40px 300px 40px 40px; letter-spacing:1px; font:normal 16px/24px BitstreamVeraSerifRoman, georgia; background:url('/images/gift_certificate3.png') no-repeat 350px -60px rgb(235,1,90); color:white!important; }
-.main-promotion h1 { margin:15px 0 10px; font:normal 40px/40px BitstreamVeraSerifRoman, georgia; color:rgb(115,5,45); }
+.main-promotion { border-bottom:4px solid rgb(115,5,45); border-top:1px solid rgb(255,165,200); min-height:243px; padding:40px 300px 40px 40px; letter-spacing:1px; font:normal 16px/24px BitstreamVeraSerifRoman, georgia; background:url('/images/gift_certificate5.png') no-repeat 0px 0px rgb(235,1,90); color:white!important; }
+.main-promotion h1 { margin:15px 0 10px; font:normal 40px/40px BitstreamVeraSerifRoman, georgia; color:rgb(255,165,200); }
 .main-promotion ul { margin:10px 0 0; padding:0; }
-.main-promotion li { margin:0 0 0 20px; font-size:14px; color:rgb(255,200,165); }
-.main-promotion li a { color:rgb(255,200,165); }
+.main-promotion li { margin:0 0 0 0px; font-size:14px; color:rgb(255,25,115); list-style:none; }
+.main-promotion li a { color:rgb(255,165,200); }
 
 
 table { border-collapse:collapse; }
@@ -111,9 +113,9 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .promotion-box h3 { color:rgb(235,10,90);}
 /*.promotion-box a { font-size:16px; color:#cc2358; }
 */
-.promotion-boxes dl { display:block; margin:0; padding-top:5px; }
-.promotion-boxes dt { font-weight:bold; display:inline-block; margin-right:5px; }
-.promotion-boxes dd { display:inline-block; margin:0 0 0px 0; }
+.address-contact dl { display:block; margin:0; padding-top:5px; }
+.address-contact dt { font-weight:bold; display:inline-block; margin-right:5px; }
+.address-contact dd { display:inline-block; margin:0 0 0px 0; }
 
 
 .footer { position:relative; width:860px; margin:0 auto; bottom: 0px; padding-bottom:10px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(75,0,30); overflow:hidden;  }
@@ -178,10 +180,13 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .gift-certificate-personal-message { min-height:120px; }
 
 .gift-certificate-names .gift-certificate-from { margin-left:20px; }
-.gift-certificate-card .logo { top:auto; bottom:15px; }
-.gift-certificate-card .header { margin:-30px;  }
+.gift-certificate-card .header { margin:-30px; background:rgb(115,5,45) url('/images/logo_444_white.png') no-repeat 30px 80px; }
 
-.gift-certificate-reciept { margin:0 0 0 80px;}
+.address-contact dl { display:block; margin:0; padding-top:0px; }
+.address-contact dt { font-weight:bold; display:inline-block; margin-right:5px; }
+.address-contact dd { display:inline-block; margin:0 0 0px 0; }
+
+.gift-certificate-canvas { margin:0 0 0 80px; }
 
 .date-day-name,
 .date-day-number,
@@ -196,10 +201,10 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .gift-certificate-card h2 { color: white; margin:80px 0 50px; font-size:26px; }
 .gift-certificate-footer { color:white; font:normal 12px/16px verdana; }
 .gift-certificate-footer a,
-.gift-certificate-footer b { color:rgb(255,110,25); }
+.gift-certificate-footer b { color:rgb(255,150,95); }
 
 a.button { background:rgb(145,5,55); color:rgb(255,235,245); padding:5px 20px; -webkit-border-radius:5px; -webkit-box-shadow:3px 3px 5px rgba(0,0,0,0.2); }
-a.button:hover { color:rgb(75,30,0); }
+a.button:hover { color:rgb(255,165,200); }
 a.button-default { background:rgb(235,105,10); }
 a.button-default:hover { color:rgb(75,30,0); }
 .button-bar { text-align:right; padding:20px 0; margin:20px 0; border-top:1px solid #c8c8c8; }

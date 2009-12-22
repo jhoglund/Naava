@@ -1,5 +1,11 @@
 <% unless @coupon.nil? %>
-<%= render :partial => '/gift_certificates/gift_certificate', :object => @coupon %>
+  <div class="gift-certificate-canvas">
+    <%= render :partial => '/gift_certificates/gift_certificate', :object => @coupon %>
+    <p>
+    <%= link_to 'Skriv ut',  print_gift_certificate_path(:format => 'pdf')%>
+    </p>
+  </div>
+<hr>
 <p>
 <%- if @coupon.no_funds?  -%>
 <p>
@@ -12,17 +18,13 @@
 <%- end -%>
 
 <p>
+<h2>Använd ditt presentkort</h2>
 <% if @coupon.original_funds ==  Course.price(8) %>
   <% if @coupon.available_funds == Course.price(8) %>
-  Utnyttja ditt presentkort till någon av våra kommande kurser:
   <%= render :partial => '/courses/course', :collection => Course.active.all, :locals => { :coupon_type => @coupon } %>
   <% elsif @coupon.available_funds > 120 %>
-  Utnyttja resterande pengar på presentkortet till någon av våra klasser:
   <% end %>
 <% elsif @coupon.available_funds > AppConfig[:dropin] %>
-  Utnyttja ditt presentkort till någon av våra klasser:
   <%= render :partial => '/sessions/sessions', :object => Session.current.all, :locals => { :booking_proc => proc{|session| return book_coupon_session_path(@coupon, session) } } %>
 <% end %>
-<% else %>
-  Vi kan inte hitta något presentkort med koden: <strong><%= params[:id] %></strong>
 <% end %>

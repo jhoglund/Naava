@@ -1,42 +1,62 @@
 
-<h2>Bokning för drop-in</h2>
-<p>
-  För klass <%= @booking.booker.name %>, <%= l(@booking.booker.starts_at, :format => :short) %>
-</p>
 
-<%- unless @booking.payment -%>
-<p>
-  Kostnad: <%= number_to_currency(@booking.booker.price) %>    
-</p>
 
-  <p>
-  Du kan betala för klassen snabbt och säkert via <%= link_to_function 'PayPal', 'forms[0].submit()' %>. Har du inget PayPal konto
-  kan enkelt betala med ett kreditkort.
-  </p>  
-  <%= render :partial => "/paypal/button", :locals => { 
-    :item_id => @booking.payment.token, 
-    :notify_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_ipn'), 
-    :return_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_success', :id => @booking.payment.token),
-    :cancel_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_cancel', :id => @booking.payment.token),
-    :ammount => @booking.booker.price, 
-    :item_name => "Anmälan för klass #{ @booking.booker.name } som börjar #{ l(@booking.booker.starts_at, :format => :day) }" 
-  }   %>  
-  <p>
-  Det går även bra att betala till vårt bankgiro 5091-8051. Märk inbetalningen "<%= @booking.booker.name %> (ref.nr <%= @booking.id %>)"
+
+<div class="sidebar">
+  <%= render :partial => '/sessions/house_rules' %>
+</div>
+
+<div class="reciept">
+  
+  <h2>Vi har reserverat en plats åt <strong><%= @payment.item.participant.name %></strong>,<br> 
+  <%=l @payment.item.booker.starts_at, :format => :day %>
+  klockan <%=l @payment.item.booker.starts_at, :format => :time %> till
+  <%=l @payment.item.booker.ends_at, :format => :time %></h2>
+  
+  <p class="button-bar" style="width:520px">
+    <%= link_to t('labels.cancel_booking'), @payment.item, :confirm => t('messages.destroy_confirmation'), :method => :delete, :class => 'button' %>
   </p>
-  <%- else -%>
-    <% if @booking.payment.type? :paypal_reciept  %>
+  <%- if !@payment.item.paid? -%>
+    <div class="message" style="width:500px">
+      Klassen kostar <strong><%= number_to_currency(@payment.item.booker.price) %></strong><br>
+      Välj ett av nedanstående tre alternativ för att betala.    
+    </div>
     <p>
-     Klassavgiften är betald och ditt PayPal referencenummer för din betalning är <%= @booking.payment.transaction_id %>
+      <h3>Betala med presentkort</h3>
+      Om du har ett presentkort så kan du utnyttja det för att betala för klassen genom att skriva in presentkortets kod i fältet nedan.<br>
+      <% form_for @payment.item.payment do |f| %>
+        <p>Kod
+        <%= text_field_tag :coupon_id, params[:coupon_id], :size => 8 %></p>
+        <%= f.submit 'Betala med presentkort' %>
+      <% end  %>  
     </p>
-    <%- elsif @booking.payment.type? :gift_certificate -%>
-      Betald med presentkort
-    <% end %>
-<%- end -%>
-
-<p>
-  Om du har några frågor så maila oss gärna på <%= mail_to AppConfig[:support_mail] %> eller ring oss på <%= AppConfig[:support_phone] %>.   
-</p>
-
-
-<%= link_to t('labels.cancel_booking'), @booking, :confirm => t('messages.destroy_confirmation'), :method => :delete %>
+    <p>
+      <h3>Betala med kreditkort</h3>
+      Du kan betala för våra klasser snabbt och säkert med kreditkort via <%= link_to_function 'PayPal', 'forms[0].submit()' %>.
+    </p>
+    <%= render :partial => "/paypal/button", :locals => { 
+      :item_id => @payment.token, 
+      :notify_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_ipn'), 
+      :return_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_success', :id => @payment.token),
+      :cancel_url => url_for(:host => PaypalConfig[:host], :controller => 'bookings', :action => 'paypal_cancel', :id => @payment.token),
+      :ammount => @payment.item.booker.price, 
+      :item_name => strip_tags("Avgift för klassen #{l @payment.item.booker.starts_at, :format => :day } klockan #{l @payment.item.booker.starts_at, :format => :time} till #{l @payment.item.booker.ends_at, :format => :time}")
+    }   %>  
+    <p>
+      <h3>Betala med bankgiro</h3>
+      Det går även bra att betala till vårt bankgiro <strong>5091-8051</strong>.<br> Märk inbetalningen <strong>"<%= @payment.item.booker.name %> (ref.nr <%= l @payment.item.booker.ends_at, :format => :short %>)"</strong>
+    </p>
+  <%- elsif @payment.type?(:paypal_reciept) -%>
+    <p>
+     Klassavgiften är betald och ditt PayPal referencenummer för din betalning är <strong><%= @payment.reciept.transaction_id %></strong>
+    </p>
+  <%- elsif @payment.type?(:gift_certificate) -%>
+      <p>
+       Klassavgiften är betald med <%= link_to 'presentkort', gift_certificate_path(@payment.reciept) %>.
+      </p>
+  <%- end -%>
+  
+  <p>
+    Om du har några frågor så maila oss gärna på <strong><%= mail_to AppConfig[:support_mail] %></strong> eller ring oss på <strong><%= AppConfig[:support_phone] %></strong>.   
+  </p>
+</div>

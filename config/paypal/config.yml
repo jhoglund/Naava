@@ -1,14 +1,19 @@
 DEFAULTS: &DEFAULTS
   key: <%=  File.join(RAILS_ROOT,'config','paypal','nava_key.pem') %>
   cert: <%= File.join(RAILS_ROOT,'config','paypal','nava_cert.pem') %>
-  certid: YZUA2ZBT7MB96
 
 development:
   host: web1.tunnlr.com:10236
   business: jonas_1259594659_biz@stixy.com
+  paypal_cert: <%=  File.join(RAILS_ROOT,'config','paypal','paypal_cert_dev') %>
+  certid: YZUA2ZBT7MB96
+  notification_url: 'https://www.sandbox.paypal.com/cgi-bin/webscr'
   <<: *DEFAULTS
 
 production:
   host: www.naava.se
   business: jonas_1259594659_biz@stixy.com
+  paypal_cert: <%=  File.join(RAILS_ROOT,'config','paypal','paypal_cert_prod') %>
+  certid: 6X69897RW98U2
+  notification_url: 'https://www.paypal.com/cgi-bin/webscr'
   <<: *DEFAULTS

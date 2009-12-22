@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       format.html { 
         if @booking
+          @payment = @booking.payment
           if params[:as_email]
             @object = @booking
             @object.payment.reciept = PaypalReciept.new

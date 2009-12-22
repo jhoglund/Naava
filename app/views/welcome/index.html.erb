@@ -26,8 +26,9 @@
 <% content_for :top do %>
 <div class="main-promotion">
   <h1>Skänk yoga i julklapp</h1>
-  Överaska någon i jul med ett presentkort till någon av våra kurser eller klasser.
-  Om du vill kan du skriva ut presentkortet direkt på din skrivare.<br>
+  Överaska någon i jul med ett presentkort till<br> någon
+  av våra kurser eller klasser.
+  Om du<br> vill kan du skriva ut presentkortet direkt<br> på din skrivare.
   Välj ett av våra <%= @gift_certificate_types.size %> alternativ. 
   <ul>
     <% @gift_certificate_types.each do |gift_certificate| %>
@@ -89,19 +90,7 @@ så att alla kan delta.</p>-->
     <div class="map">
       <div id="map_canvas" style="width:100%; height:200px"></div>
     </div>
-    <dl>
-      <dt>Address</dt>
-      <dd>Södra Fogdelyckegatan 28, 37436 Karlshamn</dd>
-    </dl>
-    <dl>
-      <dt>Telefon</dt>
-      <dd>+46-709-961600</dd>
-    </dl>
-    <dl>
-      <dt>E-mail</dt>
-      <dd><%= mail_to "jonas@navayoga.se" %></dd>
-    </dl>
-    
+    <%= render :partial => 'address_contact' %>
   </div>
 </div>
 

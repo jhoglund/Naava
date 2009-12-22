@@ -1,8 +1,9 @@
-<div class="gift-certificate-reciept">
+<div class="gift-certificate-canvas">
 <%= render :partial => '/gift_certificates/gift_certificate', :object => @payment.item %>
 
 <p>
-  <%#= link_to_function 'Skriv ut',  %>
+<%= link_to 'Skriv ut',  print_gift_certificate_path(:id => @payment.item.to_param, :format => 'pdf')%>
+</p>
 </div>
 <%- unless @payment.item.paid? -%>
   <p>

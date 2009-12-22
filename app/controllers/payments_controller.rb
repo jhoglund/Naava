@@ -1,9 +1,14 @@
 class PaymentsController < ApplicationController
   def show
     @payment = Payment.find_by_token(params[:id])
-    table_name =  @payment.item.class == Coupon ?
-                  @payment.item.coupon_type.class.name.tableize :
-                  @payment.item.class.name.tableize
+    table_name =  case @payment.item.class.name
+                  when 'Coupon'
+                    @payment.item.coupon_type.class.name.tableize
+                  when 'Booking'
+                    @payment.item.booker.class.name.tableize
+                  else
+                    @payment.item.class.name.tableize
+                  end
 
     respond_to do |format|
       format.html { render :template => File.join(RAILS_ROOT,'app','views', table_name,"reciept.html.erb") }
