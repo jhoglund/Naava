@@ -3,7 +3,7 @@
   <dl>
     <dd>Klassens startar klockan <%=l @session.starts_at, :format => :time %>, den <%=l @session.starts_at.to_date, :format => :long %>.</dd>
     <dd>Längd är totalt <%= reformat_time(@session.duration) %>.</dd>
-    <dd>Klassen leds av<br> <%= link_to @session.course.instructor.name, @session.course.instructor %>.</dd>
+    <dd>Klassen leds av<br> <strong><%= @session.course.instructor.name %></strong>.</dd>
   </dl>
 </div>
 
