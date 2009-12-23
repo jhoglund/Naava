@@ -32,8 +32,9 @@ ActionController::Routing::Routes.draw do |map|
 	  admin.resources :bookings
 	  admin.resources :instructors
     admin.resources :users
-	  admin.resources :coupons
-    admin.resources :coupon_types
+	  admin.resources :gift_certificates
+    #admin.resources :coupon_types
+    admin.resources :gift_certificate_types
     admin.resources :payments
     admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]

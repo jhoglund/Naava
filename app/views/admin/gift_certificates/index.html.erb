@@ -1,0 +1,34 @@
+<h1>Listing coupons</h1>
+
+<table>
+  <tr>
+    <th>To name</th>
+    <th>To email</th>
+    <th>To phone</th>
+    <th>From name</th>
+    <th>From email</th>
+    <th>From phone</th>
+    <th>Message</th>
+    <th>Coupon type</th>
+  </tr>
+
+<% @gift_certificate.each do |gift_certificate| %>
+  <tr>
+    <td><%=h gift_certificate.to_name %></td>
+    <td><%=h gift_certificate.to_email %></td>
+    <td><%=h gift_certificate.to_phone %></td>
+    <td><%=h gift_certificate.from_name %></td>
+    <td><%=h gift_certificate.from_email %></td>
+    <td><%=h gift_certificate.from_phone %></td>
+    <td><%=truncate gift_certificate.message %></td>
+    <td><%=h gift_certificate.coupon_type.name %></td>
+    <td><%= link_to 'Show', admin_gift_certificate_path(gift_certificate) %></td>
+    <td><%= link_to 'Edit', edit_admin_gift_certificate_path(gift_certificate) %></td>
+    <td><%#= link_to 'Destroy', user_admin_gift_certificate_path(gift_certificate), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nytt presentkort', new_admin_gift_certificate_path %>

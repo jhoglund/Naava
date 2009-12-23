@@ -1,0 +1,28 @@
+<h1>Listing presentkort</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Value</th>
+    <th>Valid from</th>
+    <th>Valid to</th>
+  </tr>
+
+<% @gift_certificate_type.each do |gift_certificate_type| %>
+  <tr>
+    <td><%=h gift_certificate_type.name %></td>
+    <td><%=h gift_certificate_type.description %></td>
+    <td><%=h gift_certificate_type.value %></td>
+    <td><%=h gift_certificate_type.valid_from %></td>
+    <td><%=h gift_certificate_type.valid_to %></td>
+    <td><%= link_to 'Show', admin_gift_certificate_type_path(gift_certificate_type) %></td>
+    <td><%= link_to 'Edit', edit_admin_gift_certificate_type_path(gift_certificate_type) %></td>
+    <td><%= link_to 'Destroy', admin_gift_certificate_type_path(gift_certificate_type), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nytt presentkort', new_admin_gift_certificate_type_path %>
