@@ -2,8 +2,6 @@
 <%- session.each do |sess| -%>
   <tr>
     <td>
-      <!-- <div><%= link_to "#{sess.starts_at.strftime("%b")} #{ sess.starts_at.strftime("%d").to_i}, #{l(sess.starts_at, :format => :time)} -  #{l(sess.ends_at, :format => :time)}", sess %></div>
-      <%= truncate(sess.course.description, truncate_size(sess.course.description, 80)) %><br> -->
       <div><%= "#{ l(sess.starts_at.to_date, :format => :long_day) },<br> klockan #{l(sess.starts_at, :format => :time)} -  #{l(sess.ends_at, :format => :time)}" %></div>
     
     </td>
