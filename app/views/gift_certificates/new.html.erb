@@ -1,4 +1,4 @@
-<h2>Presentkort för <%= @gift_certificate.coupon_type.name %> (<%= number_to_currency(@gift_certificate.coupon_type.value) %>)</h2>
+<h2>Presentkort för <%= @gift_certificate.coupon_type.name.downcase %> (<%= number_to_currency(@gift_certificate.coupon_type.value) %>)</h2>
 <p><%= @gift_certificate.coupon_type.description %></p>
 <% form_for(@gift_certificate) do |f| %>
   <%= base_errors_for(@gift_certificate) %>
