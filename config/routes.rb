@@ -40,6 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   	  course.resources :bookings
       course.resources :participants
     end
+    admin.sitemap 'sitemap', :controller => 'sitemap'
   end
   
   map.about_ashtanga_yoga '/about_ashtanga_yoga', :controller => 'welcome', :action => 'about_ashtanga_yoga'

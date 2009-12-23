@@ -44,13 +44,13 @@ sv-SE:
       coupon:
         to_phone: "Telefon"
         to_name: "Namn"
-        to_email: "Email"
+        to_email: "E-mail"
         to_address: "Adress"
         from_phone: "Telefon"
         from_name: "Namn"
-        from_email: "Email"
+        from_email: "E-mail"
         from_address: "Adress"
-        message: "Medelande"
+        message: "Meddelande"
       
       
   date: 

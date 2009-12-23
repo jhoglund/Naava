@@ -1,8 +1,8 @@
-<h2>Anmälan till klassen den <%= l(@booker.starts_at, :format => :long) %></h2>
+<h2>Anmälan till klassen  <%= l(@booker.starts_at, :format => :long) %></h2>
 
 
 <p>
-  Passets är <%= reformat_time(@booker.duration) %> långt och drop-in priset är <%=  number_to_currency(@booker.price) %>.
+  Passet är <%= reformat_time(@booker.duration) %> långt och drop-in priset är <%=  number_to_currency(@booker.price) %>.
 </p>
 <%-
   path_to_booking = !params[:coupon_id].blank? ? book_coupon_session_path : book_session_path

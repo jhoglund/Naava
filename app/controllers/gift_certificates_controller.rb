@@ -12,12 +12,14 @@ class GiftCertificatesController < ApplicationController
   end
   
   def show
-    unless @coupon = Coupon.find_by_token(params[:id])
+    begin
+      @coupon = Coupon.find(:conditions => { :token =>params[:id] })
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @coupon }
+      end
+    rescue ActiveRecord::RecordNotFound
       flash[:error] = "Vi kan inte hitta något presentkort med koden: <strong>#{params[:id]}</strong>"
-    end
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @coupon }
     end
   end
   
@@ -28,9 +30,9 @@ class GiftCertificatesController < ApplicationController
       format.html { render :layout => false }
       format.xml  { render :xml => @coupon }
       format.pdf do
-        render :pdf => "file_name",
-               :template => false,#{}"/show.pdf.erb", # OPTIONAL
-               :layout => false,#{}"pdf.html", # OPTIONAL
+        render :pdf => "presentkort",
+               :template => false,
+               :layout => false,
                :wkhtmltopdf => Rails.env.production? ? 'xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf' : '/usr/local/bin/wkhtmltopdf' # OPTIONAL, path to binary
       end
     end

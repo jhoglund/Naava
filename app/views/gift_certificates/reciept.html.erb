@@ -10,7 +10,7 @@
     Att betala: <%= number_to_currency(@payment.item.coupon_type.value) %>    
   </p>
   <p>
-  Du kan betala för våra presentkort snabbt och säkert via <%= link_to_function 'PayPal', 'forms[0].submit()' %>. Har du inget PayPal konto
+  Du kan betala våra presentkort snabbt och säkert via <%= link_to_function 'PayPal', 'forms[0].submit()' %>. Har du inget PayPal konto
   kan enkelt betala med ett kreditkort.
   </p>
   <%= render :partial => "/paypal/button", :locals => { 

@@ -17,8 +17,8 @@ klockan <strong><%=l @booker.next_session.starts_at, :format => :time %></strong
 </p>
 <% if @booker.started? %>
 <p>
-  Denna kursen har redan börjat och vi har hittills hunnit med <%= @booker.sessions.expired.count %> klasser. 
-  Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(@booker.price) %> vilket
+  Denna kurs har redan börjat och vi har hittills hunnit med <%= @booker.sessions.expired.count %> klasser. 
+  Du får ett rabatterat pris vid köp av kursen och betalar totalt <%= number_to_currency(@booker.price) %> vilket
   är <%=  number_to_currency(@booker.price_per_session) %>  (<%= @booker.discount %>%)  per återstående klass.
 </p>
 <% end %>
