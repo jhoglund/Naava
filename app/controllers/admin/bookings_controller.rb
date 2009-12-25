@@ -67,7 +67,7 @@ class Admin::BookingsController < Admin::AdminController
 
     respond_to do |format|
       flash[:notice] = 'Bokningen är borttagen.'
-      format.html { redirect_to(polymorphic_url(@booking.booker)) }
+      format.html { redirect_to(admin_bookings_url) }
       format.xml  { head :ok }
     end
   end
