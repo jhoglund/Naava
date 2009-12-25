@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   def index
     @current_courses = Course.current.find(:all, :limit => 3)
     @planned_courses = Course.planned.all    
-    @sessions = Session.current.by_date.all(:limit => 3)
+    @sessions = Session.current.asc.all(:limit => 3)
     @gift_certificate_types = GiftCertificateType.all
     @gift_certificate = GiftCertificate.new(:coupon_type => GiftCertificateType.first)
   end

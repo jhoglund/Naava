@@ -2,9 +2,9 @@ class SessionsController < BookingsController
 
   def index
     if params[:week]
-      @sessions = Session.by_date.week(Date.parse(params[:week])).all
+      @sessions = Session.asc.week(Date.parse(params[:week])).all
     else
-      @sessions = Session.by_date.all
+      @sessions = Session.asc.all
     end
     @courses = Course.active.all.sort_by{|c| c.next_session.starts_at}
     respond_to do |format|

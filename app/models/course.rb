@@ -22,15 +22,15 @@ class Course < ActiveRecord::Base
   end
     
   def next_session
-    sessions.current.first
+    sessions.current.asc.first
   end
   
   def starts_at
-    sessions.first.starts_at if sessions.first
+    sessions.current.asc.first.starts_at if sessions.first
   end
   
   def ends_at
-    sessions.last.starts_at if sessions.last
+    sessions.current.asc.last.starts_at if sessions.last
   end
   
   def price
