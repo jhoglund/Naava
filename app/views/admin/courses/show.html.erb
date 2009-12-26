@@ -15,7 +15,7 @@
 
 
 <h3>Tillfällen</h3>  
-<% @course.sessions.each do |session| %>
+<% @course.sessions.asc.each do |session| %>
   <%= l(session.starts_at, :format => :long)%>  (<%= l(session.duration, :format => :time) %>) <br>
 <% end %>
 
