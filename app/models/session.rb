@@ -54,7 +54,8 @@ class Session < ActiveRecord::Base
   
   
   def duration
-    Time.at(-3600 + (duration_as_int * 3600)) 
+    offset = Time.new.gmt_offset
+    Time.at(-offset + (duration_as_int * offset)) 
   end
   
   def duration_hours
