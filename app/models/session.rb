@@ -52,7 +52,6 @@ class Session < ActiveRecord::Base
     starts_at.to_date
   end
   
-  
   def duration
     offset = Time.new.gmt_offset
     Time.at(-offset + (duration_as_int * offset)) 
@@ -67,13 +66,13 @@ class Session < ActiveRecord::Base
   end
   
   def save_duration
-    write_attribute(:ends_at, starts_at + ((@duration_hours.to_i * 3600) + (@duration_minutes.to_i * 60)))
+    write_attribute(:ends_at, starts_at + ((@duration_hours.to_i * Time.new.gmt_offset) + (@duration_minutes.to_i * 60)))
   end
   
   private
   
   def duration_as_int
-    (ends_at - starts_at).round.to_f / 3600
+    (ends_at - starts_at).round.to_f / Time.new.gmt_offset
   end
   
 end
