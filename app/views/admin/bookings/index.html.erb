@@ -7,7 +7,13 @@
     <td><%=h booking.participant.name %></td>
     <td><%=h booking.participant.email %></td>
     <td><%=h booking.participant.phone %></td>
-    <!-- <td><%=h booking.drop_in? %></td> -->
+    <td>
+      <%- if booking.booker.is_a?(Course) -%>
+      Kurs som startar: <%= l(booking.booker.starts_at, :format => :short) %>
+      <%- else -%>
+      Klass: <%= l(booking.booker.starts_at, :format => :short) %>
+      <%- end -%>
+    </td>
     <td><%= link_to 'Ta bort', admin_booking_path(booking), :method => :delete %></td>
   </tr>
 <% end %>

@@ -1,13 +1,27 @@
-<h1><%=h @session.course.name %></h1>
+<h1>Klass</h1>
 
 <p>
-  <b>Startar</b> <%=h @session.starts_at %>
+  <%= l(@session.starts_at, :format => :long) %>
 </p>
 
 <p>
-  <b>Slutar</b>
-  <%=h @session.ends_at %>
+  <b>Kursdeltagare</b><br>
+  <%- @session.course.bookings.each do |booking| -%>
+  <%= h(booking.participant.name) %>,
+  <%= mail_to(booking.participant.email) %>,
+  <%= h(booking.participant.phone) %><br>
+  <%- end -%>
 </p>
+
+<p>
+  <b>Drop-in</b><br>
+  <%- @session.bookings.each do |booking| -%>
+  <%= h(booking.participant.name) %>,
+  <%= mail_to(booking.participant.email) %>,
+  <%= h(booking.participant.phone) %><br>
+  <%- end -%>
+</p>
+
 
 
 
