@@ -1,6 +1,7 @@
 Vi har reserverat en plats åt <%= @object.participant.name %>, <%= strip_tags("#{l @object.booker.starts_at, :format => :day } klockan #{l @object.booker.starts_at, :format => :time} till #{l @object.booker.ends_at, :format => :time}") %>
 
-Du når din reservation på <%= booking_url(@object) %>.
+Du når din reservation på <%= booking_url(@object) %> där du enkelt kan betala med kreditkort. Det går även bra att betala till vårt bankgiro 5091-8051.
+Märk inbetalningen "<%= @object.booker.name %> (ref.nr <%= strip_tags(l(@object.booker.ends_at, :format => :short)) %>)"
 
 <%= strip_tags(render(:partial => '/sessions/house_rules')).gsub!(/^\s+(\S)/,'- \1') %>
 Om du har några frågor så maila oss gärna på <%= AppConfig[:support_mail] %> eller ring oss på <%= AppConfig[:support_phone] %>.   
