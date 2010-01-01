@@ -1,7 +1,6 @@
 Vi har mottagit din kursanmälan för <%=t("misc.day_names.#{@object.booker.next_session.starts_at.strftime("%A").downcase}", :count => 2) %> klockan <%=strip_tags(l(@object.booker.next_session.starts_at, :format => :time)) %> till <%=strip_tags(l(@object.booker.next_session.ends_at, :format => :time)) %>
 
-Du når din anmälan på <%= booking_url(@object) %> där du enkelt kan betala för kursen med kreditkort. Det går även bra att betala till vårt bankgiro 5091-8051.
-Märk inbetalningen "<%= @object.booker.name %> (ref.nr <%= strip_tags(l(@object.booker.ends_at, :format => :short)) %>)"
+Du når din anmälan på <%= booking_url(@object) %> där du enkelt kan betala för kursen med kreditkort. Det går även bra att betala till vårt bankgiro 5091-8051. Märk inbetalningen "Ref.nr <%= @object.payment.token %>"
 
 <%= strip_tags(render(:partial => '/sessions/house_rules')).gsub!(/^\s+(\S)/,'- \1') %>
 Om du har några frågor så maila oss gärna på <%= AppConfig[:support_mail] %> eller ring oss på <%= AppConfig[:support_phone] %>.   

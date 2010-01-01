@@ -44,7 +44,7 @@
     }   %>  
     <p>
       <h3>Betala med bankgiro</h3>
-      Det går även bra att betala till vårt bankgiro <strong>5091-8051</strong>.<br> Märk inbetalningen <strong>"<%= @payment.item.booker.name %> (ref.nr <%= l @payment.item.booker.ends_at, :format => :short %>)"</strong>
+      Det går även bra att betala till vårt bankgiro <strong>5091-8051</strong>.<br> Märk inbetalningen <strong>"Ref.nr <%= @payment.token %>"</strong>
     </p>
   <%- elsif @payment.type?(:paypal_reciept) -%>
     <p>
