@@ -1,4 +1,4 @@
-<h1>Listing instructors</h1>
+<h1>Instruktörer</h1>
 
 <table>
   <tr>
@@ -14,7 +14,7 @@
     <td><%=h instructor.name %></td>
     <td><%=h instructor.email %></td>
     <td><%=h instructor.phone %></td>
-    <td><%=h instructor.bio %></td>
+    <td><%= instructor.bio %></td>
     <td><%=h instructor.description %></td>
     <td><%= link_to 'Show', admin_instructor_path(instructor) %></td>
     <td><%= link_to 'Edit', edit_admin_instructor_path(instructor) %></td>

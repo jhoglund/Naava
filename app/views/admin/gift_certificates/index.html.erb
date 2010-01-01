@@ -24,7 +24,7 @@
     <td><%=h gift_certificate.coupon_type.name %></td>
     <td><%= link_to 'Show', admin_gift_certificate_path(gift_certificate) %></td>
     <td><%= link_to 'Edit', edit_admin_gift_certificate_path(gift_certificate) %></td>
-    <td><%#= link_to 'Destroy', user_admin_gift_certificate_path(gift_certificate), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', user_admin_gift_certificate_path(gift_certificate), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
