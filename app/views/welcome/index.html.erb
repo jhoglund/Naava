@@ -25,7 +25,21 @@
 
 <% content_for :top do %>
 <div class="main-promotion">
-  <h1>Ge yoga!</h1>
+  <!-- <h1>Välkommen till Nava Yoga</h1> -->
+  
+  <h1>Nu öppnar vi en ny yoga-studio<br> mitt i Karlshamn</h1>
+
+ 
+  <p> Alla kan yoga. Kom och prova på yoga för första gången, eller utvecklas vidare tillsammans med oss. 
+    
+  <p>Inga förkunskaper krävs eftersom det är en träningsform som utgår från dig som individ, dina behov och din vilja att utmana dig själv. Yoga utmanar dig att vara i nuet, att låta utveckling ta tid, att utgå från dig själv och inte jämföra dig med andra. Det är en träningsform som du kan utvecklas med, där du aldrig blir fullärd och aldrig för gammal.</p>
+    
+  <p>Vi börjar med tre tider i veckan, men kommer under våren att utöka vårt erbjudande baserat på era behov. Har du redan nu frågor, förslag på ytterligare tider, eller liknande, <%= mail_to  AppConfig[:support_mail], 'hör gärna av dig' %>.</p> 
+
+    
+</div>
+<!-- 
+<h1>Ge yoga!</h1>
   Överaska någon i jul med ett presentkort till<br> någon
   av våra kurser eller klasser.
   Om du<br> vill kan du <span style="color:rgb(255,150,95)">skriva ut presentkortet</span> direkt<br> på din skrivare.
@@ -35,9 +49,7 @@
     <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
     <% end %>
   </ul>
-    
-</div>
-<!-- <p class="dec">Ashtanga Yoga är en fysisk form av yoga som synkroniserar rörelse och andning. 
+<p class="dec">Ashtanga Yoga är en fysisk form av yoga som synkroniserar rörelse och andning. 
 Det är en yogaform som ger styrka, kroppskontroll, smidighet och ett lugnt och fokuserat sinne.
 Varje individ har alla olika förutsättningar, men alla kan yoga. Därför är våra klasser anpassade 
 så att alla kan delta.</p>-->
@@ -56,8 +68,20 @@ så att alla kan delta.</p>-->
     Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Vi utformar ett program efter era specifika behov. 
     Kontakta oss för priser.
     
-  </div>
-  <div class="promotion-box">
+  </div><div class="promotion-box">
+    <div class="promotion-box-line"></div>
+    <div>
+      <p class="promotion-dec">Yoga har gett mig <strong>stryka, balans, koncentrations-förmåga, lugn och energi</strong>. Jag började utbilda mig till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga, kunde yoga tillsammans, men också för att kunna föra vidare och lära ut denna träningsform. </p>
+
+    <p style="font:normal 12px/18px verdana">Välkommen
+      <%= image_tag Instructor.first.avatar.url(:thumb), :style => 'float:right;margin:0px -10px 10px 10px' %>
+    <br>
+    Jonas Höglund<br>
+    Yoga-instruktör Nava Yoga-studio</p>
+    
+    </div>
+  </div><div class="promotion-box">
+    <div class="promotion-box-line"></div>
     
     <!-- <h3>Ge bort yoga i julklapp</h3>
         Överaska någon i jul med ett presentkort till någon av våra kurser eller klasser. 

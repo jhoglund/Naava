@@ -1,42 +1,42 @@
-
+/*
 @font-face {
-	font-family: 'BitstreamVeraSansRoman';
-	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.eot');
-	src: local('Bitstream Vera Sans Roman'), local('BitstreamVeraSans-Roman'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.svg#BitstreamVeraSans-Roman') format('svg');
+  font-family: 'BitstreamVeraSansRoman';
+  src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.eot');
+  src: local('Bitstream Vera Sans Roman'), local('BitstreamVeraSans-Roman'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera.svg#BitstreamVeraSans-Roman') format('svg');
 }
 
 @font-face {
-	font-family: 'BitstreamVeraSansOblique';
-	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.eot');
-	src: local('Bitstream Vera Sans Oblique'), local('BitstreamVeraSans-Oblique'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.svg#BitstreamVeraSans-Oblique') format('svg');
+  font-family: 'BitstreamVeraSansOblique';
+  src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.eot');
+  src: local('Bitstream Vera Sans Oblique'), local('BitstreamVeraSans-Oblique'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Italic.svg#BitstreamVeraSans-Oblique') format('svg');
 }
 
 @font-face {
-	font-family: 'BitstreamVeraSansBold';
-	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.eot');
-	src: local('Bitstream Vera Sans Bold'), local('BitstreamVeraSans-Bold'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.svg#BitstreamVeraSans-Bold') format('svg');
+  font-family: 'BitstreamVeraSansBold';
+  src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.eot');
+  src: local('Bitstream Vera Sans Bold'), local('BitstreamVeraSans-Bold'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold.svg#BitstreamVeraSans-Bold') format('svg');
 }
 
 @font-face {
-	font-family: 'BitstreamVeraSansBoldOblique';
-	src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.eot');
-	src: local('Bitstream Vera Sans Bold Oblique'), local('BitstreamVeraSans-BoldOblique'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.svg#BitstreamVeraSans-BoldOblique') format('svg');
+  font-family: 'BitstreamVeraSansBoldOblique';
+  src: url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.eot');
+  src: local('Bitstream Vera Sans Bold Oblique'), local('BitstreamVeraSans-BoldOblique'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.woff') format('woff'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Sans-fontfacekit/Vera-Bold-Italic.svg#BitstreamVeraSans-BoldOblique') format('svg');
 }
 
 @font-face {
-	font-family: 'BitstreamVeraSerifRoman';
-	src: url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.eot');
-	src: local('Bitstream Vera Serif Roman'), local('BitstreamVeraSerif-Roman'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.woff') format('woff'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.svg#BitstreamVeraSerif-Roman') format('svg');
+  font-family: 'BitstreamVeraSerifRoman';
+  src: url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.eot');
+  src: local('Bitstream Vera Serif Roman'), local('BitstreamVeraSerif-Roman'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.woff') format('woff'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif.svg#BitstreamVeraSerif-Roman') format('svg');
 }
 
 @font-face {
-	font-family: 'BitstreamVeraSerifBold';
-	src: url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.eot');
-	src: local('Bitstream Vera Serif Bold'), local('BitstreamVeraSerif-Bold'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.woff') format('woff'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.svg#BitstreamVeraSerif-Bold') format('svg');
+  font-family: 'BitstreamVeraSerifBold';
+  src: url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.eot');
+  src: local('Bitstream Vera Serif Bold'), local('BitstreamVeraSerif-Bold'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.woff') format('woff'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.ttf') format('truetype'), url('/fonts/Bitstream-Vera-Serif-fontfacekit/VeraSerif-Bold.svg#BitstreamVeraSerif-Bold') format('svg');
 }
-
+*/
 html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
-body { margin:0; font:normal 13px/18px BitstreamVeraSansRoman, georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
+body { margin:0; font:normal 13px/18px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
 .canvas { position:relative; width:860px; margin:0 auto; z-index:0; z-index:0;}
 .canvas-background { position:absolute; top:0; left:0; width:860px; height:100%; background:rgb(255,255,255); opacity:0.5; filter:alpha(opacity=50%); z-index:-1; }
 .canvas .vertical-spacer { width:1px; overflow:0; height:800px; float:left; margin-left:-1px;}
@@ -47,7 +47,7 @@ a:visited { color:rgb(25,140,255); text-decoration: none; }
 a:link:hover { color:#880f35; text-decoration: none; }
 a.read-more { }
 p { margin:12px 0; }
-h1, h2, h3, h4 { margin-top:2em; margin-bottom: 12px; line-height:1.3em; font-family: BitstreamVeraSansRoman, "Lucida Grande", Verdana, Arial, sans-serif; color:rgb(235,10,90); font-style: normal; font-weight: normal; }
+h1, h2, h3, h4 { margin-top:2em; margin-bottom: 12px; line-height:1.3em; font-family: "Lucida Grande", Verdana, Arial, sans-serif; color:rgb(235,10,90); font-style: normal; font-weight: normal; }
 h1 + p, h2 + p, h3 + p, h4 + p,
 h1 + ul, h2 + ul, h3 + ul, h4 + ul { margin-top: 8px; }
 hr { margin:18px 0; border-bottom-color: #c8c8c8; border-bottom-width: 1px; border-left-style: none; border-bottom-style: solid; border-right-style: none; border-top-style: none; }
@@ -67,7 +67,6 @@ li a { color:rgb(255,200,165); }
 .header { position:relative; padding:75px 0px 50px; background:rgb(115,5,45); z-index:0; }
 .content { padding:30px 40px 30px 40px; width:780px;  }
 .content .sidebar { background:rgb(236,235,234); float:right; padding:40px; width:200px; margin:-31px -40px 20px 20px; }
-.dec { padding-left: 0px; padding-bottom: 30px; padding-right: 20px; padding-top: 10px; line-height: 34px; font:normal 20px/30px georgia; color: #330000; margin:0; }
 .logo { position:absolute; left:30px; top:20px; z-index:-1; }
 
 .global-navigation { position:absolute; width:840px; bottom:0; margin:0 auto; text-align:right; color:rgb(255,235,245);}
@@ -77,11 +76,12 @@ li a { color:rgb(255,200,165); }
 .global-navigation dd a { color:rgb(255,165,200); }
 .global-navigation dd a:hover { color:rgb(255,25,115); }
 
-.main-promotion { border-bottom:4px solid rgb(115,5,45); border-top:1px solid rgb(255,165,200); min-height:243px; padding:40px 300px 40px 40px; letter-spacing:1px; font:normal 16px/24px BitstreamVeraSerifRoman, georgia; background:url('/images/gift_certificate5.png') no-repeat 0px 0px rgb(235,1,90); color:white!important; }
-.main-promotion h1 { margin:15px 0 10px; font:normal 40px/40px BitstreamVeraSerifRoman, georgia; color:rgb(255,165,200); }
+.main-promotion { border-bottom:4px solid rgb(115,5,45); border-top:1px solid rgb(255,165,200); font:normal 16px/22px georgia; min-height:243px; padding:40px 40px 40px 40px; background:rgb(236,235,234); background:rgba(255,255,255,0.3); }
+.main-promotion h1 { margin:15px 0 10px; font:normal 40px/50px georgia;  }
 .main-promotion ul { margin:10px 0 0; padding:0; }
 .main-promotion li { margin:0 0 0 0px; font-size:14px; color:rgb(255,25,115); list-style:none; }
 .main-promotion li a { color:rgb(255,165,200); }
+.dec { line-height: 34px; font:normal 20px/30px georgia; color: #330000; margin:0; }
 
 
 table { border-collapse:collapse; }
@@ -106,12 +106,15 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 
 /* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
 
-.promotion-boxes { vertical-align:top; }
-.promotion-box { display:inline-block; vertical-align:top; padding:0px 0 0 25px; width:450px; }
-.promotion-boxes .promotion-box-left { width:280px; padding:20px 30px; background:rgb(255,255,255); margin:-30px 0 -30px -40px; }
+.promotion-boxes { position:relative; vertical-align:top; background:rgb(255,255,255); margin:-30px -40px -30px -40px; }
+.promotion-box { display:inline-block; vertical-align:top; padding:20px 30px; width:220px; height:100%; }
+.promotion-box-line { position:absolute; top:0; margin-left:-30px; border-left:1px solid #c8c8c8; height:100%; }
+.promotion-boxes .promotion-box-left { width:235px; border:none; }
 .promotion-box h2 { margin:5px 0 20px; }
 .promotion-box h2,
 .promotion-box h3 { color:rgb(235,10,90);}
+.promotion-dec { font:normal 16px/22px verdana }
+.promotion-dec strong { font-weight:normal; color:rgb(235,10,90); }
 /*.promotion-box a { font-size:16px; color:#cc2358; }
 */
 .address-contact dl { display:block; margin:0; padding-top:5px; }
