@@ -115,11 +115,17 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .promotion-box h3 { color:rgb(235,10,90);}
 .promotion-dec { font:normal 16px/22px verdana }
 .promotion-dec strong { font-weight:normal; color:rgb(235,10,90); }
+.promotion-box ul { margin:10px 0 0; padding:0; }
+.promotion-box li { margin:0 0 5px 0px; list-style:none; }
+.promotion-box li a {  }
+
 /*.promotion-box a { font-size:16px; color:#cc2358; }
 */
 .address-contact dl { display:block; margin:0; padding-top:5px; }
 .address-contact dt { font-weight:bold; display:inline-block; margin-right:5px; }
 .address-contact dd { display:inline-block; margin:0 0 0px 0; }
+
+.photo { border:1px solid white; padding:10px; margin:0 0 10px 10px; float:right; }
 
 
 .footer { position:relative; width:860px; margin:0 auto; bottom: 0px; padding-bottom:10px; font:normal 12px/12px verdana; color:rgb(235,235,235); background:rgb(75,0,30); overflow:hidden;  }

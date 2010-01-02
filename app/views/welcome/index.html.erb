@@ -40,7 +40,7 @@
 </div>
 <!-- 
 <h1>Ge yoga!</h1>
-  Överaska någon i jul med ett presentkort till<br> någon
+  Överaska någon med ett presentkort till<br> någon
   av våra kurser eller klasser.
   Om du<br> vill kan du <span style="color:rgb(255,150,95)">skriva ut presentkortet</span> direkt<br> på din skrivare.
   Välj ett av våra <%= @gift_certificate_types.size %> alternativ. 
@@ -64,19 +64,27 @@ så att alla kan delta.</p>-->
     <% end %>
     <p style="margin-top:-8px"><%= link_to 'Vårens alla tider och priser', sessions_path %></p>
     <hr>
-    <h3>Privatlektioner &amp; Företagsyoga</h3>
-    Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Vi utformar ett program efter era specifika behov. 
-    Kontakta oss för priser.
+    <!-- <h3>Privatlektioner &amp; Företagsyoga</h3>
+        Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Vi utformar ett program efter era specifika behov. 
+        Kontakta oss för priser. -->
+        <h3>Ge någon lite yoga</h3>
+          Överaska någon med ett presentkort till någon
+          av våra kurser eller klasser.
+          Skriv ut presentkortet direkt på din skrivare.
+          <ul>
+            <% @gift_certificate_types.each do |gift_certificate| %>
+            <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
+            <% end %>
+          </ul>
     
   </div><div class="promotion-box">
     <div class="promotion-box-line"></div>
     <div>
       <p class="promotion-dec">Yoga har gett mig <strong>stryka, balans, koncentrations-förmåga, lugn och energi</strong>. Jag började utbilda mig till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga, kunde yoga tillsammans, men också för att kunna föra vidare och lära ut denna träningsform. </p>
 
-    <p style="font:normal 12px/18px verdana">Välkommen
-      <%= image_tag Instructor.first.avatar.url(:thumb), :style => 'float:right;margin:0px -10px 10px 10px' %>
+    <p style="font:normal 12px/18px verdana"><a href="mailto:jonas@navayoga.se">Jonas Höglund</a>
+      <img src="/images/jonas_headshot.jpg" width="100" height="66" alt="Jonas Headshot" style="float:left;margin:0 10px 10px 0">
     <br>
-    Jonas Höglund<br>
     Yoga-instruktör Nava Yoga-studio</p>
     
     </div>
