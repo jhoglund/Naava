@@ -1,5 +1,6 @@
 require 'mechanize'
- 
+require 'builder'
+
 class Crawler
  
   EXTENSIONS_IGNORED = %w[.csv .doc .docx .gif .jpg .jpeg .js .mp3 
@@ -18,7 +19,7 @@ class Crawler
       creds = credentials.split(':')
       @agent.basic_auth(creds[0], creds[1])
     end
- 
+    
     @quiet_mode = quiet_mode
     @starting_url = starting_url
     @starting_url_domain = starting_url[/([a-z0-9-]+)\.([a-z.]+)/i]
@@ -69,7 +70,6 @@ class Crawler
   def generate_sitemap
   	xml_str = ""
   	xml = Builder::XmlMarkup.new(:target => xml_str, :indent=>2)
- 
   	xml.instruct!
   	xml.urlset(:xmlns=>'http://www.sitemaps.org/schemas/sitemap/0.9') {
   		@visited_pages.each do |url|
@@ -84,6 +84,8 @@ class Crawler
   	}
  
   	save_file(xml_str)
+  	p xml
+    return
   	update_google
   end
  
