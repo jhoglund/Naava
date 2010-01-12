@@ -1,5 +1,6 @@
 class CoursesController < BookingsController
-
+  caches_page :index, :show
+  
   def index
     @courses = Course.active.all
 

@@ -1,6 +1,7 @@
 class InstructorsController < ApplicationController
+  caches_page :index, :show
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.find(1)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,6 @@
 class GiftCertificatesController < ApplicationController
   include PaymentControllerModule
+  caches_page :index
   
   def index
     @gift_certificate = GiftCertificate.new(:coupon_type => GiftCertificateType.first)
