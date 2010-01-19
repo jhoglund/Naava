@@ -8,9 +8,12 @@
   <meta name="keywords" content="ashtanga yoga studio nybörjare avancerade fortsättning klass klasser kurs kurser pass måndag tisdag onsdag torsdag fredag lördag söndag Karlshamn Blekinge Sverige" />
   <meta name="description" content="Karlshamns nya yoga-studio där alla kan yoga. Kom och prova på yoga för första gången, eller utvecklas vidare tillsammans med oss." />
   <title>Nava yoga-studio i Karlshamn<% if yield :title %>: <%= yield :title %><% end %></title>
-    <%= javascript_include_tag :defaults %>
-    <%= stylesheet_link_tag 'application' %>
-    <%= yield :header %>
+  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag 'application' %>
+  <% if params[:print] %>
+  <link rel="stylesheet" href="/stylesheets/print.css" type="text/css" />
+  <% end %>
+  <%= yield :header %>
 </head>
 <body>
   <div class="background-image"></div>

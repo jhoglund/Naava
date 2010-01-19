@@ -4,26 +4,46 @@
   <%= l(@session.starts_at, :format => :long) %>
 </p>
 
-<p>
-  <b>Kursdeltagare</b><br>
-  <%- @session.course.bookings.each do |booking| -%>
-  <%= h(booking.participant.name) %>,
-  <%= mail_to(booking.participant.email) %>,
-  <%= h(booking.participant.phone) %><br>
-  <%- end -%>
-</p>
+<table class="session-list">
+  <tr>
+    <th>Namn</th>
+    <th>E-mail</th>
+    <th>Telefon</th>
+    <th>Betalt</th>
+    <th>Närvaro</th>
+    <th>Kommentar</th>
+  </tr>
+  <tr>
+    <th colspan="6">Kursdeltagare</th>
+  </tr>
+<%- @session.course.bookings.each do |booking| -%>
+  <tr>
+    <td><%= h(booking.participant.name) %></td>
+    <td><%= mail_to(booking.participant.email) %></td>
+    <td><%= h(booking.participant.phone) %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="comment">&nbsp;</td>
+  </tr>
+<%- end -%>
+  <tr>
+    <th colspan="6">Drop-in</th>
+  </tr>
+<%- @session.bookings.each do |booking| -%>
+  <tr>
+    <td><%= h(booking.participant.name) %></td>
+    <td><%= mail_to(booking.participant.email) %></td>
+    <td><%= h(booking.participant.phone) %></td>
+    <td><%= booking.paid? ? "X" : "" %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+<%- end -%>
+</table>
 
-<p>
-  <b>Drop-in</b><br>
-  <%- @session.bookings.each do |booking| -%>
-  <%= h(booking.participant.name) %>,
-  <%= mail_to(booking.participant.email) %>,
-  <%= h(booking.participant.phone) %><br>
-  <%- end -%>
-</p>
 
 
-
-
+<div class="admin-navigation">
 <%= link_to 'Edit', edit_admin_session_path(@session) %> |
 <%= link_to 'Back', admin_course_path(@session.course) %>
+</div>

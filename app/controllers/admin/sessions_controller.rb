@@ -1,13 +1,13 @@
 class Admin::SessionsController < Admin::AdminController
   
   def index
-    @sessions = Session.all
+    @sessions = Session.all(:order => 'starts_at')
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sessions }
     end
-  end
+  end  
 
   def show
     @session = Session.find(params[:id])

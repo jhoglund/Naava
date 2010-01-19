@@ -1,0 +1,18 @@
+.admin-navigation { display:none; }
+.session-list { border-collapse:collapse; width:28cm; }
+.session-list td, .session-list th { border:1px solid black; padding:5px; }
+.session-list td.comment { width:8cm; }
+
+html { background:white; }
+body { margin:0; font:normal 13px/18px georgia; background:white; }
+.canvas { position:relative; width:auto; margin:0 0; }
+.canvas-background { display:none; }
+.content { width:auto; }
+
+h1, h2, h3, h4,
+h1 a, h2 a, h3 a,
+a:link,
+a:visited { color:black!important; }
+hr { border-bottom-color:black; }
+.footer,
+.header { display:none }
