@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  avinr: 1
+  payment: 
+  gross: 1
+
+two:
+  avinr: 1
+  payment: 
+  gross: 1

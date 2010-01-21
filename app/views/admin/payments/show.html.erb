@@ -1,33 +1,27 @@
 <p>
   <b>Name:</b>
-  <%=h @payment_reciept.name %>
+  <%=h @payment.name %>
 </p>
 
 <p>
   <b>Email:</b>
-  <%=h @payment_reciept.email %>
+  <%=h @payment.email %>
 </p>
 
 <p>
   <b>Note:</b>
-  <%=h @payment_reciept.note %>
+  <%=h @payment.note %>
 </p>
 
 <p>
   <b>Meta:</b>
-  <%=h @payment_reciept.meta %>
+  <%=h @payment.meta %>
 </p>
 
 <p>
-  <b>Item:</b>
-  <%=h @payment_reciept.item_id %>
-</p>
-
-<p>
-  <b>Item type:</b>
-  <%=h @payment_reciept.item_type %>
+  <%= link_to 'Booking', polymorphic_path(@payment) %>
 </p>
 
 
-<%= link_to 'Edit', edit_payment_reciept_path(@payment_reciept) %> |
-<%= link_to 'Back', payment_reciepts_path %>
+<%= link_to 'Edit', edit_admin_payment_path(@payment) %> |
+<%= link_to 'Back', admin_payments_path %>

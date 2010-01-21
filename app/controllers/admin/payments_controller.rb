@@ -1,84 +1,77 @@
-class PaymentsController < ApplicationController
-  # GET /payment_reciepts
-  # GET /payment_reciepts.xml
+class Admin::PaymentsController < Admin::AdminController
+
   def index
-    @payment_reciepts = PaymentReciept.all
+    @payments = Payment.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @payment_reciepts }
+      format.xml  { render :xml => @payments }
     end
   end
 
-  # GET /payment_reciepts/1
-  # GET /payment_reciepts/1.xml
   def show
-    @payment_reciept = PaymentReciept.find(params[:id])
+    @payment = Payment.find_by_token(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @payment_reciept }
+      format.xml  { render :xml => @payment }
     end
   end
 
-  # GET /payment_reciepts/new
-  # GET /payment_reciepts/new.xml
   def new
-    @payment_reciept = PaymentReciept.new
+    @payment = Payment.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @payment_reciept }
+      format.xml  { render :xml => @payment }
     end
   end
 
-  # GET /payment_reciepts/1/edit
   def edit
-    @payment_reciept = PaymentReciept.find(params[:id])
+    @payment = Payment.find_by_token(params[:id])
   end
 
-  # POST /payment_reciepts
-  # POST /payment_reciepts.xml
   def create
-    @payment_reciept = PaymentReciept.new(params[:payment_reciept])
+    @payment = Payment.new(params[:id])
 
     respond_to do |format|
-      if @payment_reciept.save
+      if @payment.save
         flash[:notice] = 'PaymentReciept was successfully created.'
-        format.html { redirect_to(@payment_reciept) }
-        format.xml  { render :xml => @payment_reciept, :status => :created, :location => @payment_reciept }
+        format.html { redirect_to(admin_payment_url(@payment)) }
+        format.xml  { render :xml => @payment, :status => :created, :location => @payment }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @payment_reciept.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @payment.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /payment_reciepts/1
-  # PUT /payment_reciepts/1.xml
   def update
-    @payment_reciept = PaymentReciept.find(params[:id])
-
+    @payment = Payment.find_by_token(params[:id])
     respond_to do |format|
-      if @payment_reciept.update_attributes(params[:payment_reciept])
+      
+      if @payment.update_attributes(params[:payment])
+        if not params[:avinr].blank? and not params[:gross].blank?
+          @payment.reciept = Bankgiro.create(:avinr => params[:avinr], :gross => params[:gross]) 
+          @payment.value = @payment.reciept.gross
+          @payment.save
+        end
         flash[:notice] = 'PaymentReciept was successfully updated.'
-        format.html { redirect_to(@payment_reciept) }
+        format.html { redirect_to(admin_payment_url(@payment)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @payment_reciept.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @payment.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /payment_reciepts/1
-  # DELETE /payment_reciepts/1.xml
   def destroy
-    @payment_reciept = PaymentReciept.find(params[:id])
-    @payment_reciept.destroy
+    @payment = Payment.find_by_token(params[:id])
+    @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(payment_reciepts_url) }
+      format.html { redirect_to(admin_payments_url) }
       format.xml  { head :ok }
     end
   end

@@ -1,6 +1,7 @@
-<h1>Editing payment_reciept</h1>
+<h1>Editing payment for <%= link_to 'Booking', polymorphic_path(@payment) %>
+</h1>
 
-<% form_for(@payment_reciept) do |f| %>
+<% form_for(@payment, :url => admin_payment_path(@payment)) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -13,24 +14,26 @@
   </p>
   <p>
     <%= f.label :note %><br />
-    <%= f.text_area :note %>
+    <%= f.text_area :note, :rows => 5 %>
   </p>
   <p>
     <%= f.label :meta %><br />
-    <%= f.text_area :meta %>
+    <%= f.text_area :meta, :rows => 5 %>
+  </p>
+  <% unless @payment.item.paid? %>
+  <p>
+    <%= label_tag 'Bankgiro avinummer' %><br />
+    <%= text_field_tag :avinr %>
   </p>
   <p>
-    <%= f.label :item_id %><br />
-    <%= f.text_field :item_id %>
+    <%= label_tag 'Bankgiro inbetald summa' %><br />
+    <%= text_field_tag :gross %>
   </p>
-  <p>
-    <%= f.label :item_type %><br />
-    <%= f.text_field :item_type %>
-  </p>
+  <% end %>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @payment_reciept %> |
-<%= link_to 'Back', payment_reciepts_path %>
+<%= link_to 'Show', admin_payment_path(@payment) %> |
+<%= link_to 'Back', admin_payments_path %>

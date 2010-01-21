@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
+
   map.resource :user_session
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
@@ -36,6 +37,7 @@ ActionController::Routing::Routes.draw do |map|
     #admin.resources :coupon_types
     admin.resources :gift_certificate_types
     admin.resources :payments
+    admin.resources :bankgiros
     admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
   	  course.resources :bookings
