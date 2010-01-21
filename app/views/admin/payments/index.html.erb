@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Paid</th>
     <th>Name</th>
     <th>Email</th>
     <th>Note</th>
@@ -11,6 +12,7 @@
 
 <% @payments.each do |payment| %>
   <tr>
+    <td><%= payment.paid? ? 'X' : '' %></td>
     <td><%=h payment.name %></td>
     <td><%=h payment.email %></td>
     <td><%=h payment.note %></td>
