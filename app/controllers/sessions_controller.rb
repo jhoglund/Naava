@@ -1,5 +1,5 @@
 class SessionsController < BookingsController  
-  caches_page :index, :show
+  #caches_page :index, :show
 
   def index
     if params[:week]

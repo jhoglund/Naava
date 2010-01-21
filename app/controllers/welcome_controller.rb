@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  caches_page :index, :about_ashtanga_yoga, :good_to_know, :our_studio, :location
+  #caches_page :index, :about_ashtanga_yoga, :good_to_know, :our_studio, :location
   
   def index
     @current_courses = Course.current.find(:all, :limit => 3)

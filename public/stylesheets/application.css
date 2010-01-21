@@ -96,7 +96,7 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 
 .session-list { width:780px; border-collapse: collapse }
 .session-list td { padding:5px; }
-.session-list td:first-letter { text-transform:capitalize; }
+.session-list td:first-child:first-letter { text-transform:capitalize; }
 .session-list thead td { font-size:16px;  }
 .session-list tbody tr td:first-child { padding-left:20px }
 .session-list tbody.gradient-back { background:rgb(236,235,234); background:rgba(255,255,255,0.5); }

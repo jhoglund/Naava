@@ -1,5 +1,5 @@
 class InstructorsController < ApplicationController
-  caches_page :index, :show
+  #caches_page :index, :show
   def index
     @instructors = Instructor.find(1)
 

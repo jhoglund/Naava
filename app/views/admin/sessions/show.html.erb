@@ -21,7 +21,7 @@
     <td><%= h(booking.participant.name) %></td>
     <td><%= mail_to(booking.participant.email) %></td>
     <td><%= h(booking.participant.phone) %></td>
-    <td>&nbsp;</td>
+    <td><%= booking.paid? ? "X" : "" %></td>
     <td>&nbsp;</td>
     <td class="comment">&nbsp;</td>
   </tr>
