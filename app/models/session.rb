@@ -69,7 +69,7 @@ class Session < ActiveRecord::Base
   end
   
   def save_duration
-    write_attribute(:ends_at, starts_at + ((@duration_hours.to_i) + (@duration_minutes.to_i * 60)))
+    write_attribute(:ends_at, starts_at + ((@duration_hours.to_i*(60*60)) + (@duration_minutes.to_i * 60)))
   end
   
   def duration_as_int
