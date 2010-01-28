@@ -1,0 +1,28 @@
+<h1>Editing attendant</h1>
+
+<% form_for(@attendant) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :participant %><br />
+    <%= f.text_field :participant %>
+  </p>
+  <p>
+    <%= f.label :session %><br />
+    <%= f.text_field :session %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @attendant %> |
+<%= link_to 'Back', attendants_path %>

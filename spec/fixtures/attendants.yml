@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  participant: 
+  session: 
+  status: 1
+  comment: MyText
+
+two:
+  participant: 
+  session: 
+  status: 1
+  comment: MyText

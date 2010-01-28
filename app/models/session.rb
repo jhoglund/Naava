@@ -1,6 +1,6 @@
 class Session < ActiveRecord::Base
   has_many :bookings, :as => :booker
-  has_many :users, :through => :bookings  
+  has_many :attendants  
   belongs_to :course
   
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
@@ -19,6 +19,10 @@ class Session < ActiveRecord::Base
   attr_writer :duration_hours, :duration_minutes
   
   before_save :save_duration
+  
+  def participants
+    Booking.all(:conditions => ['(booker_id = :course_id AND booker_type = "Course") OR (booker_id = :session_id AND booker_type = "Session")', { :course_id => self.course_id, :session_id => self.id}]).map(&:participant)
+  end
   
   def self.price
     AppConfig[:dropin]
@@ -53,7 +57,7 @@ class Session < ActiveRecord::Base
   end
   
   def duration
-    Time.utc(1970,"jan",1,0,0,0) + duration_as_int
+    Time.utc(1970,"jan",1,0,0,0) + (duration_as_int * (60*60))
   end
   
   def duration_hours
@@ -69,7 +73,7 @@ class Session < ActiveRecord::Base
   end
   
   def duration_as_int
-    (ends_at - starts_at).round.to_f
+    (ends_at - starts_at).round.to_f / (60*60)
   end
   
   

@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100121090928) do
+ActiveRecord::Schema.define(:version => 20100122135827) do
+
+  create_table "attendants", :force => true do |t|
+    t.integer  "participant_id"
+    t.integer  "session_id"
+    t.integer  "status"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bankgiros", :force => true do |t|
     t.integer  "avinr"

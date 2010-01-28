@@ -13,6 +13,7 @@ class Booking < ActiveRecord::Base
     
   named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
   named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
+    
   
   validates_presence_of :name, :on => :create
   validate :phone_or_email
