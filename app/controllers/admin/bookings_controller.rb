@@ -60,6 +60,23 @@ class Admin::BookingsController < Admin::AdminController
       end
     end
   end
+  
+  def update
+    @booking = Booking.find_by_token(params[:id])
+
+    respond_to do |format|
+      if @booking.update_attributes(params[:booking])
+        flash[:notice] = 'Bokningen är sparad.'
+        format.html { redirect_to(admin_booking_path(@booking)) }
+        format.xml  { render :xml => @booking, :status => :created, :location => @booking }
+      else
+        flash[:error] = 'Bokningen kunde inte sparas.'
+        format.html { redirect_to :back, @booking.attributes }
+        format.xml  { render :xml => @booking.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
 
   def destroy
     @booking = Booking.find_by_token(params[:id])

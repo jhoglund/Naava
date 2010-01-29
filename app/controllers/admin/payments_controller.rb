@@ -55,6 +55,10 @@ class Admin::PaymentsController < Admin::AdminController
           @payment.reciept = Bankgiro.create(:avinr => params[:avinr], :gross => params[:gross]) 
           @payment.value = @payment.reciept.gross
           @payment.save
+        elsif not params[:cash].blank?
+          @payment.reciept = Cash.create(:gross => params[:cash]) 
+          @payment.value = @payment.reciept.gross
+          @payment.save
         end
         flash[:notice] = 'PaymentReciept was successfully updated.'
         format.html { redirect_to(admin_payment_url(@payment)) }

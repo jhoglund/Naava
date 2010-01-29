@@ -1,10 +1,14 @@
 <h1>Editing booking</h1>
 
-<% form_for(@booking) do |f| %>
+<% form_for(@booking, :url => admin_booking_path(@booking)) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= @booking.booker.name %>
+    <% if @booking.drop_in? %>
+      <%= f.select :booker_id, Session.all.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] } %>
+    <% else %>
+      <%= f.select :booker_id, Course.active.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] } %>
+    <% end %>
   </p>
   <p>
     Participant<br />

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100122135827) do
+ActiveRecord::Schema.define(:version => 20100129080012) do
 
   create_table "attendants", :force => true do |t|
     t.integer  "participant_id"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(:version => 20100122135827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status",         :default => 0
+  end
+
+  create_table "cashes", :force => true do |t|
+    t.integer  "gross"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "coupon_types", :force => true do |t|

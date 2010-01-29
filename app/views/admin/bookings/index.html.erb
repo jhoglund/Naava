@@ -14,6 +14,7 @@
       Klass: <%= l(booking.booker.starts_at, :format => :short) %>
       <%- end -%>
     </td>
+    <td><%= link_to 'Edit', edit_admin_booking_path(booking) %></td>
     <td><%= link_to 'Ta bort', admin_booking_path(booking), :method => :delete %></td>
   </tr>
 <% end %>
