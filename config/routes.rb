@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
 	  admin.resources :instructors
     admin.resources :users
 	  admin.resources :gift_certificates
-    #admin.resources :coupon_types
+    admin.resources :participants
     admin.resources :gift_certificate_types
     admin.resources :payments
     admin.resources :bankgiros

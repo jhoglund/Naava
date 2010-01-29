@@ -63,7 +63,7 @@ class Admin::ParticipantsController < Admin::AdminController
     respond_to do |format|
       if @participant.update_attributes(params[:participant])
         flash[:notice] = 'Participant was successfully updated.'
-        format.html { redirect_to(@participant) }
+        format.html { redirect_to(admin_participant_path(@participant)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

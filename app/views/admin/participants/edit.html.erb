@@ -1,6 +1,6 @@
-<h1>Editing participant</h1>
+<h1>Deltagare</h1>
 
-<% form_for(@participant) do |f| %>
+<% form_for(@participant, :url => admin_participant_path(@participant)) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,5 +20,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @participant %> |
-<%= link_to 'Back', participants_path %>
+<%= link_to 'Show', admin_participant_path(@participant) %> |
+<%= link_to 'Back', admin_participants_path %>

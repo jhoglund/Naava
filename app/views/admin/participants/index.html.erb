@@ -1,4 +1,4 @@
-<h1>Listing participants</h1>
+<h1>Deltagare</h1>
 
 <table>
   <tr>
@@ -12,13 +12,10 @@
     <td><%=h participant.name %></td>
     <td><%=h participant.email %></td>
     <td><%=h participant.phone %></td>
-    <td><%= link_to 'Show', participant %></td>
-    <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
-    <td><%= link_to 'Destroy', participant, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_participant_path(participant) %></td>
+    <td><%= link_to 'Edit', edit_admin_participant_path(participant) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New participant', new_participant_path %>
