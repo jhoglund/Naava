@@ -6,6 +6,8 @@ class Payment < ActiveRecord::Base
   #after_create :payment_reciept_after_save
   after_update :payment_reciept_after_save
   
+  named_scope :summary, :select => 'sum(value) AS sum'
+  
   def paid?
     !reciept.nil?
   end
@@ -31,6 +33,10 @@ class Payment < ActiveRecord::Base
     payment_after_recieved
   end
   
+  def self.sum
+    self.summary.all.map(&:sum).first.to_i
+  end
+    
   private
   
   def payment_after_disabled
