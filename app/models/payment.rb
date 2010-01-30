@@ -1,6 +1,6 @@
 class Payment < ActiveRecord::Base
   include TokenModule
-  belongs_to :item, :polymorphic => true
+  belongs_to :item, :polymorphic => true, :dependent => :destroy
   belongs_to :reciept, :polymorphic => true
   before_save :add_common_attributes
   #after_create :payment_reciept_after_save

@@ -1,6 +1,6 @@
 module PaymentModule
   def self.included(base)
-    base.send :has_one,  :payment, :as => :item
+    base.send :has_one,  :payment, :as => :item, :dependent => :destroy
     base.send :before_create, :create_payment_before_create
   end
   

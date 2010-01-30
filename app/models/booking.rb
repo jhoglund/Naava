@@ -2,7 +2,7 @@ class Booking < ActiveRecord::Base
   include PaymentModule
   include TokenModule
 
-  belongs_to :participant
+  belongs_to :participant, :dependent => :destroy
   belongs_to :booker, :polymorphic => true
   accepts_nested_attributes_for :participant, :allow_destroy => true
   delegate :name, :email, :phone, :name=, :email=, :phone=, :to => :participant

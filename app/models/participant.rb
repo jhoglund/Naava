@@ -1,4 +1,4 @@
 class Participant < ActiveRecord::Base
-  has_many :bookings
-  has_many :attendants  
+  has_many :bookings, :dependent => :destroy
+  has_many :attendants, :dependent => :destroy 
 end
