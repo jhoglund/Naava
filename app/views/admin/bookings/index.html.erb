@@ -4,6 +4,7 @@
 
 <% @bookings.each do |booking| %>
   <tr>
+    <td><%= booking.paid? ? 'X' : link_to('--', edit_admin_payment_path(booking.payment)) %></td>
     <td><%=h booking.participant.name %></td>
     <td><%=h booking.participant.email %></td>
     <td><%=h booking.participant.phone %></td>
