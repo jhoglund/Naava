@@ -34,7 +34,7 @@ class Course < ActiveRecord::Base
   end
   
   def price
-    original_price - ((sessions.count - sessions.current.count) * Course.price_per_session * (0.01 * discount))
+    sessions.current.count * price_per_session
   end
   
   def original_price
