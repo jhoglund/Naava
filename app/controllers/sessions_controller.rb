@@ -7,7 +7,8 @@ class SessionsController < BookingsController
     else
       @sessions = Session.asc.all
     end
-    @courses = Course.active.all.sort_by{|c| c.next_session.starts_at}
+    @courses = Course.current.all.sort_by{|c| c.starts_at}
+    @planned_courses = Course.planned.all.sort_by{|c| c.starts_at}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sessions }

@@ -34,8 +34,12 @@
   <% end %>
 <% end %>
 
-<h3>Välj en av följande kurser</h3>
 <table>
+<% unless @courses.blank? %>
+<tr>
+  <td colspan="2" style="padding:0"><h3>Välj en av våra pågende kurser</h3></td>
+</tr>
+<% end %>
 <% @courses.each do |course| %>
 <tr>
   <td style="">
@@ -55,6 +59,25 @@
   </td>
 </tr>
 <% end %>
+<% unless @planned_courses.blank? %>
+<tr>
+  <td colspan="2" style="padding:0"><h3>Kommande kurser</h3></td>
+</tr>
+<% end %>
+<% @planned_courses.each do |course| %>
+<tr>
+  <td style="">
+    <strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
+    klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
+    <strong><%=l course.next_session.ends_at, :format => :time %></strong><br>
+    Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
+  </td>
+  <td style="vertical-align:bottom; padding:0 0 20px 20px" nowrap="true">
+    <%=  link_to "Anmäl dig till kursen", book_course_path(course), :class => 'button button-default'  %>
+  </td>
+</tr>
+<% end %>
+
 </table>
 <hr>
 <h2>Schema för vårens klasser, 2010</h2>

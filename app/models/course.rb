@@ -5,8 +5,8 @@ class Course < ActiveRecord::Base
   belongs_to :instructor
   
   named_scope :active, :conditions => "courses.status = #{ Status::ACTIVE }"
-  named_scope :current, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND sessions.starts_at <= date('#{Date.today}') "
-  named_scope :planned, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND sessions.starts_at > date('#{Date.today}') "
+  named_scope :current, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at <= date('#{Date.today}') ) "
+  named_scope :planned, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id NOT IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at <= date('#{Date.today}') ) "
   
   #after_update :save_sessions
   
@@ -26,11 +26,11 @@ class Course < ActiveRecord::Base
   end
   
   def starts_at
-    sessions.current.asc.first.starts_at if sessions.first
+    sessions.asc.first.starts_at if sessions.first
   end
   
   def ends_at
-    sessions.current.asc.last.starts_at if sessions.last
+    sessions.asc.last.starts_at if sessions.last
   end
   
   def price
