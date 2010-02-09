@@ -37,43 +37,43 @@
 <table>
 <% unless @courses.blank? %>
 <tr>
-  <td colspan="2" style="padding:0"><h3>Välj en av våra pågende kurser</h3></td>
+  <td style="padding:0"><h3>Välj en av våra pågende kurser</h3></td>
 </tr>
 <% end %>
 <% @courses.each do |course| %>
 <tr>
   <td style="">
+    <span style="font-size:16px">
     <strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
     klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
-    <strong><%=l course.next_session.ends_at, :format => :time %></strong><br>
-    <% if course.started? %>
+    <strong><%=l course.next_session.ends_at, :format => :time %></strong> -
+    <%=  link_to "Anmäl dig till kursen", book_course_path(course) %></span>
+    <p><% if course.started? %>
     <span class="course-started">Denna kursen började den <strong><%=l course.starts_at.to_date, :format => :long %></strong>. Vi har hittills hunnit med <%= course.sessions.expired.count %> klasser. 
     Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast <strong><%= number_to_currency(course.price) %></strong> vilket
     är <strong><%=  number_to_currency(course.price_per_session) %></strong>  (<%= course.discount %>%)  per återstående klass.</span>
     <% else %>
     Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
-    <% end %>
-  </td>
-  <td style="vertical-align:bottom; padding:0 0 20px 20px" nowrap="true">
-    <%=  link_to "Anmäl dig till kursen", book_course_path(course), :class => 'button button-default'  %>
+    <% end %></p>
   </td>
 </tr>
 <% end %>
 <% unless @planned_courses.blank? %>
 <tr>
-  <td colspan="2" style="padding:0"><h3>Kommande kurser</h3></td>
+  <td style="padding:0"><h3>Kommande kurser</h3></td>
 </tr>
 <% end %>
 <% @planned_courses.each do |course| %>
 <tr>
   <td style="">
+    <span style="font-size:16px">
     <strong><%=t("misc.day_names.#{course.next_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
     klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
-    <strong><%=l course.next_session.ends_at, :format => :time %></strong><br>
+    <strong><%=l course.next_session.ends_at, :format => :time %></strong> -
+    <%=  link_to "Anmäl dig till kursen", book_course_path(course) %></span>
+    <p>
     Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
-  </td>
-  <td style="vertical-align:bottom; padding:0 0 20px 20px" nowrap="true">
-    <%=  link_to "Anmäl dig till kursen", book_course_path(course), :class => 'button button-default'  %>
+    </p>
   </td>
 </tr>
 <% end %>
