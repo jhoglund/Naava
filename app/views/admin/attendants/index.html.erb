@@ -1,0 +1,28 @@
+<h1>Klasser</h1>
+
+<table>
+  <tr>
+    <th>Anmälda</th>
+    <th>Närvarande</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @sessions.each do |session| %>
+  <tr>
+    <td>
+    <%- total = session.bookings.count + session.course.bookings.count  -%>
+    <%- if total > 0 -%>
+      <b><%= total %></b>
+    <%- else -%>
+      -
+    <%- end -%>  
+    </td>
+    <td>
+      <b style="color:red"><%= session.attendants.attending.count %></b>
+    </td>
+    
+    <td><%=l session.starts_at, :format => :short %></td>
+    <td><%= link_to 'Edit', admin_session_attendants_path(session) %></td>
+  </tr>
+<% end %>
+</table>

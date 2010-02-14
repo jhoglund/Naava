@@ -1,7 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :cashes
-
-  map.resources :attendants
 
 
 
@@ -33,7 +30,9 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.namespace(:admin) do |admin|
-  	admin.resources :sessions, :has_many => [ :bookings ]
+  	admin.resources :sessions, :has_many => [ :bookings ] do |session|
+      session.resources :attendants
+	  end
 	  admin.resources :bookings
 	  admin.resources :instructors
     admin.resources :users
@@ -42,6 +41,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :gift_certificate_types
     admin.resources :payments
     admin.resources :bankgiros
+    admin.resources :cashes
+    admin.resources :attendants
     admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
   	  course.resources :bookings

@@ -20,6 +20,8 @@ class Session < ActiveRecord::Base
   
   before_save :save_duration
   
+  accepts_nested_attributes_for :attendants
+  
   def participants
     Booking.all(:conditions => ['(booker_id = :course_id AND booker_type = "Course") OR (booker_id = :session_id AND booker_type = "Session")', { :course_id => self.course_id, :session_id => self.id}]).map(&:participant)
   end

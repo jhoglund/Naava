@@ -1,0 +1,22 @@
+<h1>Närvaro</h1>
+
+<% form_for(Session.new, :url => admin_session_attendants_path(@session)) do |f| %>
+  <%= f.error_messages %>
+  <ul>
+  <% f.fields_for :attendants, @session.attendants do |a| %>
+    <li style="list-style:none">
+    <%= a.hidden_field :participant_id %>
+    <%= a.check_box :status %>
+    <%= a.label nil, a.object.participant.name %>
+    <% a_id = "attendant_#{a.object.participant.id}" %>
+    <%= link_to_function 'Comment', "$('#{a_id}').toggle()" %><br />
+    <p style="display:<%= a.object.comment.blank? ? 'none' : 'block' %>" id="<%= a_id %>">
+    <%= a.text_area :comment, :rows => 4 %>
+    </p>
+    </li>
+  <% end %>
+  </ul>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
