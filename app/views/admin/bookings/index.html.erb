@@ -24,4 +24,8 @@
 
 <br />
 
-<%= link_to 'Ny bokning', new_admin_booking_path %>
+<%- if @course -%>
+  <%= link_to 'Ny bokning', new_admin_course_booking_path(@course) %>
+<%- elsif @session -%>
+  <%= link_to 'Ny bokning', new_admin_session_booking_path(@session) %>
+<%- end -%>

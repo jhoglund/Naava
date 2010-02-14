@@ -18,6 +18,12 @@ class Booking < ActiveRecord::Base
   validates_presence_of :name, :on => :create
   validate :phone_or_email
   
+  attr_writer :notify_by_mail
+  
+  def notify?
+    @notify_by_mail != false
+  end
+  
   def drop_in?
     booker.is_a? Session
   end
@@ -43,14 +49,14 @@ class Booking < ActiveRecord::Base
   end
   
   def after_booking_created
-    if email
+    if email and notify?
       Notification.deliver_mail("Vi har motagning din bokning för #{name}", email, self, Notification.get_template(self.booker, 'create'))
     end
   end
   
   
   def after_booking_disabled
-    if disabling? and email
+    if disabling? and email and notify?
       Notification.deliver_mail("Din bokning har blivit borttagen för #{name}", email, self, Notification.get_template(self.booker, 'destroy'))
     end
   end
