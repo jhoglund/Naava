@@ -22,7 +22,7 @@
     <td><%= mail_to(booking.participant.email) %></td>
     <td><%= h(booking.participant.phone) %></td>
     <td><%= booking.paid? ? "X" : "" %></td>
-    <td>&nbsp;</td>
+    <td><%= booking.participant.attending? ? "X" : "" %></td>
     <td class="comment">&nbsp;</td>
   </tr>
 <%- end -%>
@@ -35,7 +35,7 @@
     <td><%= mail_to(booking.participant.email) %></td>
     <td><%= h(booking.participant.phone) %></td>
     <td><%= booking.paid? ? "X" : "" %></td>
-    <td>&nbsp;</td>
+    <td><%= booking.participant.attending? ? "X" : "" %></td>
     <td>&nbsp;</td>
   </tr>
 <%- end -%>
@@ -45,6 +45,7 @@
 
 <div class="admin-navigation">
 <%= link_to 'Edit', edit_admin_session_path(@session) %> |
+<%= link_to 'Närvaro', admin_session_attendants_path(@session) %> |
 <%= link_to 'Bokningar', admin_session_bookings_path(@session) %> |
 <%= link_to 'Back', admin_course_path(@session.course) %>
 </div>
