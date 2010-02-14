@@ -22,6 +22,11 @@ class Session < ActiveRecord::Base
   
   accepts_nested_attributes_for :attendants
   
+  def attending? participant
+    @attending_participant ||= attendants.attending.map(&:participant_id)
+    @attending_participant.include?(participant.id)
+  end
+  
   def participants
     Booking.all(:conditions => ['(booker_id = :course_id AND booker_type = "Course") OR (booker_id = :session_id AND booker_type = "Session")', { :course_id => self.course_id, :session_id => self.id}]).map(&:participant)
   end

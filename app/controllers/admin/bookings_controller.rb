@@ -64,9 +64,11 @@ class Admin::BookingsController < Admin::AdminController
   
   def update
     @booking = Booking.find_by_token(params[:id])
+    booking = params[:booking]
+    booking[:booker_id] = params["booker_#{booking[:booker_type].downcase}_id"]
 
     respond_to do |format|
-      if @booking.update_attributes(params[:booking])
+      if @booking.update_attributes(booking)
         flash[:notice] = 'Bokningen är sparad.'
         format.html { redirect_to(admin_booking_path(@booking)) }
         format.xml  { render :xml => @booking, :status => :created, :location => @booking }

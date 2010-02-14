@@ -4,21 +4,25 @@
   <%= f.error_messages %>
 
   <p>
-    <% if @booking.drop_in? %>
-      <%= f.select :booker_id, Session.all.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] } %>
-    <% else %>
-      <%= f.select :booker_id, Course.active.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] } %>
-    <% end %>
+    <%= f.label 'Klass' %><br>
+    <%= f.radio_button :booker_type, 'Session' %>
+    <%= select_tag :booker_session_id, options_for_select(Session.all.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] }, @booking.booker.is_a?(Session) ? @booking.booker.id : 0) %>
   </p>
   <p>
-    Participant<br />
-    <%= @booking.participant.name %>
+    <%= f.label 'Kurs' %><br>
+    <%= f.radio_button :booker_type, 'Course' %>
+    <%= select_tag :booker_course_id, options_for_select(Course.active.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] }, @booking.booker.is_a?(Course) ? @booking.booker.id : 0) %>
+  </p>
+  <p>
+    Namn: <%= @booking.participant.name %><br>
+    E-mail: <%= mail_to @booking.participant.email %><br>
+    Telefon: <%= @booking.participant.phone %><br>
   </p>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Destroy', @booking, :confirm => 'Are you sure?', :method => :delete %>
-<%= link_to 'Show', @booking %> |
-<%= link_to 'Back', bookings_path %>
+<%= link_to 'Destroy', @booking, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Show', admin_booking_path(@booking) %> |
+<%= link_to 'Back', admin_bookings_path %>

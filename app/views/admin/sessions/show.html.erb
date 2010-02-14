@@ -18,11 +18,11 @@
   </tr>
 <%- @session.course.bookings.each do |booking| -%>
   <tr>
-    <td><%= h(booking.participant.name) %></td>
+    <td><%= link_to (booking.participant.name), polymorphic_path([:admin, booking]) %></td>
     <td><%= mail_to(booking.participant.email) %></td>
     <td><%= h(booking.participant.phone) %></td>
-    <td><%= booking.paid? ? "X" : "" %></td>
-    <td><%= booking.participant.attending? ? "X" : "" %></td>
+    <td><%= booking.paid? ? "X" : "-" %></td>
+    <td><%= @session.attending?(booking.participant) ? "X" : "-" %></td>
     <td class="comment">&nbsp;</td>
   </tr>
 <%- end -%>
@@ -31,11 +31,11 @@
   </tr>
 <%- @session.bookings.each do |booking| -%>
   <tr>
-    <td><%= h(booking.participant.name) %></td>
+    <td><%= link_to (booking.participant.name), polymorphic_path([:admin, booking]) %></td>
     <td><%= mail_to(booking.participant.email) %></td>
     <td><%= h(booking.participant.phone) %></td>
-    <td><%= booking.paid? ? "X" : "" %></td>
-    <td><%= booking.participant.attending? ? "X" : "" %></td>
+    <td><%= booking.paid? ? "X" : "-" %></td>
+    <td><%= @session.attending?(booking.participant) ? "X" : "-" %></td>
     <td>&nbsp;</td>
   </tr>
 <%- end -%>
