@@ -43,7 +43,9 @@
 
 
 
+
 <div class="admin-navigation">
+<%= link_to "Print", admin_session_path(@session, :print => true), :target => :new %> |
 <%= link_to 'Edit', edit_admin_session_path(@session) %> |
 <%= link_to 'Närvaro', admin_session_attendants_path(@session) %> |
 <%= link_to 'Bokningar', admin_session_bookings_path(@session) %> |
