@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   #caches_page :index, :about_ashtanga_yoga, :good_to_know, :our_studio, :location
   
   def index
-    @current_courses = Course.current.find(:all, :limit => 3)
-    @planned_courses = Course.planned.all    
+    @current_courses = Course.current.find(:all, :limit => 4)
+    @planned_courses = Course.planned.find(:all, :limit => 4)    
     @sessions = Session.current.asc.all(:limit => 3)
     @gift_certificate_types = GiftCertificateType.all
     @gift_certificate = GiftCertificate.new(:coupon_type => GiftCertificateType.first)
