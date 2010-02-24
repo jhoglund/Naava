@@ -1,3 +1,5 @@
+<hr>
+
 <% sessions.fields_for :sessions do |session| -%>
   <div class="session">
   <div>
@@ -13,12 +15,18 @@
     <%= session.label :minutes %>
     <%= session.select :duration_minutes, [0,15,30,45], :selected => session.object.duration_minutes %>
   </div>
+  <div><%= session.check_box :status %> <%= session.label :status %></div>
+  <p style="display:<%= session.object.comment.blank? ? 'none' : 'block' %>">
+  <%= session.text_area :comment, :rows => 4 %>
+  </p>
+  <%= link_to_function 'Comment', "$(this).previous().toggle()" %> | 
+  
 
-  <%= link_to_function "remove", "(function(item){
+  <%= link_to_function "Remove", "(function(item){
     var to_delete = item.getElementsByTagName('input')[0];
     to_delete.value = 1;
     to_delete.id = to_delete.id.replace(/no_delete/,'_delete')
-    console.log(to_delete)
   })($(this).up('.session')); $(this).up('.session').hide(); " %>
+  <hr>
   </div>
 <% end -%>

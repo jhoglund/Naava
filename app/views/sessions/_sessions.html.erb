@@ -34,7 +34,7 @@
   <%- if new_week -%>
   <tbody class="gradient-back">
   <%- end -%>
-    <tr>
+    <tr<%= ' class="canceled-session"' if session.canceled? %>>
         <td nowrap style="padding-left:10px">
           <%=l(session.date, :format => :long_day)  %>
         </td>
@@ -43,10 +43,20 @@
         </td>
         <%- path_to_booking = (defined?(booking_proc) and booking_proc.is_a?(Proc)) ? booking_proc.call(session) : book_session_path(session) -%>
         <td nowrap style="padding-left:10px" align="left">
+          <%- if !session.canceled? -%>
           <%= link_to "Reservera plats", path_to_booking  %>
           <%=link_to 'Läs mer...', session, :class => 'read-more' %>
+          <%- else -%>
+          <%= session.comment %>
+          <%- end -%>
         </td>
     </tr>
+  <%- if session.comment? and !session.canceled? -%>
+    <tr>
+        <td colspan="3" class="session-list-comment"><%= session.comment %></td>
+    </tr>
+    
+  <%- end -%>
   <%- if end_week -%>
   </tbody>
   <%- end -%>

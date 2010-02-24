@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100129080012) do
+ActiveRecord::Schema.define(:version => 20100224081738) do
 
   create_table "attendants", :force => true do |t|
     t.integer  "participant_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20100129080012) do
     t.datetime "updated_at"
     t.integer  "status",        :default => 0
     t.integer  "instructor_id"
+    t.text     "comment"
   end
 
   create_table "instructors", :force => true do |t|
@@ -146,7 +147,8 @@ ActiveRecord::Schema.define(:version => 20100129080012) do
     t.datetime "ends_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",     :default => 0
+    t.integer  "status",     :default => 1
+    t.text     "comment"
   end
 
   create_table "users", :force => true do |t|

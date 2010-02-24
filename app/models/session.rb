@@ -83,6 +83,10 @@ class Session < ActiveRecord::Base
     (ends_at - starts_at).round.to_f / (60*60)
   end
   
+  def canceled?
+    status == 0
+  end
+  
   
   private
   

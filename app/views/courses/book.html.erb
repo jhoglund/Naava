@@ -23,6 +23,10 @@ klockan <strong><%=l @booker.next_session.starts_at, :format => :time %></strong
 </p>
 <% end %>
 
+<%- if @booker.comment? -%>
+<p class="important-notice"><%= @booker.comment %></p>
+<%- end -%>
+
 <hr>
 
 <%= base_errors_for(@booking) %>

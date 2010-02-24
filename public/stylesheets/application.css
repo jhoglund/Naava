@@ -103,6 +103,8 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .session-list a.read-more { color:rgb(50,50,50); padding:0 10px; }
 .session-list .date-day-number { font-weight:bold; color:rgb(235,10,90); font-size:18px; }
 .session-list .time-number { font-weight:bold; }
+.session-list td.session-list-comment { padding:0 0 10px 10px!important; font-style:italic; color:rgb(100,100,100); }
+.canceled-session td { background:rgb(255,165,20090); }
 
 /* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
 
@@ -150,6 +152,8 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .flash-error { width:auto; -webkit-border-radius:10px; margin-top:-10px; margin-bottom:20px; padding:10px; }
 .flash-notice {  color:rgb(5,115,60); background-color:rgb(235,255,240); }
 .flash-error {  color:rgb(185,5,70); background-color:rgb(255,165,200); }
+
+.important-notice { width:auto; -webkit-border-radius:10px; margin-top:10px; margin-bottom:20px; padding:10px; color:rgb(185,5,70); background-color:rgb(255,165,200); }
 
 .base-error,
 .validation-error { color:rgb(185,5,70); background-color:rgb(255,165,200); -webkit-border-radius:10px; padding:10px;  }

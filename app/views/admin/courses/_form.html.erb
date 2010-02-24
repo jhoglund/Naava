@@ -9,6 +9,10 @@
   <%= form.text_area :description, :rows => 10 %>
 </p>
 <p>
+  <%= form.label :comment %><br />
+  <%= form.text_area :comment, :rows => 4 %>
+</p>
+<p>
   <%= form.label :instructor %><br />
   <%= form.select :instructor_id, Instructor.all.map{|i| [i.name, i.id]}, :selected => form.object.instructor.id %>
 </p>
@@ -17,9 +21,10 @@
   <%= form.text_field :level %>
 </p>
 <p>
-  <%= form.label :status %><br />
   <%= form.check_box :status %>
+  <%= form.label :status %>
 </p>
+
 <div id="session">
   <%= render :partial => 'sessions', :object => form %>
 </div>
