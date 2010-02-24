@@ -50,4 +50,7 @@ klockan <strong><%=l @booker.next_session.starts_at, :format => :time %></strong
   </p> -->
 <% end %>
 
+<h2>Kurstillfällen</h2>
+<%= render :partial => 'sessions', :object => @booker.sessions %>
+
 <%#= link_to 'Tillbaks till kursen', course_path(@booker) %>
