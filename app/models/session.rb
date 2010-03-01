@@ -5,6 +5,7 @@ class Session < ActiveRecord::Base
   
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :expired, :conditions => "sessions.starts_at < CAST('#{DateTime.now}' AS DATETIME)"
+  named_scope :active, :conditions => "sessions.status = 1"
   named_scope :asc, :order => "sessions.starts_at ASC"
   named_scope :desc, :order => "sessions.starts_at DESC"
   named_scope :week, lambda{|date|

@@ -22,23 +22,23 @@ class Course < ActiveRecord::Base
   end
     
   def next_session
-    sessions.current.asc.first
+    sessions.active.current.asc.first
   end
   
   def starts_at
-    sessions.asc.first.starts_at if sessions.first
+    sessions.active.asc.first.starts_at if sessions.first
   end
   
   def ends_at
-    sessions.asc.last.starts_at if sessions.last
+    sessions.active.asc.last.starts_at if sessions.last
   end
   
   def price
-    sessions.current.count * price_per_session
+    sessions.active.current.count * price_per_session
   end
   
   def original_price
-    Course.price(sessions.count)
+    Course.price(sessions.active.count)
   end
   
   def price_per_session
@@ -58,11 +58,11 @@ class Course < ActiveRecord::Base
   end
   
   def started?
-    sessions.expired.count > 0
+    sessions.active.expired.count > 0
   end
   
   def ended?
-    sessions.current.count == 0
+    sessions.active.current.count == 0
   end
   
 end
