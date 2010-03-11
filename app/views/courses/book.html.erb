@@ -1,9 +1,11 @@
 <% content_for :title do %>
   Anmälan till kursen <%= @booker.name %>
 <% end %>
+<% if @booker.next_session %>
 <h2>Kursanmälan till <strong><%=t("misc.day_names.#{@booker.next_session.starts_at.strftime("%A").downcase}", :count => 2) %></strong>
 klockan <strong><%=l @booker.next_session.starts_at, :format => :time %></strong> till
 <strong><%=l @booker.next_session.ends_at, :format => :time %></strong></h2>
+<% end %>
 <p><%=h @booker.description %></p>
 <p>
   Nästa klasstillfälle är <%= l(@booking.booker.starts_at, :format => :long) %>
@@ -18,8 +20,13 @@ klockan <strong><%=l @booker.next_session.starts_at, :format => :time %></strong
 <% if @booker.started? %>
 <p>
   Denna kurs har redan börjat och vi har hittills hunnit med <%= @booker.sessions.expired.count %> klasser. 
+  <%- if @booker.sessions.current.count > 1 -%>
   Du får ett rabatterat pris vid köp av kursen och betalar totalt <%= number_to_currency(@booker.price) %> vilket
   är <%=  number_to_currency(@booker.price_per_session) %>  (<%= @booker.discount %>%)  per återstående klass.
+  <%- else -%>
+  Du kan fortfarande anmäla dig till den återstående klassen (<%=l(@booker.next_session.starts_at, :format => :long) %>) för
+  är <strong><%=  number_to_currency(@booker.next_session.price) %></strong>.
+  <%- end -%>
 </p>
 <% end %>
 

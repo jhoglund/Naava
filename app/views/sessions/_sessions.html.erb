@@ -43,10 +43,10 @@
         </td>
         <%- path_to_booking = (defined?(booking_proc) and booking_proc.is_a?(Proc)) ? booking_proc.call(session) : book_session_path(session) -%>
         <td nowrap style="padding-left:10px" align="left">
-          <%- if !session.canceled? -%>
+          <%- if !session.canceled? && !session.expired? -%>
           <%= link_to "Reservera plats", path_to_booking  %>
-          <%=link_to 'Läs mer...', session, :class => 'read-more' %>
-          <%- else -%>
+          <%= link_to 'Läs mer...', session, :class => 'read-more' %>
+          <%- elsif !session.expired? -%>
           <%= session.comment %>
           <%- end -%>
         </td>

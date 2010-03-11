@@ -1,3 +1,4 @@
+<% unless @booker.expired? %>
 <h2>Anmälan till klassen  <%= l(@booker.starts_at, :format => :long) %></h2>
 
 
@@ -20,11 +21,10 @@
     <%= link_to_function "Anmäl", 'forms["new_booking"].submit()', :class => 'button button-default' %>
   </p>
 <% end %>
-
+<% if @booker.course.next_session and @booker.course.sessions.current.count > 1  %>
 <h2>Anmäl dig till hela kursen <strong><%=t("misc.day_names.#{@booker.course.next_session.starts_at.strftime("%A").downcase}", :count => 2) %></strong>
 klockan <strong><%=l @booker.course.next_session.starts_at, :format => :time %></strong> till
 <strong><%=l @booker.course.next_session.ends_at, :format => :time %></strong></h2>
-
 <p>
   Det går även bra att anmäla sig till hela kursen. I kursen ingår totalt <%= @booker.course.sessions.count %> klasser. 
   En kurs kostar <%= number_to_currency(@booker.course.original_price) %>, 
@@ -41,6 +41,12 @@ klockan <strong><%=l @booker.course.next_session.starts_at, :format => :time %><
 <p class="button-bar">
   <%= link_to 'Anmäl dig till kursen', book_course_path(@booker.course), :class => 'button' %>
 </p>
+
+<% end %>
+
+<% else %>
+Det går inte längre att reservera plats till denna klassen
+<% end %>
 
 
 <%#= link_to 'Tillbaks till klassen', session_path(@booker) %>

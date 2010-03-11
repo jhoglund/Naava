@@ -3,11 +3,11 @@
 </div>
 
 <div class="reciept">
-  
+  <% if @payment.item.booker.next_session %>
   <h2>Kursanmälan till <strong><%=t("misc.day_names.#{@payment.item.booker.next_session.starts_at.strftime("%A").downcase}", :count => 2) %></strong>
   klockan <strong><%=l @payment.item.booker.next_session.starts_at, :format => :time %></strong> till
   <strong><%=l @payment.item.booker.next_session.ends_at, :format => :time %></strong></h2>
-
+  <% end %>
   <p>
     Anmälan är personlig för <strong><%=h @payment.item.participant.name %></strong>. Nästa klasstillfälle är <%= l(@payment.item.booker.starts_at, :format => :long) %>
   </p>

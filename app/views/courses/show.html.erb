@@ -25,8 +25,10 @@
 <% if @course.started? %>
 <p>
   Denna kursen har redan börjat och vi har hittills hunnit med <%= @course.sessions.expired.count %> klasser. 
+  <%- if @course.sessions.current.count > 1 -%>
   Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(@course.price) %> vilket
   är <%=  number_to_currency(@course.price_per_session) %>  (<%= @course.discount %>%)  per återstående klass.
+  <%- end -%>
 </p>
 <% end %>
 

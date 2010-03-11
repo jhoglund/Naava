@@ -87,7 +87,7 @@ class Session < ActiveRecord::Base
   def canceled?
     status == 0
   end
-  
+    
   
   private
   
