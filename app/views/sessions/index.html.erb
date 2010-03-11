@@ -41,6 +41,7 @@
 </tr>
 <% end %>
 <% @courses.each do |course| %>
+<% if course.next_session %>
 <tr>
   <td style="">
     <span style="font-size:16px">
@@ -57,6 +58,7 @@
     <% end %></p>
   </td>
 </tr>
+<% end %>
 <% end %>
 <% unless @planned_courses.blank? %>
 <tr>
