@@ -5,7 +5,14 @@ class Course < ActiveRecord::Base
   belongs_to :instructor
   
   named_scope :active, :conditions => "courses.status = #{ Status::ACTIVE }"
-  named_scope :current, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at <= date('#{Date.today}') ) "
+  named_scope :current, lambda{
+    { :conditions => { :status => Status::ACTIVE, 
+      :id => 
+        all(:select => :id, :include => :sessions, :conditions => "sessions.starts_at <= date('#{Date.today}')").map(&:id) &
+        all(:select => :id, :include => :sessions, :conditions => "sessions.starts_at > date('#{Date.today}')").map(&:id) 
+      } 
+    } 
+  }
   named_scope :planned, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id NOT IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at <= date('#{Date.today}') ) "
   
   #after_update :save_sessions
