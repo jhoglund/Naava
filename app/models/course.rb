@@ -8,8 +8,8 @@ class Course < ActiveRecord::Base
   named_scope :current, lambda{
     { :conditions => { :status => Status::ACTIVE, 
       :id => 
-        all(:select => :id, :include => :sessions, :conditions => "sessions.starts_at <= date('#{Date.today}')").map(&:id) &
-        all(:select => :id, :include => :sessions, :conditions => "sessions.starts_at > date('#{Date.today}')").map(&:id) 
+        all(:select => :id, :include => :sessions, :conditions => "sessions.starts_at <= '#{DateTime.now}'").map(&:id) &
+        all(:select => :id, :include => :sessions, :conditions => "sessions.starts_at > '#{DateTime.now}'").map(&:id) 
       } 
     } 
   }
