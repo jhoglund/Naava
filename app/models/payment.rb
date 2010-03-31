@@ -8,6 +8,8 @@ class Payment < ActiveRecord::Base
   
   named_scope :summary, :select => 'sum(value) AS sum'
   
+  named_scope :by_id, :order => 'id'
+  
   def paid?
     !reciept.nil?
   end

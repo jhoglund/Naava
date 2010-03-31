@@ -1,7 +1,7 @@
 class Admin::PaymentsController < Admin::AdminController
 
   def index
-    @payments = Payment.all
+    @payments = Payment.by_id.all
 
     respond_to do |format|
       format.html # index.html.erb

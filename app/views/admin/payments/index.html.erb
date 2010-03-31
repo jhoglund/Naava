@@ -14,10 +14,10 @@
     <th></th>
   </tr>
 
-<% @payments.sort{|l,r| l.item.id <=> r.item.id }.each do |payment| %>
+<% @payments.each do |payment| %>
   <tr>
     <td><%= payment.paid? ? 'X' : '' %></td>
-    <td><%=h payment.item.id %></td>
+    <td><%=h payment.id %></td>
     <td><%=h payment.name %></td>
     <td><%=h payment.email %></td>
     <td><%=h payment.note %></td>
