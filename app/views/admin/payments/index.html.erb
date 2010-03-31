@@ -14,7 +14,7 @@
     <th></th>
   </tr>
 
-<% @payments.each do |payment| %>
+<% @payments.sort{|l,r| l.item.id <=> r.item.id }.each do |payment| %>
   <tr>
     <td><%= payment.paid? ? 'X' : '' %></td>
     <td><%=h payment.item.id %></td>
