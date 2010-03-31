@@ -50,7 +50,8 @@ class Admin::BookingsController < Admin::AdminController
     @booking.status = Status::ACTIVE
     @booking.notify_by_mail = false
     respond_to do |format|
-      if @booking.save
+      if @booking.save(false)
+        @booking.payment.pay(Free.create) if @booking.free.to_i == 1
         flash[:notice] = 'Bokningen är sparad.'
         format.html { redirect_to(edit_admin_booking_path(@booking)) }
         format.xml  { render :xml => @booking, :status => :created, :location => @booking }

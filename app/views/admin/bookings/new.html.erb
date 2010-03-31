@@ -10,6 +10,9 @@
   <%= f.hidden_field :booker_id %>
   
   <%= render :partial => '/bookings/form', :object => f %>
+  
+  <%= f.check_box :free %> Free
+  
   <p>
     <%= f.submit 'Create' %>
   </p>

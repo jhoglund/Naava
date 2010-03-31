@@ -48,18 +48,22 @@ class Admin::PaymentsController < Admin::AdminController
 
   def update
     @payment = Payment.find_by_token(params[:id])
+    @payment.notify_by_mail = params[:notify_by_mail] == '1'
     respond_to do |format|
       
       if @payment.update_attributes(params[:payment])
-        if not params[:avinr].blank? and not params[:gross].blank?
+        if params[:payment_type] == 'bg'
           @payment.reciept = Bankgiro.create(:avinr => params[:avinr], :gross => params[:gross]) 
           @payment.value = @payment.reciept.gross
-          @payment.save
-        elsif not params[:cash].blank?
+        elsif params[:payment_type] == 'cash'
           @payment.reciept = Cash.create(:gross => params[:cash]) 
           @payment.value = @payment.reciept.gross
-          @payment.save
+        elsif params[:payment_type] == 'free'
+          @payment.reciept = Free.create(:note => params[:free_note])
+        else
+          @payment.reciept.destroy
         end
+        @payment.save
         flash[:notice] = 'PaymentReciept was successfully updated.'
         format.html { redirect_to(admin_payment_url(@payment)) }
         format.xml  { head :ok }

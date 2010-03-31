@@ -8,8 +8,6 @@ class Booking < ActiveRecord::Base
   delegate :name, :email, :phone, :name=, :email=, :phone=, :to => :participant
   after_create :reset_attributes, :after_booking_created
   after_update :after_booking_disabled
-  
-  #before_update :disabling?
     
   named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
   named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
@@ -19,6 +17,12 @@ class Booking < ActiveRecord::Base
   validate :phone_or_email
   
   attr_writer :notify_by_mail
+  
+  attr_accessor :free
+  
+  def free?
+    payment.free? if payment
+  end
   
   def notify?
     @notify_by_mail != false

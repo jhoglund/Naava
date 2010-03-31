@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100224081738) do
+ActiveRecord::Schema.define(:version => 20100331122549) do
 
   create_table "attendants", :force => true do |t|
     t.integer  "participant_id"
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(:version => 20100224081738) do
     t.integer  "status",        :default => 0
     t.integer  "instructor_id"
     t.text     "comment"
+  end
+
+  create_table "frees", :force => true do |t|
+    t.integer  "reference_id"
+    t.string   "reference_type"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "instructors", :force => true do |t|

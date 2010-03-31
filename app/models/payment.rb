@@ -10,6 +10,15 @@ class Payment < ActiveRecord::Base
   
   named_scope :by_id, :order => 'id'
   
+  attr_writer :notify_by_mail, :free
+  
+  def free
+    free?
+  end
+  def free?
+    type? :free
+  end
+  
   def paid?
     !reciept.nil?
   end
@@ -21,6 +30,10 @@ class Payment < ActiveRecord::Base
    
   def type? type
     reciept.class.name ==  type.to_s.classify
+  end
+  
+  def notify?
+    @notify_by_mail != false
   end
   
   def add_common_attributes
@@ -54,7 +67,7 @@ class Payment < ActiveRecord::Base
       if item.class.send :method_defined?, :after_payment_recieved
         item.after_payment_recieved
       else
-        if email
+        if email and notify?
           Notification.deliver_mail("Vi har motagit betalning för din bokning för #{name}", email, self, Notification.get_template(self, 'reciept'))
         end
       end
