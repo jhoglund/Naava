@@ -3,12 +3,17 @@ class Admin::ParticipantsController < Admin::AdminController
   # GET /participants
   # GET /participants.xml
   def index
-    @participants = Participant.all
+    @participants ||= Participant.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @participants }
     end
+  end
+  
+  def search
+    @participants = Participant.search(:name => params[:name], :email => params[:email], :phone => params[:phone]).all
+    render :index
   end
 
   # GET /participants/1

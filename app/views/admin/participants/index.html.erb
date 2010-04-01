@@ -1,4 +1,14 @@
 <h1>Deltagare</h1>
+<% form_for :participant, :url => search_admin_participants_path do |f| %>
+	Namn: <%= text_field_tag :name, params[:name] %><br>
+	E-mail: <%= text_field_tag :email, params[:email] %><br>	
+	Telefon: <%= text_field_tag :phone, params[:phone] %><br>
+	<%= submit_tag "Search" %>		
+<% end %>
+
+<p>
+ Antal: <%= @participants.size %>  
+</p>
 
 <table>
   <tr>
