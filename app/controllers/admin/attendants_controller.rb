@@ -22,7 +22,9 @@ class Admin::AttendantsController < Admin::AdminController
   end
   
   def search
-    if params[:only_attending]
+    if request.get?
+      @attendants = []
+    elsif params[:only_attending]
       @attendants = Attendant.search(:name => params[:name]).attending.all
     else
       @attendants = Attendant.search(:name => params[:name]).all
