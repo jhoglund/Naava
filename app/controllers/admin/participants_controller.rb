@@ -12,7 +12,7 @@ class Admin::ParticipantsController < Admin::AdminController
   end
   
   def search
-    @participants = Participant.search(:name => params[:name], :email => params[:email], :phone => params[:phone]).all
+    @participants = Participant.search(:name => params[:name]).all
     render :index
   end
 

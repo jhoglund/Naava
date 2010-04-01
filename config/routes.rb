@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :payments
     admin.resources :bankgiros
     admin.resources :cashes
-    admin.resources :attendants
+    admin.resources :attendants, :collection => { :search => [:post, :get] }
     admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
   	  course.resources :bookings
