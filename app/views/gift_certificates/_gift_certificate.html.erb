@@ -1,6 +1,6 @@
 <div class="gift-certificate-card">
   <div class="header">&nbsp;</div>
-  <h2>Presentkort</h2> 
+  <h2><div style="font-size:60%">Presentkort:</div> <%= gift_certificate.coupon_type.name %></h2> 
   
   <div class="gift-certificate-names">
   	<div class="gift-certificate-to">
@@ -14,7 +14,7 @@
   </div>
 
   <div class="gift-certificate-value">
-    <b>Värde</b> <%=h number_to_currency(gift_certificate.original_funds) %>
+    <b>Värde</b> <%=h number_to_currency(gift_certificate.value) %>
   </div>
 
   <%- unless gift_certificate.message.blank? -%>

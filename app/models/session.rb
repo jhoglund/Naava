@@ -1,4 +1,7 @@
 class Session < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 10
+  
   has_many :bookings, :as => :booker
   has_many :attendants  
   belongs_to :course

@@ -1,6 +1,6 @@
 <h1>Editing payment for <%= link_to 'Booking', polymorphic_path(@payment) %></h1>
 
-<% form_for(@payment, :url => admin_payment_path(@payment)) do |f| %>
+<% form_for(@payment, :url => admin_payment_path(@payment, :page => params[:page])) do |f| %>
   <%= f.error_messages %>
   <%= render :partial => 'form', :object => f %>
   <p>

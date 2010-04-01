@@ -1,6 +1,8 @@
 class Booking < ActiveRecord::Base
   include PaymentModule
   include TokenModule
+  cattr_reader :per_page
+  @@per_page = 10
 
   belongs_to :participant, :dependent => :destroy
   belongs_to :booker, :polymorphic => true
@@ -11,7 +13,11 @@ class Booking < ActiveRecord::Base
     
   named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
   named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
-    
+  named_scope :by_id, lambda{|order|
+    order ||= :asc
+    { :order => "id #{order.to_s.upcase}" }
+  }
+  
   
   validates_presence_of :name, :on => :create
   validate :phone_or_email

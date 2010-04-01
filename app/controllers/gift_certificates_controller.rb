@@ -14,7 +14,7 @@ class GiftCertificatesController < ApplicationController
   
   def show
     begin
-      @coupon = Coupon.find(:conditions => { :token =>params[:id] })
+      @coupon = Coupon.find(:first, :conditions => { :token =>params[:id] })
       respond_to do |format|
         format.html # show.html.erb
         format.xml  { render :xml => @coupon }

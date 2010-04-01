@@ -1,4 +1,7 @@
 class Course < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 10
+  
   has_many :bookings, :as => :booker, :dependent => :nullify
   has_many :users, :through => :bookings
   has_many :sessions, :dependent => :destroy

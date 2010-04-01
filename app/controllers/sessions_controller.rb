@@ -3,9 +3,9 @@ class SessionsController < BookingsController
 
   def index
     if params[:week]
-      @sessions = Session.asc.week(Date.parse(params[:week])).all
+      @sessions = Session.current.asc.week(Date.parse(params[:week])).all
     else
-      @sessions = Session.asc.all
+      @sessions = Session.current.asc.all
     end
     @courses = Course.current.all.sort_by{|c| c.starts_at}
     @planned_courses = Course.planned.all.sort_by{|c| c.starts_at}

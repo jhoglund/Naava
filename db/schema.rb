@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100331122549) do
+ActiveRecord::Schema.define(:version => 20100401082813) do
 
   create_table "attendants", :force => true do |t|
     t.integer  "participant_id"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20100331122549) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "valid_for"
+    t.integer  "times"
   end
 
   create_table "coupons", :force => true do |t|

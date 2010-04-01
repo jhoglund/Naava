@@ -1,0 +1,7 @@
+Tack för ditt köp av presentkortet "<%= @object.coupon_type.name %>" till <%= @object.to_name %>.
+
+För att betala för presentkortet besöker du adressen <%= payment_url(@object.payment) %> där du enkelt betalar med kreditkort. 
+Det går även bra att betala till vårt bankgiro 5091-8051. Märk inbetalningen "Ref.nr <%= @object.payment.id %>"
+
+Tack för ditt köp,
+Jonas Höglund

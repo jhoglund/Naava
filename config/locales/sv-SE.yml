@@ -32,6 +32,12 @@ sv-SE:
     models:
       participant: Deltagare
       coupon: Presentkort
+      session:
+        one: Klass
+        other: Klasser
+      course:
+        one: Kurs
+        other: Kurser
     attributes:
       participant:
         phone: "telefon"

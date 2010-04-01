@@ -28,7 +28,10 @@
   <%= label_tag 'Kontant inbetald summa' %><br />
   <%= text_field_tag :cash, form.object.type?(:cash) ? form.object.reciept.gross : nil %>
 </p>
-
+<p>
+  <%= radio_button_tag :payment_type, 'coupon', form.object.type?(:coupon) %> Kuppong<br>
+  <%= select_tag :coupon_id, options_from_collection_for_select(Coupon.active, 'id', 'to_s') %>
+</p>
 <p>
   <%= radio_button_tag :payment_type, 'free', form.object.type?(:free) %> Gratis<br>
   <%= text_area_tag :free_note, form.object.type?(:free) ? form.object.reciept.note : '', :rows => 5, :cols => 40 %>

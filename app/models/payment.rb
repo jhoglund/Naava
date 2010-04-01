@@ -1,4 +1,9 @@
 class Payment < ActiveRecord::Base
+  class UnsufficentFunds < StandardError
+  end
+  cattr_reader :per_page
+  @@per_page = 10
+  
   include TokenModule
   belongs_to :item, :polymorphic => true, :dependent => :destroy
   belongs_to :reciept, :polymorphic => true
@@ -8,7 +13,12 @@ class Payment < ActiveRecord::Base
   
   named_scope :summary, :select => 'sum(value) AS sum'
   
-  named_scope :by_id, :order => 'id'
+  named_scope :by_id, lambda{|order|
+    order ||= :asc
+    { :order => "id #{order.to_s.upcase}" }
+  }
+  
+  named_scope :by_paid, :order => 'reciept_type NOT NULL'
   
   attr_writer :notify_by_mail, :free
   

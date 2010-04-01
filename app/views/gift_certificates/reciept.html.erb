@@ -22,7 +22,7 @@
     :item_name =>  @payment.item.coupon_type.name
   }   %>  
   <p>
-  Det går även bra att betala till vårt bankgiro <strong>5091-8051</strong>. Märk inbetalningen <strong>"<%= @payment.item.coupon_type.name %> (ref.nr <%= @payment.item.id %>)"</strong>
+  Det går även bra att betala till vårt bankgiro <strong>5091-8051</strong>. Märk inbetalningen <strong><%= @payment.item.coupon_type.name %> (ref.nr <%= @payment.item.id %>)</strong>
   </p>
 <%- else -%>
   <%- if @payment.item.payment.type? :paypal_reciept -%>

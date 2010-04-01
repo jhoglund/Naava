@@ -8,6 +8,9 @@ class Coupon < ActiveRecord::Base
   
   validates_presence_of :to_name, :from_name, :on => :create
   validate :phone_or_email
+  
+  delegate :value, :to => :coupon_type
+  
   EMAIL_EXP = /\A[\w\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)\z/i
   PHONE_EXP = /\d+|\+/
   
@@ -15,13 +18,62 @@ class Coupon < ActiveRecord::Base
   def name; from_name end
   def title; coupon_type.title end
   def phone; from_phone end
+  
+  def valid_for? obj
+    name = case obj.class.name
+      when 'String' then obj
+      when 'Symbol' then obj.to_s
+      when 'Class' then obj.name
+      else obj.class.name
+    end
+    coupon_type.valid_for.downcase == name.downcase
+  end
+  
+  def to_s
+    "#{to_name}, #{coupon_type.name} (#{available_funds})"
+  end
+  
+  def use! payment, value=nil
+    use(payment, value)
+    save
+  end
+  
+  def use payment, value=nil
+    # Vänta med detta. Det funkar inte så bra i och med att man kan betala via bankgiro, som har några dagars fördröjning
+    # if !payment.paid?
+    #   raise Payment::UnsufficentFunds
+    # else
+      payment.value = value if value
+      self.payment_reciepts << payment
+    # end
+  end
+  
+  def valid? value=nil
+    if coupon_type.times
+      payment_reciepts.count < coupon_type.times
+    else
+      available_funds >= value
+    end
+  end
+  
+  def self.active
+    Coupon.all.select{|coupon| coupon.valid? }
+  end
     
   def original_funds
-    coupon_type.value
+    if coupon_type.times
+      coupon_type.times
+    else
+      coupon_type.value
+    end
   end
   
   def available_funds
-    self.original_funds - payment_reciepts.sum(:value)
+    if coupon_type.times
+      original_funds - payment_reciepts.count
+    else
+      self.original_funds - payment_reciepts.sum(:value)
+    end
   end
   
   def no_funds?
@@ -31,9 +83,7 @@ class Coupon < ActiveRecord::Base
   def full_funds?
     self.available_funds == coupon_type.value
   end
-  
-  
-  
+    
   def valid_mail attribute
     attribute =~ EMAIL_EXP
   end

@@ -1,7 +1,7 @@
 class Admin::PaymentsController < Admin::AdminController
 
   def index
-    @payments = Payment.by_id.all
+    @payments = Payment.by_id(:desc).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -60,12 +60,15 @@ class Admin::PaymentsController < Admin::AdminController
           @payment.value = @payment.reciept.gross
         elsif params[:payment_type] == 'free'
           @payment.reciept = Free.create(:note => params[:free_note])
+        elsif params[:payment_type] == 'coupon'
+          @coupon = Coupon.find(params[:coupon_id])
+          @coupon.use!(@payment)
         else
           @payment.reciept.destroy
         end
         @payment.save
         flash[:notice] = 'PaymentReciept was successfully updated.'
-        format.html { redirect_to(admin_payment_url(@payment)) }
+        format.html { redirect_to(admin_payments_url(:page => params[:page])) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,7 +82,7 @@ class Admin::PaymentsController < Admin::AdminController
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_payments_url) }
+      format.html { redirect_to(admin_payments_url(:page => params[:page])) }
       format.xml  { head :ok }
     end
   end
