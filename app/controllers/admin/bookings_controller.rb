@@ -53,7 +53,13 @@ class Admin::BookingsController < Admin::AdminController
       if @booking.save(false)
         @booking.payment.pay(Free.create) if @booking.free.to_i == 1
         flash[:notice] = 'Bokningen är sparad.'
-        format.html { redirect_to(edit_admin_booking_path(@booking)) }
+        format.html { 
+          unless params[:return_to].blank?
+            redirect_to(CGI.unescape(params[:return_to]))
+          else
+            redirect_to(edit_admin_booking_path(@booking)) 
+          end
+        }
         format.xml  { render :xml => @booking, :status => :created, :location => @booking }
       else
         flash[:error] = 'Bokningen kunde inte sparas.'

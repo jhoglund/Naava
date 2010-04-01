@@ -6,6 +6,7 @@
 <% form_for(@booking, :url => @booking.booker.is_a?(Course) ? admin_course_bookings_path(@booking.booker) : admin_session_bookings_path(@booking.booker)) do |f| %>
   <%= f.error_messages %>
   
+  <%= hidden_field_tag :return_to, params[:return_to] %>
   <%= f.hidden_field :booker_type %>
   <%= f.hidden_field :booker_id %>
   

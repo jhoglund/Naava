@@ -1,4 +1,5 @@
 <h1>Närvaro</h1>
+<p><%= l(@session.starts_at, :format => :long) %></p>
 
 <% form_for(Session.new, :url => admin_session_attendants_path(@session)) do |f| %>
   <%= f.error_messages %>
@@ -20,4 +21,6 @@
     <%= f.submit 'Save' %>
   </p>
 <% end %>
-<%= link_to 'Klasser', admin_sessions_path %>
+<%= link_to 'Klasser', admin_sessions_path %> |
+<%= link_to 'Ny bokning', new_admin_session_booking_path(@session, :return_to => CGI.escape(admin_session_attendants_path(@session))) %>
+
