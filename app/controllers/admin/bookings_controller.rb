@@ -51,6 +51,7 @@ class Admin::BookingsController < Admin::AdminController
     @booking.notify_by_mail = false
     respond_to do |format|
       if @booking.save(false)
+        @booking.payment.notify_by_mail = false
         @booking.payment.pay(Free.create) if @booking.free.to_i == 1
         flash[:notice] = 'Bokningen är sparad.'
         format.html { 
