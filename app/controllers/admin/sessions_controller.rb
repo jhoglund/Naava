@@ -1,7 +1,8 @@
 class Admin::SessionsController < Admin::AdminController
   
   def index
-    @sessions = Session.all(:order => 'starts_at')
+    cookies[:session_page] = params[:page] if params[:page]
+    @sessions = Session.all(:order => 'starts_at').paginate(:page => cookies[:session_page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb

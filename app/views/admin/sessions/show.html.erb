@@ -45,8 +45,8 @@
 
 
 <div class="admin-navigation">
-<%= @session.previous ? link_to('Tidigare', admin_session_path(@session.previous)) : 'Tidigare' %> |
-<%= @session.next ? link_to('Nästa', admin_session_path(@session.next)) : 'Nästa' %> |
+<%= @session.previous(false) ? link_to('Tidigare', admin_session_path(@session.previous(false))) : 'Tidigare' %> |
+<%= @session.next(false) ? link_to('Nästa', admin_session_path(@session.next(false))) : 'Nästa' %> |
 <%= link_to "Print", admin_session_path(@session, :print => true), :target => :new %> |
 <%= link_to 'Edit', edit_admin_session_path(@session) %> |
 <%= link_to 'Närvaro', admin_session_attendants_path(@session) %> |
