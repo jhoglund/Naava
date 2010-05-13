@@ -7,7 +7,7 @@
     <td>
     <%- total = session.bookings.count + session.course.bookings.count  -%>
     <b style="color:red"><%= total %></b>
-    <strong>/ <%= link_to session.attendants.size, admin_session_attendants_path(session) %></strong>
+    <strong>/ <%= link_to session.attendants.attending.size, admin_session_attendants_path(session) %></strong>
     </td>
     <td><%=l session.starts_at, :format => :short %></td>
     <td><%= link_to 'Show', admin_session_path(session) %></td>

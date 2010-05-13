@@ -2,16 +2,17 @@ class Admin::BookingsController < Admin::AdminController
   
   def index
     # TODO: There got to be a better way of doing this
-    if params[:course_id]
-      @course = Course.find(params[:course_id])
-      @bookings = @course.bookings
-    elsif params[:session_id]
-      @session = Session.find(params[:session_id])
-      @bookings = @session.course.bookings
-      @bookings << @session.bookings
-    else
-      @bookings = Booking.all
-    end
+    #if params[:course_id]
+    #  #@course = Course.find(params[:course_id])
+    #  #@bookings = @course.bookings
+    #elsif params[:session_id]
+    #  #@session = Session.find(params[:session_id])
+    #  #@bookings = @session.course.bookings
+    #  #@bookings << @session.bookings
+      @bookings = Booking.by_booker(:course => params[:course_id], :session => params[:session_id]).paginate(:page => params[:page])
+    #else
+    #  @bookings = Booking.all
+    #end
 
     respond_to do |format|
       format.html # index.html.erb

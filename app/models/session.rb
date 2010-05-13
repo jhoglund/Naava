@@ -91,6 +91,13 @@ class Session < ActiveRecord::Base
     status == 0
   end
     
+  def next
+    Session.find(:first, :conditions => "timestamp(starts_at) > timestamp('#{starts_at.to_s(:db)}') AND course_id = #{course_id} AND status = 1", :order => 'starts_at')
+  end
+  
+  def previous
+    Session.find(:last, :conditions => "timestamp(starts_at) < timestamp('#{starts_at.to_s(:db)}') AND course_id = #{course_id} AND status = 1", :order => 'starts_at')
+  end
   
   private
   

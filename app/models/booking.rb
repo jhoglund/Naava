@@ -10,12 +10,26 @@ class Booking < ActiveRecord::Base
   delegate :name, :email, :phone, :name=, :email=, :phone=, :to => :participant
   after_create :reset_attributes, :after_booking_created
   after_update :after_booking_disabled
-    
+  
+  named_scope :sessions, :conditions => { :booker_type => 'Session'}
+  named_scope :courses, :conditions => { :booker_type => 'Course'}
   named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
   named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
   named_scope :by_id, lambda{|order|
     order ||= :asc
     { :order => "id #{order.to_s.upcase}" }
+  }
+  named_scope :by_booker, lambda{|options|
+    if !options[:session].nil?
+      course_id = Session.find(options[:session]).course_id
+      conditions = ["(bookings.booker_type = 'Session' AND bookings.booker_id = :session) OR (bookings.booker_type = 'Course' AND bookings.booker_id = :course)", {:session => options[:session], :course => course_id}] 
+    elsif !options[:course].nil?
+      conditions = ["(bookings.booker_type = 'Course' AND bookings.booker_id = :course)", {:course => options[:course]}] 
+    end
+    { 
+      :conditions => conditions || [],
+      :order => 'bookings.created_at DESC'
+    }
   }
   
   

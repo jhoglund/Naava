@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
   end
   
   def destroy
-    @booking = Booking.find_by_token(params[:id])
+    @booking = Bookingx.find_by_token(params[:id])
     @booking.update_attribute(:status, Status::DISABLED)
     
     respond_to do |format|

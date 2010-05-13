@@ -1,5 +1,4 @@
 <h1>Bokningar</h1>
-<p>Totalt anmälda: <%= @bookings.size %></p>
 <table>
 
 <% @bookings.each do |booking| %>
@@ -21,6 +20,8 @@
   </tr>
 <% end %>
 </table>
+<%= will_paginate @bookings %>
+<%= page_entries_info @bookings %>
 
 <br />
 
