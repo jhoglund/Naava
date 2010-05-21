@@ -5,16 +5,16 @@
   <div class="gift-certificate-names">
   	<div class="gift-certificate-to">
       <b>Till</b>
-      <%=h gift_certificate.to_name %>
+      <%= gift_certificate.to_name %>
     </div>
     <div class="gift-certificate-from">
 	  <b>Från</b>
-      <%=h gift_certificate.from_name %>
+      <%= gift_certificate.from_name %>
     </div>
   </div>
 
   <div class="gift-certificate-value">
-    <b>Värde</b> <%=h number_to_currency(gift_certificate.value) %>
+    <b>Värde</b> <%= number_to_currency(gift_certificate.value) %>
   </div>
 
   <%- unless gift_certificate.message.blank? -%>

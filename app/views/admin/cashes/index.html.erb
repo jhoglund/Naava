@@ -7,7 +7,7 @@
 
 <% @cashes.each do |cash| %>
   <tr>
-    <td><%=h cash.gross %></td>
+    <td><%= cash.gross %></td>
     <td><%= link_to 'Show', cash %></td>
     <td><%= link_to 'Edit', edit_cash_path(cash) %></td>
     <td><%= link_to 'Destroy', cash, :confirm => 'Are you sure?', :method => :delete %></td>

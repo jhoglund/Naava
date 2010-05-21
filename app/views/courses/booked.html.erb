@@ -1,4 +1,4 @@
-Vi har tagit emot din anmälan för <%=h @booking.participant.name %> till klassen <%= @booker.name %>, med kursstart <%= l(@booker.starts_at, :format => :long) %>
+Vi har tagit emot din anmälan för <%= @booking.participant.name %> till klassen <%= @booker.name %>, med kursstart <%= l(@booker.starts_at, :format => :long) %>
 <p>
 Du kan alltid nå din anmälan på addresses: <%= link_to booking_url(@booking), booking_url(@booking) %>
 <p>

@@ -11,11 +11,11 @@
 
 <% @gift_certificate_type.each do |gift_certificate_type| %>
   <tr>
-    <td><%=h gift_certificate_type.name %></td>
-    <td><%=h gift_certificate_type.description %></td>
-    <td><%=h gift_certificate_type.value %></td>
-    <td><%=h gift_certificate_type.valid_from %></td>
-    <td><%=h gift_certificate_type.valid_to %></td>
+    <td><%= gift_certificate_type.name %></td>
+    <td><%= gift_certificate_type.description %></td>
+    <td><%= gift_certificate_type.value %></td>
+    <td><%= gift_certificate_type.valid_from %></td>
+    <td><%= gift_certificate_type.valid_to %></td>
     <td><%= link_to 'Show', admin_gift_certificate_type_path(gift_certificate_type) %></td>
     <td><%= link_to 'Edit', edit_admin_gift_certificate_type_path(gift_certificate_type) %></td>
     <td><%= link_to 'Destroy', admin_gift_certificate_type_path(gift_certificate_type), :confirm => 'Are you sure?', :method => :delete %></td>

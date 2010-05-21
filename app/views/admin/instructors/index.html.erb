@@ -11,11 +11,11 @@
 
 <% @instructors.each do |instructor| %>
   <tr>
-    <td><%=h instructor.name %></td>
-    <td><%=h instructor.email %></td>
-    <td><%=h instructor.phone %></td>
+    <td><%= instructor.name %></td>
+    <td><%= instructor.email %></td>
+    <td><%= instructor.phone %></td>
     <td><%= instructor.bio %></td>
-    <td><%=h instructor.description %></td>
+    <td><%= instructor.description %></td>
     <td><%= link_to 'Show', admin_instructor_path(instructor) %></td>
     <td><%= link_to 'Edit', edit_admin_instructor_path(instructor) %></td>
     <td><%= link_to 'Destroy', admin_instructor_path(instructor), :confirm => 'Are you sure?', :method => :delete %></td>

@@ -11,11 +11,11 @@
 
 <% @coupon_types.each do |coupon_type| %>
   <tr>
-    <td><%=h coupon_type.name %></td>
-    <td><%=h coupon_type.description %></td>
-    <td><%=h coupon_type.value %></td>
-    <td><%=h coupon_type.valid_from %></td>
-    <td><%=h coupon_type.valid_to %></td>
+    <td><%= coupon_type.name %></td>
+    <td><%= coupon_type.description %></td>
+    <td><%= coupon_type.value %></td>
+    <td><%= coupon_type.valid_from %></td>
+    <td><%= coupon_type.valid_to %></td>
     <td><%= link_to 'Show', admin_coupon_type_path(coupon_type) %></td>
     <td><%= link_to 'Edit', edit_admin_coupon_type_path(coupon_type) %></td>
     <td><%= link_to 'Destroy', admin_coupon_type_path(coupon_type), :confirm => 'Are you sure?', :method => :delete %></td>

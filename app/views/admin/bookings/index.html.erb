@@ -4,10 +4,10 @@
 <% @bookings.each do |booking| %>
   <tr>
     <td><%= booking.paid? ? 'X' : booking.payment.nil? ? '' : link_to('--', edit_admin_payment_path(booking.payment)) %></td>
-    <td>Ref.nr <%=h booking.id %></td>
-    <td><%=h booking.participant.name %></td>
-    <td><%=h booking.participant.email %></td>
-    <td><%=h booking.participant.phone %></td>
+    <td>Ref.nr <%= booking.id %></td>
+    <td><%= booking.participant.name %></td>
+    <td><%= booking.participant.email %></td>
+    <td><%= booking.participant.phone %></td>
     <td>
       <%- if booking.booker.is_a?(Course) -%>
       Kurs som startar: <%= l(booking.booker.starts_at, :format => :short) %>

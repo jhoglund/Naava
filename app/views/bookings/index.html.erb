@@ -4,10 +4,10 @@
 
 <% @bookings.each do |booking| %>
   <tr>
-    <td><%=h booking.participant.name %></td>
-    <td><%=h booking.participant.email %></td>
-    <td><%=h booking.participant.phone %></td>
-    <!-- <td><%=h booking.drop_in? %></td> -->
+    <td><%= booking.participant.name %></td>
+    <td><%= booking.participant.email %></td>
+    <td><%= booking.participant.phone %></td>
+    <!-- <td><%= booking.drop_in? %></td> -->
     <td><%= link_to 'Ta bort', booking, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

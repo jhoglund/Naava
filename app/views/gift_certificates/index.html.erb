@@ -18,8 +18,8 @@ att använda till alla våra kurser och klasser.
 <% form_for @gift_certificate, :url => new_gift_certificate_path do |f| %>
 <%= f.hidden_field :coupon_type_id %>
 <% @gift_certificate_types.each do |gift_certificate_type| %>
-<h3><%=h gift_certificate_type.name %></h3>
-<p><%=h gift_certificate_type.description %>
+<h3><%= gift_certificate_type.name %></h3>
+<p><%= gift_certificate_type.description %>
 <p>Pris: <%=  number_to_currency(gift_certificate_type.value)  %>
 <p><%=  button_to_function "Köp nu!", "buyGiftCertificate(this.form, #{gift_certificate_type.id})"  %>
 <% end %>

@@ -3,7 +3,7 @@
 
 <% @instructors.each do |instructor| %>
 <div style="border-bottom:1px solid rgb(200,200,200); width:500px">
-    <h3><%=h instructor.name.titlecase %></h3>
+    <h3><%= instructor.name.titlecase %></h3>
     <p><%= image_tag instructor.avatar.url(:thumb) , :style => 'float:left;margin:0 10px 10px 0'%><%=truncate(instructor.bio, 200) %></p>
     <p><%= link_to 'Läs mer...', instructor %></p>
     <div style="clear:both;"></div>

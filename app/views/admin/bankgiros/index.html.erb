@@ -9,9 +9,9 @@
 
 <% @bankgiros.each do |bankgiro| %>
   <tr>
-    <td><%=h bankgiro.avinr %></td>
-    <td><%=h bankgiro.payment %></td>
-    <td><%=h bankgiro.gross %></td>
+    <td><%= bankgiro.avinr %></td>
+    <td><%= bankgiro.payment %></td>
+    <td><%= bankgiro.gross %></td>
     <td><%= link_to 'Show', bankgiro %></td>
     <td><%= link_to 'Edit', edit_bankgiro_path(bankgiro) %></td>
     <td><%= link_to 'Destroy', bankgiro, :confirm => 'Are you sure?', :method => :delete %></td>

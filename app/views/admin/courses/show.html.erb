@@ -1,9 +1,9 @@
-<h1><%=h @course.name %></h1>
+<h1><%= @course.name %></h1>
 <p>
-  <%=h @course.description %>
+  <%= @course.description %>
 </p>
 
-<p>Kursen passar för <%=h @course.level.downcase %> nivåer</p>
+<p>Kursen passar för <%= @course.level.downcase %> nivåer</p>
 
 <p>Antal kurstillfällen är <%= @course.sessions.count %></p>
 

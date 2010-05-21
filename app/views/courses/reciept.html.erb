@@ -9,7 +9,7 @@
   <strong><%=l @payment.item.booker.next_session.ends_at, :format => :time %></strong></h2>
   <% end %>
   <p>
-    Anmälan är personlig för <strong><%=h @payment.item.participant.name %></strong>. Nästa klasstillfälle är <%= l(@payment.item.booker.starts_at, :format => :long) %>
+    Anmälan är personlig för <strong><%= @payment.item.participant.name %></strong>. Nästa klasstillfälle är <%= l(@payment.item.booker.starts_at, :format => :long) %>
   </p>
 
   <%- if !@payment.item.paid? -%>

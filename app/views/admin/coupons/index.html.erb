@@ -14,14 +14,14 @@
 
 <% @coupons.each do |coupon| %>
   <tr>
-    <td><%=h coupon.to_name %></td>
-    <td><%=h coupon.to_email %></td>
-    <td><%=h coupon.to_phone %></td>
-    <td><%=h coupon.from_name %></td>
-    <td><%=h coupon.from_email %></td>
-    <td><%=h coupon.from_phone %></td>
+    <td><%= coupon.to_name %></td>
+    <td><%= coupon.to_email %></td>
+    <td><%= coupon.to_phone %></td>
+    <td><%= coupon.from_name %></td>
+    <td><%= coupon.from_email %></td>
+    <td><%= coupon.from_phone %></td>
     <td><%=truncate coupon.message %></td>
-    <td><%=h coupon.coupon_type.name %></td>
+    <td><%= coupon.coupon_type.name %></td>
     <td><%= link_to 'Show', admin_coupon_path(coupon) %></td>
     <td><%= link_to 'Edit', edit_admin_coupon_path(coupon) %></td>
     <td><%#= link_to 'Destroy', user_admin_coupon_type_path(coupon), :confirm => 'Are you sure?', :method => :delete %></td>

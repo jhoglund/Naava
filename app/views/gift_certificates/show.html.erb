@@ -16,7 +16,7 @@
     <% if @coupon.coupon_type.times %>
     <%= @coupon.available_funds %> av totalt <%= @coupon.original_funds %> <%= @coupon.coupon_type.valid_for.constantize.human_name(:count => @coupon.original_funds).downcase %>.
     <% else %>
-    <%=h number_to_currency(@coupon.available_funds) %>
+    <%= number_to_currency(@coupon.available_funds) %>
     <% end %>
     </strong>
   </p>

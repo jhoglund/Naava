@@ -21,9 +21,9 @@ Endast närvarande: <%= check_box_tag :only_attending, nil,  params[:only_attend
 <% @attendants.each do |attendant| %>
   <tr>
     <td><%= attendant.attending? ? 'X' : '' %></td>
-    <td><%=h attendant.participant.name %></td>
-    <td><%=h attendant.participant.email %></td>
-    <td><%=h attendant.participant.phone %></td>
+    <td><%= attendant.participant.name %></td>
+    <td><%= attendant.participant.email %></td>
+    <td><%= attendant.participant.phone %></td>
     <td><%= link_to l(attendant.session.starts_at, :format => :short), admin_session_path(attendant.session) %></td>
     <td><%= link_to 'Show', admin_participant_path(attendant.participant) %></td>
     <td><%= link_to 'Edit', edit_admin_participant_path(attendant.participant) %></td>

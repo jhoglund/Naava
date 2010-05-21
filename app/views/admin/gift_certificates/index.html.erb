@@ -14,14 +14,14 @@
 
 <% @gift_certificate.each do |gift_certificate| %>
   <tr>
-    <td><%=h gift_certificate.to_name %></td>
-    <td><%=h gift_certificate.to_email %></td>
-    <td><%=h gift_certificate.to_phone %></td>
-    <td><%=h gift_certificate.from_name %></td>
-    <td><%=h gift_certificate.from_email %></td>
-    <td><%=h gift_certificate.from_phone %></td>
+    <td><%= gift_certificate.to_name %></td>
+    <td><%= gift_certificate.to_email %></td>
+    <td><%= gift_certificate.to_phone %></td>
+    <td><%= gift_certificate.from_name %></td>
+    <td><%= gift_certificate.from_email %></td>
+    <td><%= gift_certificate.from_phone %></td>
     <td><%=truncate gift_certificate.message %></td>
-    <td><%=h gift_certificate.coupon_type.name %></td>
+    <td><%= gift_certificate.coupon_type.name %></td>
     <td><%= link_to 'Show', admin_gift_certificate_path(gift_certificate) %></td>
     <td><%= link_to 'Edit', edit_admin_gift_certificate_path(gift_certificate) %></td>
     <td><%= link_to 'Destroy', admin_gift_certificate_path(gift_certificate), :method => :delete %></td>
