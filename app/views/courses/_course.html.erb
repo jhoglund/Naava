@@ -1,5 +1,5 @@
 <h3><%= link_to course.name, course %></h3>
-<%=h course.description %>
+<%= course.description %>
 <p>Kursen passar för <%=h course.level.downcase %> nivåer</p>
 
 <p>Antal kurstillfällen är <%= course.sessions.count %></p>
