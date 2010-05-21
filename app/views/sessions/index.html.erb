@@ -52,6 +52,11 @@
     <%- else -%>
     <%=  link_to "Anmäl dig till klass", book_session_path(course.next_session) %></span>
     <%- end -%>
+    <% unless course.description.blank? %>
+    <p>
+    <%= course.description %>
+    </p>
+    <% end %>
     <p><% if course.started? %>
     <span class="course-started">Denna kursen började den <strong><%=l course.starts_at.to_date, :format => :long %></strong>. Vi har hittills hunnit med <%= course.sessions.expired.active.count %> klasser. 
     <%- if course.sessions.current.count > 1 -%>
@@ -81,6 +86,11 @@
     klockan <strong><%=l course.next_session.starts_at, :format => :time %></strong> till
     <strong><%=l course.next_session.ends_at, :format => :time %></strong> -
     <%=  link_to "Anmäl dig till kursen", book_course_path(course) %></span>
+    <% unless course.description.blank? %>
+    <p>
+    <%= course.description %>
+    </p>
+    <% end %>
     <p>
     Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
     </p>
