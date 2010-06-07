@@ -33,6 +33,11 @@
   <%= form.text_field :from_address %>
 </p>
 <p>
+  <%= form.label :gift_certificate_type %><br />
+  <%= form.collection_select :coupon_type_id, CouponType.all, :id, :name %>
+</p>
+
+<p>
   <%= form.label :message %><br />
   <%= form.text_area :message %>
 </p>

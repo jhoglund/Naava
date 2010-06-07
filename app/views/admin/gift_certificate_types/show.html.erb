@@ -23,6 +23,11 @@
   <%= @gift_certificate_type.valid_to %>
 </p>
 
+<p>
+  <b>Valid for:</b>
+  <%= @gift_certificate_type.valid_for %>
+</p>
+
 
 <%= link_to 'Edit', edit_admin_gift_certificate_type_path(@gift_certificate_type) %> |
 <%= link_to 'Back', admin_gift_certificate_types_path %>

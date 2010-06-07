@@ -14,7 +14,7 @@
 </p>
 <p>
   <%= form.label :valid_for %><br />
-  <%= form.text_field :valid_for %>
+  <%= form.select :valid_for, options_for_select(%w{Session Course}, :selected => @gift_certificate_type.valid_for) %>
 </p>
 <p>
   <%= form.label :times %><br />

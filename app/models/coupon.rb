@@ -38,6 +38,10 @@ class Coupon < ActiveRecord::Base
     save
   end
   
+  def to_param
+    token
+  end
+  
   def use payment, value=nil
     # Vänta med detta. Det funkar inte så bra i och med att man kan betala via bankgiro, som har några dagars fördröjning
     # if !payment.paid?
@@ -49,7 +53,9 @@ class Coupon < ActiveRecord::Base
   end
   
   def valid? value=nil
-    if coupon_type.times
+    if self.new_record?
+      true
+    elsif coupon_type.times
       payment_reciepts.count < coupon_type.times
     else
       available_funds >= value
