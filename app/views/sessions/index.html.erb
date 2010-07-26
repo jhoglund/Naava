@@ -5,8 +5,8 @@
 <div class="sidebar">
   <h3>Priser</h3>
   <dl>
-    <dt>Kurser, 8 tillfällen</dt>
-    <dd><%= number_to_currency(Course.price(8)) %> (90 minuter per tillfälle)</dd>
+    <dt>Kurser, 16 tillfällen</dt>
+    <dd><%= number_to_currency(Course.price(16)) %> (90 minuter per tillfälle)</dd>
     <dt>Enstaka klasser</dt>
     <dd><%= number_to_currency(Session.price) %> (90 minuter)</dd>
     <dt>Privatlektioner</dt>
@@ -17,12 +17,12 @@
 </div>
 
 <h2>Våra kurser</h2>
-<p>Samtliga av våra kurser passar alla. Vi anpassar våra klasser
+<p>På Nava Yoga har vi både nybörjar- och fortsättningskurser. För varje enskild kurs, anpassar vi våra klasser
   efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
   har yogat tidigare att komma vidare i ditt utövande.</p>
 
 <p>
-  Varje kurs inkluderar <strong>8 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(8)) %></strong> (90 minuter per tillfälle). 
+  Varje kurs inkluderar <strong>16 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(16)) %></strong> (90 minuter per tillfälle). 
   Du betalar endast <strong><%=  number_to_currency(Course.price_per_session) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price) %>
   om du väljer att betala vid varje enskilt tillfälle.
 </p>
@@ -64,7 +64,7 @@
     är <strong><%=  number_to_currency(course.price_per_session) %></strong>  (<%= course.discount %>%)  per återstående klass.</span>
     <%- else -%>
     Du kan fortfarande anmäla dig till den återstående klassen (<%=l(course.next_session.starts_at, :format => :long) %>) för
-    är <strong><%=  number_to_currency(course.next_session.price) %></strong>.
+    <strong><%=  number_to_currency(course.next_session.price) %></strong>.
     <%- end -%>    
     
     <% else %>

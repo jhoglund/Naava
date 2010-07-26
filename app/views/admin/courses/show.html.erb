@@ -5,18 +5,20 @@
 
 <p>Kursen passar för <%= @course.level.downcase %> nivåer</p>
 
-<p>Antal kurstillfällen är <%= @course.sessions.count %></p>
+<p>Antal kurstillfällen är <%= @course.sessions.active.count %></p>
 
 <% unless @course.starts_at.nil? or @course.ends_at.nil? %>
-<p>Första kurstillfället är <%= l(@course.starts_at, :format => :day) %> och sista är <%= l(@course.ends_at, :format => :day) %> </p>
+<p>Första kurstillfället är <strong><%= l(@course.starts_at, :format => :day) %></strong> och sista är <strong><%= l(@course.ends_at, :format => :day) %></strong> </p>
 
-<p>Klasserna startar klockan <%= l(@course.starts_at, :format => :time) %> tills klockan <%= l(@course.ends_at, :format => :time) %> </p>
+<p>Klasserna startar klockan <%= l(@course.sessions.active.first.starts_at, :format => :time) %> tills klockan <%= l(@course.sessions.active.first.ends_at, :format => :time) %> </p>
 <% end %>
 
 
 <h3>Tillfällen</h3>  
 <% @course.sessions.asc.each do |session| %>
-  <%= l(session.starts_at, :format => :long)%>  (<%= l(session.duration, :format => :time) %>) <br>
+  <% if session.canceled? %><s><% end %>
+  <%= link_to l(session.starts_at, :format => :long), admin_session_path(session) %>  (<%= l(session.duration, :format => :time) %>) <br>
+  <% if session.canceled? %></s><% end %>
 <% end %>
 
 

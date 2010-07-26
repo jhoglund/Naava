@@ -27,13 +27,15 @@
 <div class="main-promotion">
   <!-- <h1>Välkommen till Nava Yoga</h1> -->
   
-  <h1>Nu startar vi nya kurser. </h1>
+  <h1>Nu börjar höstens Yoga! </h1>
   
-  <p>Kom och yoga med oss! Under vintern har intresset för yoga visat sig vara stort och vi har därför utökat våra tider. Vi kan nu erbjuda dig som vill utmana dig ytterligare, en fortsättningskurs kl 19.30 på måndagar.<br> <%= link_to 'Läs mer om vårens nya tider och anmäl dig här.', sessions_path %></p> 
-
-  <p>Så kom och prova på yoga för första gången, eller utvecklas vidare tillsammans med oss.
+  <p>Vecka 33 börjar åter igen våra kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning. <%=  link_to 'Läs mer om yoga.', about_ashtanga_yoga_path %><br> 
+  <p>Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss på vår fortsättningskurs som i höst kommer att vara på lördagar kl 09.30.
+   <p>  
+    <%= link_to 'Läs mer om vårens nya tider och anmäl dig här.', sessions_path %></p> 
+    
   
-  <p>Yoga utmanar dig att vara i nuet, att låta utveckling ta tid, att utgå från dig själv och inte jämföra dig med andra. Du väljer själv utefter var du är i livet och hur din kropp och ditt sinne känns just för stunden. Yoga är en träningsform som du kan utvecklas med, där du aldrig blir fullärd och aldrig för gammal. Alla kan yoga!</p>
+   <!-- <p>Yoga utmanar dig att vara i nuet, att låta utveckling ta tid, att utgå från dig själv och inte jämföra dig med andra. Du väljer själv utefter var du är i livet och hur din kropp och ditt sinne känns just för stunden. Yoga är en träningsform som du kan utvecklas med, där du aldrig blir fullärd och aldrig för gammal. Alla kan yoga!</p>-->
     
 
     
@@ -62,7 +64,7 @@ så att alla kan delta.</p>-->
       <h2>Kommande klasser</h2>
     <%= render :partial => 'session', :object => @sessions %>
     <% end %>
-    <p style="margin-top:-8px"><%= link_to 'Vårens alla tider och priser', sessions_path %></p>
+    <p style="margin-top:-8px"><%= link_to 'Höstens alla tider och priser', sessions_path %></p>
     <hr>
     <!-- <h3>Privatlektioner &amp; Företagsyoga</h3>
         Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Vi utformar ett program efter era specifika behov. 
@@ -80,7 +82,7 @@ så att alla kan delta.</p>-->
   </div><div class="promotion-box">
     <div class="promotion-box-line"></div>
     <div>
-      <p class="promotion-dec">Yoga har gett mig <strong>styrka, balans, koncentrations-förmåga, lugn och energi.</strong> Jag började <%= link_to 'utbilda mig', instructor_path(@jonas) %> till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga, kunde yoga tillsammans, men också för att kunna föra vidare och lära ut denna träningsform. </p>
+      <p class="promotion-dec">Yoga har gett mig <strong>styrka, balans, koncentrations-förmåga, lugn och energi.</strong> Jag började <%= link_to 'utbilda mig', instructor_path(@jonas) %> till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga kunde yoga tillsammans, men också för att kunna föra vidare och lära ut denna träningsform. </p>
 
     <p style="font:normal 12px/18px verdana"><%= link_to 'Jonas Höglund', instructor_path(@jonas) %>
       <img src="/images/jonas_headshot.jpg" width="100" height="66" alt="Jonas Headshot" style="float:left;margin:0 10px 10px 0">

@@ -42,6 +42,7 @@ class Admin::CoursesController < Admin::AdminController
       @course.sessions << session.clone
     end
     @course.save
+    @course.update_attribute(:ends_at, @original.ends_at)
     redirect_to edit_admin_course_path(@course)
   end
   

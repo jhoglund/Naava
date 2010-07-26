@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_session
   map.login '/login', :controller => 'user_sessions', :action => 'new'
+  map.login '/signin', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
   
   map.resources :bookings, :member => { :book => [ :get, :post ], :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] }, :except => [ :index ]

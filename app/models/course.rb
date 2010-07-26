@@ -36,11 +36,11 @@ class Course < ActiveRecord::Base
   end
   
   def starts_at
-    sessions.active.asc.first.starts_at if sessions.first
+    sessions.active.asc.first.starts_at if sessions.active.first
   end
   
   def ends_at
-    sessions.active.asc.last.starts_at if sessions.last
+    sessions.active.asc.last.starts_at if sessions.active.last
   end
   
   def price

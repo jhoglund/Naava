@@ -11,7 +11,7 @@
       -
     <%- end -%>  
     </td>
-    <td><%=l course.starts_at, :format => :short %></td>
+    <td><%=l course.starts_at || course.sessions.first.starts_at, :format => :short %></td>
     <td><%= link_to 'Show', admin_course_path(course) %></td>
     <td><%= link_to 'Edit', edit_admin_course_path(course) %></td>
   </tr>

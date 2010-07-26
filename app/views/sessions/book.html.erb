@@ -26,14 +26,14 @@
 klockan <strong><%=l @booker.course.next_session.starts_at, :format => :time %></strong> till
 <strong><%=l @booker.course.next_session.ends_at, :format => :time %></strong></h2>
 <p>
-  Det går även bra att anmäla sig till hela kursen. I kursen ingår totalt <%= @booker.course.sessions.count %> klasser. 
+  Det går även bra att anmäla sig till hela kursen. I kursen ingår totalt <%= @booker.course.sessions.active.count %> klasser. 
   En kurs kostar <%= number_to_currency(@booker.course.original_price) %>, 
   vilket är <%= number_to_currency(@booker.course.original_price_per_session) %> (<%= @booker.course.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
   <%=  number_to_currency(@booker.price) %>/klass.
 </p>
 <% if @booker.course.started? %>
 <p>
-  Denna kursen har redan börjat och vi har hittills hunnit med <%= @booker.course.sessions.expired.count %> klasser. 
+  Denna kursen har redan börjat och vi har hittills hunnit med <%= @booker.course.sessions.active.expired.count %> klasser. 
   Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(@booker.course.price) %> vilket
   är <%=  number_to_currency(@booker.course.price_per_session) %>  (<%= @booker.course.discount %>%)  per återstående klass.
 </p>
