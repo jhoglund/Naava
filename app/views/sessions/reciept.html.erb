@@ -16,7 +16,7 @@
   <p class="button-bar" style="width:520px">
     <%= link_to t('labels.cancel_booking'), @payment.item, :confirm => t('messages.destroy_confirmation'), :method => :delete, :class => 'button' %>
   </p>
-  <%- if !@payment.item.paid? -%>
+  <%- if !@payment.item.booker.free? and !@payment.item.paid? -%>
     <div class="message" style="width:500px">
       Klassen kostar <strong><%= number_to_currency(@payment.item.booker.price) %></strong><br>
       Välj ett av nedanstående tre alternativ för att betala.    

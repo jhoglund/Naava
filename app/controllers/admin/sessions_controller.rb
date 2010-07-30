@@ -2,7 +2,7 @@ class Admin::SessionsController < Admin::AdminController
   
   def index
     cookies[:session_page] = params[:page] if params[:page]
-    @sessions = Session.all(:order => 'starts_at').paginate(:page => cookies[:session_page], :per_page => 10)
+    @sessions = Session.current.all(:order => 'starts_at').paginate(:page => cookies[:session_page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,6 +30,7 @@ class Admin::SessionsController < Admin::AdminController
 
   def edit
     @session = Session.find(params[:id])
+    @cources = Course.all
   end
 
   def create
@@ -38,7 +39,13 @@ class Admin::SessionsController < Admin::AdminController
     respond_to do |format|
       if @session.save
         flash[:notice] = 'Session was successfully created.'
-        format.html { redirect_to(admin_course_session_path(@session.course, @session)) }
+        format.html { 
+          if @session.course
+            redirect_to(admin_course_session_path(@session.course, @session))
+          else
+            redirect_to(admin_session_path(@session))
+          end
+        }
         format.xml  { render :xml => @session, :status => :created, :location => @session }
       else
         format.html { render :action => "new" }
@@ -55,7 +62,13 @@ class Admin::SessionsController < Admin::AdminController
     respond_to do |format|
       if @session.update_attributes(params[:session])
         flash[:notice] = 'Session was successfully updated.'
-        format.html { redirect_to(@session) }
+        format.html { 
+          if @session.course
+            redirect_to(admin_course_session_path(@session.course, @session))
+          else
+            redirect_to(admin_session_path(@session))
+          end
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

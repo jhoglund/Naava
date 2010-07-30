@@ -45,8 +45,13 @@ class Session < ActiveRecord::Base
   end
   
   def price
-    Session.price
+    session_price = course ? course.session_price : nil
+    session_price || Session.price
   end
+  
+  def free?
+    course ? course.free? : false
+  end 
   
   def expired?
     starts_at < Time.now

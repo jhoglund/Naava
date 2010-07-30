@@ -1,21 +1,8 @@
 <h1>Editing session</h1>
 
-<% form_for(@session) do |f| %>
+<% form_for(@session, :url => admin_session_path(@session)) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= link_to @session.course.name, course_path(@session.course) %>
-  </p>
-  <p>
-    <%= f.label :starts_at %><br />
-    <%= f.datetime_select :starts_at %>
-  </p>
-  <p>
-    <%= f.label :ends_at %><br />
-    <%= f.datetime_select :ends_at %>
-  </p>
-  
-  
+  <%= render :partial => 'form', :object => f %>  
   <p>
     <%= f.submit 'Update' %>
   </p>

@@ -11,8 +11,7 @@
   <p>
     Anmälan är personlig för <strong><%= @payment.item.participant.name %></strong>. Nästa klasstillfälle är <%= l(@payment.item.booker.starts_at, :format => :long) %>
   </p>
-
-  <%- if !@payment.item.paid? -%>
+  <%- if !@payment.item.booker.free? and !@payment.item.paid? -%>
   <hr>
     <div class="message" style="width:500px">
       Kursavgiften på <strong><%= number_to_currency(@payment.item.booker.price) %></strong> ska vara betalde senast <strong>1 vecka före första klassen.</strong> 

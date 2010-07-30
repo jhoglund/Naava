@@ -8,6 +8,7 @@ class Course < ActiveRecord::Base
   belongs_to :instructor
   
   named_scope :active, :conditions => "courses.status = #{ Status::ACTIVE }"
+  named_scope :free, :conditions => "courses.session_price = 0"
   named_scope :current, lambda{
     { :conditions => { :status => Status::ACTIVE, 
       :id => 
@@ -16,13 +17,14 @@ class Course < ActiveRecord::Base
       } 
     } 
   }
-  named_scope :planned, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id NOT IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at <= date('#{Date.today}') ) "
+  named_scope :current_or_planned, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at >= '#{DateTime.now}' ) "
+  named_scope :planned, :include => :sessions, :conditions => "courses.status = #{ Status::ACTIVE } AND  courses.id NOT IN (SELECT DISTINCT(sessions.course_id)  FROM sessions WHERE sessions.starts_at <= '#{DateTime.now}' ) "
   
   #after_update :save_sessions
   
   accepts_nested_attributes_for :sessions, :allow_destroy => true
   accepts_nested_attributes_for :instructor, :allow_destroy => true
-  
+    
   def self.price_per_session
     AppConfig[:course_per_class]
   end
@@ -56,7 +58,11 @@ class Course < ActiveRecord::Base
   end
   
   def original_price_per_session
-    Course.price_per_session
+    session_price || Course.price_per_session
+  end
+  
+  def free?
+    session_price == 0
   end
   
   def discount

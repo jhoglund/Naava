@@ -41,7 +41,11 @@ class Booking < ActiveRecord::Base
   attr_accessor :free
   
   def free?
-    payment.free? if payment
+    if payment
+      payment.free?
+    elsif booker and defined?(booker.free?)
+      booker.free?
+    end
   end
   
   def notify?

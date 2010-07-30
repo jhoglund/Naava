@@ -26,9 +26,20 @@
 <% content_for :top do %>
 <div class="main-promotion">
   <!-- <h1>Välkommen till Nava Yoga</h1> -->
-  
+  <%- unless @test_course.blank? -%>
+  <div style="float:right;margin-left:20px;min-height:160px" class="sticker">
+    <h3>Prova gratis!</h3>
+    Är du sugen på att prova yoga? Nu finns chansen för dig som aldrig yogat
+    att komma och prova på, helt gratis. Passa på!
+    <p>
+    <%= "#{ l(@test_session.starts_at.to_date, :format => :long_day) },<br> klockan #{l(@test_session.starts_at, :format => :time)} -  #{l(@test_session.ends_at, :format => :time)}".sub(/(>\w)/){$&.upcase} %>
+    <p>
+    <p style="text-align:center; margin-top:25px;">
+    <%= link_to 'Boka din plats', book_course_path(@test_course), :class => 'button button-default' %>
+    <p>
+  </div>
+  <%- end -%>
   <h1>Nu börjar höstens Yoga! </h1>
-  
   <p>Vecka 33 börjar åter igen våra kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning. <%=  link_to 'Läs mer om yoga.', about_ashtanga_yoga_path %><br> 
   <p>Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss på vår fortsättningskurs som i höst kommer att vara på lördagar kl 09.30.
    <p>  
