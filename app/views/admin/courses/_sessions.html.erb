@@ -19,14 +19,13 @@
   <p style="display:<%= session.object.comment.blank? ? 'none' : 'block' %>">
   <%= session.text_area :comment, :rows => 4 %>
   </p>
-  <%= link_to_function 'Comment', "$(this).previous().toggle()" %> | 
+  <%= link_to_function 'Comment', "$(this).prev().toggle()" %> | 
   
 
-  <%= link_to_function "Remove", "(function(item){
-    var to_delete = item.getElementsByTagName('input')[0];
+  <%= link_to_function "Remove", "(function(to_delete){
     to_delete.value = 1;
     to_delete.id = to_delete.id.replace(/no_delete/,'_delete')
-  })($(this).up('.session')); $(this).up('.session').hide(); " %>
+  })($(this).parent('.session').find('input')[0]); $(this).parent('.session').hide(); " %>
   <hr>
   </div>
 <% end -%>

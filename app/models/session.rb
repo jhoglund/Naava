@@ -113,6 +113,18 @@ class Session < ActiveRecord::Base
     Session.find(:last, :conditions => conditions, :order => 'starts_at')
   end
   
+  def to_fullcalendar
+    timepattern = '%Y-%m-%d %H:%M:%S'
+    { 
+      :title => (course.nil? ? 'Untitled' : "#{starts_at.strftime('%H:%M')}\n #{course.name}"), 
+      :start => starts_at.strftime(timepattern), 
+      :end => ends_at.strftime(timepattern), 
+      :url => status==1 ? "klasser/#{id}/boka" : false,
+      :className => canceled? ? 'calendar-session-disabled' : "calendar-session-#{course.nil? ? 'default' : course.level.gsub(/([åäö])/i,'').downcase}",
+      :tooltip => canceled? ? comment : 'Klicka för att boka plats'
+    }
+  end
+  
   private
   
   

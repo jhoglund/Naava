@@ -3,7 +3,7 @@ module CoursesHelper
     link_to_function name do |page|
       page << %q{
         (function(){
-          var sessions = $$('#session .session');
+          var sessions = $('#session .session');
           var template = sessions[sessions.length-1];
           var clone = template.cloneNode(true);
           template.parentNode.appendChild(clone)

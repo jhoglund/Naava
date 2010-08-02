@@ -30,12 +30,10 @@
   Du betalar endast <strong><%=  number_to_currency(Course.price_per_session, {:precision => 0}) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price, {:precision => 0}) %>
   om du väljer att betala vid varje enskilt tillfälle.
 </p>
-<% content_for :header do %>
-  <% javascript_tag do %>
-    function bookCourse(path){
-      document.location.href = path
-    }
-  <% end %>
+<% content_for :javascript do %>
+  function bookCourse(path){
+    document.location.href = path
+  }
 <% end %>
 
 <table>
@@ -104,6 +102,6 @@
 
 </table>
 <hr>
-<h2>Schema för höstens klasser, 2010</h2>
+<!-- <h2>Schema för höstens klasser, 2010</h2> -->
 <%= render :partial => 'calendar' %>
 <%#= render :partial => 'sessions', :object => @sessions %>

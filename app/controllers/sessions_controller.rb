@@ -5,13 +5,14 @@ class SessionsController < BookingsController
     if params[:week]
       @sessions = Session.current.asc.week(Date.parse(params[:week])).all
     else
-      @sessions = Session.current.asc.all
+      @sessions = Session.current.asc.all(:include => :course)
     end
     @courses = Course.current.all.sort_by{|c| c.starts_at}
     @planned_courses = Course.planned.all.sort_by{|c| c.starts_at}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sessions }
+      format.json { render :json => @sessions }
     end
   end
 
