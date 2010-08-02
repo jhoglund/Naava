@@ -2,7 +2,7 @@ class CoursesController < BookingsController
   #caches_page :index, :show
   
   def index
-    @courses = Course.active.all
+    @courses = Course.active.current_or_planned.find(:all, :order => 'courses.updated_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
