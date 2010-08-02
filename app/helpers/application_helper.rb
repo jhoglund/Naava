@@ -1,5 +1,40 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def include_inline_resource name, type = :javascript, &block
+    @inline_resource_cache ||= { :javascript => {},:css => {} }
+    unless @inline_resource_cache[type][name]
+      @inline_resource_cache[type][name] = capture(&block)
+      content_for(type) do
+        @inline_resource_cache[type][name]
+      end
+    end
+  end
+  
+  def include_resource pathes, type = :javascript
+    @resource_cache ||= {}
+    content_for(:include_resource) do
+      returning '' do |str|
+        [pathes].flatten.each do |path|
+          next if @resource_cache[path]
+          @resource_cache[path] = true
+          if type == :javascript
+            str << javascript_include_tag(path)
+          else
+            str << stylesheet_link_tag(path)
+          end
+        end
+      end
+    end
+  end
+  
+  def include_javascript *path
+    return include_resource path, :javascript
+  end
+  
+  def include_stylesheet *path
+    include_resource path, :css
+  end
+  
   def reformat_time time
     # Pick the right translation format
     formated = if time.hour.to_i == 0

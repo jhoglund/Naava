@@ -14,6 +14,19 @@
   <link rel="stylesheet" href="/stylesheets/print.css" type="text/css" />
   <% end %>
   <%= yield :header %>
+  <%= javascript_include_tag( 
+    'jquery.1.4.2.min.js', 
+    'jquery-ui-1.8.1.min.js', 
+    'jquery-plugins/tools/jquery.tools.min.js', 
+    #'http://cdn.jquerytools.org/1.1.2/jquery.tools.min.js',
+    'jrails', 
+    'jquery-plugins/superfish/js/superfish.js'
+    )
+  %>
+  <%= stylesheet_link_tag 'master', 'formtastic', 'formtastic_changes', '/javascripts/jquery-plugins/superfish/css/superfish.css', 'superfish_changes.css' %>
+  <%= yield(:header) %>
+  <%= yield(:include_resource) %>
+  
 </head>
 <body>
   <div class="background-image"></div>
