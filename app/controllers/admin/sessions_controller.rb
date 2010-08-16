@@ -2,7 +2,8 @@ class Admin::SessionsController < Admin::AdminController
   
   def index
     cookies[:session_page] = params[:page] if params[:page]
-    @sessions = Session.current.all(:order => 'starts_at').paginate(:page => cookies[:session_page], :per_page => 10)
+    cookies[:session_page] ||= (Session.count(:order => 'starts_at', :conditions => ['starts_at <= date(:today)', {:today => Date.today}])/10).floor
+    @sessions = Session.all(:order => 'starts_at').paginate(:page => cookies[:session_page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb

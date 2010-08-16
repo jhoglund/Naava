@@ -36,6 +36,8 @@ class Booking < ActiveRecord::Base
   validates_presence_of :name, :on => :create
   validate :phone_or_email
   
+  EMAIL_PATTERN = /\A[\w\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)\z/i
+  
   attr_writer :notify_by_mail
   
   attr_accessor :free
@@ -57,7 +59,7 @@ class Booking < ActiveRecord::Base
   end
   
   def valid_mail
-    email =~ /\A[\w\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)\z/i
+    email =~ EMAIL_PATTERN
   end
   
   def valid_phone

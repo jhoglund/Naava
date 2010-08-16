@@ -7,4 +7,11 @@ class Participant < ActiveRecord::Base
   named_scope :search, lambda {|options|
     { :conditions => "name LIKE '%#{options[:name]}%'" }
   }
+    
+  def self.mailing_list line=false
+    members = all(:select => 'DISTINCT email, name', :conditions => 'email REGEXP "@"')
+    returning [] do |list|
+      members.collect{|member| list << "#{member.name} <#{member.email}>" }
+    end.join(line ? '\n' : ', ')
+  end
 end

@@ -5,7 +5,7 @@
 <% @sessions.each do |session| %>
   <tr>
     <td>
-    <%- total = session.bookings.count + session.course.bookings.count  -%>
+    <%- total = session.bookings.count + (session.course.nil? ? 0 : session.course.bookings.count) -%>
     <b style="color:red"><%= total %></b>
     <strong>/ <%= link_to session.attendants.attending.size, admin_session_attendants_path(session) %></strong>
     </td>
