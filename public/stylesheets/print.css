@@ -4,7 +4,7 @@
 .session-list td.comment { width:8cm; }
 
 html { background:white; }
-body { margin:0; font:normal 13px/18px georgia; background:white; }
+body { margin:2cm; font:normal 13px/18px georgia; background:white; }
 .canvas { position:relative; width:auto; margin:0 0; }
 .canvas-background { display:none; }
 .content { width:auto; }
