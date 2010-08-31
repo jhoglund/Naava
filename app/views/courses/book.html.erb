@@ -8,7 +8,7 @@ klockan <strong><%=l @booker.default_session.starts_at, :format => :time %></str
 <% end %>
 <p><%= @booker.description %></p>
 <p>
-  Nästa klasstillfälle är <%= l(@booking.booker.starts_at, :format => :long) %>
+  Nästa klasstillfälle är <%= l(@booking.booker.next_session.starts_at, :format => :long) %>
 </p>
 
 <%- unless @booking.booker.free? -%>
