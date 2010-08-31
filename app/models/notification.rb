@@ -6,6 +6,7 @@ class Notification < ActionMailer::Base
   def mail(subject, address, object, template)
     recipients((RAILS_ENV == "development") ? "hoglundj@gmail.com" : address)
     from("#{AppConfig[:support_mail_title]} <#{AppConfig[:support_mail]}>")
+    headers("return-path" => "#{AppConfig[:support_mail]}")
     subject(subject)
     body(render_message(template, :object => object))
   end

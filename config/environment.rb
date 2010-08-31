@@ -29,12 +29,13 @@ Rails::Initializer.run do |config|
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
   
   smtp_settings = {
-    :address  => "mailout.easydns.com",
+    :address  => "smtp.gmail.com",
     :port  => 587, 
     :domain  => "stixy.com",
-    :user_name  => "stixy.com",
-    :password  => 'swb34Hs',
-    :authentication  => :plain
+    :user_name  => "stixy.dev",
+    :password  => 'stixydev',
+    :authentication  => :plain,
+    :enable_starttls_auto => true
   }
 
   config.action_mailer.smtp_settings = smtp_settings

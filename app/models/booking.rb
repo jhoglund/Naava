@@ -79,7 +79,8 @@ class Booking < ActiveRecord::Base
   end
   
   def after_booking_created
-    if email and notify?
+    # We need to save the association "payment" so we can get the id in the mail
+    if email and notify? and self.payment.save
       Notification.deliver_mail("Vi har motagning din bokning för #{name}", email, self, Notification.get_template(self.booker, 'create'))
     end
   end

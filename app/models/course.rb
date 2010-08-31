@@ -37,6 +37,10 @@ class Course < ActiveRecord::Base
     sessions.active.current.asc.first
   end
   
+  def default_session
+    sessions.asc.first
+  end
+  
   def starts_at
     sessions.active.asc.first.starts_at if sessions.active.first
   end
