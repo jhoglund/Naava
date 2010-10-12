@@ -77,12 +77,20 @@ class Course < ActiveRecord::Base
     Course.price_per_session*100 / AppConfig[:dropin]
   end
   
+  def discounted?
+    
+  end
+  
   def started?
     sessions.active.expired.count > 0
   end
   
   def ended?
     sessions.active.current.count == 0
+  end
+  
+  def remaining_sessions? count=1
+    sessions.active.current.count > count
   end
   
 end

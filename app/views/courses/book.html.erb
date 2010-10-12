@@ -21,7 +21,7 @@ klockan <strong><%=l @booker.default_session.starts_at, :format => :time %></str
 <% if @booker.started? %>
 <p>
   Denna kurs har redan börjat och vi har hittills hunnit med <%= @booker.sessions.active.expired.count %> klasser. 
-  <%- if @booker.sessions.current.count > 1 -%>
+  <%- if @booker.remaining_sessions? -%>
   Du får ett rabatterat pris vid köp av kursen och betalar totalt <%= number_to_currency(@booker.price) %> vilket
   är <%=  number_to_currency(@booker.price_per_session) %>  (<%= @booker.discount %>%)  per återstående klass.
   <%- else -%>
