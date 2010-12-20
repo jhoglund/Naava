@@ -58,7 +58,7 @@ class Course < ActiveRecord::Base
   end
   
   def price_per_session
-    started? ? AppConfig[:dropin] * (0.01 * discount) : original_price_per_session
+    started? ? session_price * (0.01 * discount) : original_price_per_session
   end
   
   def original_price_per_session
@@ -73,8 +73,12 @@ class Course < ActiveRecord::Base
     85
   end
   
+  def dropin_price
+    session_price || AppConfig[:dropin]
+  end
+  
   def original_discount
-    Course.price_per_session*100 / AppConfig[:dropin]
+    Course.price_per_session*100 / dropin_price
   end
   
   def discounted?
