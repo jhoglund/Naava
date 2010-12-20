@@ -41,12 +41,11 @@ class Session < ActiveRecord::Base
   end
   
   def self.price
-    AppConfig[:dropin]
+    AppConfig[:session_price]
   end
   
   def price
-    session_price = course ? course.session_price : nil
-    session_price || Session.price
+    course ? course.price_per_session : Session.price
   end
   
   def free?

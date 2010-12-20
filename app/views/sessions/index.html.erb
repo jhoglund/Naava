@@ -6,7 +6,7 @@
   <h3>Priser</h3>
   <dl>
     <dt>Kurser, 16 tillfällen</dt>
-    <dd><%= number_to_currency(Course.price(16), {:precision => 0}) %> (90 minuter per tillfälle)</dd>
+    <dd><%= number_to_currency(Course.price(16, :full_discounted), {:precision => 0}) %> (90 minuter per tillfälle)</dd>
     <dt>Enstaka klasser</dt>
     <dd><%= number_to_currency(Session.price, {:precision => 0}) %> (90 minuter)</dd>
     <dt>Terminskort</dt>
@@ -26,8 +26,8 @@
   har yogat tidigare att komma vidare i ditt utövande.</p>
 
 <p>
-  Varje kurs inkluderar <strong>16 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(16), {:precision => 0}) %></strong> (90 minuter per tillfälle). 
-  Du betalar endast <strong><%=  number_to_currency(Course.price_per_session, {:precision => 0}) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price, {:precision => 0}) %>
+  Varje kurs inkluderar <strong>16 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(16, :full_discounted), {:precision => 0}) %></strong> (90 minuter per tillfälle). 
+  Du betalar endast <strong><%=  number_to_currency(Course.price_per_session(:full_discounted), {:precision => 0}) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price, {:precision => 0}) %>
   om du väljer att betala vid varje enskilt tillfälle.
 </p>
 <% content_for :javascript do %>

@@ -29,7 +29,7 @@
   Det går även utmärkt att anmäla sig till hela kursen. 
   
   Kurs inkluderar <strong><%= @session.course.sessions.count %></strong> tillfällen och kostar <strong><%= number_to_currency(@session.course.original_price) %></strong>. 
-  Du betalar endast <strong><%=  number_to_currency(@session.course.original_price_per_session) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price) %>
+  Du betalar endast <strong><%=  number_to_currency(@session.course.discounted_price_per_session) %></strong> per tillfälle, jämfört med <%= number_to_currency(@session.course.original_price_per_session) %>
   om du väljer att betala vid varje tillfälle.
   
 </p>

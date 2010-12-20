@@ -25,12 +25,35 @@ class Course < ActiveRecord::Base
   accepts_nested_attributes_for :sessions, :allow_destroy => true
   accepts_nested_attributes_for :instructor, :allow_destroy => true
     
-  def self.price_per_session
-    AppConfig[:course_per_class]
-  end
+  class << self
+    
+    def price_per_session type=:dropin
+      case type.to_sym
+      when :discounted
+        discount * dropin_price_per_session
+      when :full_discounted
+        full_discount * dropin_price_per_session
+      else
+        dropin_price_per_session
+      end
+    end
+    
+    def price times=1, type=:dropin
+      price_per_session(type) * times
+    end
   
-  def self.price times=1
-    Course.price_per_session * times
+    def discount
+      0.01 * AppConfig[:discount][:started]
+    end
+
+    def full_discount
+      0.01 * AppConfig[:discount][:full]
+    end
+    
+    def dropin_price_per_session
+      Session.price
+    end
+  
   end
     
   def next_session
@@ -49,36 +72,58 @@ class Course < ActiveRecord::Base
     sessions.active.asc.last.starts_at if sessions.active.last
   end
   
-  def price
-    sessions.active.current.count * price_per_session
+  def price_per_session type=:dropin
+    case type.to_sym
+    when :discounted
+      dicounted_price_per_session
+    when :full_discounted
+      full_dicounted_price_per_session
+    else
+      dropin_price_per_session
+    end
+  end
+  
+  def dicounted_price_per_session
+    discount * session_price
+  end
+  
+  def full_dicounted_price_per_session
+    full_discount * session_price
   end
   
   def original_price
-    Course.price(sessions.active.count)
+    session_count * full_dicounted_price_per_session
+  end
+
+  def price
+    session_count(:remaining) * dicounted_price_per_session
   end
   
-  def price_per_session
-    (started? ? session_price : original_price_per_session) * (0.01 * discount)
+  def dropin_price_per_session
+    session_price || Course.dropin_price_per_session
   end
   
-  def original_price_per_session
-    session_price || Course.price_per_session
+  def session_count count=:all
+    case count.to_sym
+    when :remaining
+      sessions.active.current.count
+    when :expired
+      sessions.active.expired.count
+    else
+      sessions.active.count
+    end
   end
   
   def free?
-    session_price == 0
+    session_price === 0
   end
   
   def discount
-    85
+    Course.discount
   end
   
-  def dropin_price
-    session_price || AppConfig[:dropin]
-  end
-  
-  def original_discount
-    Course.price_per_session*100 / dropin_price
+  def full_discount
+    Course.full_discount
   end
   
   def discounted?
@@ -86,15 +131,15 @@ class Course < ActiveRecord::Base
   end
   
   def started?
-    sessions.active.expired.count > 0
+    session_count(:expired) > 0
   end
   
   def ended?
-    sessions.active.current.count == 0
+    session_count(:remaining) == 0
   end
   
   def remaining_sessions? count=1
-    sessions.active.current.count > count
+    session_count(:remaining) > count
   end
   
 end
