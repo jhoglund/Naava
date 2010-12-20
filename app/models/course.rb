@@ -58,7 +58,7 @@ class Course < ActiveRecord::Base
   end
   
   def price_per_session
-    started? ? session_price * (0.01 * discount) : original_price_per_session
+    (started? ? session_price : original_price_per_session) * (0.01 * discount)
   end
   
   def original_price_per_session
