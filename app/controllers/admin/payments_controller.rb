@@ -1,7 +1,7 @@
 class Admin::PaymentsController < Admin::AdminController
 
   def index
-    @payments = Payment.by_id(:desc).paginate(:page => params[:page])
+    @payments = Payment.send(params[:show_payment].to_sym).by_id(:desc).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -63,7 +63,7 @@ class Admin::PaymentsController < Admin::AdminController
         elsif params[:payment_type] == 'coupon'
           @coupon = Coupon.find(params[:coupon_id])
           @coupon.use!(@payment)
-        else
+        elsif !@payment.reciept.nil?
           @payment.reciept.destroy
         end
         @payment.save

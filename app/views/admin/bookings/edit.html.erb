@@ -14,9 +14,14 @@
     <%= select_tag :booker_course_id, options_for_select(Course.active.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] }, @booking.booker.is_a?(Course) ? @booking.booker.id : 0) %>
   </p>
   <p>
-    Namn: <%= @booking.participant.name %><br>
-    E-mail: <%= mail_to @booking.participant.email %><br>
-    Telefon: <%= @booking.participant.phone %><br>
+    <% f.fields_for :participant do |participant| %>
+      <%= participant.label 'Namn' %>
+      <%= participant.text_field :name %><br>
+      <%= participant.label 'E-mail' %>
+      <%= participant.text_field :email %><br>
+      <%= participant.label 'Telefon' %>
+      <%= participant.text_field :phone %><br>
+    <% end %>
   </p>
   <p>
     <%= f.submit 'Update' %>

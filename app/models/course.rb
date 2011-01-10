@@ -58,6 +58,7 @@ class Course < ActiveRecord::Base
   end
   
   def price_per_session
+    p "STARTED: #{started?}"
     started? ? AppConfig[:dropin] * (0.01 * discount) : original_price_per_session
   end
   

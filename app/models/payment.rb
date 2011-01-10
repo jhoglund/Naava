@@ -20,11 +20,20 @@ class Payment < ActiveRecord::Base
   
   named_scope :by_paid, :order => 'reciept_type NOT NULL'
   
+  named_scope :paid, :conditions => 'reciept_type IS NOT NULL'
+  named_scope :not_paid, :conditions => 'reciept_type IS NULL'
+  named_scope :paid_or_not, :conditions => ''
+  
   attr_writer :notify_by_mail, :free
+  
+  def description
+    item.respond_to?(:payment_description) ? item.payment_description : ''
+  end
   
   def free
     free?
   end
+  
   def free?
     type? :free
   end

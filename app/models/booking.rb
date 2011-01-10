@@ -80,6 +80,7 @@ class Booking < ActiveRecord::Base
   
   def after_booking_created
     # We need to save the association "payment" so we can get the id in the mail
+    self.payment.name ||= self.booker.name
     if email and notify? and self.payment.save
       Notification.deliver_mail("Vi har motagning din bokning för #{name}", email, self, Notification.get_template(self.booker, 'create'))
     end
@@ -91,6 +92,11 @@ class Booking < ActiveRecord::Base
       Notification.deliver_mail("Din bokning har blivit borttagen för #{name}", email, self, Notification.get_template(self.booker, 'destroy'))
     end
   end
+  
+  def payment_description
+    "#{booker.class.name}: #{booker.name} (#{I18n.l(booker.starts_at.to_date, :format => :long)})"
+  end
+  
       
   private  
   
