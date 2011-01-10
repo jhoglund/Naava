@@ -18,7 +18,7 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  config.gem 'i18n', :version => '0.3.7'
+  config.gem 'i18n' #, :version => '0.3.7'
   config.gem 'mechanize'
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
   # Only load the plugins named here, in the order given (default is alphabetical).
