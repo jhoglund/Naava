@@ -45,7 +45,9 @@ class Admin::BookingsController < Admin::AdminController
         @booking.payment.pay(Free.create) if @booking.free.to_i == 1
         flash[:notice] = 'Bokningen är sparad.'
         format.html { 
-          unless params[:return_to].blank?
+          if params[:return_to_new_booking].to_i == 1
+            redirect_to(:back)
+          elsif !params[:return_to].blank?
             redirect_to(CGI.unescape(params[:return_to]))
           else
             redirect_to(edit_admin_booking_path(@booking)) 

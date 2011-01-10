@@ -13,9 +13,14 @@
   <%= render :partial => '/bookings/form', :object => f %>
   
   <%= f.check_box :free %> Free
+  <%= hidden_field_tag :return_to_new_booking, 1, :id => 'return_to_new_booking' %>
   
   <p>
-    <%= f.submit 'Create' %>
+    <%= button_to_function 'Create', '
+      document.getElementById("return_to_new_booking").setAttribute("value", 0);
+      forms[0].submit();
+    ' %>
+    <%= f.submit 'Create and new booking' %>
   </p>
 <% end %>
 
