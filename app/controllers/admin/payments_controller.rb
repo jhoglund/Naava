@@ -1,6 +1,7 @@
 class Admin::PaymentsController < Admin::AdminController
 
   def index
+    params[:show_payment] ||= 'paid_or_not'
     @payments = Payment.send(params[:show_payment].to_sym).by_id(:desc).paginate(:page => params[:page])
 
     respond_to do |format|
