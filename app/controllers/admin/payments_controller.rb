@@ -1,7 +1,6 @@
 class Admin::PaymentsController < Admin::AdminController
-
+  before_filter :set_show_paid
   def index
-    params[:show_payment] ||= 'paid_or_not'
     @payments = Payment.send(params[:show_payment].to_sym).by_id(:desc).paginate(:page => params[:page])
 
     respond_to do |format|
@@ -38,7 +37,7 @@ class Admin::PaymentsController < Admin::AdminController
     respond_to do |format|
       if @payment.save
         flash[:notice] = 'PaymentReciept was successfully created.'
-        format.html { redirect_to(admin_payment_url(@payment)) }
+        format.html { redirect_to(admin_payment_url(@payment, :show_payment => params[:show_payment])) }
         format.xml  { render :xml => @payment, :status => :created, :location => @payment }
       else
         format.html { render :action => "new" }
@@ -69,7 +68,7 @@ class Admin::PaymentsController < Admin::AdminController
         end
         @payment.save
         flash[:notice] = 'PaymentReciept was successfully updated.'
-        format.html { redirect_to(admin_payments_url(:page => params[:page])) }
+        format.html { redirect_to(admin_payments_url(:page => params[:page], :show_payment => params[:show_payment])) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -83,8 +82,14 @@ class Admin::PaymentsController < Admin::AdminController
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_payments_url(:page => params[:page])) }
+      format.html { redirect_to(admin_payments_url(:page => params[:page], :show_payment => params[:show_payment])) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def set_show_paid
+    params[:show_payment] = params[:show_payment] || 'paid_or_not'
   end
 end
