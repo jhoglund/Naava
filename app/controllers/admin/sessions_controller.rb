@@ -19,6 +19,14 @@ class Admin::SessionsController < Admin::AdminController
       format.xml  { render :xml => @session }
     end
   end
+  
+  def print
+    @session = Session.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
 
   def new
     @session = Session.new

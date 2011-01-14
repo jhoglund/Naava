@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.namespace(:admin) do |admin|
-  	admin.resources :sessions, :has_many => [ :bookings ] do |session|
+  	admin.resources :sessions, :has_many => [ :bookings ], :member => { :print => :get } do |session|
       session.resources :attendants
 	  end
 	  admin.resources :bookings
