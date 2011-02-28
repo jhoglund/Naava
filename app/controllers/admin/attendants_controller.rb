@@ -39,6 +39,7 @@ class Admin::AttendantsController < Admin::AdminController
   def create
     @session = Session.find(params[:session_id])
     respond_to do |format|
+      params[:session][:attendants_attributes].delete_if{|k,v| v[:participant_attributes] && v[:participant_attributes][:name].blank? }
       if @session.update_attributes(params[:session])
         flash[:notice] = 'Attendant was successfully updated.'
         format.html { redirect_to(admin_session_attendants_path(@session)) }

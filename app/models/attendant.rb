@@ -1,5 +1,6 @@
 class Attendant < ActiveRecord::Base
   belongs_to :participant
+  accepts_nested_attributes_for :participant
   belongs_to :session
   
   named_scope :attending, :conditions => 'attendants.status = 1'

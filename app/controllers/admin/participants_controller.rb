@@ -47,7 +47,7 @@ class Admin::ParticipantsController < Admin::AdminController
   # POST /participants.xml
   def create
     @participant = Participant.new(params[:participant])
-
+    
     respond_to do |format|
       if @participant.save
         flash[:notice] = 'Participant was successfully created.'
