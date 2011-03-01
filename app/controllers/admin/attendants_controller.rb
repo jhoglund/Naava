@@ -40,6 +40,7 @@ class Admin::AttendantsController < Admin::AdminController
     @session = Session.find(params[:session_id])
     respond_to do |format|
       params[:session][:attendants_attributes].delete_if{|k,v| v[:participant_attributes] && v[:participant_attributes][:name].blank? }
+      delete_flagged
       if @session.update_attributes(params[:session])
         flash[:notice] = 'Attendant was successfully updated.'
         format.html { redirect_to(admin_session_attendants_path(@session)) }
@@ -49,5 +50,13 @@ class Admin::AttendantsController < Admin::AdminController
         format.xml  { render :xml => @attendant.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  private
+  
+  def delete_flagged
+    delete_ids = params[:session][:attendants_attributes].map{|k,v| v[:id] if v[:status] == '_delete' }
+    params[:session][:attendants_attributes].delete_if{|k,v| v[:status] == '_delete' }
+    Attendant.destroy(delete_ids.compact)
   end
 end
