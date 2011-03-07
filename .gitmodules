@@ -1,3 +1,0 @@
-[submodule "captcha"]
-	path = captcha
-	url = git://github.com/zendesk/captcha.git
