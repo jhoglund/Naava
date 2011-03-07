@@ -46,6 +46,9 @@
     <p>
       <%= f.text_area :message, :rows => 11 %>
     </p>
+    <p>
+      <%= captcha_block 'Skriv in texten från bilden nedan i nedanstående fält' %>
+    </p>
     <p style="text-align:right; margin-top:30px">
       <%= link_to_function "Köp presentkort för <b>#{number_to_currency(@gift_certificate.coupon_type.value)}</b>", 'forms["new_gift_certificate"].submit()', :class => 'button button-default' %>
     </p>

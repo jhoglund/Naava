@@ -1,6 +1,7 @@
 class GiftCertificatesController < ApplicationController
   include PaymentControllerModule
   #caches_page :index
+  validates_captcha
   
   def index
     @gift_certificate = GiftCertificate.new(:coupon_type => GiftCertificateType.first)
@@ -55,15 +56,21 @@ class GiftCertificatesController < ApplicationController
     @gift_certificate.valid_from = DateTime.now
     @gift_certificate.valid_to = 1.year.from_now
     respond_to do |format|
-      if @gift_certificate.save
-        flash[:notice] = 'Tack för ditt köp.'
-        format.html { redirect_to(payment_path(@gift_certificate.payment)) }
-        format.xml  { render :xml => @gift_certificate, :status => :created, :location => @gift_certificate }
+      if captcha_validated?
+        if @gift_certificate.save
+          flash[:notice] = 'Tack för ditt köp.'
+          format.html { redirect_to(payment_path(@gift_certificate.payment)) }
+          format.xml  { render :xml => @gift_certificate, :status => :created, :location => @gift_certificate }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @gift_certificate.errors, :status => :unprocessable_entity }
+        end
       else
+        flash[:error] = 'Texten stämmer inte överens med bilden.'
         format.html { render :action => "new" }
-        format.xml  { render :xml => @gift_certificate.errors, :status => :unprocessable_entity }
       end
     end
+    
   end
 
 end
