@@ -17,14 +17,13 @@
     <%= a.check_box :status, :id => a_id   %>
     <%= a.label nil, a.object.participant.name, :for => a_id %>
     <% p_id = "participant_#{a.object.participant.id}" %>
-    <%= link_to_function "Remove", "(function(li){
+    <%= link_to_function "Ta bort", "(function(li){
       $(li).hide().find(':checkbox').each(function(){
         $(this).val('_delete')[0].checked = true
-        console.log(this)
       })
     })($(this).parent('li')); " %>
     |
-    <%= link_to_function 'Comment', "$('##{p_id}').toggle()" %><br />
+    <%= link_to_function 'Kommentar', "$('##{p_id}').toggle()" %><br />
     <p style="display:<%= a.object.comment.blank? ? 'none' : 'block' %>" id="<%= p_id %>">
     <%= a.text_area :comment, :rows => 4 %>
     </p>
@@ -33,7 +32,7 @@
   <% end %>
   </ul>
   <p>
-  <%= add_participant_link 'Lägg till bokning', f %>
+  <%= add_participant_link 'Lägg till bokning', f, @session %>
   </p>
   
   <p>

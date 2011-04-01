@@ -2,7 +2,9 @@ class Participant < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
   has_many :bookings, :dependent => :destroy
+  accepts_nested_attributes_for :bookings
   has_many :attendants, :dependent => :destroy 
+  accepts_nested_attributes_for :attendants
   
   named_scope :search, lambda {|options|
     { :conditions => "name LIKE '%#{options[:name]}%'" }

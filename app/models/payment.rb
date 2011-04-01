@@ -48,7 +48,7 @@ class Payment < ActiveRecord::Base
   end
    
   def type? type
-    reciept.class.name ==  type.to_s.classify
+    reciept ===  type.to_s.classify.constantize
   end
   
   def notify?
@@ -70,6 +70,27 @@ class Payment < ActiveRecord::Base
   def self.sum
     self.summary.all.map(&:sum).first.to_i
   end
+  
+  def reciept_attributes= attributes
+    case attributes.delete(:type)
+      when 'bg'
+        self.reciept = Bankgiro.new(attributes[:bg]) 
+        self.value = self.reciept.gross
+      when 'cash'
+        self.reciept = Cash.new(attributes[:cash]) 
+        self.value = self.reciept.gross
+      when 'free'
+        self.reciept = Free.new(attributes[:free])
+        self.value = 0
+      when 'coupon'
+        coupon = Coupon.find(attributes[:coupon][:id])
+        self.reciept = coupon
+        self.value = attributes[:coupon][:value] || (item.price unless item.nil?)
+      else
+        self.reciept.destroy unless self.reciept.nil?
+    end
+  end
+  
     
   private
   

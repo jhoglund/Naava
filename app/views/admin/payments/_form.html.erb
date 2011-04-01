@@ -15,30 +15,30 @@
   <%= form.text_area :meta, :rows => 5 %>
 </p>
 <p>
-  <%= radio_button_tag :payment_type, 'bg', form.object.type?(:bankgiro) %> Bankgiro<br>
+  <%= radio_button_tag 'payment[reciept_attributes][type]', 'bg', form.object.type?(:bankgiro) %> Bankgiro<br>
   <%= label_tag 'Bankgiro avinummer' %><br />
-  <%= text_field_tag :avinr, form.object.type?(:bankgiro) ? form.object.reciept.avinr : nil %>
+  <%= text_field_tag 'payment[reciept_attributes][bg][avinr]', form.object.type?(:bankgiro) ? form.object.reciept.avinr : nil %>
 </p>
 <p>
   <%= label_tag 'Bankgiro inbetald summa' %><br />
-  <%= text_field_tag :gross, form.object.type?(:bankgiro) ? form.object.reciept.gross : nil %>
+  <%= text_field_tag 'payment[reciept_attributes][bg][gross]', form.object.type?(:bankgiro) ? form.object.reciept.gross : nil %>
 </p>
 <p>
-  <%= radio_button_tag :payment_type, 'cash', form.object.type?(:cash) %> Kontant<br>
+  <%= radio_button_tag 'payment[reciept_attributes][type]', 'cash', form.object.type?(:cash) %> Kontant<br>
   <%= label_tag 'Kontant inbetald summa' %><br />
-  <%= text_field_tag :cash, form.object.type?(:cash) ? form.object.reciept.gross : nil %>
+  <%= text_field_tag 'payment[reciept_attributes][cash][gross]', form.object.type?(:cash) ? form.object.reciept.gross : nil %>
 </p>
 <p>
-  <%= radio_button_tag :payment_type, 'coupon', form.object.type?(:coupon) %> Kuppong<br>
-  <%= select_tag :coupon_id, options_from_collection_for_select(Coupon.active, 'id', 'to_s') %>
+  <%= radio_button_tag 'payment[reciept_attributes][type]', 'coupon', form.object.type?(:gift_certificate) %> Kuppong<br>
+  <%= select_tag 'payment[reciept_attributes][coupon][id]', options_from_collection_for_select(Coupon.active, 'id', 'to_s', :selected => (form.object.reciept.id if form.object.type?(:gift_certificate))) %>
 </p>
 <p>
-  <%= radio_button_tag :payment_type, 'free', form.object.type?(:free) %> Gratis<br>
-  <%= text_area_tag :free_note, form.object.type?(:free) ? form.object.reciept.note : '', :rows => 5, :cols => 40 %>
+  <%= radio_button_tag 'payment[reciept_attributes][type]', 'free', form.object.type?(:free) %> Gratis<br>
+  <%= text_area_tag 'payment[reciept_attributes][free][note]', form.object.type?(:free) ? form.object.reciept.note : '', :rows => 5, :cols => 40 %>
 </p>
 
 <p>
-  <%= radio_button_tag :payment_type, 'none', !form.object.paid? %> Obetald<br>
+  <%= radio_button_tag 'payment[reciept_attributes][type]', 'none', !form.object.paid? %> Obetald<br>
 </p>
 
 <p>

@@ -9,10 +9,7 @@ class Session < ActiveRecord::Base
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :expired, :conditions => "sessions.starts_at < CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :active, lambda{|active_course|
-    course_status = active_course ? '  AND courses.status = 1' : ''
-    {
-      :conditions => "sessions.status = 1#{course_status}", :include => 'course'
-    }
+    { :conditions => "sessions.status = 1#{active_course ? '  AND courses.status = 1' : ''}", :include => 'course' }
   }
   named_scope :asc, :order => "sessions.starts_at ASC"
   named_scope :desc, :order => "sessions.starts_at DESC"
@@ -30,6 +27,7 @@ class Session < ActiveRecord::Base
   before_save :save_duration
   
   accepts_nested_attributes_for :attendants
+  accepts_nested_attributes_for :bookings
   
   def attending? participant
     @attending_participant ||= attendants.attending.map(&:participant_id)

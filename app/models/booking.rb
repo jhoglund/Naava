@@ -8,6 +8,7 @@ class Booking < ActiveRecord::Base
   belongs_to :booker, :polymorphic => true
   accepts_nested_attributes_for :participant, :allow_destroy => true
   delegate :name, :email, :phone, :name=, :email=, :phone=, :to => :participant
+  delegate :price, :to => :booker
   after_create :reset_attributes, :after_booking_created
   after_update :after_booking_disabled
   
@@ -40,7 +41,7 @@ class Booking < ActiveRecord::Base
   
   attr_writer :notify_by_mail
   
-  attr_accessor :free
+  attr_accessor :free, :disable_validation
   
   def free?
     if payment
@@ -63,11 +64,12 @@ class Booking < ActiveRecord::Base
   end
   
   def valid_phone
+    return false if phone.blank?
     phone.scan(/\d+|\+/).join.size > 4
   end
   
   def phone_or_email
-    return true if valid_mail or valid_phone
+    return true if @disable_validation or valid_mail or valid_phone
     self.errors.add(:email, I18n.t('activerecord.errors.messages.invalid')) unless valid_mail
     self.errors.add(:phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone
     self.errors.add_to_base(I18n.t('activerecord.errors.messages.phone_or_email'))

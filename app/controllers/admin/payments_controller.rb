@@ -52,21 +52,6 @@ class Admin::PaymentsController < Admin::AdminController
     respond_to do |format|
       
       if @payment.update_attributes(params[:payment])
-        if params[:payment_type] == 'bg'
-          @payment.reciept = Bankgiro.create(:avinr => params[:avinr], :gross => params[:gross]) 
-          @payment.value = @payment.reciept.gross
-        elsif params[:payment_type] == 'cash'
-          @payment.reciept = Cash.create(:gross => params[:cash]) 
-          @payment.value = @payment.reciept.gross
-        elsif params[:payment_type] == 'free'
-          @payment.reciept = Free.create(:note => params[:free_note])
-        elsif params[:payment_type] == 'coupon'
-          @coupon = Coupon.find(params[:coupon_id])
-          @coupon.use!(@payment)
-        elsif !@payment.reciept.nil?
-          @payment.reciept.destroy
-        end
-        @payment.save
         flash[:notice] = 'PaymentReciept was successfully updated.'
         format.html { redirect_to(admin_payments_url(:page => params[:page], :show_payment => params[:show_payment])) }
         format.xml  { head :ok }
