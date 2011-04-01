@@ -48,7 +48,11 @@ class Payment < ActiveRecord::Base
   end
    
   def type? type
-    reciept ===  type.to_s.classify.constantize
+    self.type ===  type.to_s.downcase
+  end
+  
+  def type
+    self.reciept_type.downcase
   end
   
   def notify?

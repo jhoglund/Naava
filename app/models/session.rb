@@ -4,6 +4,7 @@ class Session < ActiveRecord::Base
   
   has_many :bookings, :as => :booker
   has_many :attendants  
+  has_many :participants, :through => :attendants, :include => :bookings  
   belongs_to :course
   
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
@@ -27,6 +28,7 @@ class Session < ActiveRecord::Base
   before_save :save_duration
   
   accepts_nested_attributes_for :attendants
+  accepts_nested_attributes_for :participants
   accepts_nested_attributes_for :bookings
   
   def attending? participant

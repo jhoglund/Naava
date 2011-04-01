@@ -1,7 +1,7 @@
 class Participant < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
-  has_many :bookings, :dependent => :destroy
+  has_many :bookings, :dependent => :destroy, :include => :booker
   accepts_nested_attributes_for :bookings
   has_many :attendants, :dependent => :destroy 
   accepts_nested_attributes_for :attendants
@@ -9,6 +9,21 @@ class Participant < ActiveRecord::Base
   named_scope :search, lambda {|options|
     { :conditions => "name LIKE '%#{options[:name]}%'" }
   }
+  
+  delegate :payment, :to => :booking
+  delegate :session, :status, :status=, :comment, :comment=, :to => :attendant
+  
+  def booking
+    bookings.first
+  end
+  
+  def attendant
+    attendants.first
+  end
+    
+  def dropin?
+    Session === booking.booker
+  end
     
   def self.mailing_list line=false
     members = all(:select => 'DISTINCT email, name', :conditions => 'email REGEXP "@"')

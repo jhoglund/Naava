@@ -1,13 +1,20 @@
-<% booking_name = 'session[bookings_attributes][0]' %>
+<% id_prefix = "participand_index_0_" %>
+<% booking_name = "session[bookings_attributes][#{index}]" %>
 <% participant_name = "#{booking_name}[participant_attributes]" %>
 <% payment_name = "#{booking_name}[payment_attributes][reciept_attributes]" %>
 <% radio_name = "#{payment_name}[type]" %>
-<% id_prefix = "participand_index_0_" %>
+
+<% if opt(:participant){ false } %>
+  <%= hidden_field_tag "#{booking_name}[id]", participant.booking.id   %>
+  <%= hidden_field_tag "#{booking_name}[payment_attribute][id]", participant.booking.payment.id   %>
+  <%= hidden_field_tag "#{participant_name}[0][id]", participant.id   %>
+  <%= hidden_field_tag "#{participant_name}[attendants_attributes][0][id]", participant.attendant.id   %>
+<% end %>
 <li style="list-style:none">
   <%= check_box_tag "#{participant_name}[attendants_attributes][0][status]", 1, 0   %>
   <%= hidden_field_tag "#{participant_name}[attendants_attributes][0][session_id]", session.id   %>
-  <%= text_field_tag "#{participant_name}[name]"   %>
-  <%= select_tag("#{radio_name}", options_for_select([['Obetalt', 'none'],['Kontant', 'cash'],['Kuppong', 'coupon'],['Gratis', 'free']]), :onchange => 'participant_payment_options(this)') %>
+  <%= text_field_tag "#{participant_name}[name]", ( participant.name if opt(:participant){ false }) %>
+  <%= select_tag("#{radio_name}", options_for_select([['Obetalt', 'none'],['Kontant', 'cash'],['Kupong', 'coupon'],['Gratis', 'free']], :selected => (participant.payment.type if opt(:participant){ false })), :onchange => 'participant_payment_options(this)') %>
   <%= link_to_function "Ta bort", "$(this).closest('li').remove()" %>
   |
   <%= link_to_function 'Kommentar', "$('##{id_prefix}_comment').toggle()" %><br />
@@ -25,7 +32,7 @@
         <%= hidden_field_tag "#{payment_name}[coupon][value]", session.price %>
       </span>
       <span id="<%= radio_name %>_free" style="display:none">
-          <%= text_area_tag "#{payment_name}[free][note]", '', :rows => 5, :cols => 40, :placeholder => 'Anledning till gratis' %>
+          <%= text_area_tag "#{payment_name}[free][note]", '', :rows => 2, :cols => 40, :placeholder => 'Anledning till gratis' %>
       </span>
     </span>
   </div>

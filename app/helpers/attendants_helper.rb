@@ -1,6 +1,6 @@
 module AttendantsHelper
   
-  def add_participant_link(name, f, session)
+  def add_participant_link(name, f, session, index)
     include_inline_resource :participant_payment_options do
       %q{
         var participant_payment_options = function(select){
@@ -17,13 +17,14 @@ module AttendantsHelper
     
     include_inline_resource :participant_link_payment_form do
       %Q{
-        var bookingIndex = 0;
-        var participant_form = "#{ escape_javascript(render( :partial => '/admin/attendants/new_attendant', :locals => { :session => session })) }"
+        var bookingIndex = #{ index };
+        var participant_form = "#{ escape_javascript(render( :partial => '/admin/attendants/new_attendant', :locals => { :session => session, :index => index })) }"
       }
     end
     include_inline_resource :participant_link do
       %q{
         var add_participant_link = function(){
+          bookingIndex++;
           var updateName = function(str){
             return str.replace(/(session\[bookings_attributes\]\[)(\d+)(\])/igm,function(str,start,num,end){ return start + bookingIndex + end })
           }
@@ -45,7 +46,6 @@ module AttendantsHelper
             })
             input.focus();
           })
-          bookingIndex++
         }
       }
       

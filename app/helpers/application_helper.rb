@@ -71,5 +71,17 @@ module ApplicationHelper
       </div>)
     end
   end
+  
+  def opt(name, &block)
+    was_assigned, value = eval(
+      "[ local_assigns.has_key?(:#{name}), local_assigns[:#{name}] ]", 
+      block.binding)
+    if was_assigned
+      value
+    else
+      yield
+    end
+  end
+  
 end
 

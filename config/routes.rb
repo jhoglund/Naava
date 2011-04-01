@@ -31,10 +31,9 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.namespace(:admin) do |admin|
-  	admin.resources :sessions, :has_many => [ :bookings ], :member => { :print => :get } do |session|
-      session.resources :attendants
-	  end
-	  admin.resources :bookings
+    admin.root :controller => "sessions"
+	  admin.resources :sessions, :has_many => [ :bookings ], :member => { :print => :get }
+    admin.resources :bookings
 	  admin.resources :instructors
     admin.resources :users
 	  admin.resources :gift_certificates
@@ -44,7 +43,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :bankgiros
     admin.resources :cashes
     admin.resources :attendants, :collection => { :search => [:post, :get] }
-    admin.resources :courses, :member => { :clone => :get } do |course| 
+	  admin.resources :courses, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
   	  course.resources :bookings
       course.resources :participants

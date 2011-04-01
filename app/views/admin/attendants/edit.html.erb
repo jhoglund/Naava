@@ -1,5 +1,6 @@
 <h1>Närvaro</h1>
 <p><%= l(@session.starts_at, :format => :long) %></p>
+<p><%= params[:action] %></p>
 
 <% include_javascript 'jquery/plugins/autocomplete/jquery.autocomplete.pack.js' %>
 <% include_stylesheet '/javascripts/jquery/plugins/autocomplete/jquery.autocomplete.css' %>
@@ -7,41 +8,39 @@
   var autocomplete = [<%= Participant.all(:select => 'distinct(participants.name)').map{|pa| "'#{pa.name}'" }.reverse.join(',') %>];  
 <% end %>
 
-<% form_for(Session.new, :url => admin_session_attendants_path(@session)) do |f| %>
+<% form_for(@session, :url => admin_attendant_path(@session)) do |f| %>
   <%= f.error_messages %>
   <ul id="participants">
-  <% f.fields_for :attendants, @session.attendants do |a| %>
+  <% f.fields_for :participants do |pf| %>
+  <% participant = pf.object %>
+  <% if participant.dropin? %>
+    <%= render(:partial => '/admin/attendants/new_attendant', :locals => { :session => @session, :participant => participant, :index => @index }) %>
+  <% else %>
     <li style="list-style:none">
-    <%= a.hidden_field :participant_id %>
-    <% a_id = "attendant_#{a.object.participant.id}" %>
-    <%= a.check_box :status, :id => a_id   %>
-    <%= a.label nil, a.object.participant.name, :for => a_id %>
-    <% p_id = "participant_#{a.object.participant.id}" %>
-    <%= link_to_function "Ta bort", "(function(li){
-      $(li).hide().find(':checkbox').each(function(){
-        $(this).val('_delete')[0].checked = true
-      })
-    })($(this).parent('li')); " %>
-    |
-    <%= link_to_function 'Kommentar', "$('##{p_id}').toggle()" %><br />
-    <p style="display:<%= a.object.comment.blank? ? 'none' : 'block' %>" id="<%= p_id %>">
-    <%= a.text_area :comment, :rows => 4 %>
+    <%= pf.hidden_field :id %>
+    <% a_id = "attendant_#{participant.id}" %>
+    <%= pf.check_box :status, :id => a_id   %>
+    <%= pf.label nil, participant.name, :for => a_id %>
+    <% p_id = "participant_#{participant.id}" %>
+    <%= link_to_function 'Kommentar', "$('##{p_id}').toggle()" %>
+    <br />
+    <p style="display:<%= participant.comment.blank? ? 'none' : 'block' %>" id="<%= p_id %>">
+    <%= pf.text_area :comment, :rows => 4 %>
     </p>
     
     </li>
   <% end %>
+  <% end %>
   </ul>
   <p>
-  <%= add_participant_link 'Lägg till bokning', f, @session %>
+  <%= add_participant_link 'Lägg till bokning', f, @session, @index %>
   </p>
   
   <p>
     <%= f.submit 'Spara' %>
   </p>
 <% end %>
-<%= @session.previous(false) ? link_to('Tidigare', admin_session_attendants_path(@session.previous(false))) : 'Tidigare' %> |
-<%= @session.next(false) ? link_to('Nästa', admin_session_attendants_path(@session.next(false))) : 'Nästa' %> |
+<%= @session.previous(false) ? link_to('Tidigare', admin_attendants_path(@session.previous(false))) : 'Tidigare' %> |
+<%= @session.next(false) ? link_to('Nästa', admin_attendants_path(@session.next(false))) : 'Nästa' %> |
 <%= link_to 'Klass', admin_session_path(@session) %> |
 <%= link_to 'Klasser', admin_sessions_path %> |
-<%= link_to 'Ny bokning', new_admin_session_booking_path(@session, :return_to => CGI.escape(admin_session_attendants_path(@session))) %>
-
