@@ -236,6 +236,9 @@ a.button-default:hover { color:rgb(75,30,0); }
 .fc-event,
 .fc-event a { color:rgb(30,60,115)!important; background-color:rgb(180,200,235)!important; border-color:rgb(180,200,235)!important; }
 .fc-event a:hover { color:rgb(30,60,115)!important; }
+.fc-content {
+	clear: none!important;
+}
 
 .calendar-session-disabled,
 .calendar-session-disabled a { color:rgb(185,5,70)!important; background-color:rgb(255,165,200)!important; border-color:rgb(255,165,200)!important; text-decoration:line-through; } 

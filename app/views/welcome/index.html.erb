@@ -39,14 +39,19 @@
     <p>
   </div>
   <%- end -%>
-  <h1>Snart börjar vårens Yoga! </h1>
-  <p>Vecka 3 börjar åter igen våra kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning. <%=  link_to 'Läs mer om yoga.', about_ashtanga_yoga_path %><br> 
-  <p>Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss på vår fortsättningskurs som i höst kommer att vara på söndagar kl 15.00.
-   <p>  
-    <%= link_to 'Läs mer om vårens nya tider och anmäl dig här.', sessions_path %></p> 
+  <!-- <h1>Snart börjar vårens Yoga! </h1>
+    <p>Vecka 3 börjar åter igen våra kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning. <%=  link_to 'Läs mer om yoga.', about_ashtanga_yoga_path %><br> 
+    <p>Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss på vår fortsättningskurs som i höst kommer att vara på söndagar kl 15.00.
+     <p>  
+      <%= link_to 'Läs mer om vårens nya tider och anmäl dig här', sessions_path %></p> 
+       -->
+    <h1>Sommaryoga</h1>
+    Vi har öppet under sommaren.
+    Det är inte ledda klasser i vanlig mening med en instruktör som justerar. Men en instruktör finns närvarande och leder från
+    position till position. Det passar alla som tidagare har gått på någon av våra klasser eller som tidigare har testat på Ashtanga Yoga. 
     
-  
-   <!-- <p>Yoga utmanar dig att vara i nuet, att låta utveckling ta tid, att utgå från dig själv och inte jämföra dig med andra. Du väljer själv utefter var du är i livet och hur din kropp och ditt sinne känns just för stunden. Yoga är en träningsform som du kan utvecklas med, där du aldrig blir fullärd och aldrig för gammal. Alla kan yoga!</p>-->
+    <p><%= link_to 'Läs mer om sommarens klasser', sessions_path %></p> 
+    </p>
     
 
     
@@ -71,12 +76,12 @@ så att alla kan delta.</p>-->
 
 <div class="promotion-boxes">
   <div class="promotion-box promotion-box-left">
-    <% unless @sessions.empty? %>
-      <h2>Kommande klasser</h2>
-    <%= render :partial => 'session', :object => @sessions %>
-    <% end %>
-    <p style="margin-top:-8px"><%= link_to 'Höstens alla tider och priser', sessions_path %></p>
-    <hr>
+    <!-- <% unless @sessions.empty? %>
+          <h2>Kommande klasser</h2>
+        <%= render :partial => 'session', :object => @sessions %>
+        <% end %>
+        <p style="margin-top:-8px"><%= link_to 'Höstens alla tider och priser', sessions_path %></p>
+        <hr> -->
     <!-- <h3>Privatlektioner &amp; Företagsyoga</h3>
         Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Vi utformar ett program efter era specifika behov. 
         Kontakta oss för priser. -->

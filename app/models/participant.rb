@@ -10,8 +10,10 @@ class Participant < ActiveRecord::Base
     { :conditions => "name LIKE '%#{options[:name]}%'" }
   }
     
-  def self.mailing_list line=false
-    members = all(:select => 'DISTINCT email, name', :conditions => 'email REGEXP "@"')
+  def self.mailing_list options={}
+    line = options.delete(:line)
+    conditions = [options.delete(:conditions) || nil]
+    members = all(:select => 'DISTINCT participants.email, participants.name', :conditions => (conditions + ['participants.email REGEXP "@"']).compact.join(' AND '))
     returning [] do |list|
       members.collect{|member| list << "#{member.name} <#{member.email}>" }
     end.join(line ? '\n' : ', ')

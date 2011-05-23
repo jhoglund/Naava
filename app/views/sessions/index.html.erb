@@ -20,7 +20,7 @@
   </dl>
 </div>
 
-<h2>Våra kurser</h2>
+<!-- <h2>Våra kurser</h2>
 <p>På Nava Yoga har vi både nybörjar- och fortsättningskurser. För varje enskild kurs, anpassar vi våra klasser
   efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
   har yogat tidigare att komma vidare i ditt utövande.</p>
@@ -34,9 +34,23 @@
   function bookCourse(path){
     document.location.href = path
   }
-<% end %>
+<% end %> -->
 
-<table>
+<h2>Sommarens klasser</h2>
+Vi har öppet under sommaren.
+Det är inte ledda klasser i vanlig mening med en instruktör som justerar. Men en instruktör finns närvarande och leder från
+position till position. Det passar alla som tidagare har gått på någon av våra klasser eller som tidigare har testat på Ashtanga Yoga. 
+Vid frågor, ring Jonas Höglund på 0709-961600 eller maila på <%= mail_to 'jonas@navayoga.se', 'jonas@navayoga.se' %>
+<p>
+Priset är 50 kronor per gång eller 500 kronor för hela sommaren. För
+dig som har ett termins eller årskort så ingår sommarens klasser. Det går
+inte att anmäla sig till en klass utan det är bara att komma.</p>
+
+<p>Klasserna är <strong>måndagar klockan 18.30</strong> samt <strong>torsdagar klockan 07.30</strong> med
+början vecka 22.</p>
+
+
+<!-- <table>
 <% unless @courses.blank? %>
 <tr>
   <td style="padding:0"><h3>Välj en av våra pågende kurser</h3></td>
@@ -100,7 +114,7 @@
 </tr>
 <% end %>
 
-</table>
+</table> -->
 <hr>
 <!-- <h2>Schema för höstens klasser, 2010</h2> -->
 <%= render :partial => 'calendar' %>
