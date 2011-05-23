@@ -14394,3 +14394,842 @@ Rendered sessions/_calendar (3.8ms)
 Completed in 225ms (View: 66, DB: 10) | 200 OK [http://localhost/klasser]
 ** [Hoptoad] Notifier 2.0.18 ready to catch errors
 Translating routes (default locale: sv-SE)
+** [Hoptoad] Notifier 2.0.18 ready to catch errors
+Translating routes (default locale: sv-SE)
+** [Hoptoad] Notifier 2.0.18 ready to catch errors
+Translating routes (default locale: sv-SE)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2011-05-23 10:19:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome", "locale"=>"sv-SE"}
+  [4;35;1mCourse Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `courses`[0m
+  [4;36;1mSession Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mCourse Load Including Associations (1.4ms)[0m   [0mSELECT `courses`.`id` AS t0_r0, `courses`.`name` AS t0_r1, `courses`.`description` AS t0_r2, `courses`.`level` AS t0_r3, `courses`.`created_at` AS t0_r4, `courses`.`updated_at` AS t0_r5, `courses`.`status` AS t0_r6, `courses`.`instructor_id` AS t0_r7, `courses`.`comment` AS t0_r8, `courses`.`session_price` AS t0_r9, `sessions`.`id` AS t1_r0, `sessions`.`course_id` AS t1_r1, `sessions`.`starts_at` AS t1_r2, `sessions`.`ends_at` AS t1_r3, `sessions`.`created_at` AS t1_r4, `sessions`.`updated_at` AS t1_r5, `sessions`.`status` AS t1_r6, `sessions`.`comment` AS t1_r7 FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (sessions.starts_at <= '2011-05-23T10:19:55+02:00') [0m
+  [4;36;1mCourse Load Including Associations (0.6ms)[0m   [0;1mSELECT `courses`.`id` AS t0_r0, `courses`.`name` AS t0_r1, `courses`.`description` AS t0_r2, `courses`.`level` AS t0_r3, `courses`.`created_at` AS t0_r4, `courses`.`updated_at` AS t0_r5, `courses`.`status` AS t0_r6, `courses`.`instructor_id` AS t0_r7, `courses`.`comment` AS t0_r8, `courses`.`session_price` AS t0_r9, `sessions`.`id` AS t1_r0, `sessions`.`course_id` AS t1_r1, `sessions`.`starts_at` AS t1_r2, `sessions`.`ends_at` AS t1_r3, `sessions`.`created_at` AS t1_r4, `sessions`.`updated_at` AS t1_r5, `sessions`.`status` AS t1_r6, `sessions`.`comment` AS t1_r7 FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (sessions.starts_at > '2011-05-23T10:19:55+02:00') [0m
+  [4;35;1mCourse Load (0.2ms)[0m   [0mSELECT * FROM `courses` WHERE (`courses`.`status` = 1 AND `courses`.`id` IN (NULL)) LIMIT 4[0m
+  [4;36;1mCourse Load IDs For Limited Eager Loading (3.0ms)[0m   [0;1mSELECT DISTINCT `courses`.id FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (courses.status = 1 AND courses.id NOT IN (SELECT DISTINCT(sessions.course_id) FROM sessions WHERE sessions.starts_at <= '2011-05-23T10:19:55+02:00' ) ) LIMIT 4[0m
+  [4;35;1mSession Load Including Associations (0.4ms)[0m   [0mSELECT `sessions`.`id` AS t0_r0, `sessions`.`course_id` AS t0_r1, `sessions`.`starts_at` AS t0_r2, `sessions`.`ends_at` AS t0_r3, `sessions`.`created_at` AS t0_r4, `sessions`.`updated_at` AS t0_r5, `sessions`.`status` AS t0_r6, `sessions`.`comment` AS t0_r7, `courses`.`id` AS t1_r0, `courses`.`name` AS t1_r1, `courses`.`description` AS t1_r2, `courses`.`level` AS t1_r3, `courses`.`created_at` AS t1_r4, `courses`.`updated_at` AS t1_r5, `courses`.`status` AS t1_r6, `courses`.`instructor_id` AS t1_r7, `courses`.`comment` AS t1_r8, `courses`.`session_price` AS t1_r9 FROM `sessions` LEFT OUTER JOIN `courses` ON `courses`.id = `sessions`.course_id WHERE ((sessions.status = 1 AND courses.status = 1) AND (sessions.starts_at > CAST('2011-05-23T10:19:55+02:00' AS DATETIME))) ORDER BY sessions.starts_at ASC LIMIT 5[0m
+  [4;36;1mGiftCertificateType Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.9ms)[0m   [0mSELECT * FROM `coupon_types` WHERE ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;36;1mGiftCertificateType Load (0.3ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) LIMIT 1[0m
+  [4;35;1mGiftCertificate Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `coupons`[0m
+  [4;36;1mCourse Load IDs For Limited Eager Loading (0.8ms)[0m   [0;1mSELECT DISTINCT `courses`.id FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE ((courses.session_price = 0) AND (courses.status = 1 AND courses.id IN (SELECT DISTINCT(sessions.course_id) FROM sessions WHERE sessions.starts_at >= '2011-05-23T10:19:55+02:00' ) )) LIMIT 1[0m
+  [4;35;1mInstructor Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mInstructor Load (0.5ms)[0m   [0;1mSELECT * FROM `instructors` WHERE (`instructors`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered welcome/_address_contact (0.2ms)
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Completed in 264ms (View: 172, DB: 18) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-05-23 10:20:04) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 248ms (View: 11, DB: 2) | 200 OK [http://localhost/signin]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2011-05-23 10:20:07) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "login"=>"jonas@stixy.com"}, "action"=>"create", "controller"=>"user_sessions", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (LOWER(`users`.login) = 'jonas@stixy.com') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:20:07', `perishable_token` = 'JEvV7nuWShsuzh2LYmOJ', `last_login_at` = '2011-03-27 12:58:52', `last_login_ip` = '83.209.227.39', `current_login_at` = '2011-05-23 08:20:07', `login_count` = 47, `current_login_ip` = '127.0.0.1', `last_request_at` = '2011-05-23 08:20:07' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3001/admin/bokningar
+Completed in 554ms (DB: 3) | 302 Found [http://localhost/user_session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::BookingsController#index (for 127.0.0.1 at 2011-05-23 10:20:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/bookings", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:20:07', `perishable_token` = 'RJzQx6SKqcz7XjhxiDud', `last_request_at` = '2011-05-23 08:20:07' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mBooking Load (24.1ms)[0m   [0;1mSELECT * FROM `bookings` ORDER BY bookings.created_at DESC LIMIT 0, 10[0m
+  [4;35;1mBooking Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `bookings`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `bookings` [0m
+Rendering template within layouts/application
+Rendering admin/bookings/index
+  [4;35;1mPayment Load (5.1ms)[0m   [0mSELECT * FROM `payments` WHERE (`payments`.item_id = 873 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;36;1mPayment Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `payments`[0m
+  [4;35;1mParticipant Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `participants`[0m
+  [4;36;1mParticipant Load (0.4ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 891) [0m
+  [4;35;1mCourse Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `courses`[0m
+  [4;36;1mCourse Load (0.8ms)[0m   [0;1mSELECT * FROM `courses` WHERE (`courses`.`id` = 25) [0m
+  [4;35;1mSession Load (0.6ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.course_id = 25) AND ((sessions.status = 1) AND (`sessions`.course_id = 25)) LIMIT 1[0m
+  [4;36;1mSession Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `courses` WHERE (`courses`.`id` = 25) [0m
+  [4;36;1mSession Load (0.4ms)[0m   [0;1mSELECT * FROM `sessions` WHERE (`sessions`.course_id = 25) AND ((sessions.status = 1) AND (`sessions`.course_id = 25)) ORDER BY sessions.starts_at ASC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `courses` WHERE (`courses`.`id` = 25) [0m
+  [4;36;1mPayment Load (0.9ms)[0m   [0;1mSELECT * FROM `payments` WHERE (`payments`.item_id = 872 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;35;1mParticipant Load (0.2ms)[0m   [0mSELECT * FROM `participants` WHERE (`participants`.`id` = 890) [0m
+  [4;36;1mSession Load (0.2ms)[0m   [0;1mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 229) [0m
+  [4;35;1mPayment Load (0.7ms)[0m   [0mSELECT * FROM `payments` WHERE (`payments`.item_id = 871 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;36;1mCoupon Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `coupons`[0m
+  [4;35;1mCoupon Load (0.3ms)[0m   [0mSELECT * FROM `coupons` WHERE (`coupons`.`id` = 575) [0m
+  [4;36;1mParticipant Load (0.3ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 889) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 229) [0m
+  [4;36;1mPayment Load (0.8ms)[0m   [0;1mSELECT * FROM `payments` WHERE (`payments`.item_id = 865 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;35;1mFree Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `frees`[0m
+  [4;36;1mFree Load (17.2ms)[0m   [0;1mSELECT * FROM `frees` WHERE (`frees`.`id` = 430) [0m
+  [4;35;1mParticipant Load (0.2ms)[0m   [0mSELECT * FROM `participants` WHERE (`participants`.`id` = 883) [0m
+  [4;36;1mSession Load (0.4ms)[0m   [0;1mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 211) [0m
+  [4;35;1mPayment Load (0.9ms)[0m   [0mSELECT * FROM `payments` WHERE (`payments`.item_id = 866 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;36;1mFree Load (0.2ms)[0m   [0;1mSELECT * FROM `frees` WHERE (`frees`.`id` = 431) [0m
+  [4;35;1mParticipant Load (0.2ms)[0m   [0mSELECT * FROM `participants` WHERE (`participants`.`id` = 884) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 211) [0m
+  [4;35;1mPayment Load (0.8ms)[0m   [0mSELECT * FROM `payments` WHERE (`payments`.item_id = 867 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;36;1mCash Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `cashes`[0m
+  [4;35;1mCash Load (0.5ms)[0m   [0mSELECT * FROM `cashes` WHERE (`cashes`.`id` = 98) [0m
+  [4;36;1mParticipant Load (0.2ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 885) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 211) [0m
+  [4;36;1mPayment Load (0.8ms)[0m   [0;1mSELECT * FROM `payments` WHERE (`payments`.item_id = 868 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;35;1mFree Load (0.5ms)[0m   [0mSELECT * FROM `frees` WHERE (`frees`.`id` = 432) [0m
+  [4;36;1mParticipant Load (0.1ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 886) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 211) [0m
+  [4;36;1mPayment Load (0.9ms)[0m   [0;1mSELECT * FROM `payments` WHERE (`payments`.item_id = 869 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;35;1mCoupon Load (0.4ms)[0m   [0mSELECT * FROM `coupons` WHERE (`coupons`.`id` = 574) [0m
+  [4;36;1mParticipant Load (0.2ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 887) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 211) [0m
+  [4;36;1mPayment Load (0.8ms)[0m   [0;1mSELECT * FROM `payments` WHERE (`payments`.item_id = 870 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;35;1mFree Load (0.2ms)[0m   [0mSELECT * FROM `frees` WHERE (`frees`.`id` = 433) [0m
+  [4;36;1mParticipant Load (0.1ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 888) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 211) [0m
+  [4;36;1mPayment Load (0.8ms)[0m   [0;1mSELECT * FROM `payments` WHERE (`payments`.item_id = 862 AND `payments`.item_type = 'Booking') LIMIT 1[0m
+  [4;35;1mCoupon Load (0.2ms)[0m   [0mSELECT * FROM `coupons` WHERE (`coupons`.`id` = 572) [0m
+  [4;36;1mParticipant Load (0.3ms)[0m   [0;1mSELECT * FROM `participants` WHERE (`participants`.`id` = 880) [0m
+  [4;35;1mSession Load (0.4ms)[0m   [0mSELECT * FROM `sessions` WHERE (`sessions`.`id` = 264) [0m
+Completed in 474ms (View: 204, DB: 75) | 200 OK [http://localhost/admin/bokningar]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#index (for 127.0.0.1 at 2011-05-23 10:20:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:20:11', `perishable_token` = 'ESKUmC2CQbffc9Ck22QG', `last_request_at` = '2011-05-23 08:20:11' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/index
+Completed in 217ms (View: 22, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:20:15) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:20:15', `perishable_token` = '6zPxk2IMF6OwS2DvSRPx', `last_request_at` = '2011-05-23 08:20:15' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.2ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (19.8ms)
+Completed in 214ms (View: 37, DB: 4) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:20:35) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:20:35', `perishable_token` = 'ZswxFehrcDhh_djnMcgO', `last_request_at` = '2011-05-23 08:20:35' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (18.1ms)
+Completed in 213ms (View: 29, DB: 4) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:20:58) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (1.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:20:59', `perishable_token` = 'IMe5NNHSog3UhTQzoCXn', `last_request_at` = '2011-05-23 08:20:59' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (1.8ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (23.4ms)
+Completed in 231ms (View: 35, DB: 8) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:21:22) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (3.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:21:22', `perishable_token` = 'r1A2-O2N7ictM2pe754i', `last_request_at` = '2011-05-23 08:21:22' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+
+ActionView::TemplateError (undefined method `merge' for nil:NilClass) on line #33 of app/views/admin/gift_certificate_types/_form.html.erb:
+30: </p>
+31: <p>
+32:   <%= form.label :status %><br />
+33:   <%= form.check_box :status, nil, Status::ACTIVE, Status::DISABLED %>
+34: </p>
+
+    app/views/admin/gift_certificate_types/_form.html.erb:33
+    app/views/admin/gift_certificate_types/edit.html.erb:4
+    app/views/admin/gift_certificate_types/edit.html.erb:3
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (188.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:21:29) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.2ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:21:29', `perishable_token` = 'iA7IrMM9CrmmugxBsf5v', `last_request_at` = '2011-05-23 08:21:29' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.7ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+
+ActionView::TemplateError (undefined method `status' for #<GiftCertificateType:0x10508b5f0>) on line #33 of app/views/admin/gift_certificate_types/_form.html.erb:
+30: </p>
+31: <p>
+32:   <%= form.label :status %><br />
+33:   <%= form.check_box :status, {}, Status::ACTIVE, Status::DISABLED %>
+34: </p>
+
+    app/views/admin/gift_certificate_types/_form.html.erb:33
+    app/views/admin/gift_certificate_types/edit.html.erb:4
+    app/views/admin/gift_certificate_types/edit.html.erb:3
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (64.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+** [Hoptoad] Notifier 2.0.18 ready to catch errors
+Translating routes (default locale: sv-SE)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateCourses (20091127100129)
+Migrating to CreateSessions (20091127100627)
+Migrating to CreateBookings (20091127101513)
+Migrating to CreateParticipants (20091127103024)
+Migrating to CreateUsers (20091127103232)
+Migrating to AddStatusToCourseAndSession (20091128125614)
+Migrating to AddStatusToBooking (20091128130409)
+Migrating to CreatePaypals (20091130211858)
+Migrating to CreateInstructors (20091203103711)
+Migrating to AddInstructoreToCourse (20091203103832)
+Migrating to AddAvatarColumnsToUser (20091203113324)
+Migrating to CreateCouponTypes (20091214100541)
+Migrating to CreateCoupons (20091214101123)
+Migrating to CreatePayment (20091215075410)
+Migrating to AlterPaypal (20091215075507)
+Migrating to CreateBankgiros (20100121090928)
+Migrating to CreateAttendants (20100122135827)
+Migrating to CreateCashes (20100129080012)
+Migrating to UpdateSessionWithComment (20100221064728)
+Migrating to UpdateCoursesWithComment (20100224081738)
+Migrating to CreateFrees (20100331122549)
+Migrating to AddValidForPolymorphicToCoupon (20100401082813)
+Migrating to AddSessionPrice (20100730083819)
+Migrating to AddStatusToCouponTypes (20110523081519)
+  [4;36;1mSQL (3.1ms)[0m   [0;1mALTER TABLE `coupon_types` ADD `status` int(11)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110523081519')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `attendants`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `attendants`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `attendants`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `bankgiros`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `bankgiros`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `bankgiros`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `bookings`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `bookings`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `bookings`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `cashes`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mdescribe `cashes`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `cashes`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `coupon_types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `coupon_types`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `coupons`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `coupons`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `coupons`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `courses`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `courses`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `courses`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `frees`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `frees`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `frees`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `instructors`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `participants`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `participants`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `participants`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `payments`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `payments`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `payments`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `paypal_reciepts`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mdescribe `paypal_reciepts`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `paypal_reciepts`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:22:04) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:04', `perishable_token` = '_9wX6kDgT8FWPROs52_E', `last_request_at` = '2011-05-23 08:22:04' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.8ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (21.0ms)
+Completed in 108ms (View: 31, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+** [Hoptoad] Notifier 2.0.18 ready to catch errors
+Translating routes (default locale: sv-SE)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddStatusToCouponTypes (20110523081519)
+  [4;36;1mSQL (2.6ms)[0m   [0;1mALTER TABLE `coupon_types` DROP `status`[0m
+  [4;35;1mSQL (78.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20110523081519'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `attendants`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `attendants`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `attendants`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `bankgiros`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `bankgiros`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `bankgiros`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `bookings`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `bookings`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `bookings`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `cashes`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `cashes`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `cashes`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `coupon_types`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `coupon_types`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `coupons`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `coupons`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `coupons`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `courses`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `courses`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `courses`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `frees`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `frees`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `frees`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `instructors`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `instructors`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `participants`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `participants`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `participants`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `payments`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `payments`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `payments`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `paypal_reciepts`[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mdescribe `paypal_reciepts`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `paypal_reciepts`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateCourses (20091127100129)
+Migrating to CreateSessions (20091127100627)
+Migrating to CreateBookings (20091127101513)
+Migrating to CreateParticipants (20091127103024)
+Migrating to CreateUsers (20091127103232)
+Migrating to AddStatusToCourseAndSession (20091128125614)
+Migrating to AddStatusToBooking (20091128130409)
+Migrating to CreatePaypals (20091130211858)
+Migrating to CreateInstructors (20091203103711)
+Migrating to AddInstructoreToCourse (20091203103832)
+Migrating to AddAvatarColumnsToUser (20091203113324)
+Migrating to CreateCouponTypes (20091214100541)
+Migrating to CreateCoupons (20091214101123)
+Migrating to CreatePayment (20091215075410)
+Migrating to AlterPaypal (20091215075507)
+Migrating to CreateBankgiros (20100121090928)
+Migrating to CreateAttendants (20100122135827)
+Migrating to CreateCashes (20100129080012)
+Migrating to UpdateSessionWithComment (20100221064728)
+Migrating to UpdateCoursesWithComment (20100224081738)
+Migrating to CreateFrees (20100331122549)
+Migrating to AddValidForPolymorphicToCoupon (20100401082813)
+Migrating to AddSessionPrice (20100730083819)
+Migrating to AddStatusToCouponTypes (20110523081519)
+  [4;35;1mSQL (2.9ms)[0m   [0mALTER TABLE `coupon_types` ADD `status` int(11) DEFAULT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110523081519')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `attendants`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `attendants`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `attendants`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `bankgiros`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `bankgiros`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `bankgiros`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `bookings`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `bookings`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `bookings`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `cashes`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `cashes`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `cashes`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `coupon_types`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `coupon_types`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `coupons`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `coupons`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `coupons`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW FIELDS FROM `courses`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `courses`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW KEYS FROM `courses`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `frees`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `frees`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `frees`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `participants`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `participants`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `participants`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `payments`[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mdescribe `payments`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `payments`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mSHOW FIELDS FROM `paypal_reciepts`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mdescribe `paypal_reciepts`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `paypal_reciepts`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:22:41) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.2ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:41', `perishable_token` = '9GFdsILt3-b8T_edq6o8', `last_request_at` = '2011-05-23 08:22:41' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.7ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (20.9ms)
+Completed in 104ms (View: 31, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#update (for 127.0.0.1 at 2011-05-23 10:22:43) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE", "gift_certificate_type"=>{"valid_to(3i)"=>"31", "name"=>"Sommarklasser", "valid_to(4i)"=>"09", "valid_to(5i)"=>"57", "valid_from(1i)"=>"2010", "valid_from(2i)"=>"5", "valid_from(3i)"=>"21", "valid_from(4i)"=>"09", "valid_from(5i)"=>"57", "times"=>"5", "value"=>"550", "valid_for"=>"Session", "description"=>"Gäller för 5 valfria klasser sommaren 2010", "status"=>"0", "valid_to(1i)"=>"2010", "valid_to(2i)"=>"8"}}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:43', `perishable_token` = 'kmsjOBD_KpF9EKG08chh', `last_request_at` = '2011-05-23 08:22:43' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.6ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mGiftCertificateType Update (0.2ms)[0m   [0;1mUPDATE `coupon_types` SET `updated_at` = '2011-05-23 08:22:43', `status` = 0 WHERE `id` = 5[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/admin/gift_certificate_types/5
+Completed in 196ms (DB: 7) | 302 Found [http://localhost/admin/gift_certificate_types/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:22:44) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:44', `perishable_token` = 'CCXg060DUTp937weJwRO', `last_request_at` = '2011-05-23 08:22:44' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.8ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 98ms (View: 15, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:22:46) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:46', `perishable_token` = 'ykxLP9pkxFc_uNsZh78X', `last_request_at` = '2011-05-23 08:22:46' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (2.7ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (23.1ms)
+Completed in 136ms (View: 33, DB: 7) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#update (for 127.0.0.1 at 2011-05-23 10:22:49) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE", "gift_certificate_type"=>{"valid_to(3i)"=>"31", "name"=>"Sommarklasser", "valid_to(4i)"=>"09", "valid_to(5i)"=>"57", "valid_from(1i)"=>"2010", "valid_from(2i)"=>"5", "valid_from(3i)"=>"21", "valid_from(4i)"=>"09", "valid_from(5i)"=>"57", "times"=>"5", "value"=>"550", "valid_for"=>"Session", "description"=>"Gäller för 5 valfria klasser sommaren 2010", "status"=>"1", "valid_to(1i)"=>"2010", "valid_to(2i)"=>"8"}}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:49', `perishable_token` = 'aZGYhsuEYUiPIklzZf4q', `last_request_at` = '2011-05-23 08:22:49' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.8ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mGiftCertificateType Update (0.3ms)[0m   [0;1mUPDATE `coupon_types` SET `updated_at` = '2011-05-23 08:22:49', `status` = 1 WHERE `id` = 5[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/admin/gift_certificate_types/5
+Completed in 79ms (DB: 5) | 302 Found [http://localhost/admin/gift_certificate_types/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:22:49) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:49', `perishable_token` = 'KWQF6DnMga7gsEhxppVc', `last_request_at` = '2011-05-23 08:22:49' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.7ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 86ms (View: 10, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:22:51) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.4ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:51', `perishable_token` = '1dP7qLOhYONPhsFQCczu', `last_request_at` = '2011-05-23 08:22:51' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.4ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (22.0ms)
+Completed in 231ms (View: 33, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#update (for 127.0.0.1 at 2011-05-23 10:22:55) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE", "gift_certificate_type"=>{"valid_to(3i)"=>"31", "name"=>"Sommarklasser", "valid_to(4i)"=>"09", "valid_to(5i)"=>"57", "valid_from(1i)"=>"2010", "valid_from(2i)"=>"5", "valid_from(3i)"=>"21", "valid_from(4i)"=>"09", "valid_from(5i)"=>"57", "times"=>"5", "value"=>"550", "valid_for"=>"Session", "description"=>"Gäller för 5 valfria klasser sommaren 2010", "status"=>"0", "valid_to(1i)"=>"2010", "valid_to(2i)"=>"8"}}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:55', `perishable_token` = 'hBSkmiInXjOYkkNl7jwx', `last_request_at` = '2011-05-23 08:22:55' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mGiftCertificateType Update (0.2ms)[0m   [0;1mUPDATE `coupon_types` SET `updated_at` = '2011-05-23 08:22:55', `status` = 0 WHERE `id` = 5[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/admin/gift_certificate_types/5
+Completed in 190ms (DB: 5) | 302 Found [http://localhost/admin/gift_certificate_types/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:22:55) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:22:55', `perishable_token` = 'J_FysUa2KwKgQXbqndeC', `last_request_at` = '2011-05-23 08:22:55' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.4ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 204ms (View: 10, DB: 5) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:23:50) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (7.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:23:51', `perishable_token` = 'i7ZspTfBq_C_uaA8aaqm', `last_request_at` = '2011-05-23 08:23:51' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.3ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 214ms (View: 14, DB: 10) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:24:06) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:06', `perishable_token` = 'LUfqV5tuw-ZepIOl2YrG', `last_request_at` = '2011-05-23 08:24:06' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.5ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 214ms (View: 15, DB: 7) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:24:07) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:08', `perishable_token` = 'DrhgZztBH-GzCApHMxvq', `last_request_at` = '2011-05-23 08:24:08' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.4ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (22.4ms)
+Completed in 225ms (View: 33, DB: 4) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#update (for 127.0.0.1 at 2011-05-23 10:24:10) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE", "gift_certificate_type"=>{"valid_to(3i)"=>"31", "name"=>"Sommarklasser", "valid_to(4i)"=>"09", "valid_to(5i)"=>"57", "valid_from(1i)"=>"2010", "valid_from(2i)"=>"5", "valid_from(3i)"=>"21", "valid_from(4i)"=>"09", "valid_from(5i)"=>"57", "times"=>"5", "value"=>"550", "valid_for"=>"Session", "description"=>"Gäller för 5 valfria klasser sommaren 2010", "status"=>"1", "valid_to(1i)"=>"2010", "valid_to(2i)"=>"8"}}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:11', `perishable_token` = '2MJIwj6Dm782iZ_UPxnn', `last_request_at` = '2011-05-23 08:24:11' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mGiftCertificateType Update (0.2ms)[0m   [0;1mUPDATE `coupon_types` SET `updated_at` = '2011-05-23 08:24:11', `status` = 1 WHERE `id` = 5[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/admin/gift_certificate_types/5
+Completed in 210ms (DB: 5) | 302 Found [http://localhost/admin/gift_certificate_types/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:24:11) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:11', `perishable_token` = 'BVhHL6gQ7nCUWsNnrJAS', `last_request_at` = '2011-05-23 08:24:11' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 195ms (View: 11, DB: 4) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#edit (for 127.0.0.1 at 2011-05-23 10:24:14) [GET]
+  Parameters: {"action"=>"edit", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.2ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:14', `perishable_token` = 'C7BtteIjQ-P08jANBQ_O', `last_request_at` = '2011-05-23 08:24:14' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mGiftCertificateType Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.3ms)[0m   [0mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/edit
+Rendered admin/gift_certificate_types/_form (21.7ms)
+Completed in 212ms (View: 32, DB: 4) | 200 OK [http://localhost/admin/gift_certificate_types/5/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#update (for 127.0.0.1 at 2011-05-23 10:24:17) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE", "gift_certificate_type"=>{"valid_to(3i)"=>"31", "name"=>"Sommarklasser", "valid_to(4i)"=>"09", "valid_to(5i)"=>"57", "valid_from(1i)"=>"2010", "valid_from(2i)"=>"5", "valid_from(3i)"=>"21", "valid_from(4i)"=>"09", "valid_from(5i)"=>"57", "times"=>"5", "value"=>"550", "valid_for"=>"Session", "description"=>"Gäller för 5 valfria klasser sommaren 2010", "status"=>"0", "valid_to(1i)"=>"2010", "valid_to(2i)"=>"8"}}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:17', `perishable_token` = 'oQITz2cJgaz_i6nwQ_62', `last_request_at` = '2011-05-23 08:24:17' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mGiftCertificateType Update (0.2ms)[0m   [0;1mUPDATE `coupon_types` SET `updated_at` = '2011-05-23 08:24:17', `status` = 0 WHERE `id` = 5[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3001/admin/gift_certificate_types/5
+Completed in 199ms (DB: 5) | 302 Found [http://localhost/admin/gift_certificate_types/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Admin::GiftCertificateTypesController#show (for 127.0.0.1 at 2011-05-23 10:24:17) [GET]
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"admin/gift_certificate_types", "locale"=>"sv-SE"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:24:17', `perishable_token` = '3-Y3XG0TnUY_LrLIDjBM', `last_request_at` = '2011-05-23 08:24:17' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mGiftCertificateType Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.2ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`id` = 5) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+Rendering template within layouts/application
+Rendering admin/gift_certificate_types/show
+Completed in 238ms (View: 10, DB: 4) | 200 OK [http://localhost/admin/gift_certificate_types/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2011-05-23 10:25:26) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome", "locale"=>"sv-SE"}
+  [4;35;1mCourse Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `courses`[0m
+  [4;36;1mSession Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mCourse Load Including Associations (1.4ms)[0m   [0mSELECT `courses`.`id` AS t0_r0, `courses`.`name` AS t0_r1, `courses`.`description` AS t0_r2, `courses`.`level` AS t0_r3, `courses`.`created_at` AS t0_r4, `courses`.`updated_at` AS t0_r5, `courses`.`status` AS t0_r6, `courses`.`instructor_id` AS t0_r7, `courses`.`comment` AS t0_r8, `courses`.`session_price` AS t0_r9, `sessions`.`id` AS t1_r0, `sessions`.`course_id` AS t1_r1, `sessions`.`starts_at` AS t1_r2, `sessions`.`ends_at` AS t1_r3, `sessions`.`created_at` AS t1_r4, `sessions`.`updated_at` AS t1_r5, `sessions`.`status` AS t1_r6, `sessions`.`comment` AS t1_r7 FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (sessions.starts_at <= '2011-05-23T10:25:26+02:00') [0m
+  [4;36;1mCourse Load Including Associations (0.5ms)[0m   [0;1mSELECT `courses`.`id` AS t0_r0, `courses`.`name` AS t0_r1, `courses`.`description` AS t0_r2, `courses`.`level` AS t0_r3, `courses`.`created_at` AS t0_r4, `courses`.`updated_at` AS t0_r5, `courses`.`status` AS t0_r6, `courses`.`instructor_id` AS t0_r7, `courses`.`comment` AS t0_r8, `courses`.`session_price` AS t0_r9, `sessions`.`id` AS t1_r0, `sessions`.`course_id` AS t1_r1, `sessions`.`starts_at` AS t1_r2, `sessions`.`ends_at` AS t1_r3, `sessions`.`created_at` AS t1_r4, `sessions`.`updated_at` AS t1_r5, `sessions`.`status` AS t1_r6, `sessions`.`comment` AS t1_r7 FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (sessions.starts_at > '2011-05-23T10:25:26+02:00') [0m
+  [4;35;1mCourse Load (0.2ms)[0m   [0mSELECT * FROM `courses` WHERE (`courses`.`status` = 1 AND `courses`.`id` IN (NULL)) LIMIT 4[0m
+  [4;36;1mCourse Load IDs For Limited Eager Loading (3.0ms)[0m   [0;1mSELECT DISTINCT `courses`.id FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (courses.status = 1 AND courses.id NOT IN (SELECT DISTINCT(sessions.course_id) FROM sessions WHERE sessions.starts_at <= '2011-05-23T10:25:26+02:00' ) ) LIMIT 4[0m
+  [4;35;1mSession Load Including Associations (0.4ms)[0m   [0mSELECT `sessions`.`id` AS t0_r0, `sessions`.`course_id` AS t0_r1, `sessions`.`starts_at` AS t0_r2, `sessions`.`ends_at` AS t0_r3, `sessions`.`created_at` AS t0_r4, `sessions`.`updated_at` AS t0_r5, `sessions`.`status` AS t0_r6, `sessions`.`comment` AS t0_r7, `courses`.`id` AS t1_r0, `courses`.`name` AS t1_r1, `courses`.`description` AS t1_r2, `courses`.`level` AS t1_r3, `courses`.`created_at` AS t1_r4, `courses`.`updated_at` AS t1_r5, `courses`.`status` AS t1_r6, `courses`.`instructor_id` AS t1_r7, `courses`.`comment` AS t1_r8, `courses`.`session_price` AS t1_r9 FROM `sessions` LEFT OUTER JOIN `courses` ON `courses`.id = `sessions`.course_id WHERE ((sessions.status = 1 AND courses.status = 1) AND (sessions.starts_at > CAST('2011-05-23T10:25:26+02:00' AS DATETIME))) ORDER BY sessions.starts_at ASC LIMIT 5[0m
+  [4;36;1mGiftCertificateType Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `coupon_types`[0m
+  [4;35;1mGiftCertificateType Load (0.6ms)[0m   [0mSELECT * FROM `coupon_types` WHERE ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+
+NoMethodError (undefined method `active' for #<Array:0x105139a38>):
+  app/controllers/welcome_controller.rb:8:in `index'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (39.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2011-05-23 10:25:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome", "locale"=>"sv-SE"}
+  [4;36;1mCourse Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `courses`[0m
+  [4;35;1mSession Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mCourse Load Including Associations (1.5ms)[0m   [0;1mSELECT `courses`.`id` AS t0_r0, `courses`.`name` AS t0_r1, `courses`.`description` AS t0_r2, `courses`.`level` AS t0_r3, `courses`.`created_at` AS t0_r4, `courses`.`updated_at` AS t0_r5, `courses`.`status` AS t0_r6, `courses`.`instructor_id` AS t0_r7, `courses`.`comment` AS t0_r8, `courses`.`session_price` AS t0_r9, `sessions`.`id` AS t1_r0, `sessions`.`course_id` AS t1_r1, `sessions`.`starts_at` AS t1_r2, `sessions`.`ends_at` AS t1_r3, `sessions`.`created_at` AS t1_r4, `sessions`.`updated_at` AS t1_r5, `sessions`.`status` AS t1_r6, `sessions`.`comment` AS t1_r7 FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (sessions.starts_at <= '2011-05-23T10:25:35+02:00') [0m
+  [4;35;1mCourse Load Including Associations (0.5ms)[0m   [0mSELECT `courses`.`id` AS t0_r0, `courses`.`name` AS t0_r1, `courses`.`description` AS t0_r2, `courses`.`level` AS t0_r3, `courses`.`created_at` AS t0_r4, `courses`.`updated_at` AS t0_r5, `courses`.`status` AS t0_r6, `courses`.`instructor_id` AS t0_r7, `courses`.`comment` AS t0_r8, `courses`.`session_price` AS t0_r9, `sessions`.`id` AS t1_r0, `sessions`.`course_id` AS t1_r1, `sessions`.`starts_at` AS t1_r2, `sessions`.`ends_at` AS t1_r3, `sessions`.`created_at` AS t1_r4, `sessions`.`updated_at` AS t1_r5, `sessions`.`status` AS t1_r6, `sessions`.`comment` AS t1_r7 FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (sessions.starts_at > '2011-05-23T10:25:35+02:00') [0m
+  [4;36;1mCourse Load (0.2ms)[0m   [0;1mSELECT * FROM `courses` WHERE (`courses`.`status` = 1 AND `courses`.`id` IN (NULL)) LIMIT 4[0m
+  [4;35;1mCourse Load IDs For Limited Eager Loading (2.8ms)[0m   [0mSELECT DISTINCT `courses`.id FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE (courses.status = 1 AND courses.id NOT IN (SELECT DISTINCT(sessions.course_id) FROM sessions WHERE sessions.starts_at <= '2011-05-23T10:25:35+02:00' ) ) LIMIT 4[0m
+  [4;36;1mSession Load Including Associations (0.4ms)[0m   [0;1mSELECT `sessions`.`id` AS t0_r0, `sessions`.`course_id` AS t0_r1, `sessions`.`starts_at` AS t0_r2, `sessions`.`ends_at` AS t0_r3, `sessions`.`created_at` AS t0_r4, `sessions`.`updated_at` AS t0_r5, `sessions`.`status` AS t0_r6, `sessions`.`comment` AS t0_r7, `courses`.`id` AS t1_r0, `courses`.`name` AS t1_r1, `courses`.`description` AS t1_r2, `courses`.`level` AS t1_r3, `courses`.`created_at` AS t1_r4, `courses`.`updated_at` AS t1_r5, `courses`.`status` AS t1_r6, `courses`.`instructor_id` AS t1_r7, `courses`.`comment` AS t1_r8, `courses`.`session_price` AS t1_r9 FROM `sessions` LEFT OUTER JOIN `courses` ON `courses`.id = `sessions`.course_id WHERE ((sessions.status = 1 AND courses.status = 1) AND (sessions.starts_at > CAST('2011-05-23T10:25:35+02:00' AS DATETIME))) ORDER BY sessions.starts_at ASC LIMIT 5[0m
+  [4;35;1mGiftCertificateType Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `coupon_types`[0m
+  [4;36;1mGiftCertificateType Load (0.3ms)[0m   [0;1mSELECT * FROM `coupon_types` WHERE (`coupon_types`.`status` = 1) AND ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) [0m
+  [4;35;1mGiftCertificateType Load (0.3ms)[0m   [0mSELECT * FROM `coupon_types` WHERE ( (`coupon_types`.`type` = 'GiftCertificateType' ) ) LIMIT 1[0m
+  [4;36;1mGiftCertificate Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `coupons`[0m
+  [4;35;1mCourse Load IDs For Limited Eager Loading (0.7ms)[0m   [0mSELECT DISTINCT `courses`.id FROM `courses` LEFT OUTER JOIN `sessions` ON sessions.course_id = courses.id WHERE ((courses.session_price = 0) AND (courses.status = 1 AND courses.id IN (SELECT DISTINCT(sessions.course_id) FROM sessions WHERE sessions.starts_at >= '2011-05-23T10:25:35+02:00' ) )) LIMIT 1[0m
+  [4;36;1mInstructor Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mInstructor Load (0.5ms)[0m   [0mSELECT * FROM `instructors` WHERE (`instructors`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered welcome/_address_contact (0.2ms)
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.3ms)[0m   [0mUPDATE `users` SET `updated_at` = '2011-05-23 08:25:35', `perishable_token` = '3WrpvPvlsXhWgtWrtWkL', `last_request_at` = '2011-05-23 08:25:35' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+Completed in 283ms (View: 79, DB: 18) | 200 OK [http://localhost/]

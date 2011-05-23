@@ -28,3 +28,7 @@
   <%= form.label :valid_to %><br />
   <%= form.datetime_select :valid_to %>
 </p>
+<p>
+  <%= form.label :status %><br />
+  <%= form.check_box :status, nil, Status::ACTIVE, Status::DISABLED %>
+</p>

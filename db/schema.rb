@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730083819) do
+ActiveRecord::Schema.define(:version => 20110523081519) do
 
   create_table "attendants", :force => true do |t|
     t.integer  "participant_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20100730083819) do
     t.datetime "updated_at"
     t.string   "valid_for"
     t.integer  "times"
+    t.integer  "status",      :default => 1
   end
 
   create_table "coupons", :force => true do |t|
