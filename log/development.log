@@ -14392,3 +14392,5 @@ Rendered sessions/_calendar (3.8ms)
   [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
   [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
 Completed in 225ms (View: 66, DB: 10) | 200 OK [http://localhost/klasser]
+** [Hoptoad] Notifier 2.0.18 ready to catch errors
+Translating routes (default locale: sv-SE)
