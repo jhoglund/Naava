@@ -29,15 +29,15 @@
         }
       })
   });
-<% 
-  # summer_events = [1306773000, 1307377800, 1307982600, 1308587400, 1309192200, 1309797000, 1310401800, 1311006600, 1311611400, 1312216200, 1312821000, 1306992600, 1307597400, 1308202200, 1308807000, 1309411800, 1310016600, 1310621400, 1311226200, 1311831000, 1312435800, 1313040600].collect do |i|
-  # starts_at = Time.at(i)
-  # {
-  #   :title => 'Sommarklass', 
-  #   :start => starts_at.strftime('%Y-%m-%d %H:%M:%S'), 
-  #   :end => (starts_at + (90*60)).strftime('%Y-%m-%d %H:%M:%S'), 
-  #   :className => "calendar-session-default"
-  # }
+<%# 
+  summer_events = [1306773000, 1307377800, 1307982600, 1308587400, 1309192200, 1309797000, 1310401800, 1311006600, 1311611400, 1312216200, 1312821000, 1306992600, 1307597400, 1308202200, 1308807000, 1309411800, 1310016600, 1310621400, 1311226200, 1311831000, 1312435800, 1313040600].collect do |i|
+  starts_at = Time.at(i)
+  {
+    :title => 'Sommarklass', 
+    :start => starts_at.strftime('%Y-%m-%d %H:%M:%S'), 
+    :end => (starts_at + (90*60)).strftime('%Y-%m-%d %H:%M:%S'), 
+    :className => "calendar-session-default"
+  }
 end 
 %>
 //$(document).ready(function() {
@@ -60,7 +60,7 @@ end
 //      monthNamesShort:['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
 //      dayNames:['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
 //      dayNamesShort:['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
-//      events: <%= summer_events.to_json %>
+//      events: <%#= summer_events.to_json %>
 //    })
 //});
 
