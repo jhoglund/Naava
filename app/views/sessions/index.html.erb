@@ -5,8 +5,8 @@
 <div class="sidebar">
   <h3>Priser</h3>
   <dl>
-    <dt>Kurser, 16 tillfällen</dt>
-    <dd><%= number_to_currency(Course.price(16), {:precision => 0}) %> (90 minuter per tillfälle)</dd>
+    <dt>Kurser, 14 tillfällen</dt>
+    <dd><%= number_to_currency(Course.price(14), {:precision => 0}) %> (90 minuter per tillfälle)</dd>
     <dt>Enstaka klasser</dt>
     <dd><%= number_to_currency(Session.price, {:precision => 0}) %> (90 minuter)</dd>
     <dt>Terminskort</dt>
@@ -20,13 +20,13 @@
   </dl>
 </div>
 
-<!-- <h2>Våra kurser</h2>
+<h2>Våra kurser</h2>
 <p>På Nava Yoga har vi både nybörjar- och fortsättningskurser. För varje enskild kurs, anpassar vi våra klasser
   efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
   har yogat tidigare att komma vidare i ditt utövande.</p>
 
 <p>
-  Varje kurs inkluderar <strong>16 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(16), {:precision => 0}) %></strong> (90 minuter per tillfälle). 
+  Varje kurs inkluderar <strong>14 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(14), {:precision => 0}) %></strong> (90 minuter per tillfälle). 
   Du betalar endast <strong><%=  number_to_currency(Course.price_per_session, {:precision => 0}) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price, {:precision => 0}) %>
   om du väljer att betala vid varje enskilt tillfälle.
 </p>
@@ -34,20 +34,10 @@
   function bookCourse(path){
     document.location.href = path
   }
-<% end %> -->
-
-<h2>Sommarens klasser</h2>
-Vi har öppet under sommaren.
-På <strong>måndagar klockan 18.30</strong> har vi en klass med en instruktör närvarande som leder från
-position till position. Det passar alla som tidagare har gått på någon av våra klasser eller som tidigare har testat på Ashtanga Yoga. 
-Vid frågor, ring Jonas Höglund på 0709-961600 eller maila på <%= mail_to 'jonas@navayoga.se', 'jonas@navayoga.se' %>
-<p>
-Priset är 50 kronor per gång eller 500 kronor för hela sommaren. För
-dig som har ett termins eller årskort så ingår sommarens klasser. Det går
-inte att anmäla sig till en klass utan det är bara att komma.</p>
+<% end %>
 
 
-<!-- <table>
+<table>
 <% unless @courses.blank? %>
 <tr>
   <td style="padding:0"><h3>Välj en av våra pågende kurser</h3></td>
@@ -111,7 +101,7 @@ inte att anmäla sig till en klass utan det är bara att komma.</p>
 </tr>
 <% end %>
 
-</table> -->
+</table>
 <hr>
 <!-- <h2>Schema för höstens klasser, 2010</h2> -->
 <%= render :partial => 'calendar' %>
