@@ -19,8 +19,16 @@ module CoursesHelper
               $(clone_el[1]).val(date.getMonth()+1);
               $(clone_el[0]).val(date.getDate());
               // Needs to always be two digits long
-              //$(clone_el[3]).val(date.getHours());
-              //$(clone_el[4]).val(date.getMinutes());
+              var hours = date.getHours().toString().replace(/.*/,function(a){ return a.length==1 ? 0+a : a })
+              var minutes = date.getMinutes().toString().replace(/.*/,function(a){ return a.length==1 ? 0+a : a })
+              $(clone_el[3]).val(hours);
+              $(clone_el[4]).val(minutes);
+              //Set duration
+              var dur_el = $(template).find('select[id*="duration"]');
+              var clone_dur_el = $(clone).find('select[id*="duration"]');
+              $(clone_dur_el[0]).val($(dur_el[0]).val());
+              $(clone_dur_el[1]).val($(dur_el[1]).val());
+            
             }
           })
         })()
