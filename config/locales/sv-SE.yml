@@ -31,7 +31,14 @@ sv-SE:
           other: "{{count}} fel förhindrade denna {{model}} från att sparas"
     models:
       participant: Deltagare
-      coupon: Presentkort
+      coupon: 
+        one: Kuppong
+        other: Kupponger
+      coupon_type: Kuppong
+      gift_certificate: Presentkort
+      gift_certificate_type: Presentkort
+      punch_card: Klippkort
+      punch_card_type: Klippkort
       session:
         one: Klass
         other: Klasser

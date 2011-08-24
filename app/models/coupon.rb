@@ -2,6 +2,8 @@ class Coupon < ActiveRecord::Base
   include PaymentModule
   include TokenModule
   token_type :string
+  cattr_reader :per_page
+  @@per_page = 10
   
   belongs_to :coupon_type
   has_many :payment_reciepts, :class_name => "Payment", :as => :reciept
@@ -52,13 +54,20 @@ class Coupon < ActiveRecord::Base
     # end
   end
   
+  def valid_dates
+    now = Time.now
+    (self.valid_from.nil? or now >= self.valid_from) and (self.valid_to.nil? or self.valid_to >= now)
+  end
+  
   def valid? value=nil
     if self.new_record?
       true
-    elsif coupon_type.times
-      payment_reciepts.count < coupon_type.times
-    else
-      available_funds >= value
+    elsif self.valid_dates
+      if coupon_type.times
+        payment_reciepts.count < coupon_type.times
+      else
+        available_funds >= value
+      end
     end
   end
   
@@ -71,6 +80,14 @@ class Coupon < ActiveRecord::Base
       coupon_type.times
     else
       coupon_type.value
+    end
+  end
+  
+  def available_times
+    if coupon_type.times
+      original_funds - payment_reciepts.count
+    else
+      nil
     end
   end
   

@@ -9,12 +9,16 @@
   <%= form.text_area :description %>
 </p>
 <p>
+  <%= form.label :type %><br />
+  <%= form.select :type, options_for_select([%w{Presentkort GiftCertificateType}, %w{Säsongskort SeasonalPassType}, %w{Klippkort PunchCardType}], :selected => @coupon_type.type) %>
+</p>
+<p>
   <%= form.label :value %><br />
   <%= form.text_field :value %>
 </p>
 <p>
   <%= form.label :valid_for %><br />
-  <%= form.text_field :valid_for %>
+  <%= form.select :valid_for, options_for_select(%w{Session Course}, :selected => @coupon_type.valid_for) %>
 </p>
 <p>
   <%= form.label :times %><br />
@@ -30,5 +34,5 @@
 </p>
 <p>
   <%= form.label :status %><br />
-  <%= form.check_box :status, nil, Status::ACTIVE, Status::DISABLED %>
+  <%= form.check_box :status, {}, Status::ACTIVE, Status::DISABLED %>
 </p>

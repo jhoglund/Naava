@@ -23,6 +23,16 @@
   <%= @coupon_type.valid_to %>
 </p>
 
+<p>
+  <b>Valid for:</b>
+  <%= @coupon_type.valid_for %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= ['Disabled', 'Active'][@coupon_type.status] %>
+</p>
+
 
 <%= link_to 'Edit', edit_admin_coupon_type_path(@coupon_type) %> |
 <%= link_to 'Back', admin_coupon_types_path %>

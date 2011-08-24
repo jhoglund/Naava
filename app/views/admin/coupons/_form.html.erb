@@ -33,10 +33,12 @@
   <%= form.text_field :from_address %>
 </p>
 <p>
+  <%= form.label :coupon_type %><br />
+  <%#= form.select :coupon_type_id, CouponType.all, :id, :name %>
+  <%= form.select :coupon_type, options_for_select(CouponType.all.collect{|t| ["#{t.name} (#{t.class.human_name})", t.id]}), :selected => nil %>
+</p>
+
+<p>
   <%= form.label :message %><br />
   <%= form.text_area :message %>
-</p>
-<p>
-  <%= form.label :coupon_type %><br />
-  <%= form.text_field :coupon_type %>
 </p>

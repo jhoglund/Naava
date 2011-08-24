@@ -1,10 +1,10 @@
 class Admin::CouponTypesController < Admin::AdminController
   def index
-    @coupon_types = CouponType.all
+    @coupon_type = CouponType.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @coupon_types }
+      format.xml  { render :xml => @coupon_type }
     end
   end
 

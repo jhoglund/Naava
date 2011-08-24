@@ -1,4 +1,4 @@
-<h1>Listing presentkort</h1>
+<h1>Listing kupponger</h1>
 
 <table>
   <tr>
@@ -9,7 +9,7 @@
     <th>Valid to</th>
   </tr>
 
-<% @coupon_types.each do |coupon_type| %>
+<% @coupon_type.each do |coupon_type| %>
   <tr>
     <td><%= coupon_type.name %></td>
     <td><%= coupon_type.description %></td>

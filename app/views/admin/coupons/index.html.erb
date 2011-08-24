@@ -2,33 +2,27 @@
 
 <table>
   <tr>
-    <th>To name</th>
-    <th>To email</th>
-    <th>To phone</th>
-    <th>From name</th>
-    <th>From email</th>
-    <th>From phone</th>
-    <th>Message</th>
-    <th>Coupon type</th>
+    <th></th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Valid to</th>
   </tr>
 
 <% @coupons.each do |coupon| %>
   <tr>
-    <td><%= coupon.to_name %></td>
-    <td><%= coupon.to_email %></td>
-    <td><%= coupon.to_phone %></td>
-    <td><%= coupon.from_name %></td>
-    <td><%= coupon.from_email %></td>
-    <td><%= coupon.from_phone %></td>
-    <td><%=truncate coupon.message %></td>
-    <td><%= coupon.coupon_type.name %></td>
+    <td><%= coupon.valid? ? 'X' : '' %></td>
+    <td><%= coupon.to_name %> <%= "(#{coupon.available_times})" if coupon.available_times %></td>
+    <td><%= coupon.coupon_type.name %> (<%= coupon.type %>)</td>
+    <td><%= l(coupon.valid_to, :format => "%Y-%m-%d") unless coupon.valid_to.nil? %></td>
     <td><%= link_to 'Show', admin_coupon_path(coupon) %></td>
     <td><%= link_to 'Edit', edit_admin_coupon_path(coupon) %></td>
-    <td><%#= link_to 'Destroy', user_admin_coupon_type_path(coupon), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', admin_coupon_path(coupon), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+<%= will_paginate @coupons %>
+<%= page_entries_info @coupons %>
 
 <br />
 
-<%= link_to 'Nytt presentkort', new_admin_coupon_path %>
+<%= link_to 'Ny kuppong', new_admin_coupon_path %>
