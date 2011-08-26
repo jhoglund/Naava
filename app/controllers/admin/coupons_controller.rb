@@ -21,7 +21,6 @@ class Admin::CouponsController < Admin::AdminController
 
   def new
     @coupon = Coupon.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @coupon }
@@ -34,6 +33,8 @@ class Admin::CouponsController < Admin::AdminController
 
   def create
     @coupon = Coupon.new(params[:coupon])
+    @coupon.payment = Payment.new(:name => @coupon.to_name)
+    @coupon.type = @coupon.coupon_type.class.name.gsub(/Type$/,'')
 
     respond_to do |format|
       if @coupon.save
@@ -51,7 +52,7 @@ class Admin::CouponsController < Admin::AdminController
     @coupon = Coupon.find_by_token(params[:id])
 
     respond_to do |format|
-      if @coupon.update_attributes(params[:coupon])
+      if @coupon.update_attributes(params[params[:class_type_name]])
         flash[:notice] = 'Coupon was successfully updated.'
         format.html { redirect_to(admin_coupon_url(@coupon)) }
         format.xml  { head :ok }
@@ -71,4 +72,5 @@ class Admin::CouponsController < Admin::AdminController
       format.xml  { head :ok }
     end
   end
+  
 end

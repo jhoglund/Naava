@@ -7,11 +7,7 @@ class GiftCertificate < Coupon
   
   def gift_certificate_type
     coupon_type
-  end
-  
-  def payment_description
-    coupon_type.name
-  end
+  end  
   
   def after_gift_certificate_created
     self.payment.name ||= to_name

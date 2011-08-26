@@ -36,6 +36,14 @@
   <%= form.label :gift_certificate_type %><br />
   <%= form.collection_select :coupon_type_id, CouponType.all, :id, :name %>
 </p>
+<p>
+  <%= form.label :valid_from %><br />
+  <%= form.datetime_select :valid_from %>
+</p>
+<p>
+  <%= form.label :valid_to %><br />
+  <%= form.datetime_select :valid_to %>
+</p>
 
 <p>
   <%= form.label :message %><br />

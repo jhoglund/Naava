@@ -37,7 +37,7 @@ class Admin::PaymentsController < Admin::AdminController
     respond_to do |format|
       if @payment.save
         flash[:notice] = 'PaymentReciept was successfully created.'
-        format.html { redirect_to(admin_payment_url(@payment, :show_payment => params[:show_payment])) }
+        format.html { redirect_to(admin_payments_url(:show_payment => params[:show_payment])) }
         format.xml  { render :xml => @payment, :status => :created, :location => @payment }
       else
         format.html { render :action => "new" }

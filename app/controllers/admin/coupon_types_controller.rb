@@ -31,7 +31,7 @@ class Admin::CouponTypesController < Admin::AdminController
   end
 
   def create
-    @coupon_type = CouponType.new(params[:coupon_type])
+    @coupon_type = typecast_class.new(params[class_type_name])
 
     respond_to do |format|
       if @coupon_type.save
@@ -47,9 +47,15 @@ class Admin::CouponTypesController < Admin::AdminController
 
   def update
     @coupon_type = CouponType.find(params[:id])
-
+    klass = typecast_class
     respond_to do |format|
-      if @coupon_type.update_attributes(params[:coupon_type])
+      @coupon_type.valid_for = []
+      if @coupon_type.update_attributes(params[class_type_name])
+        if !@coupon_type.is_a?(klass)
+          @coupon_type = @coupon_type.becomes(klass)
+          @coupon_type.type = klass.name
+          @coupon_type.save
+        end
         flash[:notice] = 'CouponType was successfully updated.'
         format.html { redirect_to(admin_coupon_type_path(@coupon_type)) }
         format.xml  { head :ok }
@@ -68,5 +74,16 @@ class Admin::CouponTypesController < Admin::AdminController
       format.html { redirect_to(admin_coupon_types_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def class_type_name
+    params[:class_type_name]
+  end
+  
+  def typecast_class
+    klass_type = params[class_type_name].delete(:type)
+    klass_type.nil? ? CouponType : klass_type.constantize
   end
 end

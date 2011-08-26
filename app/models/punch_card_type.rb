@@ -1,0 +1,3 @@
+class PunchCardType < CouponType
+  
+end

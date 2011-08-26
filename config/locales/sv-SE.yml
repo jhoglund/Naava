@@ -37,6 +37,8 @@ sv-SE:
       coupon_type: Kuppong
       gift_certificate: Presentkort
       gift_certificate_type: Presentkort
+      season_pass: Säsongskort
+      season_pass_type: Säsongskort
       punch_card: Klippkort
       punch_card_type: Klippkort
       session:

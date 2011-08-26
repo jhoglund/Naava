@@ -1,6 +1,6 @@
 <h1>Editing coupon</h1>
 
-<% form_for(@coupon) do |f| %>
+<% form_for(@coupon, :url => admin_coupon_path(@coupon) ) do |f| %>
   <%= render :partial => "form", :object => f  %>
   <p>
     <%= f.submit 'Update' %>

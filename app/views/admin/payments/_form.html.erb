@@ -29,7 +29,7 @@
   <%= text_field_tag 'payment[reciept_attributes][cash][gross]', form.object.type?(:cash) ? form.object.reciept.gross : nil %>
 </p>
 <p>
-  <%= radio_button_tag 'payment[reciept_attributes][type]', 'coupon', form.object.type?(:gift_certificate) %> Kuppong<br>
+  <%= radio_button_tag 'payment[reciept_attributes][type]', 'coupon', form.object.type?(:coupon) %> Kuppong<br>
   <%= select_tag 'payment[reciept_attributes][coupon][id]', options_from_collection_for_select(Coupon.active, 'id', 'to_s', :selected => (form.object.reciept.id if form.object.type?(:gift_certificate))) %>
 </p>
 <p>

@@ -123,7 +123,11 @@ class Session < ActiveRecord::Base
     }
   end
   
-  private
+  protected
   
+  def after_booking_created
+    self.payment.name ||= self.participant.name
+    super
+  end
   
 end

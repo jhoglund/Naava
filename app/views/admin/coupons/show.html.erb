@@ -44,10 +44,26 @@
 </p>
 
 <p>
+  <b>Valid from:</b>
+  <%= @coupon.valid_from %>
+</p>
+
+<p>
+  <b>Valid to:</b>
+  <%= @coupon.valid_to %>
+</p>
+
+<p>
   <b>Coupon type:</b>
   <%= @coupon.coupon_type.name %>
 </p>
 
+<p>
+  <b>Paid:</b>
+  <%= @coupon.paid? ? 'Yes' : 'No' %>
+</p>
+
 
 <%= link_to 'Edit', edit_admin_coupon_path(@coupon) %> |
-<%= link_to 'Back', admin_coupons_path %>
+<%= link_to 'Back', admin_coupons_path %> |
+<%= link_to('Payment', edit_admin_payment_path(@coupon.payment)) %>

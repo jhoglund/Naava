@@ -11,7 +11,7 @@ class Coupon < ActiveRecord::Base
   validates_presence_of :to_name, :from_name, :on => :create
   validate :phone_or_email
   
-  delegate :value, :to => :coupon_type
+  delegate :value, :valid_for?, :to => :coupon_type
   
   EMAIL_EXP = /\A[\w\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)\z/i
   PHONE_EXP = /\d+|\+/
@@ -21,14 +21,8 @@ class Coupon < ActiveRecord::Base
   def title; coupon_type.title end
   def phone; from_phone end
   
-  def valid_for? obj
-    name = case obj.class.name
-      when 'String' then obj
-      when 'Symbol' then obj.to_s
-      when 'Class' then obj.name
-      else obj.class.name
-    end
-    coupon_type.valid_for.downcase == name.downcase
+  def payment_description
+    "#{coupon_type.class.human_name}: #{coupon_type.name}"
   end
   
   def to_s
@@ -63,7 +57,9 @@ class Coupon < ActiveRecord::Base
     if self.new_record?
       true
     elsif self.valid_dates
-      if coupon_type.times
+      if coupon_type.value.nil?
+        true
+      elsif coupon_type.times
         payment_reciepts.count < coupon_type.times
       else
         available_funds >= value
@@ -92,7 +88,9 @@ class Coupon < ActiveRecord::Base
   end
   
   def available_funds
-    if coupon_type.times
+    if coupon_type.value.nil?
+      0
+    elsif coupon_type.times
       original_funds - payment_reciepts.count
     else
       self.original_funds - payment_reciepts.sum(:value)

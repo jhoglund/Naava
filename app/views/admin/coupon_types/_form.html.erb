@@ -1,4 +1,5 @@
 <%= form.error_messages %>
+  <%= hidden_field_tag :class_type_name, @coupon_type.class.name.tableize.singularize %>
 
 <p>
   <%= form.label :name %><br />
@@ -10,7 +11,7 @@
 </p>
 <p>
   <%= form.label :type %><br />
-  <%= form.select :type, options_for_select([%w{Presentkort GiftCertificateType}, %w{Säsongskort SeasonalPassType}, %w{Klippkort PunchCardType}], :selected => @coupon_type.type) %>
+  <%= form.select :type, options_for_select([%w{Presentkort GiftCertificateType}, %w{Säsongskort SeasonPassType}, %w{Klippkort PunchCardType}], :selected => @coupon_type.type) %>
 </p>
 <p>
   <%= form.label :value %><br />
@@ -18,19 +19,12 @@
 </p>
 <p>
   <%= form.label :valid_for %><br />
-  <%= form.select :valid_for, options_for_select(%w{Session Course}, :selected => @coupon_type.valid_for) %>
+  <%= check_box_tag "#{form.object_name}[valid_for][]", 'Session', @coupon_type.valid_for?(:session) %> Session<br />
+  <%= check_box_tag "#{form.object_name}[valid_for][]", 'Course', @coupon_type.valid_for?(:course) %> Course
 </p>
 <p>
   <%= form.label :times %><br />
   <%= form.text_field :times %>
-</p>
-<p>
-  <%= form.label :valid_from %><br />
-  <%= form.datetime_select :valid_from %>
-</p>
-<p>
-  <%= form.label :valid_to %><br />
-  <%= form.datetime_select :valid_to %>
 </p>
 <p>
   <%= form.label :status %><br />
