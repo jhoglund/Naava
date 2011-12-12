@@ -58,6 +58,7 @@ ActionController::Routing::Routes.draw do |map|
   map.good_to_know '/good_to_know', :controller => 'welcome', :action => 'good_to_know'
   map.our_studio '/our_studio', :controller => 'welcome', :action => 'our_studio'
   map.location '/location', :controller => 'welcome', :action => 'location'
+  map.introduction_course '/introduction_course', :controller => 'welcome', :action => 'introduction_course'
   map.root :controller => "welcome"
   
   # The priority is based upon order of creation: first created -> highest priority.

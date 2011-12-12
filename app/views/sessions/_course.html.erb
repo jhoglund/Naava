@@ -27,7 +27,7 @@
     </p>
     <p><% if course.started? %>
       <% @expired_count = course.sessions.expired.active.count %>
-    <span class="course-started">Denna kursen började den <strong><%=l course.starts_at.to_date, :format => :long %></strong>. Vi har hittills hunnit med <%= @expired_count %> klass<%= @expired_count > 1 ? 'er' : '' %>. 
+    <span class="course-started">Denna kurs började den <strong><%=l course.starts_at.to_date, :format => :long %></strong>. Vi har hittills hunnit med <%= @expired_count %> klass<%= @expired_count > 1 ? 'er' : '' %>. 
     <%- if course.sessions.current.count > 1 -%>
     Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast <strong><%= number_to_currency(course.price, {:precision => 0}) %></strong> vilket
     är <strong><%=  number_to_currency(course.price_per_session, {:precision => 0}) %></strong>  (<%= course.discount %>%)  per återstående klass (totalt <%= course.sessions.current.active.count %> klasser).</span>

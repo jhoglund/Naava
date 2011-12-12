@@ -16,5 +16,6 @@ class WelcomeController < ApplicationController
   def good_to_know; end
   def our_studio; end
   def location; end
+  def introduction_course; end
   
 end
