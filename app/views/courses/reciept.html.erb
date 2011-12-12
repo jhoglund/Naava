@@ -14,7 +14,7 @@
   <%- if !@payment.item.booker.free? and !@payment.item.paid? -%>
   <hr>
     <div class="message" style="width:500px">
-      Kursavgiften på <strong><%= number_to_currency(@payment.item.booker.price) %></strong> ska vara betalde senast <strong>1 vecka före första klassen.</strong> 
+      Kursavgiften på <strong><%= number_to_currency(@payment.item.booker.price, :precision => 0) %></strong> ska vara betald före första kurstillfället. 
       Välj ett av nedanstående tre alternativ för att betala.    
     </div>
     <p>

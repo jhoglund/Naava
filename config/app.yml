@@ -1,6 +1,7 @@
 DEFAULTS: &DEFAULTS
-  dropin: 130
-  course_per_class: 90
+  dropin: 150
+  course_per_class: 105
+  discount: 80
   support_mail: jonas@navayoga.se
   support_mail_title: Nava Yoga Studio
   support_phone: 0709-961600

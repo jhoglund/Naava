@@ -9,7 +9,10 @@ class Session < ActiveRecord::Base
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :expired, :conditions => "sessions.starts_at < CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :active, lambda{|active_course|
-    { :conditions => "sessions.status = 1#{active_course ? '  AND courses.status = 1' : ''}", :include => 'course' }
+    { 
+      :conditions => "sessions.status = 1#{(active_course ? '  AND courses.status = 1' : '')}", 
+      :include => 'course'
+    }
   }
   named_scope :asc, :order => "sessions.starts_at ASC"
   named_scope :desc, :order => "sessions.starts_at DESC"

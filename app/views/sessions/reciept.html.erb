@@ -18,7 +18,7 @@
   </p>
   <%- if !@payment.item.booker.free? and !@payment.item.paid? -%>
     <div class="message" style="width:500px">
-      Klassen kostar <strong><%= number_to_currency(@payment.item.booker.price) %></strong><br>
+      Klassen kostar <strong><%= number_to_currency(@payment.item.booker.price, :precision => 0) %></strong><br>
       Välj ett av nedanstående tre alternativ för att betala.    
     </div>
     <p>

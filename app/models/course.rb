@@ -50,31 +50,51 @@ class Course < ActiveRecord::Base
   end
   
   def price
-    sessions.active.current.count * price_per_session
+    [(remaining_session_count * discounted_price_per_session), original_price].min
   end
   
   def original_price
-    Course.price(sessions.active.count)
+    original_price_per_session * sessions.active.count
+  end
+  
+  def discounted_price_per_session
+    started? ? dropin_price * (0.01 * discount) : original_price_per_session
   end
   
   def price_per_session
-    started? ? AppConfig[:dropin] * (0.01 * discount) : original_price_per_session
+    price / remaining_session_count
   end
   
   def original_price_per_session
     session_price || Course.price_per_session
   end
   
+  def remaining_session_count
+    @remaining_session_count ||= sessions.current.active.count
+  end
+  
+  def fully_booked?
+    bookings.count > 22
+  end
+  
   def free?
     session_price == 0
   end
   
+  def self.dropin_price
+    AppConfig[:dropin]
+  end
+  
+  def dropin_price
+    Course.dropin_price
+  end
+  
   def discount
-    80
+    AppConfig[:discount]
   end
   
   def original_discount
-    Course.price_per_session*100 / AppConfig[:dropin]
+    original_price_per_session*100 / AppConfig[:dropin]
   end
   
   def discounted?

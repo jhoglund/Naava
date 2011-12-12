@@ -14,19 +14,19 @@ klockan <strong><%=l @booker.default_session.starts_at, :format => :time %></str
 <%- unless @booking.booker.free? -%>
 <p>
   I kursen ingår totalt <%= @booker.sessions.active.count %> klasser. 
-  Kursen kostar <strong><%= number_to_currency(@booker.original_price) %></strong>, 
-  vilket är <%= number_to_currency(@booker.original_price_per_session) %> (<%= @booker.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
-  <%=  number_to_currency(@booker.sessions.active.first.price) %>/klass.
+  Kursen kostar <strong><%= number_to_currency(@booker.original_price, :precision => 0) %></strong>, 
+  vilket är <%= number_to_currency(@booker.original_price_per_session, :precision => 0) %> (<%= @booker.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
+  <%=  number_to_currency(Course.dropin_price, :precision => 0) %> per klass.
 </p>
 <% if @booker.started? %>
 <p>
   Denna kurs har redan börjat och vi har hittills hunnit med <%= @booker.sessions.active.expired.count %> klasser. 
   <%- if @booker.remaining_sessions? -%>
-  Du får ett rabatterat pris vid köp av kursen och betalar totalt <%= number_to_currency(@booker.price) %> vilket
-  är <%=  number_to_currency(@booker.price_per_session) %>  (<%= @booker.discount %>%)  per återstående klass.
+  Du får ett rabatterat pris vid köp av kursen och betalar totalt <%= number_to_currency(@booker.price, :precision => 0) %> vilket
+  är <%=  number_to_currency(@booker.price_per_session, :precision => 0) %>  (<%= @booker.discount %>%)  per återstående klass.
   <%- else -%>
   Du kan fortfarande anmäla dig till den återstående klassen (<%=l(@booker.next_session.starts_at, :format => :long) %>) för
-  är <strong><%=  number_to_currency(@booker.next_session.price) %></strong>.
+  är <strong><%=  number_to_currency(@booker.next_session.price, :precision => 0) %></strong>.
   <%- end -%>
 </p>
 <% end %>

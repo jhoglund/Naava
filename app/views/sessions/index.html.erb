@@ -5,14 +5,14 @@
 <div class="sidebar">
   <h3>Priser</h3>
   <dl>
-    <dt>Kurser, 14 tillfällen</dt>
-    <dd><%= number_to_currency(Course.price(14), {:precision => 0}) %> (90 minuter per tillfälle)</dd>
+    <dt>Kurser</dt>
+    <dd>Se priset för individuella kurser i listan till vänster</dd>
     <dt>Enstaka klasser</dt>
-    <dd><%= number_to_currency(Session.price, {:precision => 0}) %> (90 minuter)</dd>
+    <dd><%= number_to_currency(Session.price, {:precision => 0}) %></dd>
     <dt>Terminskort</dt>
-    <dd><%= number_to_currency(2350, {:precision => 0}) %> (gäller för alla klasser)</dd>
+    <dd><%= number_to_currency(2500, {:precision => 0}) %> (gäller för alla klasser)</dd>
     <dt>Årskort</dt>
-    <dd><%= number_to_currency(4200, {:precision => 0}) %> (gäller för alla klasser)</dd>
+    <dd><%= number_to_currency(4600, {:precision => 0}) %> (gäller för alla klasser)</dd>
     <dt>Privatlektioner</dt>
     <dd><%= number_to_currency(500, {:precision => 0}) %> per 60 minuter</dd>
     <dt>Företagsyoga</dt>
@@ -25,11 +25,11 @@
   efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
   har yogat tidigare att komma vidare i ditt utövande.</p>
 
-<p>
-  Varje kurs inkluderar <strong>14 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(14), {:precision => 0}) %></strong> (90 minuter per tillfälle). 
+<!-- <p>
+  Varje kurs inkluderar <strong>16 tillfällen</strong> och kostar <strong><%= number_to_currency(Course.price(16), {:precision => 0}) %></strong>. 
   Du betalar endast <strong><%=  number_to_currency(Course.price_per_session, {:precision => 0}) %></strong> per tillfälle, jämfört med <%= number_to_currency(Session.price, {:precision => 0}) %>
   om du väljer att betala vid varje enskilt tillfälle.
-</p>
+</p> -->
 <% content_for :javascript do %>
   function bookCourse(path){
     document.location.href = path
@@ -38,68 +38,23 @@
 
 
 <table>
-<% unless @courses.blank? %>
-<tr>
-  <td style="padding:0"><h3>Välj en av våra pågende kurser</h3></td>
-</tr>
-<% end %>
-<% @courses.each do |course| %>
-<tr>
-  <td style="">
-    <span style="font-size:16px">
-    <strong><%=t("misc.day_names.#{course.default_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
-    klockan <strong><%=l course.default_session.starts_at, :format => :time %></strong> till
-    <strong><%=l course.default_session.ends_at, :format => :time %></strong> -
-    <%- if course.sessions.current.count > 1 -%>
-    <%=  link_to "Anmäl dig till kursen", book_course_path(course) %></span>
-    <%- else -%>
-    <%=  link_to "Anmäl dig till klass", book_session_path(course.next_session) %></span>
-    <%- end -%>
-    <% unless course.description.blank? %>
-    <p>
-    <%= course.description %>
-    </p>
-    <% end %>
-    <p><% if course.started? %>
-    <span class="course-started">Denna kursen började den <strong><%=l course.starts_at.to_date, :format => :long %></strong>. Vi har hittills hunnit med <%= course.sessions.expired.active.count %> klasser. 
-    <%- if course.sessions.current.count > 1 -%>
-    Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast <strong><%= number_to_currency(course.price, {:precision => 0}) %></strong> vilket
-    är <strong><%=  number_to_currency(course.price_per_session, {:precision => 0}) %></strong>  (<%= course.discount %>%)  per återstående klass.</span>
-    <%- else -%>
-    Du kan fortfarande anmäla dig till den återstående klassen (<%=l(course.next_session.starts_at, :format => :long) %>) för
-    <strong><%=  number_to_currency(course.next_session.price, {:precision => 0}) %></strong>.
-    <%- end -%>    
-    
-    <% else %>
-    Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
-    <% end %></p>
-  </td>
-</tr>
-<% end %>
-<% unless @planned_courses.blank? %>
-<tr>
-  <td style="padding:0"><h3>Kommande kurser</h3></td>
-</tr>
-<% end %>
-<% @planned_courses.each do |course| %>
-<tr>
-  <td style="">
-    <span style="font-size:16px">
-    <strong><%=t("misc.day_names.#{course.default_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase %></strong>
-    klockan <strong><%=l course.default_session.starts_at, :format => :time %></strong> till
-    <strong><%=l course.default_session.ends_at, :format => :time %></strong> -
-    <%=  link_to "Anmäl dig till kursen", book_course_path(course) %></span>
-    <% unless course.description.blank? %>
-    <p>
-    <%= course.description %>
-    </p>
-    <% end %>
-    <p>
-    Första kurstillfället är den <strong><%=l course.starts_at.to_date, :format => :long %></strong>
-    </p>
-  </td>
-</tr>
-<% end %>
+  <% unless @planned_courses.blank? %>
+  <tr>
+    <td style="padding:0"><h3>Kommande kurser</h3></td>
+  </tr>
+  <% end %>
+  <% @planned_courses.each do |course| %>
+    <%= render :partial => '/sessions/course', :object => course %>
+  <% end %>
+  
+  <% unless @courses.blank? %>
+  <tr>
+    <td style="padding:0"><h3>Pågende kurser</h3></td>
+  </tr>
+  <% end %>
+  <% @courses.each do |course| %>
+    <%= render :partial => '/sessions/course', :object => course %>
+  <% end %>
 
 </table>
 <hr>

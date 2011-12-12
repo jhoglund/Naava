@@ -39,17 +39,18 @@
     <p>
   </div>
   <%- end -%>
-  <h1>Snart börjar höstens Yoga! </h1>
-    <p>Vecka 35 börjar åter igen våra kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning. <%=  link_to 'Läs mer om yoga.', about_ashtanga_yoga_path %><br> 
+  <h1>Anmäl dig till vårens kurser </h1>
+    <p>Vecka 4 börjar vårens kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning.
     <p>Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss på vår fortsättningskurs.
      <p>  
-      <%= link_to 'Läs mer om höstens nya tider och anmäl dig här', sessions_path %></p> 
+      <%= link_to 'Läs mer om vårens tider och anmäl dig här', sessions_path %></p> 
     
-    <h3>Sommaryoga</h3>
-    Innan höstens kurser startar har vi sommartider.
-    På <strong>måndagar klockan 18.30</strong> har vi en klass med en instruktör närvarande som leder från
-    position till position. Det passar alla som tidagare har gått på någon av våra klasser eller som tidigare har testat på Ashtanga Yoga. 
-        
+    <h3>Introduktionskurs</h3>
+    Innan vårens kurser startar har vi en 2 timmars kurs för dig som är nybörjare. Här blir du introducerad till Ashtanga yogans grunder, så som andningsteknik, rörelser, positioner och yogans filosofi.
+    Kursen hålls <strong>lördagen den 21:e januari</strong> från klockan <strong>14:00</strong> till <strong>16:00</strong>. För att anmäla dig kontaktar du Jonas Höglund på email <%= mail_to "jonas@navayoga.se" %> eller på telefon <strong>0709-961600</strong>.
+    
+    <p>Pris: <strong><%= number_to_currency(350, :precision => 0) %></strong></p>
+    <p>Varför inte passa på att ge bort ett presentkort till vår Introduktionskurs i julklapp? Köp ett presentkort i studion eller <%= link_to 'köp det här', new_gift_certificate_path(:coupon_type_id => 3) %>.
 
     
 </div>
@@ -61,7 +62,7 @@
   Välj ett av våra <%= @gift_certificate_types.size %> alternativ. 
   <ul>
     <% @gift_certificate_types.each do |gift_certificate| %>
-    <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
+    <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value, :precision => 0)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
     <% end %>
   </ul>
 <p class="dec">Ashtanga Yoga är en fysisk form av yoga som synkroniserar rörelse och andning. 
@@ -83,12 +84,11 @@ så att alla kan delta.</p>-->
         Vi erbjuder även möjligheten till Yoga på din arbetsplats eller till dig som föredrar att utöva Yoga ensam eller i mindre grupp. Vi utformar ett program efter era specifika behov. 
         Kontakta oss för priser. -->
         <h3>Ge någon lite yoga</h3>
-          Överaska någon med ett presentkort till någon
-          av våra kurser eller klasser.
+          Överaska någon med ett presentkort.
           Skriv ut presentkortet direkt på din skrivare.
           <ul>
             <% @gift_certificate_types.each do |gift_certificate| %>
-            <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
+            <li><%= link_to "#{gift_certificate.title} (#{number_to_currency(gift_certificate.value, :precision => 0)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id)  %></li>
             <% end %>
           </ul>
     

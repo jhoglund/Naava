@@ -214,6 +214,7 @@ td { vertical-align:top; padding:0 12px 12px 0;}
 .time-number { font-weight:bold; }
 
 .course-started { font:italic 11px/14px verdana; }
+.course-fully_booked { font:italic 11px/14px verdana; }
 
 .gift-certificate-card a { color: white; }
 
