@@ -33,6 +33,7 @@ class BookingsController < ApplicationController
   
   def book
     @booking = @booker.bookings.build(:participant => Participant.new )
+    head :forbidden and return if @booking.booker.expired?
     @coupon = Coupon.find_by_token(params[:coupon_id])
     if request.get?
       if @coupon

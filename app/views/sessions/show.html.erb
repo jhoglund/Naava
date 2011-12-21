@@ -22,7 +22,9 @@
 </p>
 
 <p>
+  <% unless @session.expired? %>
   <%= button_to_function 'Reservera plats', "document.location.href = '#{ book_session_path(@session) }'" %>
+  <% end %>
 </p>
 
 <p>
@@ -42,7 +44,9 @@
 <% end %>
 
 <p>
+  <% unless @session.course.expired? %>
   <%= button_to_function 'Anmäl dig till kursen', "document.location.href = '#{ book_course_path(@session.course) }'" %>
+  <% end %>
 </p>
 
 

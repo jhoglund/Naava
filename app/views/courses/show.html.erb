@@ -35,7 +35,9 @@
 
 
 <p>
+  <% unless @course.expired? %>
   <%= link_to 'Anmäl dig till kursen', book_course_path(@course) %>
+  <% end %>
 </p>
 
 

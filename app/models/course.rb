@@ -49,6 +49,10 @@ class Course < ActiveRecord::Base
     sessions.active.asc.last.starts_at if sessions.active.last
   end
   
+  def expired?
+    ends_at < Time.now
+  end
+  
   def price
     [(remaining_session_count * discounted_price_per_session), original_price].min
   end
