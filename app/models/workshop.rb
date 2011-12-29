@@ -1,0 +1,3 @@
+class Workshop < CourseType
+  
+end

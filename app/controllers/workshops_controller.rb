@@ -1,8 +1,8 @@
-class CoursesController < BookingsController
+class WorkshopsController < BookingsController
   #caches_page :index, :show
   
   def index
-    @courses = Course.active.current_or_planned.find(:all, :order => 'course_types.updated_at desc')
+    @courses = Workshop.active.current_or_planned.find(:all, :order => 'course_types.updated_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +12,7 @@ class CoursesController < BookingsController
 
   def show
     begin
-      @course = Course.find(params[:id])
+      @course = Workshop.find(params[:id])
       @booking = Booking.new(:booker => @course)
       respond_to do |format|
         format.html {  }# show.html.erb
@@ -24,7 +24,7 @@ class CoursesController < BookingsController
   end
   
   def book
-    @booker = Course.find(params[:id])
+    @booker = Workshop.find(params[:id])
     super
   end
   

@@ -1,0 +1,52 @@
+<% unless @course.nil? %>
+<h1><%= @course.name %></h1>
+<p>
+  <%= @course.description %>
+</p>
+
+<p>Kursen passar för <%= @course.level.downcase %> nivåer</p>
+
+<p>Antal kurstillfällen är <%= @course.sessions.count %></p>
+
+<p>Kursen leds av <%= link_to @course.instructor.name, @course.instructor %></p>
+
+<% unless @course.starts_at.nil? or @course.ends_at.nil? %>
+<p>Första kurstillfället är <%= l(@course.starts_at, :format => :day) %> och sista är <%= l(@course.ends_at, :format => :day) %> </p>
+
+<p>Klasserna startar klockan <%= l(@course.starts_at, :format => :time) %> tills klockan <%= l(@course.starts_at, :format => :time) %> </p>
+<% end %>
+
+<p>
+  I kursen ingår totalt <%= @course.sessions.count %> klasser. 
+  En kurs kostar <%= number_to_currency(@course.original_price) %>, 
+  vilket är <%= number_to_currency(@course.original_price_per_session) %> (<%= @course.original_discount %>%) per klasstillfälle mot att betala vårt drop-in pris på 
+  <%=  number_to_currency(Session.first.price) %>/klass.
+</p>
+<% if @course.started? %>
+<p>
+  Denna kursen har redan börjat och vi har hittills hunnit med <%= @course.sessions.expired.count %> klasser. 
+  <%- if @course.sessions.current.count > 1 -%>
+  Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total <%= number_to_currency(@course.price) %> vilket
+  är <%=  number_to_currency(@course.price_per_session) %>  (<%= @course.discount %>%)  per återstående klass.
+  <%- end -%>
+</p>
+<% end %>
+
+
+
+<p>
+  <% unless @course.expired? %>
+  <%= link_to 'Anmäl dig till kursen', book_course_path(@course) %>
+  <% end %>
+</p>
+
+
+<h3>Tillfällen</h3>  
+  <% @course.sessions.each do |session| %>
+    <%= link_to_unless session.expired?, l(session.starts_at, :format => :short), session %> <br>
+  <% end %>
+</p>
+
+
+<%= link_to 'Kurser', courses_path %>
+<% end %>

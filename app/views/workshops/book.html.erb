@@ -1,0 +1,42 @@
+<% content_for :title do %>
+  Anmälan till <%= @booker.name %>
+<% end %>
+
+<h2><%= @booker.name %></h2>
+<p><%= @booker.description %></p>
+
+<p>
+  Kursen kostar <strong><%= number_to_currency(@booker.original_price, :precision => 0) %></strong>.
+</p>
+
+<%- if @booker.comment? -%>
+<p class="important-notice"><%= @booker.comment %></p>
+<%- end -%>
+
+<%= render :partial => 'sessions', :object => @booker.sessions.asc %>
+
+<hr>
+
+<%= base_errors_for(@booking) %>
+
+<% form_for(@booking, :url => (@coupon ? book_gift_certificate_workshop_path : book_workshop_path)) do |f| %>
+  <%= f.hidden_field :booker_type %>
+  <%= f.hidden_field :booker_id %>
+  
+  <%= render :partial => '/bookings/form', :object => f %>
+  <%- if @coupon -%>
+    <p><%= check_box_tag :coupon_id, @coupon.token, true %>
+    Jag vill betala med presentkort med referencenummber <strong><%= @coupon.token %></strong></p>
+  <% end %>
+  
+  <p class="button-bar">
+    <%= link_to_function "Anmäl", 'forms["new_booking"].submit()', :class => 'button button-default' %>
+  </p>
+  
+  <!-- <p>
+    <%= f.submit 'Anmäl' %>
+  </p> -->
+<% end %>
+
+
+<%#= link_to 'Tillbaks till kursen', course_path(@booker) %>

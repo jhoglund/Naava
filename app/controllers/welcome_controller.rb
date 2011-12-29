@@ -16,6 +16,8 @@ class WelcomeController < ApplicationController
   def good_to_know; end
   def our_studio; end
   def location; end
-  def introduction_course; end
+  def introduction_course
+    @introduction_course = Workshop.find(40)  
+  end
   
 end

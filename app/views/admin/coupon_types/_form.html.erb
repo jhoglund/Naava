@@ -20,7 +20,8 @@
 <p>
   <%= form.label :valid_for %><br />
   <%= check_box_tag "#{form.object_name}[valid_for][]", 'Session', @coupon_type.valid_for?(:session) %> Session<br />
-  <%= check_box_tag "#{form.object_name}[valid_for][]", 'Course', @coupon_type.valid_for?(:course) %> Course
+  <%= check_box_tag "#{form.object_name}[valid_for][]", 'Course', @coupon_type.valid_for?(:course) %> Course<br />
+  <%= check_box_tag "#{form.object_name}[valid_for][]", 'Workshop', @coupon_type.valid_for?(:workshop) %> Workshop
 </p>
 <p>
   <%= form.label :times %><br />

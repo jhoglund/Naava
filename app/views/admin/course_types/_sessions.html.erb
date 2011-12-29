@@ -16,6 +16,12 @@
     <%= session.select :duration_minutes, [0,15,30,45], :selected => session.object.duration_minutes %>
   </div>
   <div><%= session.check_box :status %> <%= session.label :status %></div>
+  
+  <p style="display:<%= session.object.description.blank? ? 'none' : 'block' %>">
+  <%= session.text_area :description, :rows => 4 %>
+  </p>
+  <%= link_to_function 'Description', "$(this).prev().toggle()" %> | 
+  
   <p style="display:<%= session.object.comment.blank? ? 'none' : 'block' %>">
   <%= session.text_area :comment, :rows => 4 %>
   </p>

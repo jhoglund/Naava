@@ -13,7 +13,7 @@ class Booking < ActiveRecord::Base
   after_update :after_booking_disabled
   
   named_scope :sessions, :conditions => { :booker_type => 'Session'}
-  named_scope :courses, :conditions => { :booker_type => 'Course'}
+  named_scope :courses, :conditions => { :booker_type => 'CourseType'}
   named_scope :active, :conditions => "bookings.status = #{Status::ACTIVE}"
   named_scope :disabled, :conditions => "bookings.status = #{Status::DISABLED}"
   named_scope :by_id, lambda{|order|
@@ -22,10 +22,10 @@ class Booking < ActiveRecord::Base
   }
   named_scope :by_booker, lambda{|options|
     if !options[:session].nil?
-      course_id = Session.find(options[:session]).course_id
-      conditions = ["(bookings.booker_type = 'Session' AND bookings.booker_id = :session) OR (bookings.booker_type = 'Course' AND bookings.booker_id = :course)", {:session => options[:session], :course => course_id}] 
+      course_type_id = Session.find(options[:session]).course_type_id
+      conditions = ["(bookings.booker_type = 'Session' AND bookings.booker_id = :session) OR (bookings.booker_type = 'CourseType' AND bookings.booker_id = :course)", {:session => options[:session], :course => course_type_id}] 
     elsif !options[:course].nil?
-      conditions = ["(bookings.booker_type = 'Course' AND bookings.booker_id = :course)", {:course => options[:course]}] 
+      conditions = ["(bookings.booker_type = 'CourseType' AND bookings.booker_id = :course)", {:course => options[:course]}] 
     end
     { 
       :conditions => conditions || [],

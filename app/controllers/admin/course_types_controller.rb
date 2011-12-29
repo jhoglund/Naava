@@ -1,8 +1,8 @@
-class Admin::CoursesController < Admin::AdminController
+class Admin::CourseTypesController < Admin::AdminController
   before_filter :require_user
 
   def index
-    @courses = Course.find(:all, :order => "id").reverse.paginate(:page => params[:page], :per_page => 10)
+    @courses = CourseType.find(:all, :order => "id").reverse.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @courses }
@@ -10,7 +10,7 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def show
-    @course = Course.find(params[:id])
+    @course = CourseType.find(params[:id])
     @booking = Booking.new(:booker => @course)
     
     respond_to do |format|
@@ -20,7 +20,7 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def new
-    @course = Course.new
+    @course = CourseType.new
     @course.sessions.build
     @course.instructor = Instructor.first
     respond_to do |format|
@@ -30,11 +30,11 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def edit
-    @course = Course.find(params[:id])
+    @course = CourseType.find(params[:id])
   end
   
   def clone
-    @original = Course.find(params[:id])
+    @original = CourseType.find(params[:id])
     @course =  @original.clone
     @course.status = Status::DISABLED
     @original.sessions.each do |session|
@@ -47,12 +47,12 @@ class Admin::CoursesController < Admin::AdminController
   
 
   def create
-    @course = Course.new(params[:course])
+    @course = typecast_class.new(params[class_type_name])
 
     respond_to do |format|
       if @course.save
         flash[:notice] = 'Course was successfully created.'
-        format.html { redirect_to(admin_course_path(@course)) }
+        format.html { redirect_to(admin_course_type_path(@course)) }
         format.xml  { render :xml => @course, :status => :created, :location => @course }
       else
         format.html { render :action => "new" }
@@ -62,12 +62,18 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def update
-    @course = Course.find(params[:id])
+    @course = CourseType.find(params[:id])
+    klass = typecast_class
 
     respond_to do |format|
-      if @course.update_attributes(params[:course])
+      if @course.update_attributes(params[class_type_name])
+        if !@course.is_a?(klass)
+          @course = @course.becomes(klass)
+          @course.type = klass.name
+          @course.save
+        end
         flash[:notice] = 'Course was successfully updated.'
-        format.html { redirect_to(admin_course_path(@course)) }
+        format.html { redirect_to(admin_course_type_path(@course)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,12 +85,24 @@ class Admin::CoursesController < Admin::AdminController
   # DELETE /courses/1
   # DELETE /courses/1.xml
   def destroy
-    @course = Course.find(params[:id])
+    @course = CourseType.find(params[:id])
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_courses_url) }
+      format.html { redirect_to(admin_course_types_url) }
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def class_type_name
+    params[:class_type_name]
+  end
+  
+  def typecast_class
+    klass_type = params[class_type_name].delete(:type)
+    klass_type.nil? ? CourseType : klass_type.constantize
+  end
+  
 end

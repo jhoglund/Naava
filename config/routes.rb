@@ -14,18 +14,21 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+  map.resources :workshops, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   map.resources :instructors
   map.resources :gift_certificates, :new => { :new => :post }, :member => { :print => [ :any ] }, :collection => { :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
     coupon_types.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
       session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
     end
     coupon_types.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+    coupon_types.resources :workshops, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   end
   map.resources :coupons, :new => { :new => :post }, :collection => { :print => [ :any ], :paypal_ipn => [ :get, :post ], :paypal_success => [ :get, :post ], :paypal_cancel => [ :get, :post ] } do |coupon_types|
     coupon_types.resources :sessions, :member => { :book => [ :get, :post ] } do |session|
       session.bookings 'bookings/:id', :controller => 'courses', :action => 'bookings'
     end
     coupon_types.resources :courses, :member => { :book => [ :get, :post ] }, :has_one => :instructor
+    coupon_types.resources :workshops, :member => { :book => [ :get, :post ] }, :has_one => :instructor
   end
   map.resources :payments, :only => [ :show, :update ] #, :show => { :show => [:get, :post] }
   
@@ -46,11 +49,17 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :bankgiros
     admin.resources :cashes
     admin.resources :attendants, :collection => { :search => [:post, :get] }
-    admin.resources :courses, :member => { :clone => :get } do |course| 
+    #admin.resources :courses, :member => { :clone => :get } do |course| 
+  	#  course.resources :sessions, :has_many => [ :bookings ]
+  	#  course.resources :bookings
+    #  course.resources :participants
+    #end
+    admin.resources :course_types, :member => { :clone => :get } do |course| 
   	  course.resources :sessions, :has_many => [ :bookings ]
   	  course.resources :bookings
       course.resources :participants
     end
+    
     admin.sitemap 'sitemap', :controller => 'sitemap'
   end
   

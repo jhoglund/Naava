@@ -4,13 +4,13 @@ class Session < ActiveRecord::Base
   
   has_many :bookings, :as => :booker
   has_many :attendants  
-  belongs_to :course
+  belongs_to :course, :foreign_key => 'course_type_id'
   
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :expired, :conditions => "sessions.starts_at < CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :active, lambda{|active_course|
     { 
-      :conditions => "sessions.status = 1#{(active_course ? '  AND courses.status = 1' : '')}", 
+      :conditions => "sessions.status = 1#{(active_course ? '  AND course_types.status = 1' : '')}", 
       :include => 'course'
     }
   }
@@ -38,7 +38,7 @@ class Session < ActiveRecord::Base
   end
   
   def participants
-    Booking.all(:conditions => ['(booker_id = :course_id AND booker_type = "Course") OR (booker_id = :session_id AND booker_type = "Session")', { :course_id => self.course_id, :session_id => self.id}]).map(&:participant)
+    Booking.all(:conditions => ['(booker_id = :course_type_id AND booker_type = "CourseType") OR (booker_id = :session_id AND booker_type = "Session")', { :course_type_id => self.course_type_id, :session_id => self.id}]).map(&:participant)
   end
   
   def self.price
@@ -103,13 +103,13 @@ class Session < ActiveRecord::Base
     
   def next by_course=true
     conditions = "timestamp(starts_at) > timestamp('#{starts_at.to_s(:db)}') AND status = 1"
-    conditions << " AND course_id = #{course_id}" if by_course
+    conditions << " AND course_type_id = #{course_type_id}" if by_course
     Session.find(:first, :conditions => conditions, :order => 'starts_at')
   end
   
   def previous by_course=true
     conditions = "timestamp(starts_at) < timestamp('#{starts_at.to_s(:db)}') AND status = 1"
-    conditions << " AND course_id = #{course_id}" if by_course
+    conditions << " AND course_type_id = #{course_type_id}" if by_course
     Session.find(:last, :conditions => conditions, :order => 'starts_at')
   end
   
