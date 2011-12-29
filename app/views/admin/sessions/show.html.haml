@@ -1,0 +1,60 @@
+%h1 Klass
+%p
+  = l(@session.starts_at, :format => :long)
+%table.session-list
+  - if @session.course
+    %tr
+      %th Namn
+      %th E-mail
+      %th Telefon
+      %th Betalt
+      %th Närvaro
+      %th Kommentar
+    %tr
+      %th{:colspan => "6"} Kursdeltagare
+    - @session.course.bookings.each do |booking|
+      %tr
+        %td= link_to (booking.participant.name), polymorphic_path([:admin, booking])
+        %td= mail_to(booking.participant.email)
+        %td= h(booking.participant.phone)
+        %td= booking.paid? ? "X" : "-"
+        %td= @session.attending?(booking.participant) ? "X" : "-"
+        %td.comment &nbsp;
+    %tr
+      %th{:colspan => "6"} Drop-in
+    - @session.bookings.each do |booking|
+      %tr
+        %td= link_to (booking.participant.name), polymorphic_path([:admin, booking])
+        %td= mail_to(booking.participant.email)
+        %td= h(booking.participant.phone)
+        %td= booking.paid? ? "X" : "-"
+        %td= @session.attending?(booking.participant) ? "X" : "-"
+        %td &nbsp;
+  - else
+    %tr
+      %th Namn
+      %th E-mail
+      %th Telefon
+      %th Betalt
+      %th Närvaro
+      %th Kommentar
+    %tr
+      %th{:colspan => "6"} Deltagare
+    - @session.bookings.each do |booking|
+      %tr
+        %td= link_to (booking.participant.name), polymorphic_path([:admin, booking])
+        %td= mail_to(booking.participant.email)
+        %td= h(booking.participant.phone)
+        %td= booking.paid? ? "X" : "-"
+        %td= @session.attending?(booking.participant) ? "X" : "-"
+        %td &nbsp;
+.admin-navigation
+  = @session.previous(false) ? link_to('Tidigare', admin_session_path(@session.previous(false))) : 'Tidigare'
+  |
+  \#{@session.next(false) ? link_to('Nästa', admin_session_path(@session.next(false))) : 'Nästa'} |
+  \#{link_to "Print", print_admin_session_path(@session), :target => :new} |
+  \#{link_to 'Edit', edit_admin_session_path(@session)} |
+  \#{link_to 'Närvaro', admin_session_attendants_path(@session)} |
+  \#{link_to 'Bokningar', admin_session_bookings_path(@session)} |
+  - if @session.course
+    = link_to 'Back', admin_course_path(@session.course)

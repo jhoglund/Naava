@@ -1,0 +1,43 @@
+%p
+  %b To name:
+  = @coupon.to_name
+%p
+  %b To email:
+  = @coupon.to_email
+%p
+  %b To phone:
+  = @coupon.to_phone
+%p
+  %b To address:
+  = @coupon.to_address
+%p
+  %b From name:
+  = @coupon.from_name
+%p
+  %b From email:
+  = @coupon.from_email
+%p
+  %b From phone:
+  = @coupon.from_phone
+%p
+  %b From address:
+  = @coupon.from_address
+%p
+  %b Message:
+  = @coupon.message
+%p
+  %b Valid from:
+  = @coupon.valid_from
+%p
+  %b Valid to:
+  = @coupon.valid_to
+%p
+  %b Coupon type:
+  = @coupon.coupon_type.name
+%p
+  %b Paid:
+  = @coupon.paid? ? 'Yes' : 'No'
+= link_to 'Edit', edit_admin_coupon_path(@coupon)
+|
+\#{link_to 'Back', admin_coupons_path} |
+\#{link_to('Payment', edit_admin_payment_path(@coupon.payment))}

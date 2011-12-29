@@ -1,0 +1,12 @@
+%p
+  %b Avinr:
+  = @bankgiro.avinr
+%p
+  %b Payment:
+  = @bankgiro.payment
+%p
+  %b Gross:
+  = @bankgiro.gross
+= link_to 'Edit', edit_bankgiro_path(@bankgiro)
+|
+\#{link_to 'Back', bankgiros_path}

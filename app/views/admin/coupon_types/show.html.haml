@@ -1,0 +1,27 @@
+%p
+  %b Name:
+  = @coupon_type.name
+%p
+  %b Description:
+  = @coupon_type.description
+%p
+  %b Type:
+  = @coupon_type.class.human_name
+%p
+  %b Value:
+  = @coupon_type.value
+%p
+  %b Valid from:
+  = @coupon_type.valid_from
+%p
+  %b Valid to:
+  = @coupon_type.valid_to
+%p
+  %b Valid for:
+  = @coupon_type.valid_for
+%p
+  %b Status:
+  = ['Disabled', 'Active'][@coupon_type.status]
+= link_to 'Edit', edit_admin_coupon_type_path(@coupon_type)
+|
+\#{link_to 'Back', admin_coupon_types_path}

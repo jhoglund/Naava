@@ -1,0 +1,7 @@
+%h1 New instructor
+- form_for(@instructor, :url => admin_instructors_path, :html => { :multipart => true }) do |f|
+  = f.error_messages
+  = render :partial => 'form', :object => f
+  %p
+    = f.submit 'Create'
+= link_to 'Back', admin_instructors_path

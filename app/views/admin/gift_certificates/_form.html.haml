@@ -1,0 +1,49 @@
+= form.error_messages
+%p
+  = form.label :to_name
+  %br/
+  = form.text_field :to_name
+%p
+  = form.label :to_email
+  %br/
+  = form.text_field :to_email
+%p
+  = form.label :to_phone
+  %br/
+  = form.text_field :to_phone
+%p
+  = form.label :to_address
+  %br/
+  = form.text_field :to_address
+%p
+  = form.label :from_name
+  %br/
+  = form.text_field :from_name
+%p
+  = form.label :from_email
+  %br/
+  = form.text_field :from_email
+%p
+  = form.label :from_phone
+  %br/
+  = form.text_field :from_phone
+%p
+  = form.label :from_address
+  %br/
+  = form.text_field :from_address
+%p
+  = form.label :gift_certificate_type
+  %br/
+  = form.collection_select :coupon_type_id, CouponType.all, :id, :name
+%p
+  = form.label :valid_from
+  %br/
+  = form.datetime_select :valid_from
+%p
+  = form.label :valid_to
+  %br/
+  = form.datetime_select :valid_to
+%p
+  = form.label :message
+  %br/
+  = form.text_area :message

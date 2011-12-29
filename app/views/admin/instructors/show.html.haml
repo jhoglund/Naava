@@ -1,0 +1,19 @@
+= image_tag @instructor.avatar.url(:thumb)
+%p
+  %b Name:
+  = @instructor.name
+%p
+  %b Email:
+  = @instructor.email
+%p
+  %b Phone:
+  = @instructor.phone
+%p
+  %b Bio:
+  = @instructor.bio
+%p
+  %b Description:
+  = @instructor.description
+= link_to 'Edit', edit_admin_instructor_path(@instructor)
+|
+\#{link_to 'Back', admin_instructors_path}

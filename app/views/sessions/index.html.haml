@@ -1,0 +1,57 @@
+/
+  <div class="nava-calendar" id="calendar">
+  </haml:block><haml:silent>
+  </haml:silent><haml:block></div>
+.sidebar
+  %h3 Priser
+  %dl
+    %dt Kurser
+    %dd Se priset för individuella kurser i listan till vänster
+    %dt Enstaka klasser
+    %dd= number_to_currency(Session.price, {:precision => 0})
+    %dt Terminskort
+    %dd
+      = number_to_currency(2500, {:precision => 0})
+      (gäller för alla klasser)
+    %dt Årskort
+    %dd
+      = number_to_currency(4600, {:precision => 0})
+      (gäller för alla klasser)
+    %dt Privatlektioner
+    %dd
+      = number_to_currency(500, {:precision => 0})
+      per 60 minuter
+    %dt Företagsyoga
+    %dd
+      Maila #{mail_to AppConfig[:support_mail]} för mer information, samt offert
+%h2 Våra kurser
+%p
+  På Nava Yoga har vi både nybörjar- och fortsättningskurser. För varje enskild kurs, anpassar vi våra klasser
+  efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
+  har yogat tidigare att komma vidare i ditt utövande.
+/
+  <p>
+  Varje kurs inkluderar <strong>16 tillfällen</strong> och kostar <strong><haml:loud> number_to_currency(Course.price(16), {:precision =&amp;gt; 0}) </haml:loud></strong>.
+  Du betalar endast <strong><haml:loud>  number_to_currency(Course.price_per_session, {:precision =&amp;gt; 0}) </haml:loud></strong> per tillfälle, jämfört med <haml:loud> number_to_currency(Session.price, {:precision =&amp;gt; 0}) </haml:loud>
+  om du väljer att betala vid varje enskilt tillfälle.
+  </p>
+- content_for :javascript do
+  function bookCourse(path){
+  document.location.href = path
+  }
+%table
+  - unless @planned_courses.blank?
+    %tr
+      %td{:style => "padding:0"}
+        %h3 Kommande kurser
+  - @planned_courses.each do |course|
+    = render :partial => '/sessions/course', :object => course
+  - unless @courses.blank?
+    %tr
+      %td{:style => "padding:0"}
+        %h3 Pågående kurser
+  - @courses.each do |course|
+    = render :partial => '/sessions/course', :object => course
+%hr/
+/ <h2>Schema för höstens klasser, 2010</h2>
+= render :partial => 'calendar'

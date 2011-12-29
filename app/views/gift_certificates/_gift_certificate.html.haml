@@ -1,0 +1,30 @@
+.gift-certificate-card
+  .header &nbsp;
+  %h2/
+  %div{:style => "font-size:60%"} Presentkort:
+  = gift_certificate.coupon_type.name
+  .gift-certificate-names
+    .gift-certificate-to
+      %b Till
+      = gift_certificate.to_name
+    .gift-certificate-from
+      %b Från
+      = gift_certificate.from_name
+  .gift-certificate-value
+    %b Värde
+    = number_to_currency(gift_certificate.value)
+  - unless gift_certificate.message.blank?
+    .gift-certificate-personal-message
+      %b Personligt meddelande
+      = simple_format(gift_certificate.message)
+  .gift-certificate-footer
+    När du bokar en kurs eller klass, anger du koden
+    %b
+      = gift_certificate.to_param
+      \.
+    %br/
+    Det går även bra att utnyttja
+    presentkortet direkt genom att besöka
+    \#{link_to "#{gift_certificate_url(gift_certificate)}.", gift_certificate_url(gift_certificate), :target => 'gift_certificate'}
+    %p
+      = render :partial => '/welcome/address_contact.html.erb'

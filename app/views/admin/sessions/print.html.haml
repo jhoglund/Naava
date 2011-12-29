@@ -1,0 +1,20 @@
+- content_for :print_navigation do
+  .admin-navigation
+    = @session.previous(false) ? link_to('Tidigare', print_admin_session_path(@session.previous(false))) : 'Tidigare'
+    |
+    \#{@session.next(false) ? link_to('Nästa', print_admin_session_path(@session.next(false))) : 'Nästa'} |
+    \#{link_to 'Närvaro', admin_session_attendants_path(@session)} |
+    \#{link_to 'Bokningar', admin_session_bookings_path(@session)} |
+    - if @session.course
+      = link_to 'Back', admin_course_path(@session.course)
+- content_for :include_resource do
+  %link{:href => "/stylesheets/print.css", :rel => "stylesheet", :type => "text/css"}/
+= yield :print_navigation
+%h1= strip_tags(l(@session.starts_at, :format => :long)).capitalize
+- if @session.course
+  = render :partial => 'print_list', :locals => { :collection => @session.course.bookings, :title => 'Kursdeltagare' }
+  - unless @session.bookings.empty?
+    = render :partial => 'print_list', :locals => { :collection => @session.bookings, :title => 'Drop-in' }
+- else
+  = render :partial => 'print_list', :locals => { :collection => @session.bookings, :title => 'Deltagare' }
+= yield :print_navigation

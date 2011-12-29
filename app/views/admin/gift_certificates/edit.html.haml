@@ -1,0 +1,9 @@
+%h1 Editing coupon
+- form_for(@gift_certificate) do |f|
+  = render :partial => "form", :object => f
+  %p
+    = f.submit 'Update'
+= link_to 'Show', admin_gift_certificate_path(@gift_certificate)
+|
+\#{link_to 'Destroy', admin_gift_certificate_path(@gift_certificate), :method => :delete} |
+\#{link_to 'Back', admin_gift_certificates_path}

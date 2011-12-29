@@ -1,0 +1,5 @@
+%table.compact-session-list
+  - session.each do |sess|
+    %tr
+      %td
+        %div= "#{ l(sess.starts_at.to_date, :format => :long_day) },<br> klockan #{l(sess.starts_at, :format => :time)} -  #{l(sess.ends_at, :format => :time)}"

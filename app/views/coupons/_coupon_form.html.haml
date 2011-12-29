@@ -1,0 +1,7 @@
+- @coupon ||= Coupon.new
+%h3 Betala med värdekupong
+Om du har ett presentkort så kan du utnyttja det för att betala genom att skrivain presentkortets referens nummer i fältet nedan.
+%br/
+- form_for @coupon do |f|
+  = f.text_field :token, :size => 8
+  = f.submit 'Betala med värdekupong'

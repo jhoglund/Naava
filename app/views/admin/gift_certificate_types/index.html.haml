@@ -1,0 +1,20 @@
+%h1 Listing presentkort
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Value
+    %th Valid from
+    %th Valid to
+  - @gift_certificate_type.each do |gift_certificate_type|
+    %tr
+      %td= gift_certificate_type.name
+      %td= gift_certificate_type.description
+      %td= gift_certificate_type.value
+      %td= gift_certificate_type.valid_from
+      %td= gift_certificate_type.valid_to
+      %td= link_to 'Show', admin_gift_certificate_type_path(gift_certificate_type)
+      %td= link_to 'Edit', edit_admin_gift_certificate_type_path(gift_certificate_type)
+      %td= link_to 'Destroy', admin_gift_certificate_type_path(gift_certificate_type), :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'Nytt presentkort', new_admin_gift_certificate_type_path

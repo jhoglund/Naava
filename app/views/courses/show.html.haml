@@ -1,0 +1,34 @@
+- unless @course.nil?
+  %h1= @course.name
+  %p
+    = @course.description
+  %p
+    Kursen passar för #{@course.level.downcase} nivåer
+  %p
+    Antal kurstillfällen är #{@course.sessions.count}
+  %p
+    Kursen leds av #{link_to @course.instructor.name, @course.instructor}
+  - unless @course.starts_at.nil? or @course.ends_at.nil?
+    %p
+      Första kurstillfället är #{l(@course.starts_at, :format => :day)} och sista är #{l(@course.ends_at, :format => :day)}
+    %p
+      Klasserna startar klockan #{l(@course.starts_at, :format => :time)} tills klockan #{l(@course.starts_at, :format => :time)}
+  %p
+    I kursen ingår totalt #{@course.sessions.count} klasser.
+    En kurs kostar #{number_to_currency(@course.original_price)},
+    vilket är #{number_to_currency(@course.original_price_per_session)} (#{@course.original_discount}%) per klasstillfälle mot att betala vårt drop-in pris på
+    \#{number_to_currency(Session.first.price)}/klass.
+  - if @course.started?
+    %p
+      Denna kursen har redan börjat och vi har hittills hunnit med #{@course.sessions.expired.count} klasser.
+      - if @course.sessions.current.count > 1
+        Du får fortfarande ett rabatterat pris vid köp av kursen. Du betalar total #{number_to_currency(@course.price)} vilket
+        är #{number_to_currency(@course.price_per_session)}  (#{@course.discount}%)  per återstående klass.
+  %p
+    - unless @course.expired?
+      = link_to 'Anmäl dig till kursen', book_course_path(@course)
+  %h3 Tillfällen
+  - @course.sessions.each do |session|
+    = link_to_unless session.expired?, l(session.starts_at, :format => :short), session
+    %br/
+  = link_to 'Kurser', courses_path

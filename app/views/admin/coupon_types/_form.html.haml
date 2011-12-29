@@ -1,0 +1,37 @@
+= form.error_messages
+= hidden_field_tag :class_type_name, @coupon_type.class.name.tableize.singularize
+%p
+  = form.label :name
+  %br/
+  = form.text_field :name
+%p
+  = form.label :description
+  %br/
+  = form.text_area :description
+%p
+  = form.label :type
+  %br/
+  = form.select :type, options_for_select([%w{Presentkort GiftCertificateType}, %w{Säsongskort SeasonPassType}, %w{Klippkort PunchCardType}], :selected => @coupon_type.type)
+%p
+  = form.label :value
+  %br/
+  = form.text_field :value
+%p
+  = form.label :valid_for
+  %br/
+  = check_box_tag "#{form.object_name}[valid_for][]", 'Session', @coupon_type.valid_for?(:session)
+  Session
+  %br/
+  = check_box_tag "#{form.object_name}[valid_for][]", 'Course', @coupon_type.valid_for?(:course)
+  Course
+  %br/
+  = check_box_tag "#{form.object_name}[valid_for][]", 'Workshop', @coupon_type.valid_for?(:workshop)
+  Workshop
+%p
+  = form.label :times
+  %br/
+  = form.text_field :times
+%p
+  = form.label :status
+  %br/
+  = form.check_box :status, {}, Status::ACTIVE, Status::DISABLED

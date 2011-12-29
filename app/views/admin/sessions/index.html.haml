@@ -1,0 +1,15 @@
+%h1 Klasser
+%table
+  - @sessions.each do |session|
+    %tr
+      %td
+        - total = session.bookings.count + (session.course.nil? ? 0 : session.course.bookings.count)
+        %b{:style => "color:red"}= total
+        %strong
+          \/ #{link_to session.attendants.attending.size, admin_session_attendants_path(session)}
+      %td= l session.starts_at, :format => :short
+      %td= link_to 'Show', admin_session_path(session)
+= will_paginate @sessions
+= page_entries_info @sessions
+%br/
+= link_to 'Ny klass', new_admin_session_path

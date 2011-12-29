@@ -1,0 +1,20 @@
+%h1 Deltagare
+- form_for :participant, :url => search_admin_participants_path do |f|
+  Namn: #{text_field_tag :name, params[:name]}
+  %br/
+  = submit_tag "Search"
+%p
+  Antal: #{@participants.size}
+%table
+  %tr
+    %th Name
+    %th Email
+    %th Phone
+  - @participants.each do |participant|
+    %tr
+      %td= participant.name
+      %td= participant.email
+      %td= participant.phone
+      %td= link_to 'Show', admin_participant_path(participant)
+      %td= link_to 'Edit', edit_admin_participant_path(participant)
+%br/

@@ -1,0 +1,33 @@
+%p
+  %b To name:
+  = @gift_certificate.to_name
+%p
+  %b To email:
+  = @gift_certificate.to_email
+%p
+  %b To phone:
+  = @gift_certificate.to_phone
+%p
+  %b To address:
+  = @gift_certificate.to_address
+%p
+  %b From name:
+  = @gift_certificate.from_name
+%p
+  %b From email:
+  = @gift_certificate.from_email
+%p
+  %b From phone:
+  = @gift_certificate.from_phone
+%p
+  %b From address:
+  = @gift_certificate.from_address
+%p
+  %b Message:
+  = @gift_certificate.message
+%p
+  %b Coupon type:
+  = @gift_certificate.coupon_type.name
+= link_to 'Edit', edit_admin_gift_certificate_path(@gift_certificate)
+|
+\#{link_to 'Back', admin_gift_certificates_path}

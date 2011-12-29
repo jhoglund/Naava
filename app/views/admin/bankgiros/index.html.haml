@@ -1,0 +1,16 @@
+%h1 Listing bankgiros
+%table
+  %tr
+    %th Avinr
+    %th Payment
+    %th Gross
+  - @bankgiros.each do |bankgiro|
+    %tr
+      %td= bankgiro.avinr
+      %td= bankgiro.payment
+      %td= bankgiro.gross
+      %td= link_to 'Show', bankgiro
+      %td= link_to 'Edit', edit_bankgiro_path(bankgiro)
+      %td= link_to 'Destroy', bankgiro, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New bankgiro', new_bankgiro_path

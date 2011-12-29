@@ -1,0 +1,30 @@
+%h1 Editing booking
+- form_for(@booking, :url => admin_booking_path(@booking)) do |f|
+  = f.error_messages
+  %p
+    = f.label 'Klass'
+    %br/
+    = f.radio_button :booker_type, 'Session'
+    = select_tag :booker_session_id, options_for_select(Session.all.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] }, @booking.booker.is_a?(Session) ? @booking.booker.id : 0)
+  %p
+    = f.label 'Kurs'
+    %br/
+    = f.radio_button :booker_type, 'Course'
+    = select_tag :booker_course_id, options_for_select(Course.active.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] }, @booking.booker.is_a?(Course) ? @booking.booker.id : 0)
+  %p
+    - f.fields_for :participant do |participant|
+      = participant.label 'Namn'
+      = participant.text_field :name
+      %br/
+      = participant.label 'E-mail'
+      = participant.text_field :email
+      %br/
+      = participant.label 'Telefon'
+      = participant.text_field :phone
+      %br/
+  %p
+    = f.submit 'Update'
+= link_to 'Destroy', @booking, :confirm => 'Are you sure?', :method => :delete
+|
+\#{link_to 'Show', admin_booking_path(@booking)} |
+\#{link_to 'Back', admin_bookings_path}

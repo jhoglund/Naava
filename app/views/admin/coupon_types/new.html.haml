@@ -1,0 +1,6 @@
+%h1 Ny kuppong
+- form_for(@coupon_type, :url => admin_coupon_types_path) do |f|
+  = render :partial => "form", :object => f
+  %p
+    = f.submit 'Create'
+= link_to 'Back', admin_coupon_types_path

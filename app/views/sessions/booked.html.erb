@@ -1,6 +1,0 @@
-Vi har tagit emot din anmälan för <%= @booking.participant.name %> till
-<p>
-Du kan alltid nå din anmälan på addresses: <%= link_to booking_url(@booking), booking_url(@booking) %>
-<p>
-<%= link_to t('labels.destroy'), @booking, :confirm => t('messages.destroy_confirmation'), :method => :delete %>
-<%= link_to t('labels.back'), polymorphic_path(@booking.booker) %>

@@ -1,0 +1,15 @@
+%p
+  = form.label :starts_at
+  %br/
+  = form.datetime_select :starts_at
+%p
+  = form.label :duration
+  %br/
+  = form.label :hours
+  = form.select :duration_hours, (0...24), :selected => form.object.duration_hours
+  = form.label :minutes
+  = form.select :duration_minutes, [0,15,30,45], :selected => form.object.duration_minutes
+%p
+  = form.label :course
+  %br/
+  = form.select :course_id, ['None',nil] + @cources.map{|c| [c.name, c.id ]}, { :selected => params[:course_id].to_i }, :selected => @session.course

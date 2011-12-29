@@ -1,0 +1,53 @@
+%tr{:style => "border-top:1px solid #ccc"}
+  %td{:style => "padding-top:10px"}
+    %span{:style => "font-size:16px"}
+      %strong= t("misc.day_names.#{course.default_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase
+      klockan
+      %strong= l course.default_session.starts_at, :format => :time
+      till
+      %strong= l course.default_session.ends_at, :format => :time
+      - unless course.fully_booked?
+        \-
+        - if course.sessions.current.count > 1
+          = link_to "Anmäl dig till kursen", book_course_path(course)
+    - else
+      = link_to "Anmäl dig till klassen", book_session_path(course.next_session)
+    - unless course.description.blank?
+      %p
+        = course.description
+    - if course.fully_booked?
+      %span.course-fully_booked
+        Denna kursen är fullbokad. Om du vill bli uppsatt på en väntelista kan du kontakta Jonas Höglund på email #{mail_to "jonas@navayoga.se"} eller på telefon
+        %strong 0709-961600
+    - else
+      %p
+        Priset för kursen är
+        %strong= number_to_currency(course.original_price, {:precision => 0})
+        för totalt
+        %strong= course.sessions.active.count
+        tillfällen. Det går även bra att anmäla sig till enstaka klasser i kalendern nedan och du betalar då vårt drop-in pris på
+        \#{number_to_currency(Course.dropin_price, :precision => 0)} per klass istället för det rabatterade priset på
+        %strong= number_to_currency(course.original_price_per_session, :precision => 0)
+        (#{course.original_discount}%) per klasstillfälle.
+      %p
+        - if course.started?
+          - @expired_count = course.sessions.expired.active.count
+          %span.course-started
+            Denna kurs började den
+            = succeed "." do
+              %strong= l course.starts_at.to_date, :format => :long
+            Vi har hittills hunnit med #{@expired_count} klass#{@expired_count > 1 ? 'er' : ''}.
+            - if course.sessions.current.count > 1
+              Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast
+              %strong= number_to_currency(course.price, {:precision => 0})
+              vilket
+              är
+              %strong= number_to_currency(course.price_per_session, {:precision => 0})
+              (#{course.discount}%)  per återstående klass (totalt #{course.sessions.current.active.count} klasser).
+        - else
+          Du kan fortfarande anmäla dig till den återstående klassen (#{l(course.next_session.starts_at, :format => :long)}) för
+          = succeed "." do
+            %strong= number_to_currency(course.next_session.price, {:precision => 0})
+    - else
+      Första kurstillfället är den
+      %strong= l course.starts_at.to_date, :format => :long

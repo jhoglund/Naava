@@ -1,0 +1,17 @@
+%h1 Kurser
+%table
+  - @courses.each do |course|
+    %tr
+      %td
+        - if course.bookings.count > 0
+          %b{:style => "color:red"}= course.bookings.count
+        - else
+          \-
+      %td= l course.starts_at || course.sessions.first.starts_at, :format => :short
+      %td= link_to 'Show', admin_course_type_path(course)
+      %td= link_to 'Edit', edit_admin_course_type_path(course)
+%br/
+= will_paginate @courses
+= page_entries_info @courses
+%br/
+= link_to 'Ny kurs', new_admin_course_type_path

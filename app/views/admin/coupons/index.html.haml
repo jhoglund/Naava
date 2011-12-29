@@ -1,0 +1,24 @@
+%h1 Listing coupons
+%table
+  %tr
+    %th
+    %th Name
+    %th Type
+    %th Valid to
+  - @coupons.each do |coupon|
+    %tr
+      %td= coupon.valid? ? 'X' : ''
+      %td
+        = coupon.to_name
+        = "(#{coupon.available_times})" if coupon.available_times
+      %td
+        = coupon.coupon_type.name
+        (#{coupon.class.human_name})
+      %td= l(coupon.valid_to, :format => "%Y-%m-%d") unless coupon.valid_to.nil?
+      %td= link_to 'Show', admin_coupon_path(coupon)
+      %td= link_to 'Edit', edit_admin_coupon_path(coupon)
+      %td= link_to 'Destroy', admin_coupon_path(coupon), :method => :delete
+= will_paginate @coupons
+= page_entries_info @coupons
+%br/
+= link_to 'Ny kuppong', new_admin_coupon_path

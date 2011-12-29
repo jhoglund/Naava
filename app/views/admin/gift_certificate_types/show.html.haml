@@ -1,0 +1,24 @@
+%p
+  %b Name:
+  = @gift_certificate_type.name
+%p
+  %b Description:
+  = @gift_certificate_type.description
+%p
+  %b Value:
+  = @gift_certificate_type.value
+%p
+  %b Valid from:
+  = @gift_certificate_type.valid_from
+%p
+  %b Valid to:
+  = @gift_certificate_type.valid_to
+%p
+  %b Valid for:
+  = @gift_certificate_type.valid_for
+%p
+  %b Status:
+  = ['Disabled', 'Active'][@gift_certificate_type.status]
+= link_to 'Edit', edit_admin_gift_certificate_type_path(@gift_certificate_type)
+|
+\#{link_to 'Back', admin_gift_certificate_types_path}

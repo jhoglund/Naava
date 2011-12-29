@@ -1,0 +1,18 @@
+%h2= title
+%table.session-list
+  %colgroup
+    %col{:width => "20"}/
+    %col/
+    %col{:width => "20"}/
+    %col{:width => "1*"}/
+  %tr
+    %th Närvaro
+    %th Namn
+    %th Betalt
+    %th Kommentar
+  - collection.each do |booking|
+    %tr
+      %td= @session.attending?(booking.participant) ? "X" : ""
+      %td= booking.participant.name
+      %td= booking.paid? ? "X" : ""
+      %td.comment &nbsp;

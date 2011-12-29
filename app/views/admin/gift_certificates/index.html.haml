@@ -1,0 +1,26 @@
+%h1 Listing coupons
+%table
+  %tr
+    %th To name
+    %th To email
+    %th To phone
+    %th From name
+    %th From email
+    %th From phone
+    %th Message
+    %th Coupon type
+  - @gift_certificate.each do |gift_certificate|
+    %tr
+      %td= gift_certificate.to_name
+      %td= gift_certificate.to_email
+      %td= gift_certificate.to_phone
+      %td= gift_certificate.from_name
+      %td= gift_certificate.from_email
+      %td= gift_certificate.from_phone
+      %td= truncate gift_certificate.message
+      %td= gift_certificate.coupon_type.name
+      %td= link_to 'Show', admin_gift_certificate_path(gift_certificate)
+      %td= link_to 'Edit', edit_admin_gift_certificate_path(gift_certificate)
+      %td= link_to 'Destroy', admin_gift_certificate_path(gift_certificate), :method => :delete
+%br/
+= link_to 'Nytt presentkort', new_admin_gift_certificate_path

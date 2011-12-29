@@ -1,0 +1,19 @@
+%h1 Klasser
+%table
+  %tr
+    %th Anmälda
+    %th Närvarande
+    %th
+    %th
+  - @sessions.each do |session|
+    %tr
+      %td
+        - total = session.bookings.count + session.course.bookings.count
+        - if total > 0
+          %b= total
+        - else
+          \-
+      %td
+        %b{:style => "color:red"}= session.attendants.attending.count
+      %td= l session.starts_at, :format => :short
+      %td= link_to 'Edit', admin_session_attendants_path(session)

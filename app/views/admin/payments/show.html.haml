@@ -1,0 +1,17 @@
+%p
+  %b Name:
+  = @payment.name
+%p
+  %b Email:
+  = @payment.email
+%p
+  %b Note:
+  = @payment.note
+%p
+  %b Meta:
+  = @payment.meta
+%p
+  = link_to 'Booking', polymorphic_path(@payment)
+= link_to 'Edit', edit_admin_payment_path(@payment, :page => params[:page])
+|
+\#{link_to 'Back', admin_payments_path(:page => params[:page])}

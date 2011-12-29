@@ -1,0 +1,31 @@
+.gift-certificate-canvas
+  = render :partial => '/gift_certificates/gift_certificate', :object => @payment.item
+  %p
+    = link_to 'Skriv ut',  print_gift_certificate_path(:id => @payment.item.to_param, :format => 'pdf')
+- unless @payment.item.paid?
+  %p
+    Att betala: #{number_to_currency(@payment.item.coupon_type.value)}
+  %p
+    Du kan betala våra presentkort snabbt och säkert via #{link_to_function 'PayPal', 'forms[0].submit()'}. Har du inget PayPal konto
+    kan enkelt betala med ett kreditkort.
+  = render :partial => "/paypal/button", :locals => {                                                                                        |
+      :item_id => @payment.to_param,                                                                                                         |
+      :notify_url => url_for(:host => PaypalConfig[:host], :controller => 'coupons', :action => 'paypal_ipn'),                               |
+      :return_url => url_for(:host => PaypalConfig[:host], :controller => 'coupons', :action => 'paypal_success', :id => @payment.to_param), |
+      :cancel_url => url_for(:host => PaypalConfig[:host], :controller => 'coupons', :action => 'paypal_cancel', :id => @payment.to_param),  |
+      :ammount => @payment.item.coupon_type.value,                                                                                           |
+      :item_name =>  @payment.item.coupon_type.name                                                                                          |
+    }                                                                                                                                        |
+  %p
+    Det går även bra att betala till vårt bankgiro
+    = succeed "." do
+      %strong 5091-8051
+    Märk inbetalningen
+    %strong
+      = @payment.item.coupon_type.name
+      (ref.nr #{@payment.item.id})
+- else
+  - if @payment.item.payment.type? :paypal_reciept
+    %p
+      Presentkortet är betalt och ditt PayPal referencenummer för betalningen är
+      %strong= @payment.reciept.transaction_id

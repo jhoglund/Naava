@@ -1,0 +1,36 @@
+= form.error_messages
+= hidden_field_tag :class_type_name, form.object.class.name.tableize.singularize
+%p
+  = form.label :name
+  %br/
+  = form.text_field :name
+%p
+  = form.label :description
+  %br/
+  = form.text_area :description, :rows => 10
+%p
+  = form.label :type
+  %br/
+  = form.select :type, options_for_select([%w{Kurs Course}, %w{Workshop Workshop}], :selected => form.object.type)
+%p
+  = form.label :comment
+  %br/
+  = form.text_area :comment, :rows => 4
+%p
+  = form.label :instructor
+  %br/
+  = form.select :instructor_id, Instructor.all.map{|i| [i.name, i.id]}, :selected => form.object.instructor.id
+%p
+  = form.label :level
+  %br/
+  = form.text_field :level
+%p
+  = form.label :session_price
+  %br/
+  = form.text_field :session_price
+%p
+  = form.check_box :status
+  = form.label :status
+#session
+  = render :partial => 'sessions', :object => form
+= add_session_link 'New session', form

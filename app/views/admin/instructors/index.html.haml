@@ -1,0 +1,20 @@
+%h1 Instruktörer
+%table
+  %tr
+    %th Name
+    %th Email
+    %th Phone
+    %th Bio
+    %th Description
+  - @instructors.each do |instructor|
+    %tr
+      %td= instructor.name
+      %td= instructor.email
+      %td= instructor.phone
+      %td= instructor.bio
+      %td= instructor.description
+      %td= link_to 'Show', admin_instructor_path(instructor)
+      %td= link_to 'Edit', edit_admin_instructor_path(instructor)
+      %td= link_to 'Destroy', admin_instructor_path(instructor), :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New instructor', new_admin_instructor_path

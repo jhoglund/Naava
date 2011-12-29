@@ -1,0 +1,10 @@
+%h1 New cash
+- form_for(@cash) do |f|
+  = f.error_messages
+  %p
+    = f.label :gross
+    %br/
+    = f.text_field :gross
+  %p
+    = f.submit 'Create'
+= link_to 'Back', cashes_path

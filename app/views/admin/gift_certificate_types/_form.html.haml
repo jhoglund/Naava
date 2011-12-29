@@ -1,0 +1,33 @@
+= form.error_messages
+%p
+  = form.label :name
+  %br/
+  = form.text_field :name
+%p
+  = form.label :description
+  %br/
+  = form.text_area :description
+%p
+  = form.label :value
+  %br/
+  = form.text_field :value
+%p
+  = form.label :valid_for
+  %br/
+  = form.select :valid_for, options_for_select(%w{Session Course Workshop}, :selected => @gift_certificate_type.valid_for)
+%p
+  = form.label :times
+  %br/
+  = form.text_field :times
+%p
+  = form.label :valid_from
+  %br/
+  = form.datetime_select :valid_from
+%p
+  = form.label :valid_to
+  %br/
+  = form.datetime_select :valid_to
+%p
+  = form.label :status
+  %br/
+  = form.check_box :status, {}, Status::ACTIVE, Status::DISABLED

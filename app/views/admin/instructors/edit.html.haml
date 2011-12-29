@@ -1,0 +1,12 @@
+%h1 Editing instructor
+%h3= @instructor.name
+= image_tag @instructor.avatar.url(:thumb)
+%br/
+- form_for(@instructor, :url => admin_instructor_path(@instructor), :html => { :multipart => true }) do |f|
+  = f.error_messages
+  = render :partial => 'form', :object => f
+  %p
+    = f.submit 'Update'
+= link_to 'Show', admin_instructor_path(@instructor)
+|
+\#{link_to 'Back', admin_instructors_path}

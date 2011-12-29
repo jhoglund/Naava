@@ -1,0 +1,11 @@
+- paypal_form_tag do
+  = paypal_setup item_id, ammount, PaypalConfig[:business], |
+    :notify_url => notify_url,                              |
+    :return => return_url,                                  |
+    :cancel_return => cancel_url,                           |
+    :item_name => item_name,                                |
+    :currency_code => 'SEK',                                |
+    :business_key => File::read(PaypalConfig[:key]),        |
+    :business_cert => File::read(PaypalConfig[:cert]),      |
+    :business_certid => PaypalConfig[:certid]               |
+  = submit_tag 'Betala via PayPal'

@@ -1,0 +1,18 @@
+%h1 New bankgiro
+- form_for(@bankgiro) do |f|
+  = f.error_messages
+  %p
+    = f.label :avinr
+    %br/
+    = f.text_field :avinr
+  %p
+    = f.label :payment
+    %br/
+    = f.text_field :payment
+  %p
+    = f.label :gross
+    %br/
+    = f.text_field :gross
+  %p
+    = f.submit 'Create'
+= link_to 'Back', bankgiros_path

@@ -1,0 +1,26 @@
+%h1 Deltagare
+- form_for :attendants, :url => search_admin_attendants_path do |f|
+  Namn: #{text_field_tag :name, params[:name]}
+  %br/
+  Endast närvarande: #{check_box_tag :only_attending, nil,  params[:only_attending]=='on'}
+  %br/
+  = submit_tag "Search"
+%p
+  Antal: #{@attendants.size}
+%table
+  %tr
+    %th
+    %th Name
+    %th Email
+    %th Phone
+    %th Session
+  - @attendants.each do |attendant|
+    %tr
+      %td= attendant.attending? ? 'X' : ''
+      %td= attendant.participant.name
+      %td= attendant.participant.email
+      %td= attendant.participant.phone
+      %td= link_to l(attendant.session.starts_at, :format => :short), admin_session_path(attendant.session)
+      %td= link_to 'Show', admin_participant_path(attendant.participant)
+      %td= link_to 'Edit', edit_admin_participant_path(attendant.participant)
+%br/

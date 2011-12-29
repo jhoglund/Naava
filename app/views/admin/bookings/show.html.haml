@@ -1,0 +1,14 @@
+%p
+  %b Participant:
+  = @booking.participant.name
+%p
+  - if @booking.booker.is_a?(Course)
+    Kurs som startar: #{l(@booking.booker.starts_at, :format => :short)}
+  - else
+    Klass: #{l(@booking.booker.starts_at, :format => :short)}
+%p
+  %b Token:
+  = @booking.token
+= link_to t('labels.edit'), edit_admin_booking_path(@booking)
+|
+\#{link_to t('labels.back'), admin_bookings_path}

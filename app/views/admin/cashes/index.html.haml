@@ -1,0 +1,12 @@
+%h1 Listing cashes
+%table
+  %tr
+    %th Gross
+  - @cashes.each do |cash|
+    %tr
+      %td= cash.gross
+      %td= link_to 'Show', cash
+      %td= link_to 'Edit', edit_cash_path(cash)
+      %td= link_to 'Destroy', cash, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New cash', new_cash_path

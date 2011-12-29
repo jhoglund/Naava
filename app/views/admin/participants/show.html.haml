@@ -1,0 +1,18 @@
+%h1 Deltagare
+%p
+  %b Name:
+  = @participant.name
+%p
+  %b Email:
+  = @participant.email
+%p
+  %b Phone:
+  = @participant.phone
+%p
+  %b Bookings:
+  - @participant.bookings.each do |booking|
+    %br/
+    = link_to 'Booking', polymorphic_path(booking)
+= link_to 'Edit', edit_admin_participant_path(@participant)
+|
+\#{link_to 'Back', admin_participants_path}

@@ -1,0 +1,12 @@
+%h1 Editing cash
+- form_for(@cash) do |f|
+  = f.error_messages
+  %p
+    = f.label :gross
+    %br/
+    = f.text_field :gross
+  %p
+    = f.submit 'Update'
+= link_to 'Show', @cash
+|
+\#{link_to 'Back', cashes_path}

@@ -1,0 +1,52 @@
+%h1 Payments
+= select_tag(:show_payment, options_for_select([['Alla','paid_or_not'],['Betalda','paid'],['Obetalda','not_paid']], :selected => params[:show_payment]), :onchange => ' |
+  var option;                                                                                                                                                           |
+  for(var i=0; i<this.options.length; i++){                                                                                                                             |
+    if(this.options[i].selected) option = this.options[i]                                                                                                               |
+  }                                                                                                                                                                     |
+  var search = location.search.replace(/show_payment=[^&]*/gim,"");                                                                                                     |
+  search = search.replace(/^\??/,"?");                                                                                                                                  |
+  search += "show_payment="+option.value;                                                                                                                               |
+  document.location = location.pathname + search;                                                                                                                       |
+  ')                                                                                                                                                                    |
+%br/
+%br/
+%table
+  %tr
+    %th Paid
+    %th Ref.nr
+    %th Description
+    %th Name
+    / <th>Email</th>
+    %th Note
+    %th Ammount
+    %th
+    %th
+    %th
+    %th
+  - @payments.each do |payment|
+    %tr
+      %td= payment.paid? ? 'X' : ''
+      %td= payment.id
+      %td= payment.description
+      %td= payment.name
+      / <td><haml:loud> payment.email </haml:loud></td>
+      %td= payment.note
+      %td= payment.value
+      %td= link_to 'Booking', polymorphic_path(payment)
+      %td= link_to 'Show', admin_payment_path(payment, :page => params[:page], :show_payment => params[:show_payment])
+      %td= link_to 'Edit', edit_admin_payment_path(payment, :page => params[:page], :show_payment => params[:show_payment])
+      %td= link_to 'Destroy', admin_payment_path(payment, :page => params[:page], :show_payment => params[:show_payment]), :method => :delete
+  %tr
+    %td
+    %td
+    %td
+    %td
+    %td
+    %td= Payment.sum
+    %td
+    %td
+    %td
+    %td
+= will_paginate @payments
+= page_entries_info @payments

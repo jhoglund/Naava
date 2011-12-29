@@ -1,0 +1,24 @@
+%h1 Bokningar
+%table
+  - @bookings.each do |booking|
+    %tr
+      %td= booking.paid? ? 'X' : booking.payment.nil? ? '' : link_to('--', edit_admin_payment_path(booking.payment))
+      %td
+        Ref.nr #{booking.id}
+      %td= booking.participant.name
+      %td= booking.participant.email
+      %td= booking.participant.phone
+      %td
+        - if booking.booker.is_a?(Course)
+          Kurs som startar: #{l(booking.booker.starts_at, :format => :short)}
+        - else
+          Klass: #{l(booking.booker.starts_at, :format => :short)}
+      %td= link_to 'Edit', edit_admin_booking_path(booking)
+      %td= link_to 'Ta bort', admin_booking_path(booking), :method => :delete
+= will_paginate @bookings
+= page_entries_info @bookings
+%br/
+- if @course
+  = link_to 'Ny bokning', new_admin_course_booking_path(@course)
+- elsif @session
+  = link_to 'Ny bokning', new_admin_session_booking_path(@session)

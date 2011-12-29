@@ -1,0 +1,9 @@
+%h2 Bokning borttagen
+%p
+  Din bokning för klassen #{"#{l @booking.booker.starts_at, :format => :day } klockan #{l @booking.booker.starts_at, :format => :time} till #{l @booking.booker.ends_at, :format => :time}"} har blivit borttagen.
+- if @booking.payment.type? :gift_certificate
+  Ditt presentkort kommer att krediteras med #{number_to_currency(@booking.payment.value)}
+- else
+  Ditt konto kommer att krediteras med #{number_to_currency(@booking.payment.value)}
+%p
+  Om du har några frågor så maila oss gärna på #{mail_to AppConfig[:support_mail]} eller ring oss på #{AppConfig[:support_phone]}.
