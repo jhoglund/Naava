@@ -1,5 +1,17 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  
+  def asset_path(str='.css')
+    return "/#{ case str
+    when /\.css$/
+      'stylesheets'
+    when /\.js$/
+      'javascripts'
+    else
+      'images'
+    end }/#{str}"
+  end
+  
   def include_inline_resource name, type = :javascript, &block
     @inline_resource_cache ||= { :javascript => {},:css => {} }
     unless @inline_resource_cache[type][name]

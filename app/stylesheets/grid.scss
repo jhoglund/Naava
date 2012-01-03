@@ -1,0 +1,167 @@
+.banner,
+.main,
+.footer {
+  position:relative;
+  z-index:1;
+  .grid {
+    @include container;
+    // @include showgrid;
+    // background:rgba(0,0,0,0.2);
+    overflow:visible;
+    .columns {
+      @include clearfix;
+      .column {
+        .content {
+          ol { 
+            margin:0;
+            padding:0;
+            li {
+              list-style:none;
+              padding-left:0;
+            }
+          }
+          padding:0 10px;
+        }
+        &:last-child {
+          @include last;
+        }        
+      }
+    }
+    
+    .columns-four-four-four-twelve {
+      .column {
+        @include column(4);
+        &:last-child {
+          @include column(12);
+          @include last;
+        }
+      }
+    }
+    .columns-twelve-four-four-four {
+      .column {
+        @include column(4);
+        &:first-child {
+          @include column(12);
+          @include last;
+        }        
+      }
+    }
+    .columns-six-nine-nine {
+      .column {
+        @include column(9);
+        &:first-child {
+          @include column(6);
+        }
+      }
+    }
+    .columns-nine-nine-six {
+      .column {
+        @include column(9);
+        &:last-child {
+          @include column(6);
+          @include last;
+        }
+      }
+    }
+    .columns-fourteen-ten {
+      .column {
+        @include column(10);
+        &:first-child {
+          @include column(14);
+        }
+      }
+    }
+    .columns-sixteen-eight {
+      .column {
+        @include column(8);
+        &:first-child {
+          @include column(16);
+        }
+      }
+    }
+    .columns-eighteen-six {
+      .column {
+        @include column(6);
+        &:first-child {
+          @include column(18);
+        }
+      }
+    }
+    
+    .columns-four {
+      .column {
+        &, &:first-child, &:last-child {
+          @include column(4);
+        }
+        &:last-child {
+          @include last;
+        }
+      }
+    }
+    .columns-six {
+      .column {
+        &, &:first-child, &:last-child {
+          @include column(6);
+        }
+        &:last-child {
+          @include last;
+        }
+      }
+    }
+    .columns-eight {
+      .column {
+        &, &:first-child, &:last-child {
+          @include column(8);
+        }
+        &:last-child {
+          @include last;
+        }
+      }
+    }
+    .columns-nine {
+      .column {
+        &, &:first-child, &:last-child {
+          @include column(9);
+        }
+        &:last-child {
+          @include last;
+        }
+      }
+    }
+    .columns-twelve {
+      .column {
+        &, &:first-child, &:last-child {
+          @include column(12);
+        }
+        &:last-child {
+          @include last;
+        }
+      }
+    }
+    .columns-twentyfour {
+      .column {
+        @include column(24);
+        @include last;
+      }
+    }
+    
+    
+  }
+}
+
+.outer-containor {
+  position:relative;
+}
+.inner-containor {
+  position:relative;
+}
+
+.background {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:700px;
+  background:no-repeat top center;
+  z-index:0;
+}

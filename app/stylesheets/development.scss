@@ -1,0 +1,61 @@
+// Blueprint.
+@import "blueprint/reset";
+@import "blueprint";
+@import "grid";
+@import "colors";
+
+body {
+  padding:20px;
+}
+.columns-swatch {
+  .column {
+    padding: $blueprint-grid-width 0 0 0;
+    @include column(1);
+    &.color-pink-dark {
+      background:$color-pink-dark;
+    }
+    &.color-pink-light {
+      background:$color-pink-light;
+    }
+    &.color-blue-dark {
+      background:$color-blue-dark;
+    }
+    &.color-blue-light {
+      background:$color-blue-light;
+    }
+    &.color-yellow-dark {
+      background:$color-yellow-dark;
+    }
+    &.color-yellow-light {
+      background:$color-yellow-light;
+    }
+    &.color-green-dark {
+      background:$color-green-dark;
+    }
+    &.color-green-light {
+      background:$color-green-light;
+    }
+    &.color-gray-pale {
+      background:$color-gray-pale;
+    }
+    &.color-gray-light {
+      background:$color-gray-light;
+    }
+    &.color-gray-medium {
+      background:$color-gray-medium;
+    }
+    &.color-gray-dark {
+      background:$color-gray-dark;
+    }
+  }
+}
+.color-link {
+  color:$color-link;
+}
+.color-link-hover {
+  color:$color-link-hover;
+}
+.color-link-active {
+  color:$color-link-active;
+}
+

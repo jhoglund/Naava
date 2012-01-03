@@ -1,0 +1,100 @@
+/*
+Syntax error: Undefined variable: "$color-gray-light".
+        on line 3 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/welcome.scss
+
+1: .video-play-button {
+2:   position:relative;
+3:   border:1px solid $color-gray-light;
+4:   a {
+5:     position:absolute;
+6:     display:block;
+7:     top:0;
+8:     width:210px;
+
+Backtrace:
+/Users/jhoglund/Projects/Nava/application/app/stylesheets/welcome.scss:3
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/variable.rb:49:in `_perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/node.rb:40:in `perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/list.rb:69:in `_perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/list.rb:69:in `map'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/list.rb:69:in `_perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/node.rb:40:in `perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:216:in `visit_prop'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:236:in `visit_rule'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:300:in `_render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:248:in `render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/util.rb:297:in `silence_sass_warnings'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:248:in `render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:202:in `update_stylesheets'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:200:in `each'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/rack.rb:51:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/commands/server.rb:111
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:29:in `gem_original_require'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:29:in `require'
+./script/server:3
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined variable: \"$color-gray-light\".\A         on line 3 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/welcome.scss\A \A 1: .video-play-button {\A 2:   position:relative;\A 3:   border:1px solid $color-gray-light;\A 4:   a {\A 5:     position:absolute;\A 6:     display:block;\A 7:     top:0;\A 8:     width:210px;"; }

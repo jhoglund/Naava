@@ -1,0 +1,121 @@
+/* line 2, ../../../app/stylesheets/coupon.scss */
+.gift-certificate .column input[type=text],
+.gift-certificate .column textarea {
+  width: 100%;
+}
+
+/* line 3, ../../../app/stylesheets/coupon.scss */
+.gift-certificate .column label {
+  display: block;
+}
+
+/*.gift-certificate .validation-error { padding-left:66px; padding-top:10px; margin-top:-42px; }*/
+/* line 6, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-card {
+  position: relative;
+  color: white;
+  background: #b90546;
+  border-bottom: 10px solid #73052d;
+  width: 444px;
+  -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px 20px 30px;
+}
+
+/* line 11, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-to,
+.gift-certificate-from,
+.gift-certificate-value,
+.gift-certificate-personal-message {
+  position: relative;
+  font-family: monospace;
+  -webkit-border-radius: 10px;
+  background: white;
+  color: black;
+  padding: 10px 20px;
+}
+
+/* line 14, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-names,
+.gift-certificate-value,
+.gift-certificate-personal-message {
+  margin: 40px 0;
+}
+
+/* line 16, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-value,
+.gift-certificate-personal-message {
+  width: 400px;
+}
+
+/* line 20, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-to b,
+.gift-certificate-from b,
+.gift-certificate-value b,
+.gift-certificate-personal-message b {
+  position: absolute;
+  left: 10px;
+  top: -25px;
+  font-family: Georgia;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: white;
+}
+
+/* line 22, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-names .gift-certificate-to,
+.gift-certificate-names .gift-certificate-from {
+  display: inline-block;
+  width: 170px;
+}
+
+/* line 25, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-value,
+.gift-certificate-names .gift-certificate-to,
+.gift-certificate-names .gift-certificate-from {
+  min-height: 20px;
+}
+
+/* line 26, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-personal-message {
+  min-height: 120px;
+}
+
+/* line 28, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-names .gift-certificate-from {
+  margin-left: 20px;
+}
+
+/* line 29, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-card .header {
+  margin: -30px;
+  background: #73052d url("/images/logo_444_white.png") no-repeat 30px 80px;
+}
+
+/* line 31, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-card h2 {
+  color: white;
+  margin: 80px 0 50px;
+  font-size: 26px;
+}
+
+/* line 32, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-footer {
+  color: white;
+  font: normal 12px/16px verdana;
+}
+
+/* line 34, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-footer a,
+.gift-certificate-footer b {
+  color: #ff965f;
+}
+
+/* line 35, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-canvas {
+  margin: 0 0 0 80px;
+}
+
+/* line 36, ../../../app/stylesheets/coupon.scss */
+.gift-certificate-card a {
+  color: white;
+}

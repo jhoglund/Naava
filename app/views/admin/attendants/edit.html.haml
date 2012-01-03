@@ -2,8 +2,9 @@
 %p= l(@session.starts_at, :format => :long)
 - include_javascript 'jquery/plugins/autocomplete/jquery.autocomplete.pack.js'
 - include_stylesheet '/javascripts/jquery/plugins/autocomplete/jquery.autocomplete.css'
-- content_for :javascript do
-  var autocomplete = [#{Participant.all(:select => 'distinct(participants.name)').map{|pa| "'#{pa.name}'" }.reverse.join(',')}];
+- content_for :header do
+  :javascript
+    var autocomplete = [#{Participant.all(:select => 'distinct(participants.name)').map{|pa| "'#{pa.name}'" }.reverse.join(',')}];
 - form_for(Session.new, :url => admin_session_attendants_path(@session)) do |f|
   = f.error_messages
   %ul#participants

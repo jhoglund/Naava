@@ -1,0 +1,85 @@
+/* line 1, ../../../app/stylesheets/session.scss */
+.compact-session-list th {
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+/* line 2, ../../../app/stylesheets/session.scss */
+.compact-session-list td:first-letter {
+  text-transform: capitalize;
+}
+
+/* line 4, ../../../app/stylesheets/session.scss */
+.compact-session-list .date-day-name,
+.compact-session-list .date-day-number {
+  font-weight: bold;
+}
+
+/* line 5, ../../../app/stylesheets/session.scss */
+.compact-session-list .time-number {
+  font-weight: bold;
+  color: #eb0a5a;
+}
+
+/* line 7, ../../../app/stylesheets/session.scss */
+.session-list {
+  width: 780px;
+  border-collapse: collapse;
+}
+
+/* line 8, ../../../app/stylesheets/session.scss */
+.session-list td {
+  padding: 5px;
+  vertical-align: bottom;
+}
+
+/* line 9, ../../../app/stylesheets/session.scss */
+.session-list td:first-child:first-letter {
+  text-transform: capitalize;
+}
+
+/* line 10, ../../../app/stylesheets/session.scss */
+.session-list thead td {
+  font-size: 16px;
+}
+
+/* line 11, ../../../app/stylesheets/session.scss */
+.session-list tbody tr td:first-child {
+  padding-left: 20px;
+}
+
+/* line 12, ../../../app/stylesheets/session.scss */
+.session-list tbody.gradient-back {
+  background: #ecebea;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* line 13, ../../../app/stylesheets/session.scss */
+.session-list a.read-more {
+  color: #323232;
+  padding: 0 10px;
+}
+
+/* line 14, ../../../app/stylesheets/session.scss */
+.session-list .date-day-number {
+  font-weight: bold;
+  color: #eb0a5a;
+  font-size: 18px;
+}
+
+/* line 15, ../../../app/stylesheets/session.scss */
+.session-list .time-number {
+  font-weight: bold;
+}
+
+/* line 16, ../../../app/stylesheets/session.scss */
+.session-list td.session-list-comment {
+  padding: 0 0 10px 10px!important;
+  font-style: italic;
+  color: #646464;
+}
+
+/* line 17, ../../../app/stylesheets/session.scss */
+.canceled-session td {
+  background: #ffa55a;
+}

@@ -1,0 +1,31 @@
+/* line 2, ../../../app/stylesheets/button.scss */
+a.button {
+  background: #910537;
+  color: #ffebf5;
+  padding: 5px 20px;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* line 3, ../../../app/stylesheets/button.scss */
+a.button:hover {
+  color: #ffa5c8;
+}
+
+/* line 4, ../../../app/stylesheets/button.scss */
+a.button-default {
+  background: #eb690a;
+}
+
+/* line 5, ../../../app/stylesheets/button.scss */
+a.button-default:hover {
+  color: #4b1e00;
+}
+
+/* line 6, ../../../app/stylesheets/button.scss */
+.button-bar {
+  text-align: right;
+  padding: 20px 0;
+  margin: 20px 0;
+  border-top: 1px solid #c8c8c8;
+}

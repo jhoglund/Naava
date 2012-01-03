@@ -20,4 +20,7 @@ class WelcomeController < ApplicationController
     @introduction_course = Workshop.find(40)  
   end
   
+  def colors
+    render :layout => false
+  end
 end

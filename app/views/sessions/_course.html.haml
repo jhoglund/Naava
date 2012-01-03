@@ -6,12 +6,12 @@
       %strong= l course.default_session.starts_at, :format => :time
       till
       %strong= l course.default_session.ends_at, :format => :time
-      - unless course.fully_booked?
-        \-
-        - if course.sessions.current.count > 1
-          = link_to "Anmäl dig till kursen", book_course_path(course)
-    - else
-      = link_to "Anmäl dig till klassen", book_session_path(course.next_session)
+    - unless course.fully_booked?
+      \-
+      - if course.sessions.current.count > 1
+        = link_to "Anmäl dig till kursen", book_course_path(course)
+      - else
+        = link_to "Anmäl dig till klassen", book_session_path(course.next_session)
     - unless course.description.blank?
       %p
         = course.description
@@ -44,10 +44,10 @@
               är
               %strong= number_to_currency(course.price_per_session, {:precision => 0})
               (#{course.discount}%)  per återstående klass (totalt #{course.sessions.current.active.count} klasser).
+            - else
+              Du kan fortfarande anmäla dig till den återstående klassen (#{l(course.next_session.starts_at, :format => :long)}) för
+              = succeed "." do
+                %strong= number_to_currency(course.next_session.price, {:precision => 0})
         - else
-          Du kan fortfarande anmäla dig till den återstående klassen (#{l(course.next_session.starts_at, :format => :long)}) för
-          = succeed "." do
-            %strong= number_to_currency(course.next_session.price, {:precision => 0})
-    - else
-      Första kurstillfället är den
-      %strong= l course.starts_at.to_date, :format => :long
+          Första kurstillfället är den
+          %strong= l course.starts_at.to_date, :format => :long

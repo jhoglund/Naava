@@ -1,0 +1,18 @@
+.video-play-button {
+  position:relative;
+  border:1px solid $color-gray-light;
+  a {
+    position:absolute;
+    display:block;
+    top:0;
+    width:210px;
+    height:135px;
+    background:url(/images/video_210_play.png) no-repeat;
+    text-decoration:none;
+    cursor:pointer;
+    opacity:.2;
+    &:hover {
+      opacity:.6; 
+    }
+  }
+}

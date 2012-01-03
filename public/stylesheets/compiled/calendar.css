@@ -1,0 +1,57 @@
+/* line 2, ../../../app/stylesheets/calendar.scss */
+.fc-event,
+.fc-event a {
+  color: #1e3c73 !important;
+  background-color: #b4c8eb !important;
+  border-color: #b4c8eb !important;
+}
+
+/* line 3, ../../../app/stylesheets/calendar.scss */
+.fc-event a:hover {
+  color: #1e3c73 !important;
+}
+
+/* line 4, ../../../app/stylesheets/calendar.scss */
+.fc-content {
+  clear: none!important;
+}
+
+/* line 9, ../../../app/stylesheets/calendar.scss */
+.calendar-session-disabled,
+.calendar-session-disabled a {
+  color: #b90546 !important;
+  background-color: #ffa5c8 !important;
+  border-color: #ffa5c8 !important;
+  text-decoration: line-through;
+}
+
+/* line 10, ../../../app/stylesheets/calendar.scss */
+.calendar-session-disabled a:hover {
+  color: #b90546 !important;
+}
+
+/* line 13, ../../../app/stylesheets/calendar.scss */
+.calendar-session-nybrjare,
+.calendar-session-nybrjare a {
+  color: #05733c !important;
+  background-color: #ebfff0 !important;
+  border-color: #ebfff0 !important;
+}
+
+/* line 14, ../../../app/stylesheets/calendar.scss */
+.calendar-session-nybrjare a:hover {
+  color: #05733c !important;
+}
+
+/* line 17, ../../../app/stylesheets/calendar.scss */
+.calendar-session-alla,
+.calendar-session-alla a {
+  color: #643200 !important;
+  background-color: #ffdc96 !important;
+  border-color: #ebfff0 !important;
+}
+
+/* line 18, ../../../app/stylesheets/calendar.scss */
+.calendar-session-alla a:hover {
+  color: #643200 !important;
+}

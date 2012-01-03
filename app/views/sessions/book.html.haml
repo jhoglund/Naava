@@ -15,7 +15,7 @@
       %strong= params[:coupon_id]
     %p.button-bar
       = link_to_function "Anmäl", 'forms["new_booking"].submit()', :class => 'button button-default'
-  - if @booker.course.next_session and @booker.course.sessions.current.count > 1
+  - if @booker.course and @booker.course.next_session and @booker.course.sessions.current.count > 1
     %h2
       Anmäl dig till hela kursen
       %strong= t("misc.day_names.#{@booker.course.default_session.starts_at.strftime("%A").downcase}", :count => 2)

@@ -1,0 +1,169 @@
+$blueprint-grid-columns: 24;
+$blueprint-grid-height: 24;
+$blueprint-container-size: 950px;
+$blueprint-grid-margin: 10px;
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+
+$blueprint-font-family: "Istok Web", "lucida sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+$blueprint-fixed-font-family: "andale mono", "lucida console", monospace;
+$blueprint-font-size: 15px;
+
+@include blueprint-typography;
+
+// html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
+// body { margin:0; font:normal 13px/18px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
+// .canvas { position:relative; width:950px; margin:0 auto; z-index:0; z-index:0;}
+// .canvas-background { position:absolute; top:0; left:0; width:860px; height:100%; background:rgb(255,255,255); opacity:0.5; filter:alpha(opacity=50%); z-index:-1; }
+// .canvas .vertical-spacer { width:1px; overflow:0; height:800px; float:left; margin-left:-1px;}
+// .canvas .vertical-spacer-break { clear:both; }
+// 
+a:link { text-decoration: none; }
+
+a:link,
+a:visited { color:$color-link; }
+a:active { color:$color-link-active; }
+a:hover { color:$color-link-hover; }
+// a.read-more { }
+// p { margin:12px 0; }
+h1, h2, h3, h4 { font-family: "Merriweather"; margin-bottom:10px; line-height:1.4em; }
+h1 + p, h2 + p, h3 + p, h4 + p,
+h1 + ul, h2 + ul, h3 + ul, h4 + ul { margin-top: 12px; }
+// hr { margin:18px 0; border-bottom-color: #c8c8c8; border-bottom-width: 1px; border-left-style: none; border-bottom-style: solid; border-right-style: none; border-top-style: none; }
+// h1 a, h2 a, h3 a { color: #880f35!important; }
+// 
+// dl {  }
+// dt { font-weight:bold;  }
+// dd { margin:0 0 20px; }
+// 
+.column {
+  .content {
+    ul { margin:10px 0 0; padding:0; }
+    li { margin:0 0 5px 0; list-style:none; }
+  }
+}
+// 
+// .header,
+// .top,
+// .content { }
+// .header { position:relative; padding:75px 0px 50px; background:rgb(115,5,45); z-index:0; }
+// .content { padding:30px 40px 30px 40px; width:780px;  }
+// .content .sidebar { background:rgb(236,235,234); float:right; padding:40px; width:200px; margin:-31px -40px 20px 20px; }
+// .logo { position:absolute; left:30px; top:20px; z-index:-1; }
+// 
+// .global-navigation { position:absolute; width:840px; bottom:0; margin:0 auto; text-align:right; color:rgb(255,235,245);}
+// .global-navigation dl { margin:0 0 5px; padding:0; }
+// .global-navigation dt { margin:0; padding:0; }
+// .global-navigation dd { display:inline-block; margin:0 10px; }
+// .global-navigation dd a { color:rgb(255,165,200); }
+// .global-navigation dd a:hover { color:rgb(255,25,115); }
+// 
+// .main-promotion { border-bottom:4px solid rgb(115,5,45); border-top:1px solid rgb(255,165,200); font:normal 16px/22px georgia; min-height:243px; padding:40px 40px 40px 40px; background:rgb(236,235,234); background:rgba(255,255,255,0.3); }
+// .main-promotion h1 { margin:15px 0 10px; font:normal 40px/50px georgia;  }
+// .main-promotion ul { margin:10px 0 0; padding:0; }
+// .main-promotion li { margin:0 0 0 0px; font-size:14px; color:rgb(255,25,115); list-style:none; }
+// .main-promotion li a { color:rgb(255,165,200); }
+// .dec { line-height: 34px; font:normal 20px/30px georgia; color: #330000; margin:0; }
+// 
+// 
+// table { border-collapse:collapse; }
+// th,
+// td { vertical-align:top; padding:0 12px 12px 0;}
+
+
+/* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
+
+
+/*.promotion-box a { font-size:16px; color:#cc2358; }
+*/
+.address-contact dl { display:block; margin:0; padding-top:5px; }
+.address-contact dt { font-weight:bold; display:inline-block; margin-right:5px; }
+.address-contact dd { display:inline-block; margin:0 0 0px 0; }
+
+.photo { border:1px solid white; padding:10px; margin:0 0 10px 10px; float:right; }
+
+.map { margin:0px 0 10px 0; }
+.map > div { border:4px solid white; }
+
+.message {  -webkit-border-radius:10px; margin-top:-10px; margin-bottom:20px; padding:10px; color:rgb(255,240,235); background-color:rgb(235,105,10); }
+.message b,
+.message strong {  color:rgb(75,30,0); }
+
+.sticker {  -webkit-border-radius:2px; -webkit-box-shadow:2px 2px 2px rgba(0,0,0,0.2); width:240px; min-height:140px; margin-top:-10px; margin-bottom:20px; padding:10px; color:rgb(50,50,50); background-color:rgb(235,235,130); }
+.sticker h3 { color:rgb(50,50,50); font:normal 30px/35px georgia; margin:0 0 10px;}
+.sticker b,
+.sticker strong {  color:rgb(75,30,0); }
+
+.flash-notice,
+.flash-error { width:auto; -webkit-border-radius:10px; margin-top:-10px; margin-bottom:20px; padding:10px; }
+.flash-notice {  color:rgb(5,115,60); background-color:rgb(235,255,240); }
+.flash-error {  color:rgb(185,5,70); background-color:rgb(255,165,200); }
+
+.important-notice { width:auto; -webkit-border-radius:10px; margin-top:0px; margin-bottom:20px; padding:10px; color:rgb(185,5,70); background-color:rgb(255,165,200); }
+
+.base-error,
+.validation-error { color:rgb(185,5,70); background-color:rgb(255,165,200); -webkit-border-radius:10px; padding:10px;  }
+.base-error { margin-bottom:20px;}
+.validation-error { padding-top:10px; margin-top:0px; }
+
+.banner .content { font-size:1.1em;}
+
+
+
+.date-day-name,
+.date-day-number,
+.date-month-name { }
+
+.time-number { font-weight:bold; }
+
+.course-started { font:italic 11px/14px verdana; }
+.course-fully_booked { font:italic 11px/14px verdana; }
+
+
+
+.reciept .date-day-name,
+.reciept .date-day-number,
+.reciept .date-month-name { font-weight:bold; }
+
+.banner {
+  .outer-containor {
+    padding-top:140px;
+    .navigation {
+      position:absolute;
+      top:-120px;
+      font-size:1.2em;
+      letter-spacing:.1em;
+      @include container;
+      overflow:visible;
+      a:link,
+      a:visited {
+        text-decoration:none;
+        color:white;
+        font-weight:bold;
+      }
+      td {
+        vertical-align:bottom;
+      }
+    }
+    .inner-containor {
+      padding:30px 0;
+      bottom:0;
+      width:100%;
+      background:rgba(255,255,255,0.7);
+    }
+    .intro {
+      font-family: Merriweather;
+      font-size: 1.5em;
+      line-height: 1.6em;
+    }
+  }
+  border-bottom:1px solid rgb(235,235,235);
+}
+
+.main {
+  .inner-containor {
+    background:white;
+    padding:40px;
+  }
+}
+
+

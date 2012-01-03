@@ -1,0 +1,38 @@
+.footer {
+  .inner-containor {
+    color:rgb(215,215,215);
+    padding:50px 0;
+    width:100%;
+    @include background-image(linear-gradient(#777, #222));
+    a:link {
+      color:rgb(215,215,215);
+      text-decoration:none;
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+    li {
+      margin-bottom:5px;
+      list-style:none;
+      div {
+        @include inline-block;
+        position:relative;
+        top:-7px;
+        margin-left:-35px;
+        background:no-repeat center center;
+        width:25px;
+        height:30px;
+        float:left;
+      }
+      .icon-map-pin  { 
+        top:3px;
+        background-image:image-url('footer_icon_map_pin.png');
+      }
+      .icon-phone    { background-image:image-url('footer_icon_phone.png');}
+      .icon-mail     { background-image:image-url('footer_icon_letter.png');}
+      .icon-twitter  { background-image:image-url('footer_icon_twitter.png');}
+      .icon-facebook { background-image:image-url('footer_icon_facebook.png');}
+    }
+    
+  }
+}

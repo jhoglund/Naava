@@ -14,55 +14,49 @@
       'jquery-ui.js',         |
       'jrails'                |
       )                       |
-    - javascript_tag do
-      = yield(:javascript)
-    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Istok+Web:400,700,400italic,700italic'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Merriweather:400,300,700,900'
+    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = yield(:header)
     = yield(:include_resource)
-    :css
-      #{yield(:stylesheet)}
-    %body
-    .background-image
-    .canvas
-      .vertical-spacer
-      .canvas-background
-      .header
-        = image_tag "logo_444_white.png", :class => "logo"
-        .global-navigation
-          %dl
-            %dd= link_to_unless_current 'Hem', root_path
-            |
-            %dd= link_to_unless_current 'Tider och priser', sessions_path
-            |
-            %dd= link_to_unless_current "Kontakt och adress", location_path
-            |
-            %dd= link_to_unless_current 'Om Ashtanga Yoga', about_ashtanga_yoga_path
-      - if yield :top
-        .top
-          = yield :top
-      .content
-        - unless flash.empty?
-          .flash
-            - if flash[:notice]
-              %p.flash-notice= flash[:notice]
-            - if flash[:error]
-              %p.flash-error= flash[:error]
-        = yield
-      .vertical-spacer-break
-      .footer
-        %dl
-          - if logged_in?
-            %dd= link_to "Bokningar", admin_bookings_path
-            %dd= link_to "Klasser", admin_sessions_path
-            %dd= link_to "Kurser", admin_course_types_path
-            %dd= link_to "Deltagare", admin_participants_path
-            %dd= link_to "Närvaro", search_admin_attendants_path
-            %dd= link_to "Betalningar", admin_payments_path
-            %dd= link_to "Kuppongtyper", admin_coupon_types_path
-            %dd= link_to "Köpta kupponger", admin_coupons_path
-            %dd= link_to "Instruktörer", admin_instructors_path
-            %dd= link_to "Logout", user_session_path, :method => :delete
-        %dl
+    %body.bp
+      .banner
+        .outer-containor
+          .inner-containor
+            .grid
+              %table.navigation
+                %tbody
+                  %tr
+                    %td
+                      &nbsp;&nbsp;&nbsp;
+                      = link_to_unless_current 'Hem', root_path
+                      &nbsp;&nbsp;&nbsp;
+                    %td= link_to_unless_current 'Tider och priser', sessions_path
+                    %td
+                      %a(href="/")
+                        %img.logo(src="#{ asset_path 'logo.png' }" width=219 height=99)
+                    %td= link_to_unless_current "Kontakt och adress", location_path
+                    %td= link_to_unless_current 'Om Ashtanga Yoga', about_ashtanga_yoga_path
+              = yield :banner
+      .main
+        .outer-containor
+          .inner-containor
+            .grid
+              - unless flash.empty?
+                .flash
+                  - if flash[:notice]
+                    %p.flash-notice= flash[:notice]
+                  - if flash[:error]
+                    %p.flash-error= flash[:error]
+              
+              = yield
+      = render :partial => '/layouts/footer'
+      .background{ :style => "background-image: url(#{asset_path("top_banners/#{@background || 'schema'}"+".jpg")})" }
+      = yield :popup
+      
     - if Rails.env.production?
       :javascript
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

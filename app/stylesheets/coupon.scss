@@ -1,0 +1,36 @@
+.gift-certificate .column input[type=text],
+.gift-certificate .column textarea { width:100%; }
+.gift-certificate .column label { display:block;  }
+
+/*.gift-certificate .validation-error { padding-left:66px; padding-top:10px; margin-top:-42px; }*/
+.gift-certificate-card { position:relative; color:white; background:rgb(185,5,70); border-bottom:10px solid rgb(115,5,45); width:444px; -webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.2); padding:20px 30px 20px 30px; }
+
+.gift-certificate-to,
+.gift-certificate-from,
+.gift-certificate-value,
+.gift-certificate-personal-message { position:relative; font-family:monospace; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }
+.gift-certificate-names,
+.gift-certificate-value,
+.gift-certificate-personal-message { margin:40px 0; }
+.gift-certificate-value,
+.gift-certificate-personal-message { width:400px; }
+.gift-certificate-to b,
+.gift-certificate-from b,
+.gift-certificate-value b,
+.gift-certificate-personal-message b { position:absolute; left:10px; top:-25px; font-family:Georgia; font-weight:normal; letter-spacing:1px; color:white; }
+.gift-certificate-names .gift-certificate-to,
+.gift-certificate-names .gift-certificate-from { display:inline-block; width:170px; }
+.gift-certificate-value,
+.gift-certificate-names .gift-certificate-to,
+.gift-certificate-names .gift-certificate-from { min-height:20px; }
+.gift-certificate-personal-message { min-height:120px; }
+
+.gift-certificate-names .gift-certificate-from { margin-left:20px; }
+.gift-certificate-card .header { margin:-30px; background:rgb(115,5,45) url('/images/logo_444_white.png') no-repeat 30px 80px; }
+
+.gift-certificate-card h2 { color: white; margin:80px 0 50px; font-size:26px; }
+.gift-certificate-footer { color:white; font:normal 12px/16px verdana; }
+.gift-certificate-footer a,
+.gift-certificate-footer b { color:rgb(255,150,95); }
+.gift-certificate-canvas { margin:0 0 0 80px; }
+.gift-certificate-card a { color: white; }
