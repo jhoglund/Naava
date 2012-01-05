@@ -2,10 +2,10 @@ class Admin::CouponsController < Admin::AdminController
   # GET /coupons
   # GET /coupons.xml
   def index
-    @coupons = Coupon.all.sort_by{|c| c.valid? ? 0:1 }.paginate(:page => params[:page])
+    @coupons = Coupon.all.sort_by{|c| c.is_valid? ? 0:1 }.paginate(:page => params[:page])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @coupons }
     end
   end
@@ -14,7 +14,7 @@ class Admin::CouponsController < Admin::AdminController
     @coupon = Coupon.find_by_token(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @coupon }
     end
   end
@@ -22,7 +22,7 @@ class Admin::CouponsController < Admin::AdminController
   def new
     @coupon = Coupon.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @coupon }
     end
   end

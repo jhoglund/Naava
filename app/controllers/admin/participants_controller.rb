@@ -6,7 +6,7 @@ class Admin::ParticipantsController < Admin::AdminController
     @participants ||= Participant.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @participants }
     end
   end
@@ -22,7 +22,7 @@ class Admin::ParticipantsController < Admin::AdminController
     @participant = Participant.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @participant }
     end
   end
@@ -33,7 +33,7 @@ class Admin::ParticipantsController < Admin::AdminController
     @participant = Participant.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @participant }
     end
   end

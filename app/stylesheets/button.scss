@@ -1,6 +1,12 @@
+.button-link {
+  @include inline-block;
+  @include background-image(linear-gradient(left, white, $color-blue-light, white));
+  margin:10px -10px;
+  padding:10px 40px;
+}
 
 a.button { background:rgb(145,5,55); color:rgb(255,235,245); padding:5px 20px; -webkit-border-radius:5px; -webkit-box-shadow:3px 3px 5px rgba(0,0,0,0.2); }
 a.button:hover { color:rgb(255,165,200); }
 a.button-default { background:rgb(235,105,10); }
 a.button-default:hover { color:rgb(75,30,0); }
-.button-bar { text-align:right; padding:20px 0; margin:20px 0; border-top:1px solid #c8c8c8; }
+.button-bar { text-align:right; }

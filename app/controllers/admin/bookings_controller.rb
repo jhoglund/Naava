@@ -4,7 +4,7 @@ class Admin::BookingsController < Admin::AdminController
     @bookings = Booking.by_booker(:course => params[:course_id], :session => params[:session_id]).paginate(:page => params[:page])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @bookings }
     end
   end
@@ -13,7 +13,7 @@ class Admin::BookingsController < Admin::AdminController
     @booking = Booking.find_by_token(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @booking }
     end
   end
@@ -25,7 +25,7 @@ class Admin::BookingsController < Admin::AdminController
     @booking.participant = Participant.new
     
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @booking }
     end
   end

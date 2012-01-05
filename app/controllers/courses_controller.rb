@@ -5,7 +5,7 @@ class CoursesController < BookingsController
     @courses = Course.active.current_or_planned.find(:all, :order => 'course_types.updated_at desc')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @courses }
     end
   end
@@ -15,7 +15,7 @@ class CoursesController < BookingsController
       @course = Course.find(params[:id])
       @booking = Booking.new(:booker => @course)
       respond_to do |format|
-        format.html {  }# show.html.erb
+        format.html {  }# show.html.haml
         format.xml  { render :xml => @course }
       end
     rescue ActiveRecord::RecordNotFound

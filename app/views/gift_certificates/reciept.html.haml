@@ -1,5 +1,6 @@
 .gift-certificate-canvas
   = render :partial => '/gift_certificates/gift_certificate', :object => @payment.item
+  
   %p
     = link_to 'Skriv ut',  print_gift_certificate_path(:id => @payment.item.to_param, :format => 'pdf')
 - unless @payment.item.paid?

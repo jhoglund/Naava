@@ -3,7 +3,7 @@ class Admin::GiftCertificatesController < Admin::AdminController
     @gift_certificate = GiftCertificate.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @gift_certificate }
     end
   end
@@ -12,7 +12,7 @@ class Admin::GiftCertificatesController < Admin::AdminController
     @gift_certificate = GiftCertificate.find_by_token(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @gift_certificate }
     end
   end
@@ -21,7 +21,7 @@ class Admin::GiftCertificatesController < Admin::AdminController
     @gift_certificate = GiftCertificate.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @gift_certificate }
     end
   end

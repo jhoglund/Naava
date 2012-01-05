@@ -1,121 +1,99 @@
-/* line 2, ../../../app/stylesheets/coupon.scss */
-.gift-certificate .column input[type=text],
-.gift-certificate .column textarea {
-  width: 100%;
-}
+/*
+Syntax error: Undefined variable: "$blueprint-fixed-font-family".
+        on line 11 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/coupon.scss
 
-/* line 3, ../../../app/stylesheets/coupon.scss */
-.gift-certificate .column label {
-  display: block;
-}
+6: .gift-certificate-card { position:relative; color:white; background:rgb(185,5,70); border-bottom:10px solid rgb(115,5,45); width:444px; -webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.2); padding:20px 30px 20px 30px; }
+7: 
+8: .gift-certificate-to,
+9: .gift-certificate-from,
+10: .gift-certificate-value,
+11: .gift-certificate-personal-message { position:relative; font-family:$blueprint-fixed-font-family; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }
+12: .gift-certificate-names,
+13: .gift-certificate-value,
+14: .gift-certificate-personal-message { margin:40px 0; }
+15: .gift-certificate-value,
+16: .gift-certificate-personal-message { width:400px; }
 
-/*.gift-certificate .validation-error { padding-left:66px; padding-top:10px; margin-top:-42px; }*/
-/* line 6, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-card {
-  position: relative;
-  color: white;
-  background: #b90546;
-  border-bottom: 10px solid #73052d;
-  width: 444px;
-  -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
-  padding: 20px 30px 20px 30px;
-}
-
-/* line 11, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-to,
-.gift-certificate-from,
-.gift-certificate-value,
-.gift-certificate-personal-message {
-  position: relative;
+Backtrace:
+/Users/jhoglund/Projects/Nava/application/app/stylesheets/coupon.scss:11
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/variable.rb:49:in `_perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/node.rb:40:in `perform'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:216:in `visit_prop'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:236:in `visit_rule'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:300:in `_render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:248:in `render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/util.rb:297:in `silence_sass_warnings'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:248:in `render'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:202:in `update_stylesheets'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:200:in `each'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/rack.rb:51:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/commands/server.rb:111
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:29:in `gem_original_require'
+/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:29:in `require'
+./script/server:3
+*/
+body:before {
+  white-space: pre;
   font-family: monospace;
-  -webkit-border-radius: 10px;
-  background: white;
-  color: black;
-  padding: 10px 20px;
-}
-
-/* line 14, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-names,
-.gift-certificate-value,
-.gift-certificate-personal-message {
-  margin: 40px 0;
-}
-
-/* line 16, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-value,
-.gift-certificate-personal-message {
-  width: 400px;
-}
-
-/* line 20, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-to b,
-.gift-certificate-from b,
-.gift-certificate-value b,
-.gift-certificate-personal-message b {
-  position: absolute;
-  left: 10px;
-  top: -25px;
-  font-family: Georgia;
-  font-weight: normal;
-  letter-spacing: 1px;
-  color: white;
-}
-
-/* line 22, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-names .gift-certificate-to,
-.gift-certificate-names .gift-certificate-from {
-  display: inline-block;
-  width: 170px;
-}
-
-/* line 25, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-value,
-.gift-certificate-names .gift-certificate-to,
-.gift-certificate-names .gift-certificate-from {
-  min-height: 20px;
-}
-
-/* line 26, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-personal-message {
-  min-height: 120px;
-}
-
-/* line 28, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-names .gift-certificate-from {
-  margin-left: 20px;
-}
-
-/* line 29, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-card .header {
-  margin: -30px;
-  background: #73052d url("/images/logo_444_white.png") no-repeat 30px 80px;
-}
-
-/* line 31, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-card h2 {
-  color: white;
-  margin: 80px 0 50px;
-  font-size: 26px;
-}
-
-/* line 32, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-footer {
-  color: white;
-  font: normal 12px/16px verdana;
-}
-
-/* line 34, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-footer a,
-.gift-certificate-footer b {
-  color: #ff965f;
-}
-
-/* line 35, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-canvas {
-  margin: 0 0 0 80px;
-}
-
-/* line 36, ../../../app/stylesheets/coupon.scss */
-.gift-certificate-card a {
-  color: white;
-}
+  content: "Syntax error: Undefined variable: \"$blueprint-fixed-font-family\".\A         on line 11 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/coupon.scss\A \A 6: .gift-certificate-card { position:relative; color:white; background:rgb(185,5,70); border-bottom:10px solid rgb(115,5,45); width:444px; -webkit-box-shadow:3px 3px 15px rgba(0,0,0,0.2); padding:20px 30px 20px 30px; }\A 7: \A 8: .gift-certificate-to,\A 9: .gift-certificate-from,\A 10: .gift-certificate-value,\A 11: .gift-certificate-personal-message { position:relative; font-family:$blueprint-fixed-font-family; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }\A 12: .gift-certificate-names,\A 13: .gift-certificate-value,\A 14: .gift-certificate-personal-message { margin:40px 0; }\A 15: .gift-certificate-value,\A 16: .gift-certificate-personal-message { width:400px; }"; }

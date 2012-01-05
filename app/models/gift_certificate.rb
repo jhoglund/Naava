@@ -13,7 +13,7 @@ class GiftCertificate < Coupon
     self.payment.name ||= to_name
     if from_email
       self.payment.save # Make sure the payment is saved
-      Notification.deliver_mail("Tack för ditt köp av presentkortet #{ self.coupon_type.name }", from_email, self, '/gift_certificates/create.text.plain.erb')
+      Notification.deliver_mail("Tack för ditt köp av presentkortet #{ self.coupon_type.name }", from_email, self, '/gift_certificates/create.text.plain.haml')
     end
   end
   

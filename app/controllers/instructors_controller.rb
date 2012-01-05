@@ -4,7 +4,7 @@ class InstructorsController < ApplicationController
     @instructors = Instructor.find(1)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @instructors }
     end
   end
@@ -13,7 +13,7 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @instructor }
     end
   end

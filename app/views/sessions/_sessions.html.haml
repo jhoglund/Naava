@@ -4,10 +4,6 @@
     document.location.href = path
     }
 %table.session-list
-  %colgroup
-    %col{:width => "200"}/
-    %col{:width => "150"}/
-    %col{:width => "10*"}/
   - past_week = nil
   - sessions.each_with_index do |session, index|
     - week = session.starts_at.to_date.cweek.to_i
@@ -15,13 +11,9 @@
     - past_week = week
     - end_week = session == sessions.last || week != sessions[index+1].starts_at.to_date.cweek.to_i
     - if new_week
-      %thead
-        %tr
-          %td{:colspan => "3", :style => "padding-top:30px;border-bottom:1px solid rgb(200,200,200)"}
-            Vecka #{week}
-    - if new_week
       %tbody.gradient-back
         %tr{ :class => session.canceled? ? "canceled-session" : '' }
+          %td= "Vecka #{week}"
           %td{:nowrap => "", :style => "padding-left:10px"}
             = l(session.date, :format => :long_day)
           %td{:nowrap => "", :style => "padding-left:10px"}

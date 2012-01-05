@@ -1,30 +1,28 @@
+- @background = 'priser'
 .columns.columns-eighteen-six
   .column
     .content
-      %h2 Våra kurser
-      %p
-        På Nava Yoga har vi både nybörjar- och fortsättningskurser. För varje enskild kurs, anpassar vi våra klasser
-        efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
-        har yogat tidigare att komma vidare i ditt utövande.
+      - content_for :banner do
+        .columns.columns-twentyfour
+          .column
+            .content
+              .headline
+                %h2 
+                  Våra kurser
+              .intro
+                På Nava Yoga har vi både nybörjar- och fortsättningskurser. För varje enskild kurs, anpassar vi våra klasser
+                efter varje individs behov. Vi hjälper dig som är ny att komma igång och att förstå grunderna och dig som
+                har yogat tidigare att komma vidare i ditt utövande.
       - content_for :header do
         :javascript
           function bookCourse(path){
             document.location.href = path
           }
-      %table
-        - unless @planned_courses.blank?
-          %tr
-            %td{:style => "padding:0"}
-              %h3 Kommande kurser
+      %table.course-info
         - @planned_courses.each do |course|
           = render :partial => '/sessions/course', :object => course
-        - unless @courses.blank?
-          %tr
-            %td{:style => "padding:0"}
-              %h3 Pågående kurser
         - @courses.each do |course|
           = render :partial => '/sessions/course', :object => course
-      %hr/
       
   .column
     .content
@@ -53,4 +51,5 @@
 .columns.columns-twentyfour
   .column
     .content
+      %hr/
       = render :partial => 'calendar'

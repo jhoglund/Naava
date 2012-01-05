@@ -4,7 +4,7 @@ class Admin::CashesController < Admin::AdminController
     @cashes = Cash.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @cashes }
     end
   end
@@ -13,7 +13,7 @@ class Admin::CashesController < Admin::AdminController
     @cash = Cash.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @cash }
     end
   end
@@ -22,7 +22,7 @@ class Admin::CashesController < Admin::AdminController
     @cash = Cash.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @cash }
     end
   end

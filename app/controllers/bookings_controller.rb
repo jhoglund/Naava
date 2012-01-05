@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
           if params[:as_email]
             @object = @booking
             @object.payment.reciept = PaypalReciept.new
-            render :text => "<pre>#{render_to_string("/#{@booking.booker.class.name.tableize}/#{params[:as_email]}.text.plain.erb")}</pre>"
+            render :text => "<pre>#{render_to_string("/#{@booking.booker.class.name.tableize}/#{params[:as_email]}.text.plain.haml")}</pre>"
           else
             render :template => "/#{@booking.booker.class.name.tableize}/reciept"
           end

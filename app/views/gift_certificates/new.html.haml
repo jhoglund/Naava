@@ -1,49 +1,75 @@
-%h2
-  Presentkort för #{@gift_certificate.coupon_type.name.downcase} (#{number_to_currency(@gift_certificate.coupon_type.value)})
-%p= @gift_certificate.coupon_type.description
-- form_for(@gift_certificate) do |f|
-  = base_errors_for(@gift_certificate)
-  .columns.three-columns.gift-certificate
-    .column{:style => "width:200px"}
-      %h3 Till
-      %p
-        = f.label GiftCertificate.human_attribute_name(:to_name)
-        = f.text_field :to_name
-      %p
-        = f.label GiftCertificate.human_attribute_name(:to_email)
-        = f.text_field :to_email
-      %p
-        = f.label GiftCertificate.human_attribute_name(:to_phone)
-        = f.text_field :to_phone
-      /
-        <p>
-        <haml:loud> f.label GiftCertificate.human_attribute_name(:to_address) </haml:loud>
-        <haml:loud> f.text_area :to_address, :rows =&amp;gt; 4 </haml:loud>
-        </p>
-    .column{:style => "width:200px"}
-      %h3 Från
-      %p
-        = f.label GiftCertificate.human_attribute_name(:from_name)
-        = f.text_field :from_name
-      %p
-        = f.label GiftCertificate.human_attribute_name(:from_email)
-        = f.text_field :from_email
-      %p
-        = f.label GiftCertificate.human_attribute_name(:from_phone)
-        = f.text_field :from_phone
-      /
-        <p>
-        <haml:loud> f.label GiftCertificate.human_attribute_name(:from_address) </haml:loud>
-        <haml:loud> f.text_area :from_address, :rows =&amp;gt; 4 </haml:loud>
-        </p>
-    .column{:style => "width:300px"}
+.columns.columns-twelve
+  .column
+    .content
       %h3
-        = GiftCertificate.human_attribute_name(:message)
-        \:
-      %p
-        = f.text_area :message, :rows => 11
-      %p
-        = captcha_block 'Skriv in texten från bilden nedan i nedanstående fält'
-      %p{:style => "text-align:right; margin-top:30px"}
-        = link_to_function "Köp presentkort för <b>#{number_to_currency(@gift_certificate.coupon_type.value)}</b>", 'forms["new_gift_certificate"].submit()', :class => 'button button-default'
-  = f.hidden_field :coupon_type_id
+        Presentkort för #{@gift_certificate.coupon_type.name.downcase} (#{number_to_currency(@gift_certificate.coupon_type.value)})
+      %p= @gift_certificate.coupon_type.description
+      - form_for(@gift_certificate) do |f|
+        = base_errors_for(@gift_certificate)
+        %hr
+        %table.form-listing
+          %colgroup
+            %col{ :width => '80' }
+            %col{ :width => '*' }
+          %tr
+            %th
+            %td
+              %h4 Presentkortet är till
+          %tr
+            %th
+              = f.label GiftCertificate.human_attribute_name(:to_name)
+            %td
+              .full-width
+                = f.text_field :to_name
+          %tr
+            %th
+            %td
+              %hr
+              %h4 Presentkortet är från
+          %tr
+            %th
+              = f.label GiftCertificate.human_attribute_name(:from_name)
+            %td
+              .full-width
+                = f.text_field :from_name
+          %tr
+            %th
+              = f.label GiftCertificate.human_attribute_name(:from_email)
+            %td
+              .full-width
+                = f.text_field :from_email
+          %tr
+            %th
+              = f.label GiftCertificate.human_attribute_name(:from_phone)
+            %td
+              .full-width
+                = f.text_field :from_phone
+          %tr
+            %th
+            %td
+              %hr
+              %h4= GiftCertificate.human_attribute_name(:message)
+          %tr
+            %th
+            %td
+              .full-width
+                = f.text_area :message, :rows => 5
+            %tr
+              %th
+              %td
+                %hr
+            %tr
+              %th
+              %td
+                .full-width
+                  = captcha_block 'Skriv in texten från bilden nedan i nedanstående fält'
+          
+            %tr
+              %th
+              %td
+                %hr
+                  .button-bar
+                    = render :partial => '/shared/submit', :locals => { :title => "Köp presentkort för <b>#{number_to_currency(@gift_certificate.coupon_type.value)}</b>", :form => f, :function => 'forms["new_gift_certificate"].submit()' }
+                  
+          
+        = f.hidden_field :coupon_type_id

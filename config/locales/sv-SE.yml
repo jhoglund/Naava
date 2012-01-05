@@ -23,7 +23,7 @@ sv-SE:
         too_short: "är för kort (minimum är {{count}} tecken)"
         wrong_length: "har fel längd (ska vara {{count}} tecken)"
         phone_or_email: "Antingen email eller telefon behövs anges"
-        coupon_type_phone_or_email: "Antingen email eller telefon behövs anges till för både motagaren och avsändaren av presentkortet"
+        coupon_type_phone_or_email: "Antingen email eller telefon behövs anges för avsändaren av presentkortet"
       template: 
         body: "Det var problem med följande fält:"
         header: 
@@ -181,7 +181,7 @@ sv-SE:
     edit: Ändra
     show: Visa
     back: "Tillbaks"
-    cancel_booking: Avboka
+    cancel_booking: Avboka reservation
   messages:
     destroy_confirmation: "Är du säker?"
   misc: 

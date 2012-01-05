@@ -9,11 +9,11 @@ Syntax error: Undefined mixin 'background-image'.
 4:     padding:50px 0;
 5:     width:100%;
 6:     @include background-image(linear-gradient(#777, #222));
-7:     a:link {
-8:       color:rgb(215,215,215);
-9:       text-decoration:none;
-10:       &:hover {
-11:         text-decoration:underline;
+7:     a {
+8:       &:link, &:visited {
+9:         color:rgb(215,215,215);
+10:       }
+11:       text-decoration:none;
 
 Backtrace:
 /Users/jhoglund/Projects/Nava/application/app/stylesheets/footer.scss:6:in `background-image'
@@ -107,4 +107,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'background-image'.\A         on line 6 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/footer.scss, in `background-image'\A         from line 6 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/footer.scss\A \A 1: .footer {\A 2:   .inner-containor {\A 3:     color:rgb(215,215,215);\A 4:     padding:50px 0;\A 5:     width:100%;\A 6:     @include background-image(linear-gradient(#777, #222));\A 7:     a:link {\A 8:       color:rgb(215,215,215);\A 9:       text-decoration:none;\A 10:       &:hover {\A 11:         text-decoration:underline;"; }
+  content: "Syntax error: Undefined mixin 'background-image'.\A         on line 6 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/footer.scss, in `background-image'\A         from line 6 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/footer.scss\A \A 1: .footer {\A 2:   .inner-containor {\A 3:     color:rgb(215,215,215);\A 4:     padding:50px 0;\A 5:     width:100%;\A 6:     @include background-image(linear-gradient(#777, #222));\A 7:     a {\A 8:       &:link, &:visited {\A 9:         color:rgb(215,215,215);\A 10:       }\A 11:       text-decoration:none;"; }

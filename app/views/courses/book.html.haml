@@ -1,53 +1,71 @@
 - content_for :title do
   Anmälan till kursen #{@booker.name}
-- if @booker.next_session
-  %h2
-    Kursanmälan till
-    %strong= t("misc.day_names.#{@booker.default_session.starts_at.strftime("%A").downcase}", :count => 2)
-    klockan
-    %strong= l @booker.default_session.starts_at, :format => :time
-    till
-    %strong= l @booker.default_session.ends_at, :format => :time
-%p= @booker.description
-%p
-  Nästa klasstillfälle är #{l(@booking.booker.next_session.starts_at, :format => :long)}
-- unless @booking.booker.free?
-  %p
-    I kursen ingår totalt #{@booker.sessions.active.count} klasser.
-    Kursen kostar
-    = succeed "," do
-      %strong= number_to_currency(@booker.original_price, :precision => 0)
-    vilket är #{number_to_currency(@booker.original_price_per_session, :precision => 0)} (#{@booker.original_discount}%) per klasstillfälle mot att betala vårt drop-in pris på
-    \#{number_to_currency(Course.dropin_price, :precision => 0)} per klass.
-  - if @booker.started?
-    %p
-      Denna kurs har redan börjat och vi har hittills hunnit med #{@booker.sessions.active.expired.count} klasser.
-      - if @booker.remaining_sessions?
-        Du får ett rabatterat pris vid köp av kursen och betalar totalt #{number_to_currency(@booker.price, :precision => 0)} vilket
-        är #{number_to_currency(@booker.price_per_session, :precision => 0)}  (#{@booker.discount}%)  per återstående klass.
+.columns.columns-twelve
+  .column
+    .content
+      %h2= @booker.name
+      %span{:style => "font-size:16px"}
+        %strong= t("misc.day_names.#{@booker.default_session.starts_at.strftime("%A").downcase}", :count => 2).titlecase
+        klockan
+        %strong= l @booker.default_session.starts_at, :format => :time
+        till
+        %strong= l @booker.default_session.ends_at, :format => :time
+      - unless @booker.description.blank?
+        %p
+          = @booker.description
+      - if @booker.fully_booked?
+        %span.course-fully_booked
+          Denna kursen är fullbokad. Om du vill bli uppsatt på en väntelista kan du kontakta Jonas Höglund på email #{mail_to "jonas@navayoga.se"} eller på telefon
+          %strong 0709-961600
       - else
-        Du kan fortfarande anmäla dig till den återstående klassen (#{l(@booker.next_session.starts_at, :format => :long)}) för
-        är
-        = succeed "." do
-          %strong= number_to_currency(@booker.next_session.price, :precision => 0)
-- if @booker.comment?
-  %p.important-notice= @booker.comment
-%hr/
-= base_errors_for(@booking)
-- form_for(@booking, :url => (@coupon ? book_gift_certificate_course_path : book_course_path)) do |f|
-  = f.hidden_field :booker_type
-  = f.hidden_field :booker_id
-  = render :partial => '/bookings/form', :object => f
-  - if @coupon
-    %p
-      = check_box_tag :coupon_id, @coupon.token, true
-      Jag vill betala med presentkort med referencenummber
-      %strong= @coupon.token
-  %p.button-bar
-    = link_to_function "Anmäl", 'forms["new_booking"].submit()', :class => 'button button-default'
-  /
-    <p>
-    <haml:loud> f.submit 'Anmäl' </haml:loud>
-    </p>
-%h2 Kurstillfällen
-= render :partial => 'sessions', :object => @booker.sessions.asc
+        %ul.course-info
+          %li
+            Kursen kostar 
+            %strong= number_to_currency(@booker.original_price, {:precision => 0})
+            för totalt 
+            %strong= @booker.sessions.active.count
+            tillfällen.
+
+          - if @booker.started?
+            - @expired_count = @booker.sessions.expired.active.count
+            %span.course-started
+              Denna kurs började den
+              = succeed "." do
+                %strong= l @booker.starts_at.to_date, :format => :long
+              Vi har hittills hunnit med #{@expired_count} klass#{@expired_count > 1 ? 'er' : ''}.
+              - if @booker.sessions.current.count > 1
+                Du får fortfarande ett rabatterat pris vid köp av resterande kurs, och du betalar endast
+                %strong= number_to_currency(@booker.price, {:precision => 0})
+                vilket
+                är
+                %strong= number_to_currency(@booker.price_per_session, {:precision => 0})
+                (#{@booker.discount}%)  per återstående klass (totalt #{@booker.sessions.current.active.count} klasser).
+              - else
+                Du kan fortfarande anmäla dig till den återstående klassen (#{l(@booker.next_session.starts_at, :format => :long)}) för
+                = succeed "." do
+                  %strong= number_to_currency(@booker.next_session.price, {:precision => 0})
+            - else
+              %li
+                Första kurstillfället är den
+                %strong= l(@booker.starts_at.to_date, :format => :long)
+        - unless @booker.fully_booked?
+          %hr/
+          %h3 Anmäl dig till kursen
+          = base_errors_for(@booking)
+          - form_for(@booking, :url => (@coupon ? book_gift_certificate_course_path : book_course_path)) do |f|
+            = f.hidden_field :booker_type
+            = f.hidden_field :booker_id
+            = render :partial => '/bookings/form', :object => f
+            - if @coupon
+              %p
+                = check_box_tag :coupon_id, @coupon.token, true
+                Jag vill betala med presentkort med referencenummber
+                %strong= @coupon.token
+            .button-bar
+              = render :partial => '/shared/submit', :locals => { :title => 'Skicka anmälan', :form => f, :function => 'forms["new_booking"].submit()' }
+              
+  .column
+    .content
+      %h2 &nbsp;
+      = render :partial => 'sessions', :object => @booker.sessions.asc
+      

@@ -1,10 +1,17 @@
-%h2= @instructor.name
-%div{:style => "position:relative; margin-right:320px; font:14px/20px georgia"}
-  = image_tag @instructor.avatar.url(:medium), :style => 'position:absolute; right:-320px'
-  = @instructor.bio
-  %p
-    Du når #{h @instructor.first_name} bäst på
-    %strong= mail_to @instructor.email
-    eller på telefon
-    = succeed "." do
-      %strong= @instructor.phone
+.columns.columns-twentyfour
+  .column
+    .content
+      %h2= @instructor.name
+.columns.columns-eighteen-six
+  .column
+    .content
+      = @instructor.bio.gsub(/\n/,'<br>')
+      %p
+        Du når #{h @instructor.first_name} bäst på
+        %strong= mail_to @instructor.email
+        eller på telefon
+        = succeed "." do
+          %strong= @instructor.phone
+  .column
+    .content
+      = image_tag @instructor.avatar.url(:medium)

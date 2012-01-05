@@ -17,7 +17,7 @@ class GiftCertificatesController < ApplicationController
     begin
       @coupon = Coupon.find(:first, :conditions => { :token =>params[:id] })
       respond_to do |format|
-        format.html # show.html.erb
+        format.html # show.html.haml
         format.xml  { render :xml => @coupon }
       end
     rescue ActiveRecord::RecordNotFound

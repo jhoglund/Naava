@@ -1,11 +1,23 @@
 = hidden_field_tag :coupon, @coupon.to_param
-.columns.three-columns
-  .column
-    = form.label :name, t('activerecord.attributes.booking.name')
-    = form.text_field :name
-  .column
-    = form.label :email, t('activerecord.attributes.booking.email')
-    = form.text_field :email
-  .column
-    = form.label :phone, t('activerecord.attributes.booking.phone')
-    = form.text_field :phone
+%table.form-listing
+  %colgroup
+    %col{ :width => '80' }
+    %col{ :width => '*' }
+  %tr
+    %th
+      = form.label :name, t('activerecord.attributes.booking.name')
+    %td
+      .full-width
+        = form.text_field :name
+  %tr
+    %th
+      = form.label :email, t('activerecord.attributes.booking.email')
+    %td
+      .full-width
+        = form.text_field :email
+  %tr
+    %th
+      = form.label :phone, t('activerecord.attributes.booking.phone')
+    %td
+      .full-width
+        = form.text_field :phone

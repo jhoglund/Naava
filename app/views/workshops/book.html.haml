@@ -1,28 +1,31 @@
-- content_for :title do
-  Anmälan till #{@booker.name}
-%h2= @booker.name
-%p= @booker.description
-%p
-  Kursen kostar
-  = succeed "." do
-    %strong= number_to_currency(@booker.original_price, :precision => 0)
-- if @booker.comment?
-  %p.important-notice= @booker.comment
-= render :partial => 'sessions', :object => @booker.sessions.asc
-%hr/
-= base_errors_for(@booking)
-- form_for(@booking, :url => (@coupon ? book_gift_certificate_workshop_path : book_workshop_path)) do |f|
-  = f.hidden_field :booker_type
-  = f.hidden_field :booker_id
-  = render :partial => '/bookings/form', :object => f
-  - if @coupon
-    %p
-      = check_box_tag :coupon_id, @coupon.token, true
-      Jag vill betala med presentkort med referencenummber
-      %strong= @coupon.token
-  %p.button-bar
-    = link_to_function "Anmäl", 'forms["new_booking"].submit()', :class => 'button button-default'
-  /
-    <p>
-    <haml:loud> f.submit 'Anmäl' </haml:loud>
-    </p>
+- @background = 'priser'
+- unless @booker.expired?
+  - content_for :title do
+    Anmälan till #{@booker.name}
+  .columns.columns-twelve
+    .column
+      .content
+        %h2= @booker.name
+        %p= @booker.description
+        %ul.course-info
+          %li
+            Kursen kostar
+            = succeed "." do
+              %strong= number_to_currency(@booker.original_price, :precision => 0)
+        - if @booker.comment?
+          %p.important-notice= @booker.comment
+        %hr/
+        = render :partial => 'sessions', :object => @booker.sessions.asc
+        %hr/
+        = base_errors_for(@booking)
+        - form_for(@booking, :url => (@coupon ? book_gift_certificate_workshop_path : book_workshop_path)) do |f|
+          = f.hidden_field :booker_type
+          = f.hidden_field :booker_id
+          = render :partial => '/bookings/form', :object => f
+          - if @coupon
+            %p
+              = check_box_tag :coupon_id, @coupon.token, true
+              Jag vill betala med presentkort med referencenummber
+              %strong= @coupon.token
+          .button-bar
+            = render :partial => '/shared/submit', :locals => { :title => "Skicka anmälan", :form => f, :function => 'forms["new_booking"].submit()' }

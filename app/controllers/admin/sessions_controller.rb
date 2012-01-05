@@ -6,7 +6,7 @@ class Admin::SessionsController < Admin::AdminController
     @sessions = Session.all(:order => 'starts_at').paginate(:page => cookies[:session_page], :per_page => 10)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @sessions }
     end
   end  
@@ -15,7 +15,7 @@ class Admin::SessionsController < Admin::AdminController
     @session = Session.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @session }
     end
   end
@@ -24,7 +24,7 @@ class Admin::SessionsController < Admin::AdminController
     @session = Session.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
     end
   end
 
@@ -32,7 +32,7 @@ class Admin::SessionsController < Admin::AdminController
     @session = Session.new
     @cources = Course.all
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @session }
     end
   end

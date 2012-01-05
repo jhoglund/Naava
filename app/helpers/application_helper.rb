@@ -1,6 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  # Capitalizes a string that may include markup
+  def capitalize str=''
+    str.sub(/(>(.))|(^\w)/){|s| s.upcase }
+  end
+  
   def asset_path(str='.css')
     return "/#{ case str
     when /\.css$/

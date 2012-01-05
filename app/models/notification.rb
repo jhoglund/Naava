@@ -12,7 +12,7 @@ class Notification < ActionMailer::Base
   end
   
   def self.get_template instance, file_name
-    File.join(RAILS_ROOT,'app','views',instance.class.name.tableize,"#{file_name}.text.plain.erb")
+    File.join(RAILS_ROOT,'app','views',instance.class.name.tableize,"#{file_name}.text.plain.haml")
   end
   
 end

@@ -7,7 +7,7 @@
     %th Valid to
   - @coupons.each do |coupon|
     %tr
-      %td= coupon.valid? ? 'X' : ''
+      %td= coupon.is_valid? ? 'X' : ''
       %td
         = coupon.to_name
         = "(#{coupon.available_times})" if coupon.available_times

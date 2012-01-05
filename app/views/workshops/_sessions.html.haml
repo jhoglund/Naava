@@ -1,37 +1,12 @@
-- content_for :header do
-  - javascript_tag do
-    function bookSession(path){
-    document.location.href = path
-    }
-%table.session-list
-  %colgroup
-    %col{:width => "200"}/
-    %col{:width => "150"}/
-    %col{:width => "10*"}/
-  - past_week = nil
-  - sessions.each_with_index do |session, index|
-    - week = session.starts_at.to_date.cweek.to_i
-    - new_week = week != past_week
-    - past_week = week
-    - end_week = session == sessions.last || week != sessions[index+1].starts_at.to_date.cweek.to_i
-    - if new_week
-      %thead
-        %tr
-          %td{:colspan => "3", :style => "padding-top:30px;border-bottom:1px solid rgb(200,200,200)"}
-            Vecka #{week}
-    - if new_week
-      %tbody.gradient-back
-    <tr#{' class="canceled-session"' if session.canceled?}>
-    %td{:nowrap => "", :style => "padding-left:10px"}
-      = l(session.date, :format => :long_day)
-    %td{:nowrap => "", :style => "padding-left:10px"}
-      = l session.starts_at, :format => :time
-      – #{l session.ends_at, :format => :time}
-    - path_to_booking = (defined?(booking_proc) and booking_proc.is_a?(Proc)) ? booking_proc.call(session) : book_session_path(session)
-    %td{:align => "left", :nowrap => "", :style => "padding-left:10px"}
-      - if session.canceled?
-        = session.comment
-    - if session.comment? and !session.canceled?
-      %tr
-        %td.session-list-comment{:colspan => "3"}= session.comment
-    - if end_week
+%h3
+  Tillfällen
+%ul.session-list
+  = list_of(sessions) do |session|
+    %span{ :class => session.canceled? ? 'session-list-canceled' : ''}
+      .session-list-item
+        = l session.starts_at, :format => :time
+        = l(session.date, :format => :long_day)
+      - if session.comment?
+        .session-list-comment
+          Kommentar:
+          = session.comment

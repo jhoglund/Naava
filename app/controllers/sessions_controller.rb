@@ -10,7 +10,7 @@ class SessionsController < BookingsController
     @courses = Course.current.all.sort_by{|c| c.starts_at}
     @planned_courses = Course.planned.all.sort_by{|c| c.starts_at}
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @sessions }
       format.json { render :json => @sessions }
     end
@@ -20,7 +20,7 @@ class SessionsController < BookingsController
     begin
       @session = Session.find(params[:id])
       respond_to do |format|
-        format.html # show.html.erb
+        format.html # show.html.haml
         format.xml  { render :xml => @session }
       end
     rescue ActiveRecord::RecordNotFound

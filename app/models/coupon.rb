@@ -53,7 +53,7 @@ class Coupon < ActiveRecord::Base
     (self.valid_from.nil? or now >= self.valid_from) and (self.valid_to.nil? or self.valid_to >= now)
   end
   
-  def valid? value=nil
+  def is_valid? value=nil
     if self.new_record?
       true
     elsif self.valid_dates
@@ -68,7 +68,7 @@ class Coupon < ActiveRecord::Base
   end
   
   def self.active
-    Coupon.all.select{|coupon| coupon.valid? }
+    Coupon.all.select{|coupon| coupon.is_valid? }
   end
     
   def original_funds
@@ -123,10 +123,10 @@ class Coupon < ActiveRecord::Base
   end
   
   def phone_or_email
-    return true if valid_phone_or_email(self.to_email, self.to_phone) and valid_phone_or_email(self.from_email, self.from_phone)
-    self.errors.add(:to_email, I18n.t('activerecord.errors.messages.invalid')) unless valid_mail(self.to_email) or valid_phone(self.to_phone)
+    return true if valid_phone_or_email(self.from_email, self.from_phone)
+    #self.errors.add(:to_email, I18n.t('activerecord.errors.messages.invalid')) unless valid_mail(self.to_email) or valid_phone(self.to_phone)
+    #self.errors.add(:to_phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone(self.to_phone) or valid_mail(self.to_email)
     self.errors.add(:from_email, I18n.t('activerecord.errors.messages.invalid')) unless valid_mail(self.from_email) or valid_phone(self.from_phone)
-    self.errors.add(:to_phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone(self.to_phone) or valid_mail(self.to_email)
     self.errors.add(:from_phone, I18n.t('activerecord.errors.messages.invalid')) unless valid_phone(self.from_phone) or valid_mail(self.from_email)
     self.errors.add_to_base(I18n.t('activerecord.errors.messages.coupon_type_phone_or_email')) unless valid_phone_or_email(self.to_email, self.to_phone) and valid_phone_or_email(self.from_email, self.from_phone)
     return false

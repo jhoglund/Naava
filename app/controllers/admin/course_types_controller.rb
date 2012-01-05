@@ -4,7 +4,7 @@ class Admin::CourseTypesController < Admin::AdminController
   def index
     @courses = CourseType.find(:all, :order => "id").reverse.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @courses }
     end
   end
@@ -14,7 +14,7 @@ class Admin::CourseTypesController < Admin::AdminController
     @booking = Booking.new(:booker => @course)
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.xml  { render :xml => @course }
     end
   end
@@ -24,7 +24,7 @@ class Admin::CourseTypesController < Admin::AdminController
     @course.sessions.build
     @course.instructor = Instructor.first
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.xml  { render :xml => @course }
     end
   end

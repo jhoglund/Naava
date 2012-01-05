@@ -30,7 +30,7 @@ class Admin::AttendantsController < Admin::AdminController
       @attendants = Attendant.search(:name => params[:name]).all
     end
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @attendants }
     end
   end

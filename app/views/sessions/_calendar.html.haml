@@ -2,56 +2,35 @@
 - include_stylesheet '/javascripts/jquery/plugins/fullcalendar-1.4.7/fullcalendar.css'
 - content_for :header do
   :javascript
-    $(document).ready(function() {
-    $('#calendar').fullCalendar({
-    buttonText:{
-    prev:     '&nbsp;◄&nbsp;',  // left triangle
-    next:     '&nbsp;►&nbsp;',  // right triangle
-    today:    'idag',
-    month:    'månad',
-    week:     'vecka',
-    day:      'dag'
-    },
-    header:{
-    left:   'title',
-    center: '',
-    right:  'prev,next'
-    },
-    firstDay:1,
-    monthNames:['January', 'February', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
-    monthNamesShort:['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
-    dayNames:['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
-    dayNamesShort:['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
-    events: #{@sessions.map(&:to_fullcalendar).to_json},
-    eventRender: function(event, element) {
-    element.attr({
-    title: event.tooltip
-    });
-    }
+    $(function(){
+      $('#calendar').fullCalendar({
+        buttonText:{
+          prev:     '&nbsp;&#9668;&nbsp;',  // left triangle
+          next:     '&nbsp;&#9658;&nbsp;',  // right triangle
+          today:    'idag',
+          month:    'månad',
+          week:     'vecka',
+          day:      'dag'
+        },
+        header:{
+          left:   'title',
+          center: '',
+          right:  'prev,next'
+        },
+        firstDay:1,
+        monthNames:['January', 'February', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+        monthNamesShort:['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+        dayNames:['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
+        dayNamesShort:['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
+        events: #{@sessions.map(&:to_fullcalendar).to_json},
+        eventRender: function(event, element) {
+          element.attr({
+            title: event.tooltip
+          });
+        }
+      })
     })
-    });
-    //$(document).ready(function() {
-    //    $('#calendar').fullCalendar({
-    //      buttonText:{
-    //          prev:     '&nbsp;◄&nbsp;',  // left triangle
-    //          next:     '&nbsp;►&nbsp;',  // right triangle
-    //          today:    'idag',
-    //          month:    'månad',
-    //          week:     'vecka',
-    //          day:      'dag'
-    //      },
-    //      header:{
-    //          left:   'title',
-    //          center: '',
-    //          right:  'prev,next'
-    //      },
-    //      firstDay:1,
-    //      monthNames:['January', 'February', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
-    //      monthNamesShort:['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
-    //      dayNames:['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
-    //      dayNamesShort:['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
-    //      events:
-    //    })
-    //});
+    
+  
 %a{:name => "schema"}
   #calendar

@@ -1,9 +1,5 @@
 - unless @coupon.nil?
-  .gift-certificate-canvas
-    = render :partial => '/gift_certificates/gift_certificate', :object => @coupon
-    %p
-      = link_to 'Skriv ut',  print_gift_certificate_path(:format => 'pdf')
-  - if not @coupon.valid?
+  - if not @coupon.is_valid?
     %p.flash-error
       Presentkortet är fullt utnyttjat
   - else
@@ -15,9 +11,13 @@
           av totalt #{@coupon.original_funds} #{@coupon.coupon_type.valid_for.constantize.human_name(:count => @coupon.original_funds).downcase}.
         - else
           = number_to_currency(@coupon.available_funds)
+  .gift-certificate-canvas
+    = render :partial => '/gift_certificates/gift_certificate', :object => @coupon
+    %p
+      = link_to 'Skriv ut',  print_gift_certificate_path(:format => 'pdf')
   %hr/
   %p
-    - if @coupon.valid?
+    - if @coupon.is_valid?
       %h2 Använd ditt presentkort
       - if @coupon.valid_for?(:course)
         = render :partial => '/courses/course', :collection => Course.active.asc.all, :locals => { :coupon_type => @coupon }

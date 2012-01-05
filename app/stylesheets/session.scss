@@ -4,14 +4,49 @@
 .compact-session-list .date-day-number { font-weight:bold; }
 .compact-session-list .time-number { font-weight:bold; color:rgb(235,10,90); }
 
-.session-list { width:780px; border-collapse: collapse }
-.session-list td { padding:5px; vertical-align:bottom; }
-.session-list td:first-child:first-letter { text-transform:capitalize; }
-.session-list thead td { font-size:16px;  }
-.session-list tbody tr td:first-child { padding-left:20px }
-.session-list tbody.gradient-back { background:rgb(236,235,234); background:rgba(255,255,255,0.5); }
-.session-list a.read-more { color:rgb(50,50,50); padding:0 10px; }
-.session-list .date-day-number { font-weight:bold; color:rgb(235,10,90); font-size:18px; }
-.session-list .time-number { font-weight:bold; }
-.session-list td.session-list-comment { padding:0 0 10px 10px!important; font-style:italic; color:rgb(100,100,100); }
-.canceled-session td { background:rgb(255,165,90); }
+.course-info { 
+  border-collapse: collapse;
+  ul.course-facts {
+    margin-bottom:18px;
+    li {
+      margin:0;
+    }
+  }
+  .signup {
+    @include inline-block;
+    @include background-image(linear-gradient(left, white, $color-blue-light, white));
+    margin:10px -10px;
+    padding:10px 40px;
+  }
+  
+  tr {
+    border-bottom:1px solid $color-gray-light;
+  }
+  td { 
+    padding:10px 0;
+  }
+  tr:first-child {
+    td { 
+      padding-top:0;
+    }
+  }
+  tr:last-child {
+    border:none;
+  }  
+}
+.session-list {
+  .session-list-comment { font-style:italic; color:rgb(100,100,100); }
+  .session-list-canceled { 
+    margin:10px 0;
+    .session-list-item {
+      color:$color-gray-medium; 
+      text-decoration:line-through;
+      margin-bottom:-5px; 
+    }
+  }
+  .date-day-number,
+  .date-month-name {
+    font-weight:bold;
+  }
+}
+

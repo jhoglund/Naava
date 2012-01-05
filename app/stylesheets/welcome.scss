@@ -16,3 +16,32 @@
     }
   }
 }
+
+.map {
+  border:1px solid $color-gray-light;
+}
+
+#map_canvas {
+  height:170px;
+}
+
+.banner {
+  .headline {
+    h3 {
+      margin-bottom:0;
+      font-size:1em;
+      font-family:"Istok Web";
+    }
+    
+    strong {
+      color:$color-pink-dark;
+    }
+  }
+  .signup {
+    @include inline-block;
+    @include background-image(linear-gradient(left, rgba(255,255,255,0), white, rgba(255,255,255,0)));
+    margin:-10px;
+    padding:10px;
+  }
+}
+

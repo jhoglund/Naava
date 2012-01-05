@@ -29,33 +29,32 @@
               %ol
                 %li 
                   .icon-twitter
-                  = link_to "twitter.com/navayoga", "http://twitter.com/navayoga"
+                  = link_to "twitter.com/NavaYogaStudio", "http://twitter.com/NavaYogaStudio"
                 %li 
                   .icon-facebook
-                  = link_to "facebook.com/navayoga", "http://facebook.com/navayoga"
+                  = link_to "Facebook", "http://www.facebook.com/pages/Nava-Yoga/127411713956193"
   
-      - if logged_in?
-        .grid
+        - if logged_in?
           .columns.columns-twentyfour
             .column
               .content
                 %hr
                 %span= link_to("Bokningar", admin_bookings_path)
-                ,
+                |
                 %span= link_to("Klasser", admin_sessions_path)
-                ,
+                |
                 %span= link_to("Kurser", admin_course_types_path)
-                ,
+                |
                 %span= link_to("Deltagare", admin_participants_path)
-                ,
+                |
                 %span= link_to("Närvaro", search_admin_attendants_path)
-                ,
+                |
                 %span= link_to("Betalningar", admin_payments_path)
-                ,
+                |
                 %span= link_to("Kuppongtyper", admin_coupon_types_path)
-                ,
+                |
                 %span= link_to("Köpta kupponger", admin_coupons_path)
-                ,
+                |
                 %span= link_to("Instruktörer", admin_instructors_path)
-                ,
+                |
                 %span= link_to("Logout", user_session_path, :method => :delete)

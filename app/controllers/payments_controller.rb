@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
                   end
 
     respond_to do |format|
-      format.html { render :template => File.join(RAILS_ROOT,'app','views', table_name,"reciept.html.erb") }
+      format.html { render :template => File.join(RAILS_ROOT,'app','views', table_name,"reciept.html.haml") }
       format.xml  { render :xml => @payment }
     end
   end
@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
     if @coupon
       if @coupon.valid_for?(@payment.item.booker)
         begin
-          if @coupon.valid?
+          if @coupon.is_valid?
             #@payment.update_attributes(:reciept => @coupon, :value => 1)
             @coupon.use!(@payment, @payment.item.booker.price)
             flash[:notice] = "Betalning med värdekupong med referensnumer #{params[:coupon_id]} var lyckad"

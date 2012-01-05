@@ -8,7 +8,7 @@
 .gift-certificate-to,
 .gift-certificate-from,
 .gift-certificate-value,
-.gift-certificate-personal-message { position:relative; font-family:monospace; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }
+.gift-certificate-personal-message { position:relative; font-family:$blueprint-fixed-font-family; -webkit-border-radius:10px; background:white; color:black; padding:10px 20px; }
 .gift-certificate-names,
 .gift-certificate-value,
 .gift-certificate-personal-message { margin:40px 0; }
@@ -19,7 +19,7 @@
 .gift-certificate-value b,
 .gift-certificate-personal-message b { position:absolute; left:10px; top:-25px; font-family:Georgia; font-weight:normal; letter-spacing:1px; color:white; }
 .gift-certificate-names .gift-certificate-to,
-.gift-certificate-names .gift-certificate-from { display:inline-block; width:170px; }
+.gift-certificate-names .gift-certificate-from { display:inline-block; width:160px; }
 .gift-certificate-value,
 .gift-certificate-names .gift-certificate-to,
 .gift-certificate-names .gift-certificate-from { min-height:20px; }

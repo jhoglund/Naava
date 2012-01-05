@@ -1,0 +1,22 @@
+/* line 1, ../../../app/stylesheets/popup.scss */
+.popup {
+  /* must be initially hidden */
+  display: none;
+  /* place overlay on top of other elements */
+  z-index: 10000;
+  /* styling */
+  background-color: #333;
+  width: 852px;
+  height: 510px;
+}
+/* line 14, ../../../app/stylesheets/popup.scss */
+.popup .close {
+  background-image: url('/images/close_overlay.png?1325604235');
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  z-index: 10001;
+}
