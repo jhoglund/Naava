@@ -9,11 +9,11 @@ Syntax error: Undefined mixin 'blueprint-typography'.
 9: $blueprint-font-size: 15px;
 10: 
 11: @include blueprint-typography;
-12: 
-13: // html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
-14: // body { margin:0; font:normal 13px/18px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
-15: // .canvas { position:relative; width:950px; margin:0 auto; z-index:0; z-index:0;}
-16: // .canvas-background { position:absolute; top:0; left:0; width:860px; height:100%; background:rgb(255,255,255); opacity:0.5; filter:alpha(opacity=50%); z-index:-1; }
+12: a:link { text-decoration: none; }
+13: 
+14: a:link,
+15: a:visited { color:$color-link; }
+16: a:active { color:$color-link-active; }
 
 Backtrace:
 /Users/jhoglund/Projects/Nava/application/app/stylesheets/base.scss:11:in `blueprint-typography'
@@ -85,4 +85,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'blueprint-typography'.\A         on line 11 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/base.scss, in `blueprint-typography'\A         from line 11 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/base.scss\A \A 6: \A 7: $blueprint-font-family: \"Istok Web\", \"lucida sans\", \"Helvetica Neue\", Arial, Helvetica, sans-serif;\A 8: $blueprint-fixed-font-family: \"andale mono\", \"lucida console\", monospace;\A 9: $blueprint-font-size: 15px;\A 10: \A 11: @include blueprint-typography;\A 12: \A 13: // html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }\A 14: // body { margin:0; font:normal 13px/18px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }\A 15: // .canvas { position:relative; width:950px; margin:0 auto; z-index:0; z-index:0;}\A 16: // .canvas-background { position:absolute; top:0; left:0; width:860px; height:100%; background:rgb(255,255,255); opacity:0.5; filter:alpha(opacity=50%); z-index:-1; }"; }
+  content: "Syntax error: Undefined mixin 'blueprint-typography'.\A         on line 11 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/base.scss, in `blueprint-typography'\A         from line 11 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/base.scss\A \A 6: \A 7: $blueprint-font-family: \"Istok Web\", \"lucida sans\", \"Helvetica Neue\", Arial, Helvetica, sans-serif;\A 8: $blueprint-fixed-font-family: \"andale mono\", \"lucida console\", monospace;\A 9: $blueprint-font-size: 15px;\A 10: \A 11: @include blueprint-typography;\A 12: a:link { text-decoration: none; }\A 13: \A 14: a:link,\A 15: a:visited { color:$color-link; }\A 16: a:active { color:$color-link-active; }"; }

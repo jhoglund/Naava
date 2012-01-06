@@ -1,105 +1,592 @@
-/*
-Syntax error: Undefined variable: "$color-gray-light".
-        on line 174 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss, in `background-image'
-        from line 174 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss
-        from line 4 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/development.scss
+/* line 4, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
-Backtrace:
-/Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss:174:in `background-image'
-/Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss:174
-/Users/jhoglund/Projects/Nava/application/app/stylesheets/development.scss:4
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/variable.rb:49:in `_perform'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/node.rb:40:in `perform'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/funcall.rb:76:in `_perform'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/funcall.rb:76:in `map'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/funcall.rb:76:in `_perform'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/node.rb:40:in `perform'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:191:in `visit_mixin'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/fileutils.rb:243:in `inject'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:187:in `each'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:187:in `inject'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:187:in `visit_mixin'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:236:in `visit_rule'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:146:in `visit_import'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:146:in `map'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:146:in `visit_import'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:300:in `_render'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:248:in `render'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/util.rb:297:in `silence_sass_warnings'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/engine.rb:248:in `render'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:202:in `update_stylesheets'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:200:in `each'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin.rb:81:in `update_stylesheets'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin.rb:54:in `check_for_updates'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/rails/../lib/sass/plugin/rack.rb:51:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:95:in `start'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `each'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:92:in `start'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:23:in `start'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/webrick/server.rb:82:in `start'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
-/Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/rails-2.3.5/lib/commands/server.rb:111
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:29:in `gem_original_require'
-/Users/jhoglund/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:29:in `require'
-./script/server:3
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color-gray-light\".\A         on line 174 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss, in `background-image'\A         from line 174 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss\A         from line 4 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/development.scss"; }
+/* line 18, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+.bp-reset-element, body, h1, h2, h3, h4, h5, h6, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, blockquote, q, th, td, caption, table,
+div, span, object, iframe, p,
+pre, a, abbr, acronym, address,
+code, del, dfn, em, img,
+dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend,
+caption, tbody, tfoot, thead, tr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 21, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+blockquote, q {
+  quotes: "" "";
+}
+/* line 67, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+}
+
+/* line 22, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+th, td, caption {
+  float: none !important;
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 23, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 24, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 3, ../../../app/stylesheets/grid.scss */
+.banner,
+.main,
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+/* line 7, ../../../app/stylesheets/grid.scss */
+.banner .grid,
+.main .grid,
+.footer .grid {
+  width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 13, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns,
+.main .grid .columns,
+.footer .grid .columns {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 16, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns .column .content,
+.main .grid .columns .column .content,
+.footer .grid .columns .column .content {
+  position: relative;
+  z-index: 0;
+}
+/* line 19, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns .column .content ol,
+.main .grid .columns .column .content ol,
+.footer .grid .columns .column .content ol {
+  margin: 0;
+  padding: 0;
+}
+/* line 22, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns .column .content ol li,
+.main .grid .columns .column .content ol li,
+.footer .grid .columns .column .content ol li {
+  list-style: none;
+  padding-left: 0;
+}
+/* line 29, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns .column:last-child,
+.main .grid .columns .column:last-child,
+.footer .grid .columns .column:last-child {
+  margin-right: 0;
+}
+/* line 36, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-four-four-four-twelve .column,
+.main .grid .columns-four-four-four-twelve .column,
+.footer .grid .columns-four-four-four-twelve .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-four-four-four-twelve .column, * html
+.main .grid .columns-four-four-four-twelve .column, * html
+.footer .grid .columns-four-four-four-twelve .column {
+  overflow-x: hidden;
+}
+/* line 38, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-four-four-four-twelve .column:last-child,
+.main .grid .columns-four-four-four-twelve .column:last-child,
+.footer .grid .columns-four-four-four-twelve .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 470px;
+  margin-right: 0;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-four-four-four-twelve .column:last-child, * html
+.main .grid .columns-four-four-four-twelve .column:last-child, * html
+.footer .grid .columns-four-four-four-twelve .column:last-child {
+  overflow-x: hidden;
+}
+/* line 45, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-twelve-four-four-four .column,
+.main .grid .columns-twelve-four-four-four .column,
+.footer .grid .columns-twelve-four-four-four .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-twelve-four-four-four .column, * html
+.main .grid .columns-twelve-four-four-four .column, * html
+.footer .grid .columns-twelve-four-four-four .column {
+  overflow-x: hidden;
+}
+/* line 47, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-twelve-four-four-four .column:first-child,
+.main .grid .columns-twelve-four-four-four .column:first-child,
+.footer .grid .columns-twelve-four-four-four .column:first-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 470px;
+  margin-right: 0;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-twelve-four-four-four .column:first-child, * html
+.main .grid .columns-twelve-four-four-four .column:first-child, * html
+.footer .grid .columns-twelve-four-four-four .column:first-child {
+  overflow-x: hidden;
+}
+/* line 54, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-six-nine-nine .column,
+.main .grid .columns-six-nine-nine .column,
+.footer .grid .columns-six-nine-nine .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 350px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-six-nine-nine .column, * html
+.main .grid .columns-six-nine-nine .column, * html
+.footer .grid .columns-six-nine-nine .column {
+  overflow-x: hidden;
+}
+/* line 56, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-six-nine-nine .column:first-child,
+.main .grid .columns-six-nine-nine .column:first-child,
+.footer .grid .columns-six-nine-nine .column:first-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 230px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-six-nine-nine .column:first-child, * html
+.main .grid .columns-six-nine-nine .column:first-child, * html
+.footer .grid .columns-six-nine-nine .column:first-child {
+  overflow-x: hidden;
+}
+/* line 62, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-nine-nine-six .column,
+.main .grid .columns-nine-nine-six .column,
+.footer .grid .columns-nine-nine-six .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 350px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-nine-nine-six .column, * html
+.main .grid .columns-nine-nine-six .column, * html
+.footer .grid .columns-nine-nine-six .column {
+  overflow-x: hidden;
+}
+/* line 64, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-nine-nine-six .column:last-child,
+.main .grid .columns-nine-nine-six .column:last-child,
+.footer .grid .columns-nine-nine-six .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 230px;
+  margin-right: 0;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-nine-nine-six .column:last-child, * html
+.main .grid .columns-nine-nine-six .column:last-child, * html
+.footer .grid .columns-nine-nine-six .column:last-child {
+  overflow-x: hidden;
+}
+/* line 71, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-fourteen-ten .column,
+.main .grid .columns-fourteen-ten .column,
+.footer .grid .columns-fourteen-ten .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 390px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-fourteen-ten .column, * html
+.main .grid .columns-fourteen-ten .column, * html
+.footer .grid .columns-fourteen-ten .column {
+  overflow-x: hidden;
+}
+/* line 73, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-fourteen-ten .column:first-child,
+.main .grid .columns-fourteen-ten .column:first-child,
+.footer .grid .columns-fourteen-ten .column:first-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 550px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-fourteen-ten .column:first-child, * html
+.main .grid .columns-fourteen-ten .column:first-child, * html
+.footer .grid .columns-fourteen-ten .column:first-child {
+  overflow-x: hidden;
+}
+/* line 79, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-sixteen-eight .column,
+.main .grid .columns-sixteen-eight .column,
+.footer .grid .columns-sixteen-eight .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 310px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-sixteen-eight .column, * html
+.main .grid .columns-sixteen-eight .column, * html
+.footer .grid .columns-sixteen-eight .column {
+  overflow-x: hidden;
+}
+/* line 81, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-sixteen-eight .column:first-child,
+.main .grid .columns-sixteen-eight .column:first-child,
+.footer .grid .columns-sixteen-eight .column:first-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 630px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-sixteen-eight .column:first-child, * html
+.main .grid .columns-sixteen-eight .column:first-child, * html
+.footer .grid .columns-sixteen-eight .column:first-child {
+  overflow-x: hidden;
+}
+/* line 87, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-eighteen-six .column,
+.main .grid .columns-eighteen-six .column,
+.footer .grid .columns-eighteen-six .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 230px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-eighteen-six .column, * html
+.main .grid .columns-eighteen-six .column, * html
+.footer .grid .columns-eighteen-six .column {
+  overflow-x: hidden;
+}
+/* line 89, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-eighteen-six .column:first-child,
+.main .grid .columns-eighteen-six .column:first-child,
+.footer .grid .columns-eighteen-six .column:first-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 710px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-eighteen-six .column:first-child, * html
+.main .grid .columns-eighteen-six .column:first-child, * html
+.footer .grid .columns-eighteen-six .column:first-child {
+  overflow-x: hidden;
+}
+/* line 97, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-four .column, .banner .grid .columns-four .column:first-child, .banner .grid .columns-four .column:last-child,
+.main .grid .columns-four .column,
+.main .grid .columns-four .column:first-child,
+.main .grid .columns-four .column:last-child,
+.footer .grid .columns-four .column,
+.footer .grid .columns-four .column:first-child,
+.footer .grid .columns-four .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-four .column, * html .banner .grid .columns-four .column:first-child, * html .banner .grid .columns-four .column:last-child, * html
+.main .grid .columns-four .column, * html
+.main .grid .columns-four .column:first-child, * html
+.main .grid .columns-four .column:last-child, * html
+.footer .grid .columns-four .column, * html
+.footer .grid .columns-four .column:first-child, * html
+.footer .grid .columns-four .column:last-child {
+  overflow-x: hidden;
+}
+/* line 100, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-four .column:last-child,
+.main .grid .columns-four .column:last-child,
+.footer .grid .columns-four .column:last-child {
+  margin-right: 0;
+}
+/* line 107, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-six .column, .banner .grid .columns-six .column:first-child, .banner .grid .columns-six .column:last-child,
+.main .grid .columns-six .column,
+.main .grid .columns-six .column:first-child,
+.main .grid .columns-six .column:last-child,
+.footer .grid .columns-six .column,
+.footer .grid .columns-six .column:first-child,
+.footer .grid .columns-six .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 230px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-six .column, * html .banner .grid .columns-six .column:first-child, * html .banner .grid .columns-six .column:last-child, * html
+.main .grid .columns-six .column, * html
+.main .grid .columns-six .column:first-child, * html
+.main .grid .columns-six .column:last-child, * html
+.footer .grid .columns-six .column, * html
+.footer .grid .columns-six .column:first-child, * html
+.footer .grid .columns-six .column:last-child {
+  overflow-x: hidden;
+}
+/* line 110, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-six .column:last-child,
+.main .grid .columns-six .column:last-child,
+.footer .grid .columns-six .column:last-child {
+  margin-right: 0;
+}
+/* line 117, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-eight .column, .banner .grid .columns-eight .column:first-child, .banner .grid .columns-eight .column:last-child,
+.main .grid .columns-eight .column,
+.main .grid .columns-eight .column:first-child,
+.main .grid .columns-eight .column:last-child,
+.footer .grid .columns-eight .column,
+.footer .grid .columns-eight .column:first-child,
+.footer .grid .columns-eight .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 310px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-eight .column, * html .banner .grid .columns-eight .column:first-child, * html .banner .grid .columns-eight .column:last-child, * html
+.main .grid .columns-eight .column, * html
+.main .grid .columns-eight .column:first-child, * html
+.main .grid .columns-eight .column:last-child, * html
+.footer .grid .columns-eight .column, * html
+.footer .grid .columns-eight .column:first-child, * html
+.footer .grid .columns-eight .column:last-child {
+  overflow-x: hidden;
+}
+/* line 120, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-eight .column:last-child,
+.main .grid .columns-eight .column:last-child,
+.footer .grid .columns-eight .column:last-child {
+  margin-right: 0;
+}
+/* line 127, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-nine .column, .banner .grid .columns-nine .column:first-child, .banner .grid .columns-nine .column:last-child,
+.main .grid .columns-nine .column,
+.main .grid .columns-nine .column:first-child,
+.main .grid .columns-nine .column:last-child,
+.footer .grid .columns-nine .column,
+.footer .grid .columns-nine .column:first-child,
+.footer .grid .columns-nine .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 350px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-nine .column, * html .banner .grid .columns-nine .column:first-child, * html .banner .grid .columns-nine .column:last-child, * html
+.main .grid .columns-nine .column, * html
+.main .grid .columns-nine .column:first-child, * html
+.main .grid .columns-nine .column:last-child, * html
+.footer .grid .columns-nine .column, * html
+.footer .grid .columns-nine .column:first-child, * html
+.footer .grid .columns-nine .column:last-child {
+  overflow-x: hidden;
+}
+/* line 130, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-nine .column:last-child,
+.main .grid .columns-nine .column:last-child,
+.footer .grid .columns-nine .column:last-child {
+  margin-right: 0;
+}
+/* line 137, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-twelve .column, .banner .grid .columns-twelve .column:first-child, .banner .grid .columns-twelve .column:last-child,
+.main .grid .columns-twelve .column,
+.main .grid .columns-twelve .column:first-child,
+.main .grid .columns-twelve .column:last-child,
+.footer .grid .columns-twelve .column,
+.footer .grid .columns-twelve .column:first-child,
+.footer .grid .columns-twelve .column:last-child {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 470px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-twelve .column, * html .banner .grid .columns-twelve .column:first-child, * html .banner .grid .columns-twelve .column:last-child, * html
+.main .grid .columns-twelve .column, * html
+.main .grid .columns-twelve .column:first-child, * html
+.main .grid .columns-twelve .column:last-child, * html
+.footer .grid .columns-twelve .column, * html
+.footer .grid .columns-twelve .column:first-child, * html
+.footer .grid .columns-twelve .column:last-child {
+  overflow-x: hidden;
+}
+/* line 140, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-twelve .column:last-child,
+.main .grid .columns-twelve .column:last-child,
+.footer .grid .columns-twelve .column:last-child {
+  margin-right: 0;
+}
+/* line 146, ../../../app/stylesheets/grid.scss */
+.banner .grid .columns-twentyfour .column,
+.main .grid .columns-twentyfour .column,
+.footer .grid .columns-twentyfour .column {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 950px;
+  margin-right: 0;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .banner .grid .columns-twentyfour .column, * html
+.main .grid .columns-twentyfour .column, * html
+.footer .grid .columns-twentyfour .column {
+  overflow-x: hidden;
+}
+/* line 152, ../../../app/stylesheets/grid.scss */
+.banner .grid .column-break,
+.main .grid .column-break,
+.footer .grid .column-break {
+  clear: both;
+}
+
+/* line 159, ../../../app/stylesheets/grid.scss */
+.outer-containor {
+  position: relative;
+}
+
+/* line 162, ../../../app/stylesheets/grid.scss */
+.inner-containor {
+  position: relative;
+}
+
+/* line 166, ../../../app/stylesheets/grid.scss */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 700px;
+  background: no-repeat top center;
+  z-index: 0;
+}
+
+/* line 7, ../../../app/stylesheets/development.scss */
+body {
+  padding: 20px;
+}
+
+/* line 11, ../../../app/stylesheets/development.scss */
+.columns-swatch .column {
+  padding: 30px 0 0 0;
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 30px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .columns-swatch .column {
+  overflow-x: hidden;
+}
+/* line 14, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-pink-dark {
+  background: #a14f7f;
+}
+/* line 17, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-pink-light {
+  background: #eedce7;
+}
+/* line 20, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-blue-dark {
+  background: #0f73ba;
+}
+/* line 23, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-blue-light {
+  background: #c3d5e1;
+}
+/* line 26, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-yellow-dark {
+  background: #f6db7e;
+}
+/* line 29, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-yellow-light {
+  background: #fdf3b3;
+}
+/* line 32, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-green-dark {
+  background: #396162;
+}
+/* line 35, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-green-light {
+  background: #d6e3e2;
+}
+/* line 38, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-gray-pale {
+  background: #f3f3f3;
+}
+/* line 41, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-gray-light {
+  background: #d9d9d9;
+}
+/* line 44, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-gray-medium {
+  background: #999999;
+}
+/* line 47, ../../../app/stylesheets/development.scss */
+.columns-swatch .column.color-gray-dark {
+  background: #333333;
+}
+
+/* line 52, ../../../app/stylesheets/development.scss */
+.color-link {
+  color: #30709e;
+}
+
+/* line 55, ../../../app/stylesheets/development.scss */
+.color-link-hover {
+  color: #3da4ed;
+}
+
+/* line 58, ../../../app/stylesheets/development.scss */
+.color-link-active {
+  color: #eedce7;
+}

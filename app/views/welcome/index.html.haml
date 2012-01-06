@@ -96,8 +96,9 @@
           Kursen hålls lördagen den **21:e januari mellan 14:00 och 16:00**
           och kostar **#{number_to_currency(350, :precision => 0)}**.        
   
-        %p.signup 
-          = link_to('Läs mer anmäl dig till kursen >>', book_workshop_path(@introduction_course))
+        %p{:style => 'padding-top:10px'}
+          .signup
+            = link_to('Läs mer eller anmäl dig till kursen >>', book_workshop_path(@introduction_course))
         
 .columns.columns-eighteen-six
   .column

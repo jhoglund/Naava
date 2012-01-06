@@ -1,22 +1,14 @@
 $blueprint-grid-columns: 24;
 $blueprint-grid-height: 24;
-$blueprint-container-size: 950px;
+$blueprint-container-size: 960px;
 $blueprint-grid-margin: 10px;
-$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+//$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
 $blueprint-font-family: "Istok Web", "lucida sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 $blueprint-fixed-font-family: "andale mono", "lucida console", monospace;
 $blueprint-font-size: 15px;
 
 @include blueprint-typography;
-
-// html { background:url(/images/background_wall_texture_bottom.jpg) repeat-y rgb(184,179,176); }
-// body { margin:0; font:normal 13px/18px georgia; background:url(/images/background_wall_texture.jpg) no-repeat; }
-// .canvas { position:relative; width:950px; margin:0 auto; z-index:0; z-index:0;}
-// .canvas-background { position:absolute; top:0; left:0; width:860px; height:100%; background:rgb(255,255,255); opacity:0.5; filter:alpha(opacity=50%); z-index:-1; }
-// .canvas .vertical-spacer { width:1px; overflow:0; height:800px; float:left; margin-left:-1px;}
-// .canvas .vertical-spacer-break { clear:both; }
-// 
 a:link { text-decoration: none; }
 
 a:link,
@@ -131,8 +123,6 @@ p { margin:12px 0; }
   margin-right:-20px; 
 }
 
-.banner .content { font-size:1.1em;}
-
 
 
 .date-day-name,
@@ -186,10 +176,20 @@ p { margin:12px 0; }
       
     }
     .inner-containor {
+      position:relative;
       padding:30px 0;
       bottom:0;
       width:100%;
-      background:rgba(255,255,255,0.7);
+      z-index:0;
+      .banner-background {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:white;
+        @include opacity(0.7);
+      }
     }
     .intro {
       font-family: Merriweather;

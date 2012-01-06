@@ -1,23 +1,23 @@
 /*
 Syntax error: Undefined mixin 'container'.
-        on line 7 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss, in `container'
-        from line 7 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss
+        on line 8 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss, in `container'
+        from line 8 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss
 
-2: .main,
 3: .footer {
 4:   position:relative;
 5:   z-index:1;
-6:   .grid {
-7:     @include container;
-8:     // @include showgrid;
-9:     // background:rgba(0,0,0,0.2);
-10:     overflow:visible;
-11:     .columns {
-12:       @include clearfix;
+6:   text-align:left;
+7:   .grid {
+8:     @include container;
+9:     // @include showgrid;
+10:     // background:rgba(0,0,0,0.2);
+11:     // width:$blueprint-grid-width;
+12:     // overflow:visible;
+13:     .columns {
 
 Backtrace:
-/Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss:7:in `container'
-/Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss:7
+/Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss:8:in `container'
+/Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss:8
 /Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
 /Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
@@ -107,4 +107,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'container'.\A         on line 7 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss, in `container'\A         from line 7 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss\A \A 2: .main,\A 3: .footer {\A 4:   position:relative;\A 5:   z-index:1;\A 6:   .grid {\A 7:     @include container;\A 8:     // @include showgrid;\A 9:     // background:rgba(0,0,0,0.2);\A 10:     overflow:visible;\A 11:     .columns {\A 12:       @include clearfix;"; }
+  content: "Syntax error: Undefined mixin 'container'.\A         on line 8 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss, in `container'\A         from line 8 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/grid.scss\A \A 3: .footer {\A 4:   position:relative;\A 5:   z-index:1;\A 6:   text-align:left;\A 7:   .grid {\A 8:     @include container;\A 9:     // @include showgrid;\A 10:     // background:rgba(0,0,0,0.2);\A 11:     // width:$blueprint-grid-width;\A 12:     // overflow:visible;\A 13:     .columns {"; }

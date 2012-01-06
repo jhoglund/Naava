@@ -2,6 +2,11 @@
 body.bp {
   text-align: center;
 }
+/* line 10, ../../../app/stylesheets/ie.scss */
+body.bp .footer .inner-containor .footer-background {
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF777777', endColorstr='#FF222222');
+}
 /* line 44, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
 * html body.bp legend {
   margin: 0px -8px 16px 0;
