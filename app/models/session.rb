@@ -5,6 +5,8 @@ class Session < ActiveRecord::Base
   has_many :bookings, :as => :booker
   has_many :attendants  
   belongs_to :course, :foreign_key => 'course_type_id'
+  belongs_to :course_type, :foreign_key => 'course_type_id'
+  belongs_to :workshop, :foreign_key => 'course_type_id'
   
   named_scope :current, :conditions => "sessions.starts_at > CAST('#{DateTime.now}' AS DATETIME)"
   named_scope :expired, :conditions => "sessions.starts_at < CAST('#{DateTime.now}' AS DATETIME)"
@@ -23,7 +25,7 @@ class Session < ActiveRecord::Base
     { :conditions => "sessions.starts_at BETWEEN date('#{start}') AND date('#{stop}') OR sessions.starts_at BETWEEN date('#{start}') AND date('#{stop}')"}
   }
     
-  delegate :name, :to => :course
+  delegate :name, :to => :course_type
   
   attr_writer :duration_hours, :duration_minutes
   

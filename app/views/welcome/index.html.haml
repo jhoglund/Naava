@@ -68,6 +68,16 @@
     }
     window.onload = initialize
 
+- content_for :body do
+  #fb-root
+  :javascript
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/sv_SE/all.js#xfbml=1&appId=26369706965";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 - content_for :banner do
   .columns.columns-twentyfour
     .column
@@ -136,7 +146,7 @@
       .column
         .content
           %hr
-          %iframe(src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FNava-Yoga%2F127411713956193&amp;send=false&amp;layout=standard&amp;width=310&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=21&amp;appId=26369706965" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:310px; height:30px;" allowTransparency="true")
+          .fb-like(data-href="http://www.facebook.com/pages/Nava-Yoga/127411713956193" data-send="false" data-width="310" data-show-faces="true" data-font="lucida grande")
           %hr
           :markdown
             ### Ge någon lite yoga

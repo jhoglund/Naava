@@ -1563,24 +1563,47 @@ a.button-default:hover {
 .footer .inner-containor li div {
   *display: inline;
 }
-/* line 39, ../../../app/stylesheets/footer.scss */
+/* line 38, ../../../app/stylesheets/footer.scss */
+.footer .inner-containor li div.footer-fb-like {
+  margin-top: -7px;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+}
+/* line 40, ../../../app/stylesheets/footer.scss */
+.footer .inner-containor li div.footer-fb-like, .footer .inner-containor li div.footer-fb-like div {
+  top: 0px;
+  margin-left: 0px;
+  float: none;
+}
+/* line 45, ../../../app/stylesheets/footer.scss */
+.footer .inner-containor li div.footer-fb-like div {
+  padding: 5px 0 0 5px;
+}
+/* line 7, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.footer .inner-containor li div.footer-fb-like {
+  *display: inline;
+}
+/* line 52, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-map-pin {
   top: 3px;
   background-image: url('/images/footer_icon_map_pin.png?1325604235');
 }
-/* line 43, ../../../app/stylesheets/footer.scss */
+/* line 56, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-phone {
   background-image: url('/images/footer_icon_phone.png?1325604235');
 }
-/* line 44, ../../../app/stylesheets/footer.scss */
+/* line 57, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-mail {
   background-image: url('/images/footer_icon_letter.png?1325604235');
 }
-/* line 45, ../../../app/stylesheets/footer.scss */
+/* line 58, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-twitter {
   background-image: url('/images/footer_icon_twitter.png?1325604235');
 }
-/* line 46, ../../../app/stylesheets/footer.scss */
+/* line 59, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-facebook {
   background-image: url('/images/footer_icon_facebook.png?1325604235');
 }
