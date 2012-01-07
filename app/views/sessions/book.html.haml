@@ -6,14 +6,17 @@
         - unless @booker.description.blank?
           %p
             = @booker.description
-        - if @booker.course and not @booker.course.description.blank?
+        - if @booker.course_type and not @booker.course_type.description.blank?
           %p
-            = @booker.course.description
+            = @booker.course_type.description
         %ul.course-info
           %li
             = capitalize(l(@booker.starts_at, :format => :long))
           %li
-            Passet är #{reformat_time(@booker.duration)} långt och kostar #{number_to_currency(@booker.price, :precision => 0)}.
+            - if @booker.course
+              Passet är #{reformat_time(@booker.duration)} långt och kostar #{number_to_currency(@booker.price, :precision => 0)}.
+            - if @booker.workshop
+              Passet är #{reformat_time(@booker.duration)} långt.
         %hr/
         %h3 Anmäl dig till klassen
         - path_to_booking = !params[:coupon_id].blank? ? book_coupon_session_path : book_session_path
