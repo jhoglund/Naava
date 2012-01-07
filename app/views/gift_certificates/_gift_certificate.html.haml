@@ -11,6 +11,7 @@
     .gift-certificate-from
       %b Från
       = gift_certificate.from_name
+  %div{:style=>'clear:both;'}
   .gift-certificate-value
     %b Värde
     = number_to_currency(gift_certificate.value)

@@ -20,9 +20,10 @@
   = link_to l(session.starts_at, :format => :long), admin_session_path(session)
   (#{l(session.duration, :format => :time)})
   %br/
-  - if session.canceled?
 = link_to 'Edit', edit_admin_course_type_path(@course)
 |
-\#{link_to 'Bokningar', admin_course_type_bookings_path(@course)} |
-\#{link_to 'Clone', clone_admin_course_type_path(@course)} |
-\#{link_to 'Kurser', admin_course_types_path}
+= link_to 'Bokningar', admin_course_type_bookings_path(@course)
+|
+= link_to 'Clone', clone_admin_course_type_path(@course)
+|
+= link_to 'Kurser', admin_course_types_path

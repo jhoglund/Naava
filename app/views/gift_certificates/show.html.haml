@@ -8,7 +8,7 @@
       %strong
         - if @coupon.coupon_type.times
           = @coupon.available_funds
-          av totalt #{@coupon.original_funds} #{@coupon.coupon_type.valid_for.constantize.human_name(:count => @coupon.original_funds).downcase}.
+          av totalt #{@coupon.original_funds}.
         - else
           = number_to_currency(@coupon.available_funds)
   .gift-certificate-canvas
@@ -18,8 +18,9 @@
   %hr/
   %p
     - if @coupon.is_valid?
-      %h2 Använd ditt presentkort
-      - if @coupon.valid_for?(:course)
-        = render :partial => '/courses/course', :collection => Course.active.asc.all, :locals => { :coupon_type => @coupon }
-      - elsif @coupon.valid_for?(:session)
-        = render :partial => '/sessions/sessions', :object => Session.current.asc.all, :locals => { :booking_proc => proc{|session| return book_coupon_session_path(@coupon, session) } }
+      - if @coupon.valid_for?(:course) and Course.current.count and Course.current.active.count > 0
+        %h2 Använd ditt presentkort till en kurs
+        = render :partial => '/courses/course', :collection => Course.current.active.all, :locals => { :coupon_type => @coupon }
+      - if @coupon.valid_for?(:session) and Session.current.active.count > 0
+        %h2 Använd ditt presentkort till en klass
+        = render :partial => '/sessions/sessions', :object => Session.current.active.asc.all, :locals => { :booking_proc => proc{|session| return book_coupon_session_path(@coupon, session) } }

@@ -3,6 +3,7 @@ sv-SE:
   book: boka
   create_booking: skapa_bokning
   courses: kurser
+  course_types: kurs_typer
   sessions: klasser
   participants: deltagare
   new: ny
