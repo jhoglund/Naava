@@ -1,5 +1,6 @@
 - content_for :header do
   %script{ :type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false&language=sv-SE" }
+  %script{ :type => "text/javascript", :src => "http://widgets.twimg.com/j/2/widget.js" }
   :javascript
     var tag = document.createElement('script');
     tag.src = "http://www.youtube.com/player_api";
@@ -63,24 +64,6 @@
     		  player.stopVideo();
     		}
       });
-      var latlng = new google.maps.LatLng(56.172058,14.860364);
-      var myOptions = {
-        zoom: 15,
-        disableDefaultUI: true,
-        draggable: false,
-        zoomControl: true,
-        scrollwheel: false,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-      var marker = new google.maps.Marker({
-            position: latlng, 
-            map: map, 
-            title:"Här hittar du Nava Yoga"
-        });
-        var infowindow = new google.maps.InfoWindow({ content: "<b>Här hittar du Nava Yoga</b><br>Lorem ipsum dolor sit amet.<br> Ut enim ad minim veniam quis." });
-        //infowindow.open(map,marker);
       
     }
     window.onload = initialize
@@ -153,6 +136,8 @@
     .columns-nine
       .column
         .content
+          %iframe(src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FNava-Yoga%2F127411713956193&amp;send=false&amp;layout=standard&amp;width=310&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=21&amp;appId=26369706965" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:310px; height:30px;" allowTransparency="true")
+          %hr
           :markdown
             ### Ge någon lite yoga
             Överraska någon med ett presentkort.
@@ -164,11 +149,33 @@
           
       .column.column-last
         .content
-          .map
-            #map_canvas
-          :markdown
-            Vi finns på **Södra Fogdelyckegatan 28**.
-            
+          :javascript
+            new TWTR.Widget({
+              version: 2,
+              type: 'profile',
+              rpp: 3,
+              interval: 30000,
+              width: 'auto',
+              height: 150,
+              theme: {
+                shell: {
+                  background: '#d9d9d9',
+                  color: '#ffffff'
+                },
+                tweets: {
+                  background: '#ffffff',
+                  color: '#333333',
+                  links: '#30709e'
+                }
+              },
+              features: {
+                scrollbar: true,
+                loop: false,
+                live: false,
+                behavior: 'all'
+              }
+            }).render().setUser('NavaYogaStudio').start();
+          
 
   .column.column-last
     .content
