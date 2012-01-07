@@ -1629,7 +1629,7 @@ function _renderDaySegs(segs, rowCnt, view, minLeft, maxLeft, getRow, dayContent
 		seg.left = left;
 		seg.outerWidth = right - left;
 	}
-	segmentContainer[0].innerHTML = html; // faster than html()
+	segmentContainer.html(html); // Fix by Jonas. Use .html() instead of innerHTML for IE compatibility
 	eventElements = segmentContainer.children();
 	
 	// retrieve elements, run through eventRender callback, bind handlers

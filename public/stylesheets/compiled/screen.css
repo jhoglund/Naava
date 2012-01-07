@@ -288,77 +288,79 @@ caption {
   color: #111111;
 }
 
-/* line 12, ../../../app/stylesheets/base.scss */
+/* line 13, ../../../app/stylesheets/base.scss */
 a:link {
   text-decoration: none;
 }
 
-/* line 15, ../../../app/stylesheets/base.scss */
+/* line 16, ../../../app/stylesheets/base.scss */
 a:link,
 a:visited {
   color: #30709e;
 }
 
-/* line 16, ../../../app/stylesheets/base.scss */
+/* line 17, ../../../app/stylesheets/base.scss */
 a:active {
   color: #eedce7;
 }
 
-/* line 17, ../../../app/stylesheets/base.scss */
+/* line 18, ../../../app/stylesheets/base.scss */
 a:hover {
   color: #3da4ed;
 }
 
-/* line 18, ../../../app/stylesheets/base.scss */
+/* line 19, ../../../app/stylesheets/base.scss */
 h1, h2, h3, h4 {
   font-family: "Merriweather";
   margin-bottom: 10px;
   line-height: 1.4em;
 }
 
-/* line 20, ../../../app/stylesheets/base.scss */
+/* line 21, ../../../app/stylesheets/base.scss */
 h1 + p, h2 + p, h3 + p, h4 + p,
 h1 + ul, h2 + ul, h3 + ul, h4 + ul {
   margin-top: 12px;
 }
 
-/* line 21, ../../../app/stylesheets/base.scss */
+/* line 22, ../../../app/stylesheets/base.scss */
 hr {
-  margin: 18px 0;
-  border-bottom-color: #d9d9d9;
-  border-bottom-width: 1px;
-  border-left-style: none;
-  border-bottom-style: solid;
-  border-right-style: none;
-  border-top-style: none;
+  background: #d9d9d9;
+  color: #d9d9d9;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+  margin: 12px 0!important;
 }
 
-/* line 23, ../../../app/stylesheets/base.scss */
+/* line 27, ../../../app/stylesheets/base.scss */
 dt {
   font-weight: bold;
 }
 
-/* line 24, ../../../app/stylesheets/base.scss */
+/* line 28, ../../../app/stylesheets/base.scss */
 dd {
   margin: 0 0 20px;
 }
 
-/* line 25, ../../../app/stylesheets/base.scss */
+/* line 29, ../../../app/stylesheets/base.scss */
 p {
   margin: 12px 0;
 }
 
-/* line 28, ../../../app/stylesheets/base.scss */
+/* line 32, ../../../app/stylesheets/base.scss */
 .captcha label {
   font-weight: normal;
 }
 
-/* line 34, ../../../app/stylesheets/base.scss */
+/* line 38, ../../../app/stylesheets/base.scss */
 .column .content ul {
   margin: 10px 0 0;
   padding: 0;
 }
-/* line 35, ../../../app/stylesheets/base.scss */
+/* line 39, ../../../app/stylesheets/base.scss */
 .column .content li {
   margin: 0 0 5px 0;
   list-style: none;
@@ -367,27 +369,27 @@ p {
 /* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
 /*.promotion-box a { font-size:16px; color:#cc2358; }
 */
-/* line 72, ../../../app/stylesheets/base.scss */
+/* line 76, ../../../app/stylesheets/base.scss */
 .address-contact dl {
   display: block;
   margin: 0;
   padding-top: 5px;
 }
 
-/* line 73, ../../../app/stylesheets/base.scss */
+/* line 77, ../../../app/stylesheets/base.scss */
 .address-contact dt {
   font-weight: bold;
   display: inline-block;
   margin-right: 5px;
 }
 
-/* line 74, ../../../app/stylesheets/base.scss */
+/* line 78, ../../../app/stylesheets/base.scss */
 .address-contact dd {
   display: inline-block;
   margin: 0 0 0px 0;
 }
 
-/* line 76, ../../../app/stylesheets/base.scss */
+/* line 80, ../../../app/stylesheets/base.scss */
 .photo {
   border: 1px solid white;
   padding: 10px;
@@ -395,17 +397,17 @@ p {
   float: right;
 }
 
-/* line 78, ../../../app/stylesheets/base.scss */
+/* line 82, ../../../app/stylesheets/base.scss */
 .map {
   margin: 0px 0 10px 0;
 }
 
-/* line 79, ../../../app/stylesheets/base.scss */
+/* line 83, ../../../app/stylesheets/base.scss */
 .map > div {
   border: 4px solid white;
 }
 
-/* line 81, ../../../app/stylesheets/base.scss */
+/* line 85, ../../../app/stylesheets/base.scss */
 .message {
   margin-top: -10px;
   margin-bottom: 20px;
@@ -418,12 +420,12 @@ p {
   background-image: -ms-linear-gradient(left, #ffffff, #eedce7, #ffffff);
   background-image: linear-gradient(left, #ffffff, #eedce7, #ffffff);
 }
-/* line 87, ../../../app/stylesheets/base.scss */
+/* line 91, ../../../app/stylesheets/base.scss */
 .message strong {
   color: #d0278b;
 }
 
-/* line 95, ../../../app/stylesheets/base.scss */
+/* line 99, ../../../app/stylesheets/base.scss */
 .flash-notice,
 .flash-error {
   width: auto;
@@ -432,7 +434,7 @@ p {
   padding: 10px;
 }
 
-/* line 101, ../../../app/stylesheets/base.scss */
+/* line 105, ../../../app/stylesheets/base.scss */
 .flash-notice {
   color: #396162;
   background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(50%, #d6e3e2), color-stop(100%, #ffffff));
@@ -443,7 +445,7 @@ p {
   background-image: linear-gradient(left, #ffffff, #d6e3e2, #ffffff);
 }
 
-/* line 105, ../../../app/stylesheets/base.scss */
+/* line 109, ../../../app/stylesheets/base.scss */
 .flash-error {
   color: #a14f7f;
   background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(50%, #eedce7), color-stop(100%, #ffffff));
@@ -454,7 +456,7 @@ p {
   background-image: linear-gradient(left, #ffffff, #eedce7, #ffffff);
 }
 
-/* line 110, ../../../app/stylesheets/base.scss */
+/* line 114, ../../../app/stylesheets/base.scss */
 .important-notice {
   width: auto;
   -webkit-border-radius: 10px;
@@ -465,7 +467,7 @@ p {
   background-color: #ffa5c8;
 }
 
-/* line 113, ../../../app/stylesheets/base.scss */
+/* line 117, ../../../app/stylesheets/base.scss */
 .base-error,
 .validation-error {
   color: #a14f7f;
@@ -473,12 +475,12 @@ p {
   padding: 10px;
 }
 
-/* line 118, ../../../app/stylesheets/base.scss */
+/* line 122, ../../../app/stylesheets/base.scss */
 .base-error {
   margin-bottom: 20px;
 }
 
-/* line 119, ../../../app/stylesheets/base.scss */
+/* line 123, ../../../app/stylesheets/base.scss */
 .validation-error {
   padding-top: 10px;
   padding-right: 20px;
@@ -486,37 +488,37 @@ p {
   margin-right: -20px;
 }
 
-/* line 132, ../../../app/stylesheets/base.scss */
+/* line 136, ../../../app/stylesheets/base.scss */
 .time-number {
   font-weight: bold;
 }
 
-/* line 134, ../../../app/stylesheets/base.scss */
+/* line 138, ../../../app/stylesheets/base.scss */
 .course-started {
   font: italic 11px/14px verdana;
 }
 
-/* line 135, ../../../app/stylesheets/base.scss */
+/* line 139, ../../../app/stylesheets/base.scss */
 .course-fully_booked {
   font: italic 11px/14px verdana;
 }
 
-/* line 141, ../../../app/stylesheets/base.scss */
+/* line 145, ../../../app/stylesheets/base.scss */
 .reciept .date-day-name,
 .reciept .date-day-number,
 .reciept .date-month-name {
   font-weight: bold;
 }
 
-/* line 143, ../../../app/stylesheets/base.scss */
+/* line 147, ../../../app/stylesheets/base.scss */
 .banner {
   border-bottom: 1px solid #ebebeb;
 }
-/* line 144, ../../../app/stylesheets/base.scss */
+/* line 148, ../../../app/stylesheets/base.scss */
 .banner .outer-containor {
   padding-top: 140px;
 }
-/* line 146, ../../../app/stylesheets/base.scss */
+/* line 150, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation {
   position: absolute;
   top: -130px;
@@ -530,14 +532,14 @@ p {
   font-weight: bold;
   color: #fdf3b3;
 }
-/* line 156, ../../../app/stylesheets/base.scss */
+/* line 160, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation a:link,
 .banner .outer-containor .navigation a:visited {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
-/* line 161, ../../../app/stylesheets/base.scss */
+/* line 165, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation .column {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -560,7 +562,7 @@ p {
 * html .banner .outer-containor .navigation .column {
   overflow-x: hidden;
 }
-/* line 167, ../../../app/stylesheets/base.scss */
+/* line 171, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation .column:first-child {
   display: inline;
   float: left;
@@ -571,7 +573,7 @@ p {
 * html .banner .outer-containor .navigation .column:first-child {
   overflow-x: hidden;
 }
-/* line 170, ../../../app/stylesheets/base.scss */
+/* line 174, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation .column.logo {
   position: relative;
   top: -84px;
@@ -584,7 +586,7 @@ p {
 * html .banner .outer-containor .navigation .column.logo {
   overflow-x: hidden;
 }
-/* line 178, ../../../app/stylesheets/base.scss */
+/* line 182, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .inner-containor {
   position: relative;
   padding: 30px 0;
@@ -592,7 +594,7 @@ p {
   width: 100%;
   z-index: 0;
 }
-/* line 184, ../../../app/stylesheets/base.scss */
+/* line 188, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .inner-containor .banner-background {
   position: absolute;
   top: 0;
@@ -603,56 +605,56 @@ p {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 194, ../../../app/stylesheets/base.scss */
+/* line 198, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .intro {
   font-family: Merriweather;
   font-size: 1.3em;
   line-height: 1.6em;
 }
 
-/* line 204, ../../../app/stylesheets/base.scss */
-.main .inner-containor {
+/* line 208, ../../../app/stylesheets/base.scss */
+.main-content .inner-containor {
   background: white;
   padding: 40px;
 }
 
-/* line 210, ../../../app/stylesheets/base.scss */
+/* line 214, ../../../app/stylesheets/base.scss */
 table.form-listing {
   margin-bottom: 0;
 }
-/* line 212, ../../../app/stylesheets/base.scss */
+/* line 216, ../../../app/stylesheets/base.scss */
 table.form-listing th, table.form-listing td {
   padding: 0 0 10px;
 }
-/* line 214, ../../../app/stylesheets/base.scss */
+/* line 218, ../../../app/stylesheets/base.scss */
 table.form-listing tr:last-child th, table.form-listing tr:last-child td {
   padding-bottom: 0;
 }
-/* line 216, ../../../app/stylesheets/base.scss */
+/* line 220, ../../../app/stylesheets/base.scss */
 table.form-listing th {
   text-align: right;
   padding-right: 12px;
 }
-/* line 219, ../../../app/stylesheets/base.scss */
+/* line 223, ../../../app/stylesheets/base.scss */
 table.form-listing th, table.form-listing th label {
   font-weight: normal;
 }
-/* line 224, ../../../app/stylesheets/base.scss */
+/* line 228, ../../../app/stylesheets/base.scss */
 table.form-listing td input {
   margin: 0;
 }
-/* line 227, ../../../app/stylesheets/base.scss */
+/* line 231, ../../../app/stylesheets/base.scss */
 table.form-listing td .full-width {
   margin-right: 10px;
 }
-/* line 229, ../../../app/stylesheets/base.scss */
+/* line 233, ../../../app/stylesheets/base.scss */
 table.form-listing td .full-width textarea, table.form-listing td .full-width input {
   width: 100%;
 }
 
 /* line 3, ../../../app/stylesheets/grid.scss */
 .banner,
-.main,
+.main-content,
 .footer {
   position: relative;
   z-index: 1;
@@ -660,7 +662,7 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 7, ../../../app/stylesheets/grid.scss */
 .banner .grid,
-.main .grid,
+.main-content .grid,
 .footer .grid {
   width: 960px;
   margin: 0 auto;
@@ -669,41 +671,42 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 13, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns,
-.main .grid .columns,
+.main-content .grid .columns,
 .footer .grid .columns {
   overflow: hidden;
   *zoom: 1;
 }
 /* line 16, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns .column .content,
-.main .grid .columns .column .content,
+.main-content .grid .columns .column .content,
 .footer .grid .columns .column .content {
   position: relative;
   z-index: 0;
+  padding: 0 10px;
 }
 /* line 19, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns .column .content ol,
-.main .grid .columns .column .content ol,
+.main-content .grid .columns .column .content ol,
 .footer .grid .columns .column .content ol {
   margin: 0;
   padding: 0;
 }
 /* line 22, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns .column .content ol li,
-.main .grid .columns .column .content ol li,
+.main-content .grid .columns .column .content ol li,
 .footer .grid .columns .column .content ol li {
   list-style: none;
   padding-left: 0;
 }
 /* line 29, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns .column:last-child,
-.main .grid .columns .column:last-child,
+.main-content .grid .columns .column:last-child,
 .footer .grid .columns .column:last-child {
   margin-right: 0;
 }
 /* line 36, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-four-four-four-twelve .column,
-.main .grid .columns-four-four-four-twelve .column,
+.main-content .grid .columns-four-four-four-twelve .column,
 .footer .grid .columns-four-four-four-twelve .column {
   display: inline;
   float: left;
@@ -712,13 +715,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-four-four-four-twelve .column, * html
-.main .grid .columns-four-four-four-twelve .column, * html
+.main-content .grid .columns-four-four-four-twelve .column, * html
 .footer .grid .columns-four-four-four-twelve .column {
   overflow-x: hidden;
 }
 /* line 38, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-four-four-four-twelve .column:last-child,
-.main .grid .columns-four-four-four-twelve .column:last-child,
+.main-content .grid .columns-four-four-four-twelve .column:last-child,
 .footer .grid .columns-four-four-four-twelve .column:last-child {
   display: inline;
   float: left;
@@ -728,13 +731,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-four-four-four-twelve .column:last-child, * html
-.main .grid .columns-four-four-four-twelve .column:last-child, * html
+.main-content .grid .columns-four-four-four-twelve .column:last-child, * html
 .footer .grid .columns-four-four-four-twelve .column:last-child {
   overflow-x: hidden;
 }
 /* line 45, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-twelve-four-four-four .column,
-.main .grid .columns-twelve-four-four-four .column,
+.main-content .grid .columns-twelve-four-four-four .column,
 .footer .grid .columns-twelve-four-four-four .column {
   display: inline;
   float: left;
@@ -743,13 +746,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-twelve-four-four-four .column, * html
-.main .grid .columns-twelve-four-four-four .column, * html
+.main-content .grid .columns-twelve-four-four-four .column, * html
 .footer .grid .columns-twelve-four-four-four .column {
   overflow-x: hidden;
 }
 /* line 47, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-twelve-four-four-four .column:first-child,
-.main .grid .columns-twelve-four-four-four .column:first-child,
+.main-content .grid .columns-twelve-four-four-four .column:first-child,
 .footer .grid .columns-twelve-four-four-four .column:first-child {
   display: inline;
   float: left;
@@ -759,13 +762,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-twelve-four-four-four .column:first-child, * html
-.main .grid .columns-twelve-four-four-four .column:first-child, * html
+.main-content .grid .columns-twelve-four-four-four .column:first-child, * html
 .footer .grid .columns-twelve-four-four-four .column:first-child {
   overflow-x: hidden;
 }
 /* line 54, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-six-nine-nine .column,
-.main .grid .columns-six-nine-nine .column,
+.main-content .grid .columns-six-nine-nine .column,
 .footer .grid .columns-six-nine-nine .column {
   display: inline;
   float: left;
@@ -774,13 +777,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-six-nine-nine .column, * html
-.main .grid .columns-six-nine-nine .column, * html
+.main-content .grid .columns-six-nine-nine .column, * html
 .footer .grid .columns-six-nine-nine .column {
   overflow-x: hidden;
 }
 /* line 56, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-six-nine-nine .column:first-child,
-.main .grid .columns-six-nine-nine .column:first-child,
+.main-content .grid .columns-six-nine-nine .column:first-child,
 .footer .grid .columns-six-nine-nine .column:first-child {
   display: inline;
   float: left;
@@ -789,13 +792,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-six-nine-nine .column:first-child, * html
-.main .grid .columns-six-nine-nine .column:first-child, * html
+.main-content .grid .columns-six-nine-nine .column:first-child, * html
 .footer .grid .columns-six-nine-nine .column:first-child {
   overflow-x: hidden;
 }
 /* line 62, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-nine-nine-six .column,
-.main .grid .columns-nine-nine-six .column,
+.main-content .grid .columns-nine-nine-six .column,
 .footer .grid .columns-nine-nine-six .column {
   display: inline;
   float: left;
@@ -804,13 +807,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-nine-nine-six .column, * html
-.main .grid .columns-nine-nine-six .column, * html
+.main-content .grid .columns-nine-nine-six .column, * html
 .footer .grid .columns-nine-nine-six .column {
   overflow-x: hidden;
 }
 /* line 64, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-nine-nine-six .column:last-child,
-.main .grid .columns-nine-nine-six .column:last-child,
+.main-content .grid .columns-nine-nine-six .column:last-child,
 .footer .grid .columns-nine-nine-six .column:last-child {
   display: inline;
   float: left;
@@ -820,13 +823,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-nine-nine-six .column:last-child, * html
-.main .grid .columns-nine-nine-six .column:last-child, * html
+.main-content .grid .columns-nine-nine-six .column:last-child, * html
 .footer .grid .columns-nine-nine-six .column:last-child {
   overflow-x: hidden;
 }
 /* line 71, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-fourteen-ten .column,
-.main .grid .columns-fourteen-ten .column,
+.main-content .grid .columns-fourteen-ten .column,
 .footer .grid .columns-fourteen-ten .column {
   display: inline;
   float: left;
@@ -835,13 +838,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-fourteen-ten .column, * html
-.main .grid .columns-fourteen-ten .column, * html
+.main-content .grid .columns-fourteen-ten .column, * html
 .footer .grid .columns-fourteen-ten .column {
   overflow-x: hidden;
 }
 /* line 73, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-fourteen-ten .column:first-child,
-.main .grid .columns-fourteen-ten .column:first-child,
+.main-content .grid .columns-fourteen-ten .column:first-child,
 .footer .grid .columns-fourteen-ten .column:first-child {
   display: inline;
   float: left;
@@ -850,13 +853,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-fourteen-ten .column:first-child, * html
-.main .grid .columns-fourteen-ten .column:first-child, * html
+.main-content .grid .columns-fourteen-ten .column:first-child, * html
 .footer .grid .columns-fourteen-ten .column:first-child {
   overflow-x: hidden;
 }
 /* line 79, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-sixteen-eight .column,
-.main .grid .columns-sixteen-eight .column,
+.main-content .grid .columns-sixteen-eight .column,
 .footer .grid .columns-sixteen-eight .column {
   display: inline;
   float: left;
@@ -865,13 +868,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-sixteen-eight .column, * html
-.main .grid .columns-sixteen-eight .column, * html
+.main-content .grid .columns-sixteen-eight .column, * html
 .footer .grid .columns-sixteen-eight .column {
   overflow-x: hidden;
 }
 /* line 81, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-sixteen-eight .column:first-child,
-.main .grid .columns-sixteen-eight .column:first-child,
+.main-content .grid .columns-sixteen-eight .column:first-child,
 .footer .grid .columns-sixteen-eight .column:first-child {
   display: inline;
   float: left;
@@ -880,13 +883,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-sixteen-eight .column:first-child, * html
-.main .grid .columns-sixteen-eight .column:first-child, * html
+.main-content .grid .columns-sixteen-eight .column:first-child, * html
 .footer .grid .columns-sixteen-eight .column:first-child {
   overflow-x: hidden;
 }
 /* line 87, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-eighteen-six .column,
-.main .grid .columns-eighteen-six .column,
+.main-content .grid .columns-eighteen-six .column,
 .footer .grid .columns-eighteen-six .column {
   display: inline;
   float: left;
@@ -895,13 +898,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-eighteen-six .column, * html
-.main .grid .columns-eighteen-six .column, * html
+.main-content .grid .columns-eighteen-six .column, * html
 .footer .grid .columns-eighteen-six .column {
   overflow-x: hidden;
 }
 /* line 89, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-eighteen-six .column:first-child,
-.main .grid .columns-eighteen-six .column:first-child,
+.main-content .grid .columns-eighteen-six .column:first-child,
 .footer .grid .columns-eighteen-six .column:first-child {
   display: inline;
   float: left;
@@ -910,15 +913,15 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-eighteen-six .column:first-child, * html
-.main .grid .columns-eighteen-six .column:first-child, * html
+.main-content .grid .columns-eighteen-six .column:first-child, * html
 .footer .grid .columns-eighteen-six .column:first-child {
   overflow-x: hidden;
 }
 /* line 97, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-four .column, .banner .grid .columns-four .column:first-child, .banner .grid .columns-four .column:last-child,
-.main .grid .columns-four .column,
-.main .grid .columns-four .column:first-child,
-.main .grid .columns-four .column:last-child,
+.main-content .grid .columns-four .column,
+.main-content .grid .columns-four .column:first-child,
+.main-content .grid .columns-four .column:last-child,
 .footer .grid .columns-four .column,
 .footer .grid .columns-four .column:first-child,
 .footer .grid .columns-four .column:last-child {
@@ -929,9 +932,9 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-four .column, * html .banner .grid .columns-four .column:first-child, * html .banner .grid .columns-four .column:last-child, * html
-.main .grid .columns-four .column, * html
-.main .grid .columns-four .column:first-child, * html
-.main .grid .columns-four .column:last-child, * html
+.main-content .grid .columns-four .column, * html
+.main-content .grid .columns-four .column:first-child, * html
+.main-content .grid .columns-four .column:last-child, * html
 .footer .grid .columns-four .column, * html
 .footer .grid .columns-four .column:first-child, * html
 .footer .grid .columns-four .column:last-child {
@@ -939,15 +942,15 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 100, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-four .column:last-child,
-.main .grid .columns-four .column:last-child,
+.main-content .grid .columns-four .column:last-child,
 .footer .grid .columns-four .column:last-child {
   margin-right: 0;
 }
 /* line 107, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-six .column, .banner .grid .columns-six .column:first-child, .banner .grid .columns-six .column:last-child,
-.main .grid .columns-six .column,
-.main .grid .columns-six .column:first-child,
-.main .grid .columns-six .column:last-child,
+.main-content .grid .columns-six .column,
+.main-content .grid .columns-six .column:first-child,
+.main-content .grid .columns-six .column:last-child,
 .footer .grid .columns-six .column,
 .footer .grid .columns-six .column:first-child,
 .footer .grid .columns-six .column:last-child {
@@ -958,9 +961,9 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-six .column, * html .banner .grid .columns-six .column:first-child, * html .banner .grid .columns-six .column:last-child, * html
-.main .grid .columns-six .column, * html
-.main .grid .columns-six .column:first-child, * html
-.main .grid .columns-six .column:last-child, * html
+.main-content .grid .columns-six .column, * html
+.main-content .grid .columns-six .column:first-child, * html
+.main-content .grid .columns-six .column:last-child, * html
 .footer .grid .columns-six .column, * html
 .footer .grid .columns-six .column:first-child, * html
 .footer .grid .columns-six .column:last-child {
@@ -968,15 +971,15 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 110, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-six .column:last-child,
-.main .grid .columns-six .column:last-child,
+.main-content .grid .columns-six .column:last-child,
 .footer .grid .columns-six .column:last-child {
   margin-right: 0;
 }
 /* line 117, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-eight .column, .banner .grid .columns-eight .column:first-child, .banner .grid .columns-eight .column:last-child,
-.main .grid .columns-eight .column,
-.main .grid .columns-eight .column:first-child,
-.main .grid .columns-eight .column:last-child,
+.main-content .grid .columns-eight .column,
+.main-content .grid .columns-eight .column:first-child,
+.main-content .grid .columns-eight .column:last-child,
 .footer .grid .columns-eight .column,
 .footer .grid .columns-eight .column:first-child,
 .footer .grid .columns-eight .column:last-child {
@@ -987,9 +990,9 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-eight .column, * html .banner .grid .columns-eight .column:first-child, * html .banner .grid .columns-eight .column:last-child, * html
-.main .grid .columns-eight .column, * html
-.main .grid .columns-eight .column:first-child, * html
-.main .grid .columns-eight .column:last-child, * html
+.main-content .grid .columns-eight .column, * html
+.main-content .grid .columns-eight .column:first-child, * html
+.main-content .grid .columns-eight .column:last-child, * html
 .footer .grid .columns-eight .column, * html
 .footer .grid .columns-eight .column:first-child, * html
 .footer .grid .columns-eight .column:last-child {
@@ -997,15 +1000,15 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 120, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-eight .column:last-child,
-.main .grid .columns-eight .column:last-child,
+.main-content .grid .columns-eight .column:last-child,
 .footer .grid .columns-eight .column:last-child {
   margin-right: 0;
 }
 /* line 127, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-nine .column, .banner .grid .columns-nine .column:first-child, .banner .grid .columns-nine .column:last-child,
-.main .grid .columns-nine .column,
-.main .grid .columns-nine .column:first-child,
-.main .grid .columns-nine .column:last-child,
+.main-content .grid .columns-nine .column,
+.main-content .grid .columns-nine .column:first-child,
+.main-content .grid .columns-nine .column:last-child,
 .footer .grid .columns-nine .column,
 .footer .grid .columns-nine .column:first-child,
 .footer .grid .columns-nine .column:last-child {
@@ -1016,9 +1019,9 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-nine .column, * html .banner .grid .columns-nine .column:first-child, * html .banner .grid .columns-nine .column:last-child, * html
-.main .grid .columns-nine .column, * html
-.main .grid .columns-nine .column:first-child, * html
-.main .grid .columns-nine .column:last-child, * html
+.main-content .grid .columns-nine .column, * html
+.main-content .grid .columns-nine .column:first-child, * html
+.main-content .grid .columns-nine .column:last-child, * html
 .footer .grid .columns-nine .column, * html
 .footer .grid .columns-nine .column:first-child, * html
 .footer .grid .columns-nine .column:last-child {
@@ -1026,15 +1029,15 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 130, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-nine .column:last-child,
-.main .grid .columns-nine .column:last-child,
+.main-content .grid .columns-nine .column:last-child,
 .footer .grid .columns-nine .column:last-child {
   margin-right: 0;
 }
 /* line 137, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-twelve .column, .banner .grid .columns-twelve .column:first-child, .banner .grid .columns-twelve .column:last-child,
-.main .grid .columns-twelve .column,
-.main .grid .columns-twelve .column:first-child,
-.main .grid .columns-twelve .column:last-child,
+.main-content .grid .columns-twelve .column,
+.main-content .grid .columns-twelve .column:first-child,
+.main-content .grid .columns-twelve .column:last-child,
 .footer .grid .columns-twelve .column,
 .footer .grid .columns-twelve .column:first-child,
 .footer .grid .columns-twelve .column:last-child {
@@ -1045,9 +1048,9 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-twelve .column, * html .banner .grid .columns-twelve .column:first-child, * html .banner .grid .columns-twelve .column:last-child, * html
-.main .grid .columns-twelve .column, * html
-.main .grid .columns-twelve .column:first-child, * html
-.main .grid .columns-twelve .column:last-child, * html
+.main-content .grid .columns-twelve .column, * html
+.main-content .grid .columns-twelve .column:first-child, * html
+.main-content .grid .columns-twelve .column:last-child, * html
 .footer .grid .columns-twelve .column, * html
 .footer .grid .columns-twelve .column:first-child, * html
 .footer .grid .columns-twelve .column:last-child {
@@ -1055,13 +1058,13 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 140, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-twelve .column:last-child,
-.main .grid .columns-twelve .column:last-child,
+.main-content .grid .columns-twelve .column:last-child,
 .footer .grid .columns-twelve .column:last-child {
   margin-right: 0;
 }
 /* line 146, ../../../app/stylesheets/grid.scss */
 .banner .grid .columns-twentyfour .column,
-.main .grid .columns-twentyfour .column,
+.main-content .grid .columns-twentyfour .column,
 .footer .grid .columns-twentyfour .column {
   display: inline;
   float: left;
@@ -1071,82 +1074,93 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.8.7-p330@nava/gems/compass-0.11.6/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .banner .grid .columns-twentyfour .column, * html
-.main .grid .columns-twentyfour .column, * html
+.main-content .grid .columns-twentyfour .column, * html
 .footer .grid .columns-twentyfour .column {
   overflow-x: hidden;
 }
 /* line 152, ../../../app/stylesheets/grid.scss */
+.banner .grid .column-last,
+.main-content .grid .column-last,
+.footer .grid .column-last {
+  margin-right: 0;
+  margin-right: 0!important;
+}
+/* line 157, ../../../app/stylesheets/grid.scss */
 .banner .grid .column-break,
-.main .grid .column-break,
+.main-content .grid .column-break,
 .footer .grid .column-break {
   clear: both;
 }
 
-/* line 159, ../../../app/stylesheets/grid.scss */
+/* line 164, ../../../app/stylesheets/grid.scss */
 .outer-containor {
   position: relative;
 }
 
-/* line 162, ../../../app/stylesheets/grid.scss */
+/* line 167, ../../../app/stylesheets/grid.scss */
 .inner-containor {
   position: relative;
 }
 
-/* line 166, ../../../app/stylesheets/grid.scss */
+/* line 171, ../../../app/stylesheets/grid.scss */
 .background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 700px;
-  background: no-repeat top center;
+  background: #999999 no-repeat top center;
   z-index: 0;
 }
 
 /* line 1, ../../../app/stylesheets/welcome.scss */
 .video-play-button {
   position: relative;
+  width: 210px;
+  height: 135px;
   border: 1px solid #d9d9d9;
 }
-/* line 4, ../../../app/stylesheets/welcome.scss */
+/* line 6, ../../../app/stylesheets/welcome.scss */
 .video-play-button a {
   position: absolute;
   display: block;
   top: 0;
+  left: 0;
   width: 210px;
   height: 135px;
   background: url(/images/video_210_play.png) no-repeat;
   text-decoration: none;
   cursor: pointer;
-  opacity: .2;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  opacity: 0.3;
 }
-/* line 14, ../../../app/stylesheets/welcome.scss */
+/* line 17, ../../../app/stylesheets/welcome.scss */
 .video-play-button a:hover {
-  opacity: .6;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
 }
 
-/* line 20, ../../../app/stylesheets/welcome.scss */
+/* line 23, ../../../app/stylesheets/welcome.scss */
 .map {
-  width: 100px;
   border: 1px solid #d9d9d9;
 }
 
-/* line 25, ../../../app/stylesheets/welcome.scss */
+/* line 27, ../../../app/stylesheets/welcome.scss */
 #map_canvas {
   height: 170px;
 }
 
-/* line 31, ../../../app/stylesheets/welcome.scss */
+/* line 33, ../../../app/stylesheets/welcome.scss */
 .banner .headline h3 {
   margin-bottom: 0;
   font-size: 1em;
   font-family: "Istok Web";
 }
-/* line 37, ../../../app/stylesheets/welcome.scss */
+/* line 39, ../../../app/stylesheets/welcome.scss */
 .banner .headline strong {
   color: #a14f7f;
 }
-/* line 41, ../../../app/stylesheets/welcome.scss */
+/* line 43, ../../../app/stylesheets/welcome.scss */
 .banner .signup {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -1347,37 +1361,37 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
   margin-left: 20px;
 }
 
-/* line 29, ../../../app/stylesheets/coupon.scss */
+/* line 30, ../../../app/stylesheets/coupon.scss */
 .gift-certificate-card .header {
   margin: -30px;
   background: #73052d url("/images/logo_444_white.png") no-repeat 30px 80px;
 }
 
-/* line 31, ../../../app/stylesheets/coupon.scss */
+/* line 32, ../../../app/stylesheets/coupon.scss */
 .gift-certificate-card h2 {
   color: white;
   margin: 80px 0 50px;
   font-size: 26px;
 }
 
-/* line 32, ../../../app/stylesheets/coupon.scss */
+/* line 33, ../../../app/stylesheets/coupon.scss */
 .gift-certificate-footer {
   color: white;
   font: normal 12px/16px verdana;
 }
 
-/* line 34, ../../../app/stylesheets/coupon.scss */
+/* line 35, ../../../app/stylesheets/coupon.scss */
 .gift-certificate-footer a,
 .gift-certificate-footer b {
   color: #ff965f;
 }
 
-/* line 35, ../../../app/stylesheets/coupon.scss */
+/* line 36, ../../../app/stylesheets/coupon.scss */
 .gift-certificate-canvas {
   margin: 0 0 0 80px;
 }
 
-/* line 36, ../../../app/stylesheets/coupon.scss */
+/* line 37, ../../../app/stylesheets/coupon.scss */
 .gift-certificate-card a {
   color: white;
 }
@@ -1505,6 +1519,7 @@ a.button-default:hover {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: #333333;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #777777), color-stop(100%, #222222));
   background-image: -webkit-linear-gradient(#777777, #222222);
   background-image: -moz-linear-gradient(#777777, #222222);
@@ -1512,24 +1527,24 @@ a.button-default:hover {
   background-image: -ms-linear-gradient(#777777, #222222);
   background-image: linear-gradient(#777777, #222222);
 }
-/* line 16, ../../../app/stylesheets/footer.scss */
+/* line 17, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor a {
   text-decoration: none;
 }
-/* line 17, ../../../app/stylesheets/footer.scss */
+/* line 18, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor a:link, .footer .inner-containor a:visited {
   color: #d7d7d7;
 }
-/* line 21, ../../../app/stylesheets/footer.scss */
+/* line 22, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor a:hover {
   text-decoration: underline;
 }
-/* line 25, ../../../app/stylesheets/footer.scss */
+/* line 26, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li {
   margin-bottom: 5px;
   list-style: none;
 }
-/* line 28, ../../../app/stylesheets/footer.scss */
+/* line 29, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li div {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -1548,24 +1563,24 @@ a.button-default:hover {
 .footer .inner-containor li div {
   *display: inline;
 }
-/* line 38, ../../../app/stylesheets/footer.scss */
+/* line 39, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-map-pin {
   top: 3px;
   background-image: url('/images/footer_icon_map_pin.png?1325604235');
 }
-/* line 42, ../../../app/stylesheets/footer.scss */
+/* line 43, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-phone {
   background-image: url('/images/footer_icon_phone.png?1325604235');
 }
-/* line 43, ../../../app/stylesheets/footer.scss */
+/* line 44, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-mail {
   background-image: url('/images/footer_icon_letter.png?1325604235');
 }
-/* line 44, ../../../app/stylesheets/footer.scss */
+/* line 45, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-twitter {
   background-image: url('/images/footer_icon_twitter.png?1325604235');
 }
-/* line 45, ../../../app/stylesheets/footer.scss */
+/* line 46, ../../../app/stylesheets/footer.scss */
 .footer .inner-containor li .icon-facebook {
   background-image: url('/images/footer_icon_facebook.png?1325604235');
 }

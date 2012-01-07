@@ -64,7 +64,7 @@
             .button-bar
               = render :partial => '/shared/submit', :locals => { :title => 'Skicka anmälan', :form => f, :function => 'forms["new_booking"].submit()' }
               
-  .column
+  .column.column-last
     .content
       %h2 &nbsp;
       = render :partial => 'sessions', :object => @booker.sessions.asc

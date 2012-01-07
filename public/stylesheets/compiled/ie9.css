@@ -1,20 +1,13 @@
 /*
-Syntax error: Undefined variable: "$color-gray-light".
-        on line 5 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/welcome.scss
+Syntax error: Undefined variable: "$color-blue-light".
+        on line 2 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/ie9.scss
 
-1: .video-play-button {
-2:   position:relative;
-3:   width:210px;
-4:   height:135px;
-5:   border:1px solid $color-gray-light;
-6:   a {
-7:     position:absolute;
-8:     display:block;
-9:     top:0;
-10:     left:0;
+1: .button-link {
+2:   background-color:$color-blue-light!important;
+3: }
 
 Backtrace:
-/Users/jhoglund/Projects/Nava/application/app/stylesheets/welcome.scss:5
+/Users/jhoglund/Projects/Nava/application/app/stylesheets/ie9.scss:2
 /Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/variable.rb:49:in `_perform'
 /Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/node.rb:40:in `perform'
 /Users/jhoglund/.rvm/gems/ruby-1.8.7-p330@nava/gems/sass-3.1.12/lib/sass/../sass/script/list.rb:69:in `_perform'
@@ -99,4 +92,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color-gray-light\".\A         on line 5 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/welcome.scss\A \A 1: .video-play-button {\A 2:   position:relative;\A 3:   width:210px;\A 4:   height:135px;\A 5:   border:1px solid $color-gray-light;\A 6:   a {\A 7:     position:absolute;\A 8:     display:block;\A 9:     top:0;\A 10:     left:0;"; }
+  content: "Syntax error: Undefined variable: \"$color-blue-light\".\A         on line 2 of /Users/jhoglund/Projects/Nava/application/app/stylesheets/ie9.scss\A \A 1: .button-link {\A 2:   background-color:$color-blue-light!important;\A 3: }"; }

@@ -1,24 +1,26 @@
 .video-play-button {
   position:relative;
+  width:210px;
+  height:135px;
   border:1px solid $color-gray-light;
   a {
     position:absolute;
     display:block;
     top:0;
+    left:0;
     width:210px;
     height:135px;
     background:url(/images/video_210_play.png) no-repeat;
     text-decoration:none;
     cursor:pointer;
-    opacity:.2;
+    @include opacity(0.3);
     &:hover {
-      opacity:.6; 
+      @include opacity(0.6);
     }
   }
 }
 
 .map {
-  width:100px;
   border:1px solid $color-gray-light;
 }
 

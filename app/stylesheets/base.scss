@@ -1,6 +1,7 @@
 $blueprint-grid-columns: 24;
 $blueprint-grid-height: 24;
 $blueprint-container-size: 960px;
+//$blueprint-grid-width: 30;
 $blueprint-grid-margin: 10px;
 //$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
@@ -18,7 +19,10 @@ a:hover { color:$color-link-hover; }
 h1, h2, h3, h4 { font-family: "Merriweather"; margin-bottom:10px; line-height:1.4em; }
 h1 + p, h2 + p, h3 + p, h4 + p,
 h1 + ul, h2 + ul, h3 + ul, h4 + ul { margin-top: 12px; }
-hr { margin:18px 0; border-bottom-color: $color-gray-light; border-bottom-width: 1px; border-left-style: none; border-bottom-style: solid; border-right-style: none; border-top-style: none; }
+hr {
+  @include colruler($color-gray-light);
+  margin:12px 0!important;
+}
 dl {  }
 dt { font-weight:bold;  }
 dd { margin:0 0 20px; }
@@ -200,7 +204,7 @@ p { margin:12px 0; }
   border-bottom:1px solid rgb(235,235,235);
 }
 
-.main {
+.main-content {
   .inner-containor {
     background:white;
     padding:40px;

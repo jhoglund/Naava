@@ -1,5 +1,5 @@
 .banner,
-.main,
+.main-content,
 .footer {
   position:relative;
   z-index:1;
@@ -149,6 +149,11 @@
       }
     }
     
+    .column-last {
+      @include last;
+      margin-right:0!important;
+    }
+    
     .column-break {
       clear:both;
     }
@@ -169,6 +174,6 @@
   left:0;
   right:0;
   height:700px;
-  background:no-repeat top center;
+  background:$color-gray-medium no-repeat top center;
   z-index:0;
 }

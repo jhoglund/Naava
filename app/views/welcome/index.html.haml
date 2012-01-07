@@ -5,7 +5,7 @@
     tag.src = "http://www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  
+    
     var player;
     function onYouTubePlayerAPIReady() {
       player = new YT.Player('player', {
@@ -21,11 +21,11 @@
         }
       });
     }
-  
+    
     function onPlayerReady(event) {
       event.target.setVolume(30);
     }
-  
+    
     var done = false;
     function onPlayerStateChange(event) {
       //if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -33,11 +33,16 @@
       //  done = true;
       //}
     }
-  
+    
     function stopVideo() {
       player.stopVideo();
     }
-  
+    
+    
+    function youTubeInNewWindow(){
+      window.location = "http://www.youtube.com/watch?v=bG1i8rc4WmQ";
+    }
+      
     function initialize() {
       $("#video_placeholder").overlay({
         mask: {
@@ -48,7 +53,11 @@
       	},
       	closeOnClick: false,
       	onBeforeLoad: function(){
-    		  player.playVideo();
+      	  try{
+      		  player.playVideo();
+      	  }catch(e){
+      	    youTubeInNewWindow();
+      	  }
     		},
     		onClose: function(){
     		  player.stopVideo();
@@ -90,7 +99,7 @@
         :markdown
           Innan vårens kurser startar håller vi en tvåtimmarskurs för dig som är nyfiken på yoga. Här blir du introducerad till **Ashtanga yogans** grunder, så som andningsteknik, rörelser, positioner och yogans filosofi.
   
-    .column
+    .column.column-last
       .content.intro
         :markdown
           Kursen hålls lördagen den **21:e januari mellan 14:00 och 16:00**
@@ -124,7 +133,7 @@
             * **Lördagar** 9:00 - 11:15  
             Mysore (fortsättning)
 
-      .column
+      .column.column-last
         .content
           %ul
             %li
@@ -153,7 +162,7 @@
             = list_of(@gift_certificate_types) do |gift_certificate|
               = link_to("#{gift_certificate.title} (#{number_to_currency(gift_certificate.value, :precision => 0)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id))
           
-      .column
+      .column.column-last
         .content
           .map
             #map_canvas
@@ -161,7 +170,7 @@
             Vi finns på **Södra Fogdelyckegatan 28**.
             
 
-  .column
+  .column.column-last
     .content
       .video-play-button(rel="#video_popup" id="video_placeholder")
         %img(src="#{asset_path('video_210.jpg')}" width='210' height='135')
