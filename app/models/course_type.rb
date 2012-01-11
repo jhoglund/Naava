@@ -53,12 +53,20 @@ class CourseType < ActiveRecord::Base
     ends_at < Time.now
   end
   
+  def course_type_price
+    read_attribute(:price)
+  end
+  
+  def course_type_price= price=nil
+    write_attribute(:price, price)
+  end
+  
   def price
     [(remaining_session_count * discounted_price_per_session), original_price].min
   end
   
   def original_price
-    original_price_per_session * sessions.active.count
+    course_type_price || original_price_per_session * sessions.active.count
   end
   
   def discounted_price_per_session
@@ -66,7 +74,7 @@ class CourseType < ActiveRecord::Base
   end
   
   def price_per_session
-    price / remaining_session_count
+    (price.to_f / remaining_session_count).ceil
   end
   
   def original_price_per_session

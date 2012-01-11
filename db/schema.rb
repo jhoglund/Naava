@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227081041) do
+ActiveRecord::Schema.define(:version => 20120111154828) do
 
   create_table "attendants", :force => true do |t|
     t.integer  "participant_id"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20111227081041) do
     t.text     "comment"
     t.integer  "session_price"
     t.string   "type",          :default => "Course"
+    t.integer  "price"
   end
 
   create_table "frees", :force => true do |t|

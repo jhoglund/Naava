@@ -15,10 +15,9 @@
     Klasserna startar klockan #{l(@course.sessions.active.first.starts_at, :format => :time)} tills klockan #{l(@course.sessions.active.first.ends_at, :format => :time)}
 %h3 Tillfällen
 - @course.sessions.asc.each do |session|
-  - if session.canceled?
-    %s/
-  = link_to l(session.starts_at, :format => :long), admin_session_path(session)
-  (#{l(session.duration, :format => :time)})
+  - haml_tag(session.canceled? ? :s : :span) do
+    = link_to l(session.starts_at, :format => :long), admin_session_path(session)
+    (#{l(session.duration, :format => :time)})
   %br/
 = link_to 'Edit', edit_admin_course_type_path(@course)
 |

@@ -3,28 +3,28 @@
   .session
     %div
       = session.hidden_field '_delete', :value => 0
-  = session.label :starts_at
-  %br/
-  = session.datetime_select :starts_at
-  %div
-    = session.label :duration
+    = session.label :starts_at
     %br/
-    = session.label :hours
-    = session.select :duration_hours, (0...24), :selected => session.object.duration_hours
-    = session.label :minutes
-    = session.select :duration_minutes, [0,15,30,45], :selected => session.object.duration_minutes
-  %div
-    = session.check_box :status
-    = session.label :status
-  %p{:style => "display:#{session.object.description.blank? ? 'none' : 'block'}"}
-    = session.text_area :description, :rows => 4
-  = link_to_function 'Description', "$(this).prev().toggle()"
-  |
-  %p{:style => "display:#{session.object.comment.blank? ? 'none' : 'block'}"}
-    = session.text_area :comment, :rows => 4
-  = link_to_function 'Comment', "$(this).prev().toggle()"
-  |
+    = session.datetime_select :starts_at
+    %div
+      = session.label :duration
+      %br/
+      = session.label :hours
+      = session.select :duration_hours, (0...24), :selected => session.object.duration_hours
+      = session.label :minutes
+      = session.select :duration_minutes, [0,15,30,45], :selected => session.object.duration_minutes
+    %div
+      = session.check_box :status
+      = session.label :status
+    %p{:style => "display:#{session.object.description.blank? ? 'none' : 'block'}"}
+      = session.text_area :description, :rows => 4
+    = link_to_function 'Description', "$(this).prev().toggle()"
+    |
+    %p{:style => "display:#{session.object.comment.blank? ? 'none' : 'block'}"}
+      = session.text_area :comment, :rows => 4
+    = link_to_function 'Comment', "$(this).prev().toggle()"
+    |
   
   
-  \#{link_to_function "Remove", "(function(to_delete){ to_delete.value = 1; to_delete.id = to_delete.id.replace(/no_delete/,'_delete') })($(this).parent('.session').find('input')[0]); $(this).parent('.session').hide(); "}
-  %hr/
+    \#{link_to_function "Remove", "(function(to_delete){ to_delete.value = 1; to_delete.id = to_delete.id.replace(/no_delete/,'_delete') })($(this).parent('.session').find('input')[0]); $(this).parent('.session').hide(); "}
+    %hr/

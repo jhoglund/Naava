@@ -10,7 +10,7 @@ module CoursesHelper
           var elements = clone.getElementsByTagName('*')
           $(elements).each(function(index,element){
             if(element.name){
-              element.name = element.name.replace(/(course\[sessions_attributes\]\[)(\d+)(\])/,function(str,start,num,end){ return start + (parseInt(num)+1) + end })
+              element.name = element.name.replace(/(\[sessions_attributes\]\[)(\d+)(\])/,function(str,start,num,end){ return start + (parseInt(num)+1) + end })
               var el = $(template).find('select[id*="starts_at"]');
               var date = new Date($(el[2]).val(),$(el[1]).val()-1,$(el[0]).val(),$(el[3]).val(),$(el[4]).val());
               date.setDate(date.getDate()+7);
@@ -28,7 +28,6 @@ module CoursesHelper
               var clone_dur_el = $(clone).find('select[id*="duration"]');
               $(clone_dur_el[0]).val($(dur_el[0]).val());
               $(clone_dur_el[1]).val($(dur_el[1]).val());
-            
             }
           })
         })()
