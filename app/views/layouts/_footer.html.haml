@@ -30,12 +30,15 @@
               %ol
                 %li 
                   .icon-twitter
-                  = link_to "twitter.com/NavaYogaStudio", "http://twitter.com/NavaYogaStudio"
+                  = link_to "twitter.com", "http://twitter.com/NavaYogaStudio"
+                  .footer-follow
+                    %a.follow-button(href="https://twitter.com/NavaYogaStudio" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false") Follow @NavaYogaStudio
+                    %script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
                 %li 
                   .icon-facebook
                   = link_to "Facebook", "http://www.facebook.com/pages/Nava-Yoga/127411713956193"
-                  .footer-fb-like
-                    .fb-like(data-href="http://www.facebook.com/pages/Nava-Yoga/127411713956193" data-send="false" data-layout="button_count" data-width="310" data-show-faces="true" data-font="lucida grande")
+                  .footer-follow(style="margin-top:-7px")
+                    .follow-button.fb-like(data-href="http://www.facebook.com/pages/Nava-Yoga/127411713956193" data-send="false" data-layout="button_count" data-width="310" data-show-faces="true" data-font="lucida grande")
   
         - if logged_in?
           .columns.columns-twentyfour

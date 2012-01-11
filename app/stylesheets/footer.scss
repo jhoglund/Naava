@@ -35,14 +35,13 @@
         width:25px;
         height:30px;
         float:left;
-        &.footer-fb-like {
-          margin-top:-7px;
-          &, div {
+        &.footer-follow {
+          &, .follow-button {
             top:0px;
             margin-left:0px;
             float:none;
           }
-          div {
+          .follow-button {
             padding:5px 0 0 5px;
           }
           @include inline-block;
