@@ -84,23 +84,34 @@
       .content
         .headline
           %h2 
-            Anmäl dig till vår
-            %strong introduktionskurs
+            Anmäl dig till en av vårens introduktionskurser
   .columns.columns-twelve
     .column
       .content.intro
         :markdown
+          ##### Introduktion för nybörjare
           Innan vårens kurser startar håller vi en tvåtimmarskurs för dig som är nyfiken på yoga. Här blir du introducerad till **Ashtanga yogans** grunder, så som andningsteknik, rörelser, positioner och yogans filosofi.
+          
+          Kursen hålls lördagen den **21:e januari mellan 14:00 och 16:00**
+          och kostar **#{number_to_currency(350, :precision => 0)}**.        
+
+        %p{:style => 'padding-top:10px'}
+          .signup
+            = link_to('Läs mer eller anmäl dig >>', book_workshop_path(@introduction_course))
+
   
     .column.column-last
       .content.intro
         :markdown
-          Kursen hålls lördagen den **21:e januari mellan 14:00 och 16:00**
-          och kostar **#{number_to_currency(350, :precision => 0)}**.        
+          ##### Introduktion till Mysore
+          Denna kurs är för dig som vill göra yogan helt i din egen takt eller som vill få en grundlig genomgång inför vårens kurser.
+          
+          Kursen hålls fredagen den **20:e januari, 18:30-20:30** samt lördagen och söndagen den **20:e** och **21:e januari** mellan **09:30** och **11:30**.
+          Kursen kostar **#{number_to_currency(550, :precision => 0)}**.        
   
         %p{:style => 'padding-top:10px'}
           .signup
-            = link_to('Läs mer eller anmäl dig till kursen >>', book_workshop_path(@introduction_course))
+            = link_to('Läs mer eller anmäl dig >>', book_workshop_path(@mysore_course))
         
 .columns.columns-eighteen-six
   .column

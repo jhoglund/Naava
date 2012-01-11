@@ -19,6 +19,19 @@ a:hover { color:$color-link-hover; }
 h1, h2, h3, h4 { font-family: "Merriweather"; margin-bottom:10px; line-height:1.4em; }
 h1 + p, h2 + p, h3 + p, h4 + p,
 h1 + ul, h2 + ul, h3 + ul, h4 + ul { margin-top: 12px; }
+h5 {
+  font-family:'Istok Web';
+  font-weight:bold;
+  font-size:0.9em;
+  text-transform:uppercase;
+  color:$color-pink-dark;
+  &, & + p {
+    display:inline;
+  }
+  &:after {
+    content:':';
+  }
+}
 hr {
   @include colruler($color-gray-light);
   margin:12px 0!important;

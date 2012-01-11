@@ -323,6 +323,23 @@ h1 + ul, h2 + ul, h3 + ul, h4 + ul {
 }
 
 /* line 22, ../../../app/stylesheets/base.scss */
+h5 {
+  font-family: 'Istok Web';
+  font-weight: bold;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: #a14f7f;
+}
+/* line 28, ../../../app/stylesheets/base.scss */
+h5, h5 + p {
+  display: inline;
+}
+/* line 31, ../../../app/stylesheets/base.scss */
+h5:after {
+  content: ':';
+}
+
+/* line 35, ../../../app/stylesheets/base.scss */
 hr {
   background: #d9d9d9;
   color: #d9d9d9;
@@ -335,32 +352,32 @@ hr {
   margin: 12px 0!important;
 }
 
-/* line 27, ../../../app/stylesheets/base.scss */
+/* line 40, ../../../app/stylesheets/base.scss */
 dt {
   font-weight: bold;
 }
 
-/* line 28, ../../../app/stylesheets/base.scss */
+/* line 41, ../../../app/stylesheets/base.scss */
 dd {
   margin: 0 0 20px;
 }
 
-/* line 29, ../../../app/stylesheets/base.scss */
+/* line 42, ../../../app/stylesheets/base.scss */
 p {
   margin: 12px 0;
 }
 
-/* line 32, ../../../app/stylesheets/base.scss */
+/* line 45, ../../../app/stylesheets/base.scss */
 .captcha label {
   font-weight: normal;
 }
 
-/* line 38, ../../../app/stylesheets/base.scss */
+/* line 51, ../../../app/stylesheets/base.scss */
 .column .content ul {
   margin: 10px 0 0;
   padding: 0;
 }
-/* line 39, ../../../app/stylesheets/base.scss */
+/* line 52, ../../../app/stylesheets/base.scss */
 .column .content li {
   margin: 0 0 5px 0;
   list-style: none;
@@ -369,27 +386,27 @@ p {
 /* -webkit-gradient(linear,left top, left bottom, from(#fff), to(rgba(255,255,255,0))) */
 /*.promotion-box a { font-size:16px; color:#cc2358; }
 */
-/* line 76, ../../../app/stylesheets/base.scss */
+/* line 89, ../../../app/stylesheets/base.scss */
 .address-contact dl {
   display: block;
   margin: 0;
   padding-top: 5px;
 }
 
-/* line 77, ../../../app/stylesheets/base.scss */
+/* line 90, ../../../app/stylesheets/base.scss */
 .address-contact dt {
   font-weight: bold;
   display: inline-block;
   margin-right: 5px;
 }
 
-/* line 78, ../../../app/stylesheets/base.scss */
+/* line 91, ../../../app/stylesheets/base.scss */
 .address-contact dd {
   display: inline-block;
   margin: 0 0 0px 0;
 }
 
-/* line 80, ../../../app/stylesheets/base.scss */
+/* line 93, ../../../app/stylesheets/base.scss */
 .photo {
   border: 1px solid white;
   padding: 10px;
@@ -397,17 +414,17 @@ p {
   float: right;
 }
 
-/* line 82, ../../../app/stylesheets/base.scss */
+/* line 95, ../../../app/stylesheets/base.scss */
 .map {
   margin: 0px 0 10px 0;
 }
 
-/* line 83, ../../../app/stylesheets/base.scss */
+/* line 96, ../../../app/stylesheets/base.scss */
 .map > div {
   border: 4px solid white;
 }
 
-/* line 85, ../../../app/stylesheets/base.scss */
+/* line 98, ../../../app/stylesheets/base.scss */
 .message {
   margin-top: -10px;
   margin-bottom: 20px;
@@ -420,12 +437,12 @@ p {
   background-image: -ms-linear-gradient(left, #ffffff, #eedce7, #ffffff);
   background-image: linear-gradient(left, #ffffff, #eedce7, #ffffff);
 }
-/* line 91, ../../../app/stylesheets/base.scss */
+/* line 104, ../../../app/stylesheets/base.scss */
 .message strong {
   color: #d0278b;
 }
 
-/* line 99, ../../../app/stylesheets/base.scss */
+/* line 112, ../../../app/stylesheets/base.scss */
 .flash-notice,
 .flash-error {
   width: auto;
@@ -434,7 +451,7 @@ p {
   padding: 10px;
 }
 
-/* line 105, ../../../app/stylesheets/base.scss */
+/* line 118, ../../../app/stylesheets/base.scss */
 .flash-notice {
   color: #396162;
   background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(50%, #d6e3e2), color-stop(100%, #ffffff));
@@ -445,7 +462,7 @@ p {
   background-image: linear-gradient(left, #ffffff, #d6e3e2, #ffffff);
 }
 
-/* line 109, ../../../app/stylesheets/base.scss */
+/* line 122, ../../../app/stylesheets/base.scss */
 .flash-error {
   color: #a14f7f;
   background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(50%, #eedce7), color-stop(100%, #ffffff));
@@ -456,7 +473,7 @@ p {
   background-image: linear-gradient(left, #ffffff, #eedce7, #ffffff);
 }
 
-/* line 114, ../../../app/stylesheets/base.scss */
+/* line 127, ../../../app/stylesheets/base.scss */
 .important-notice {
   width: auto;
   -webkit-border-radius: 10px;
@@ -467,7 +484,7 @@ p {
   background-color: #ffa5c8;
 }
 
-/* line 117, ../../../app/stylesheets/base.scss */
+/* line 130, ../../../app/stylesheets/base.scss */
 .base-error,
 .validation-error {
   color: #a14f7f;
@@ -475,12 +492,12 @@ p {
   padding: 10px;
 }
 
-/* line 122, ../../../app/stylesheets/base.scss */
+/* line 135, ../../../app/stylesheets/base.scss */
 .base-error {
   margin-bottom: 20px;
 }
 
-/* line 123, ../../../app/stylesheets/base.scss */
+/* line 136, ../../../app/stylesheets/base.scss */
 .validation-error {
   padding-top: 10px;
   padding-right: 20px;
@@ -488,37 +505,37 @@ p {
   margin-right: -20px;
 }
 
-/* line 136, ../../../app/stylesheets/base.scss */
+/* line 149, ../../../app/stylesheets/base.scss */
 .time-number {
   font-weight: bold;
 }
 
-/* line 138, ../../../app/stylesheets/base.scss */
+/* line 151, ../../../app/stylesheets/base.scss */
 .course-started {
   font: italic 11px/14px verdana;
 }
 
-/* line 139, ../../../app/stylesheets/base.scss */
+/* line 152, ../../../app/stylesheets/base.scss */
 .course-fully_booked {
   font: italic 11px/14px verdana;
 }
 
-/* line 145, ../../../app/stylesheets/base.scss */
+/* line 158, ../../../app/stylesheets/base.scss */
 .reciept .date-day-name,
 .reciept .date-day-number,
 .reciept .date-month-name {
   font-weight: bold;
 }
 
-/* line 147, ../../../app/stylesheets/base.scss */
+/* line 160, ../../../app/stylesheets/base.scss */
 .banner {
   border-bottom: 1px solid #ebebeb;
 }
-/* line 148, ../../../app/stylesheets/base.scss */
+/* line 161, ../../../app/stylesheets/base.scss */
 .banner .outer-containor {
   padding-top: 140px;
 }
-/* line 150, ../../../app/stylesheets/base.scss */
+/* line 163, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation {
   position: absolute;
   top: -130px;
@@ -532,14 +549,14 @@ p {
   font-weight: bold;
   color: #fdf3b3;
 }
-/* line 160, ../../../app/stylesheets/base.scss */
+/* line 173, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation a:link,
 .banner .outer-containor .navigation a:visited {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
-/* line 165, ../../../app/stylesheets/base.scss */
+/* line 178, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation .column {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -562,7 +579,7 @@ p {
 * html .banner .outer-containor .navigation .column {
   overflow-x: hidden;
 }
-/* line 171, ../../../app/stylesheets/base.scss */
+/* line 184, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation .column:first-child {
   display: inline;
   float: left;
@@ -573,7 +590,7 @@ p {
 * html .banner .outer-containor .navigation .column:first-child {
   overflow-x: hidden;
 }
-/* line 174, ../../../app/stylesheets/base.scss */
+/* line 187, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .navigation .column.logo {
   position: relative;
   top: -84px;
@@ -586,7 +603,7 @@ p {
 * html .banner .outer-containor .navigation .column.logo {
   overflow-x: hidden;
 }
-/* line 182, ../../../app/stylesheets/base.scss */
+/* line 195, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .inner-containor {
   position: relative;
   padding: 30px 0;
@@ -594,7 +611,7 @@ p {
   width: 100%;
   z-index: 0;
 }
-/* line 188, ../../../app/stylesheets/base.scss */
+/* line 201, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .inner-containor .banner-background {
   position: absolute;
   top: 0;
@@ -605,49 +622,49 @@ p {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 198, ../../../app/stylesheets/base.scss */
+/* line 211, ../../../app/stylesheets/base.scss */
 .banner .outer-containor .intro {
   font-family: Merriweather;
   font-size: 1.3em;
   line-height: 1.6em;
 }
 
-/* line 208, ../../../app/stylesheets/base.scss */
+/* line 221, ../../../app/stylesheets/base.scss */
 .main-content .inner-containor {
   background: white;
   padding: 40px;
 }
 
-/* line 214, ../../../app/stylesheets/base.scss */
+/* line 227, ../../../app/stylesheets/base.scss */
 table.form-listing {
   margin-bottom: 0;
 }
-/* line 216, ../../../app/stylesheets/base.scss */
+/* line 229, ../../../app/stylesheets/base.scss */
 table.form-listing th, table.form-listing td {
   padding: 0 0 10px;
 }
-/* line 218, ../../../app/stylesheets/base.scss */
+/* line 231, ../../../app/stylesheets/base.scss */
 table.form-listing tr:last-child th, table.form-listing tr:last-child td {
   padding-bottom: 0;
 }
-/* line 220, ../../../app/stylesheets/base.scss */
+/* line 233, ../../../app/stylesheets/base.scss */
 table.form-listing th {
   text-align: right;
   padding-right: 12px;
 }
-/* line 223, ../../../app/stylesheets/base.scss */
+/* line 236, ../../../app/stylesheets/base.scss */
 table.form-listing th, table.form-listing th label {
   font-weight: normal;
 }
-/* line 228, ../../../app/stylesheets/base.scss */
+/* line 241, ../../../app/stylesheets/base.scss */
 table.form-listing td input {
   margin: 0;
 }
-/* line 231, ../../../app/stylesheets/base.scss */
+/* line 244, ../../../app/stylesheets/base.scss */
 table.form-listing td .full-width {
   margin-right: 10px;
 }
-/* line 233, ../../../app/stylesheets/base.scss */
+/* line 246, ../../../app/stylesheets/base.scss */
 table.form-listing td .full-width textarea, table.form-listing td .full-width input {
   width: 100%;
 }
