@@ -125,4 +125,12 @@ class CourseType < ActiveRecord::Base
     sessions.active.current.count > count
   end
   
+  def description
+   Markdown.new(read_attribute(:description)).to_html if read_attribute(:description)
+  end
+  
+  def comment
+   Markdown.new(read_attribute(:comment)).to_html if read_attribute(:comment)
+  end
+  
 end
