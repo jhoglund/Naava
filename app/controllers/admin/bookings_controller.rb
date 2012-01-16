@@ -1,7 +1,7 @@
 class Admin::BookingsController < Admin::AdminController
   
   def index
-    @bookings = Booking.by_booker(:course => params[:course_id], :session => params[:session_id]).paginate(:page => params[:page])
+    @bookings = Booking.by_booker(:course => params[:course_type_id], :session => params[:session_id]).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.haml
@@ -20,7 +20,7 @@ class Admin::BookingsController < Admin::AdminController
 
   def new
     # TODO: There got to be a better way of doing this
-    booker = params[:course_id] ? Course.find(params[:course_id]) : Session.find(params[:session_id])
+    booker = params[:course_type_id] ? Course.find(params[:course_type_id]) : Session.find(params[:session_id])
     @booking = Booking.new(:booker => booker)
     @booking.participant = Participant.new
     
