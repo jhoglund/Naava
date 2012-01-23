@@ -1,8 +1,33 @@
-@import "blueprint";
+@media print {
+  .admin-navigation { display:none; }
+}
+.admin-navigation { margin:40px 0; }
+.session-list { border-collapse:collapse; width:15cm; }
+.session-list tr { border-bottom:1px solid lightgray; padding:5px; }
+.session-list th { text-align:left; padding-right:20px; }
 
-// To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
-// @include blueprint-print
+html { background:white; }
+body { margin:2cm; font:normal 13px/18px sans-serif; background:white; }
+.banner, .background { display:none; }
+.main-content {
+  &, .outer-containor {
+    &, .inner-containor, .grid { 
+      width:auto; 
+      padding:0!important; 
+      margin:0!important;
+      .admin-navigation { 
+        margin-top:0;
+      }
+    }
+  }
+}
 
-//Recommended Blueprint configuration with scoping and semantic layout:
-body.bp {
-  @include blueprint-print(true); }
+h1 { margin-top:0; font-size:16pt; }
+h2 { font-size:13pt; }
+h1, h2, h3, h4,
+h1 a, h2 a, h3 a,
+a:link,
+a:visited { color:black!important; }
+hr { border-bottom-color:black; }
+.footer,
+.header { display:none }

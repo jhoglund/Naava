@@ -42,7 +42,7 @@ class Admin::CourseTypesController < Admin::AdminController
     end
     @course.save
     @course.update_attribute(:ends_at, @original.ends_at)
-    redirect_to edit_admin_course_path(@course)
+    redirect_to edit_admin_course_type_path(@course)
   end
   
 

@@ -31,7 +31,10 @@
     = f.submit 'Spara'
 = @session.previous(false) ? link_to('Tidigare', admin_session_attendants_path(@session.previous(false))) : 'Tidigare'
 |
-\#{@session.next(false) ? link_to('Nästa', admin_session_attendants_path(@session.next(false))) : 'Nästa'} |
-\#{link_to 'Klass', admin_session_path(@session)} |
-\#{link_to 'Klasser', admin_sessions_path} |
-\#{link_to 'Ny bokning', new_admin_session_booking_path(@session, :return_to => CGI.escape(admin_session_attendants_path(@session)))}
+= @session.next(false) ? link_to('Nästa', admin_session_attendants_path(@session.next(false))) : 'Nästa'
+|
+= link_to 'Klass', admin_session_path(@session)
+|
+= link_to 'Klasser', admin_sessions_path
+|
+= link_to 'Ny bokning', new_admin_session_booking_path(@session, :return_to => CGI.escape(admin_session_attendants_path(@session)))
