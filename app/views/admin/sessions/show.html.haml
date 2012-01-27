@@ -14,7 +14,7 @@
       %th{:colspan => "6"} Kursdeltagare
     - @session.course.bookings.each do |booking|
       %tr
-        %td= link_to(booking.participant.name), polymorphic_path([:admin, booking]))
+        %td= link_to(booking.participant.name, polymorphic_path([:admin, booking]))
         %td= mail_to(booking.participant.email)
         %td= h(booking.participant.phone)
         %td= booking.paid? ? "X" : "-"
@@ -24,7 +24,7 @@
       %th{:colspan => "6"} Drop-in
     - @session.bookings.each do |booking|
       %tr
-        %td= link_to(booking.participant.name), polymorphic_path([:admin, booking]))
+        %td= link_to(booking.participant.name, polymorphic_path([:admin, booking]))
         %td= mail_to(booking.participant.email)
         %td= h(booking.participant.phone)
         %td= booking.paid? ? "X" : "-"
@@ -42,7 +42,7 @@
       %th{:colspan => "6"} Deltagare
     - @session.bookings.each do |booking|
       %tr
-        %td= link_to(booking.participant.name), polymorphic_path([:admin, booking]))
+        %td= link_to(booking.participant.name, polymorphic_path([:admin, booking]))
         %td= mail_to(booking.participant.email)
         %td= h(booking.participant.phone)
         %td= booking.paid? ? "X" : "-"
