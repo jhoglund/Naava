@@ -27,6 +27,13 @@
     
     = yield(:header)
     = yield(:include_resource)
+    - if yield(:javascript)
+      :javascript
+        #{ yield(:javascript) }
+    
+    - if yield(:css)
+      :css
+        #{ yield(:css) }
     %body.bp
       = yield(:body)
       .banner
