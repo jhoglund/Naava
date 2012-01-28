@@ -212,6 +212,10 @@ p { margin:12px 0; }
       font-family: Merriweather;
       font-size: 1.3em;
       line-height: 1.6em;
+      strong {
+        color:$color-pink-dark;
+      }
+      
     }
   }
   border-bottom:1px solid rgb(235,235,235);

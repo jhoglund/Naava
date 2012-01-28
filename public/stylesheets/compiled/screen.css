@@ -628,43 +628,47 @@ p {
   font-size: 1.3em;
   line-height: 1.6em;
 }
+/* line 215, ../../../app/stylesheets/base.scss */
+.banner .outer-containor .intro strong {
+  color: #a14f7f;
+}
 
-/* line 221, ../../../app/stylesheets/base.scss */
+/* line 225, ../../../app/stylesheets/base.scss */
 .main-content .inner-containor {
   background: white;
   padding: 40px;
 }
 
-/* line 227, ../../../app/stylesheets/base.scss */
+/* line 231, ../../../app/stylesheets/base.scss */
 table.form-listing {
   margin-bottom: 0;
 }
-/* line 229, ../../../app/stylesheets/base.scss */
+/* line 233, ../../../app/stylesheets/base.scss */
 table.form-listing th, table.form-listing td {
   padding: 0 0 10px;
 }
-/* line 231, ../../../app/stylesheets/base.scss */
+/* line 235, ../../../app/stylesheets/base.scss */
 table.form-listing tr:last-child th, table.form-listing tr:last-child td {
   padding-bottom: 0;
 }
-/* line 233, ../../../app/stylesheets/base.scss */
+/* line 237, ../../../app/stylesheets/base.scss */
 table.form-listing th {
   text-align: right;
   padding-right: 12px;
 }
-/* line 236, ../../../app/stylesheets/base.scss */
+/* line 240, ../../../app/stylesheets/base.scss */
 table.form-listing th, table.form-listing th label {
   font-weight: normal;
 }
-/* line 241, ../../../app/stylesheets/base.scss */
+/* line 245, ../../../app/stylesheets/base.scss */
 table.form-listing td input {
   margin: 0;
 }
-/* line 244, ../../../app/stylesheets/base.scss */
+/* line 248, ../../../app/stylesheets/base.scss */
 table.form-listing td .full-width {
   margin-right: 10px;
 }
-/* line 246, ../../../app/stylesheets/base.scss */
+/* line 250, ../../../app/stylesheets/base.scss */
 table.form-listing td .full-width textarea, table.form-listing td .full-width input {
   width: 100%;
 }
