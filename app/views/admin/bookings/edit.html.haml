@@ -9,7 +9,7 @@
   %p
     = f.label 'Kurs'
     %br/
-    = f.radio_button :booker_type, 'Course'
+    = f.radio_button :booker_type, 'CourseType'
     = select_tag :booker_course_id, options_for_select(Course.active.map{|s| ["#{s.name} (#{strip_tags(l(s.starts_at, :format => :short))})", s.id] }, @booking.booker.is_a?(Course) ? @booking.booker.id : 0)
   %p
     - f.fields_for :participant do |participant|

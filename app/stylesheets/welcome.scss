@@ -39,6 +39,8 @@
     strong {
       color:$color-pink-dark;
     }
+    font-size:1.2em;
+    line-height:1.5em;
   }
   .signup {
     @include inline-block;

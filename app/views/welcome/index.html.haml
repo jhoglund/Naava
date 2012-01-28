@@ -83,44 +83,16 @@
     .column
       .content
         .headline
-          %h2 
-            Anmäl dig till en av vårens introduktionskurser
-  .columns.columns-twelve
-    .column
-      .content.intro
-        :markdown
-          ##### Introduktion för nybörjare
-          Innan vårens kurser startar håller vi en tvåtimmarskurs för dig som är nyfiken på yoga. Här blir du introducerad till **Ashtanga yogans** grunder, så som andningsteknik, rörelser, positioner och yogans filosofi.
-          
-          Kursen hålls lördagen den **21:e januari mellan 14:00 och 16:00**
-          och kostar **#{number_to_currency(350, :precision => 0)}**.        
-
-        %p{:style => 'padding-top:10px'}
-          .signup
-            = link_to('Läs mer eller anmäl dig >>', book_workshop_path(@introduction_course))
-
-  
-    .column.column-last
-      .content.intro
-        :markdown
-          ##### Introduktion till Mysore
-          Denna kurs är för dig som vill göra yogan helt i din egen takt eller som vill få en grundlig genomgång inför vårens kurser.
-          
-          Kursen hålls fredagen den **20:e januari, 18:30-20:30** samt lördagen och söndagen den **21:e** och **22:e januari** mellan **09:30** och **11:30**.
-          Kursen kostar **#{number_to_currency(550, :precision => 0)}**.        
-  
-        %p{:style => 'padding-top:10px'}
-          .signup
-            = link_to('Läs mer eller anmäl dig >>', book_workshop_path(@mysore_course))
+          :markdown
+            ## Nu kan du anmäla dig till vårens kurser
+            Vecka 4 började vårens kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera **fysisk träning**, **balans**, **andning** och **mental avslappning**. 
+            Det går fortfarande bra att anmäla sig till någon av våra kurser, så passa på medan det finns plats.
         
 .columns.columns-eighteen-six
   .column
     .content
-      :markdown
-        ### Nu kan du anmäla dig till vårens kurser
-        Vecka 4 börjar vårens kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning.
-  
-    .columns-six{ :style => 'margin-top:-12px;' }
+      %h3 Vårens tider och klasser
+    .columns-nine{ :style => 'margin-top:-12px;' }
       .column
         .content
           :markdown
@@ -135,22 +107,11 @@
             * **Fredagar** 7:00 - 8:30  
             Mixad nivå (fortsättning och nybörjare)
             * **Lördagar** 9:00 - 11:15  
-            Mysore (fortsättning)
-
-      .column.column-last
-        .content
-          %ul
-            %li
-              %strong Lördagar
-              11:30 - 12:45
-              %br
-              Nybörjaryoga
-              %br
-              %br
-            %li
-              .button-link
-                = link_to('Anmäl dig till en kurs', sessions_path)
-
+            Mysore (fortsättning och nybörjare)
+  
+          .button-link(style="margin-top:20px")
+            = link_to('Anmäl dig till en av vårens kurser', sessions_path)
+          
     .column-break
   
     .columns-nine

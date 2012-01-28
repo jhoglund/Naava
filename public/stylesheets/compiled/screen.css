@@ -1167,6 +1167,11 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
   height: 170px;
 }
 
+/* line 32, ../../../app/stylesheets/welcome.scss */
+.banner .headline {
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
 /* line 33, ../../../app/stylesheets/welcome.scss */
 .banner .headline h3 {
   margin-bottom: 0;
@@ -1177,7 +1182,7 @@ table.form-listing td .full-width textarea, table.form-listing td .full-width in
 .banner .headline strong {
   color: #a14f7f;
 }
-/* line 43, ../../../app/stylesheets/welcome.scss */
+/* line 45, ../../../app/stylesheets/welcome.scss */
 .banner .signup {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
