@@ -6,6 +6,10 @@
       .session-list-item
         = l session.starts_at, :format => :time
         = l(session.date, :format => :long_day)
+        - if session.description?
+          %br
+            = session.description
+      
       - if session.comment?
         .session-list-comment
           Kommentar:

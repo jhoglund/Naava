@@ -32,6 +32,16 @@
       }
     }
     
+    .columns-four-twenty {
+      .column {
+        @include column(20);
+        &:first-child {
+          @include column(4);
+        }
+      }
+    }
+    
+    
     .columns-four-four-four-twelve {
       .column {
         @include column(4);
@@ -58,6 +68,15 @@
         }
       }
     }
+    .columns-six-eighteen {
+      .column {
+        @include column(18);
+        &:first-child {
+          @include column(6);
+        }
+      }
+    }
+    
     .columns-nine-nine-six {
       .column {
         @include column(9);

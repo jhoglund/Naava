@@ -32,4 +32,8 @@ class WorkshopsController < BookingsController
     
   end
     
+  def alexander_medin
+    @booker = Workshop.find(41)
+    render :template => '/workshops/alexander_medin_2012/show'
+  end
 end

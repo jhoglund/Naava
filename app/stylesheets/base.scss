@@ -253,3 +253,22 @@ table.form-listing {
     }
   }
 }
+.workshop-listing {
+  ul {
+    margin:0;
+    padding:0;
+    li {
+      position:relative;
+      list-style:none;
+      padding-left:110px;
+      margin:0 0 15px 0;
+      
+      em {
+        position:absolute;
+        left:0px;
+        font-style:normal;
+        color:$color-gray-medium;
+      }
+    }
+  }
+}
