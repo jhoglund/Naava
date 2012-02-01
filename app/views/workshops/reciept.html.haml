@@ -1,28 +1,27 @@
 .columns.columns-twelve
   .column
     .content
-      - if @payment.item.booker.default_session
-        %h3
-          Kursanmälan till
-          %strong= t("misc.day_names.#{@payment.item.booker.default_session.starts_at.strftime("%A").downcase}", :count => 2)
-          klockan
-          %strong= l @payment.item.booker.default_session.starts_at, :format => :time
-          till
-          %strong= l @payment.item.booker.default_session.ends_at, :format => :time
       %p
-        Anmälan är personlig för
-        = succeed "." do
+        .flash-notice
+          Du är anmäld till
+          %b #{@payment.item.booker.name}.
+          Anmälan är personlig för
           %strong= @payment.item.participant.name
-        Nästa klasstillfälle är #{l(@payment.item.booker.starts_at, :format => :long)}
+      %p
+        
+        Vi träffas 
+        - if @payment.item.booker.sessions.count > 1
+          första gången
+        #{l(@payment.item.booker.starts_at, :format => :long)}
       - if !@payment.item.booker.free? and !@payment.item.paid?
         %hr/
-        .message
-          Kursavgiften på
-          %strong= number_to_currency(@payment.item.booker.price, :precision => 0)
-          ska vara betald före första kurstillfället.
-          Välj ett av nedanstående tre alternativ för att betala.
-        %p
-        %h3 Betala med presentkort
+        %h3 Betalning
+        Avgiften på
+        %strong= number_to_currency(@payment.item.booker.price, :precision => 0)
+        ska vara betald före första tillfället.
+        Välj ett av nedanstående tre alternativ för att betala.
+        %p(style="margin-top:20px")
+        %h6 Betala med presentkort
         Om du har ett presentkort så kan du utnyttja det för att betala för kursen genom att skriva in presentkortets kod i fältet nedan.
         %br/
         - form_for @payment.item.payment do |f|
@@ -32,7 +31,7 @@
           = f.submit 'Betala med presentkort'
         %p
         %hr
-        %h3 Betala med kreditkort
+        %h6 Betala med kreditkort
         Du kan betala för våra kurser snabbt och säkert med kreditkort via #{link_to_function 'PayPal', 'forms[0].submit()'}.
         = render :partial => "/paypal/button", :locals => {                                                                                         |
             :item_id => @payment.token,                                                                                                             |
@@ -44,7 +43,7 @@
           }                                                                                                                                         |
         %p
         %hr
-        %h3 Betala med bankgiro
+        %h6 Betala med bankgiro
         Det går även bra att betala till vårt bankgiro
         = succeed "." do
           %strong 5091-8051
