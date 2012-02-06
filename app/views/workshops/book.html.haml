@@ -9,7 +9,7 @@
         %p= @booker.description
         %ul.course-info
           %li
-            Workshopen kostar
+            Priset är
             = succeed "." do
               %strong= number_to_currency(@booker.original_price, :precision => 0)
         - if @booker.comment?

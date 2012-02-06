@@ -10,8 +10,9 @@ class WelcomeController < ApplicationController
     @test_course = Course.current_or_planned.free.first
     @test_session = @test_course.next_session if @test_course
     @jonas = Instructor.find(1)    
-    @introduction_course = Workshop.find(39)  
-    @mysore_course = Workshop.find(40)
+    # @introduction_course = Workshop.find(39)  
+    # @mysore_course = Workshop.find(40)
+    @barnyoga = Workshop.find(42)
   end
   
   def about_ashtanga_yoga; end
