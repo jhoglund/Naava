@@ -6,7 +6,7 @@
     tag.src = "http://www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    
+     
     var player;
     function onYouTubePlayerAPIReady() {
       player = new YT.Player('player', {
@@ -22,11 +22,11 @@
         }
       });
     }
-    
+     
     function onPlayerReady(event) {
       event.target.setVolume(30);
     }
-    
+     
     var done = false;
     function onPlayerStateChange(event) {
       //if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -34,40 +34,40 @@
       //  done = true;
       //}
     }
-    
+     
     function stopVideo() {
       player.stopVideo();
     }
-    
-    
+     
+     
     function youTubeInNewWindow(){
       window.location = "http://www.youtube.com/watch?v=bG1i8rc4WmQ";
     }
-      
+       
     function initialize() {
       $("#video_placeholder").overlay({
         mask: {
-      		color: '#000',
-      		loadSpeed: 200,
-      		opacity: 0.7,
-      		zIndex:100
-      	},
-      	closeOnClick: false,
-      	onBeforeLoad: function(){
-      	  if(player.playVideo){
-      		  player.playVideo();
-      	  }else{
-      	    youTubeInNewWindow();
-      	  }
-    		},
-    		onClose: function(){
-    		  player.stopVideo();
-    		}
+            color: '#000',
+            loadSpeed: 200,
+            opacity: 0.7,
+            zIndex:100
+        },
+        closeOnClick: false,
+        onBeforeLoad: function(){
+          if(player.playVideo){
+              player.playVideo();
+          }else{
+            youTubeInNewWindow();
+          }
+            },
+            onClose: function(){
+              player.stopVideo();
+            }
       });
-      
+       
     }
     window.onload = initialize
-
+ 
 - content_for :body do
   #fb-root
   :javascript
@@ -83,45 +83,27 @@
     .column
       .content
         .headline
-          %h2 
-            %strong Yoga för barn 
-            under sportlovet
-  .columns.columns-twelve
+          %h2 Workshop med R. Alexander Medin
+  .columns.columns-four-twenty
     .column
       .content
-        .intro
-          :markdown
-            Genom yogan lär sig barnen koncentration och får bra kontakt med sin kropp. Barnen får också insikt om hur viktig andningen är för vårt välbefinnande. Yogan utförs i en lugn och avslappnad miljö där vi leker fram rörelser som har djurnamn. 
-  
+        %img(src="/images/workshops/alexander_headshot.jpg")
+     
     .column
       .content
+   
         .intro
           :markdown
-            Vi träffas vid två tillfällen. **Onsdagen den 22/2 och fredagen den 24/2 10:00** kommer Tesse att ha barnyoga för barn i åldrarna 4-8 år. Alla är välkomna men vi har endast ett begränsat antal platser.
-  
-          .button-link(style="margin-top:20px")
-            = link_to('Anmäl ditt barn här', book_workshop_path(@barnyoga))
+            Vi har glädjen att erbjuda en tredagars workshop med **R. Alexander Medin** helgen den **27:e till 29:e april**.
+            Alexander är en av en handfull lärare i världen som är certifierade av 
+            Sri K. Pattabhi Jois och [Ashtanga Yoga Research Institute.](http://kpjayi.org/)
             
-.columns.columns-four-twenty
-  .column
-    .content
-      %img(src="/images/workshops/alexander_headshot.jpg")
-
-  .column
-    .content
-      :markdown
-        ### Workshop med R. Alexander Medin
-        Vi har glädjen att erbjuda en tredagars workshop med **R. Alexander Medin** helgen den **27:e till 29:e april**.
-        Alexander är en av en handfull lärare i världen som är certifierade av 
-        Sri K. Pattabhi Jois och Ashtanga Yoga Research Institute (AYRI).
-
-        Detta är ett unikt tillfälle för dig som är intresserade av att fördjupa din egen förståelse av asanas, pranayama, och Yoga Sutras av Patanjali 
-        och att ta del av Alexanders mångåriga erfarenheter och kunskaper.
-
-      .button-link(style="margin-top:20px")
-        = link_to('Läs mer och anmäl dig till workshopen', alexander_medin_path)
-%hr
-      
+            Detta är ett unikt tillfälle för dig som är intresserade av att fördjupa din egen förståelse av asanas, pranayama, och Yoga Sutras av Patanjali 
+            och att ta del av Alexanders mångåriga erfarenheter och kunskaper.
+   
+          .button-link(style="margin-top:20px")
+            = link_to('Läs mer och anmäl dig till workshopen', alexander_medin_path)
+             
 .columns.columns-eighteen-six
   .column
     .content
@@ -130,24 +112,24 @@
       .column
         .content
           :markdown
-            * **Måndagar** 17:00 - 18:00  
+            * **Måndagar** 17:00 - 18:00 
             Senior- och nybörjaryoga
-            * **Måndagar** 18:30 - 20:00  
+            * **Måndagar** 18:30 - 20:00 
             Mixad nivå (fortsättning och nybörjare)
-
+ 
       .column
         .content
           :markdown
-            * **Fredagar** 7:00 - 8:30  
+            * **Fredagar** 7:00 - 8:30 
             Mixad nivå (fortsättning och nybörjare)
-            * **Lördagar** 9:00 - 11:15  
+            * **Lördagar** 9:00 - 11:15 
             Mysore (fortsättning och nybörjare)
-  
+   
           .button-link(style="margin-top:20px")
             = link_to('Anmäl dig till en av vårens kurser', sessions_path)
-          
+           
     .column-break
-  
+   
     .columns-nine
       .column
         .content
@@ -158,11 +140,11 @@
             ### Ge någon lite yoga
             Överraska någon med ett presentkort.
             Du skriver enkelt ut presentkortet direkt på din skrivare.
-
+ 
           %ul
             = list_of(@gift_certificate_types) do |gift_certificate|
               = link_to("#{gift_certificate.title} (#{number_to_currency(gift_certificate.value, :precision => 0)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id))
-          
+           
       .column.column-last
         .content{:style => 'padding-top:12px'}
           :javascript
@@ -191,23 +173,23 @@
                 behavior: 'all'
               }
             }).render().setUser('NavaYogaStudio').start();
-          
-
+           
+ 
   .column.column-last
     .content
       .video-play-button(rel="#video_popup" id="video_placeholder")
         %img(src="#{asset_path('video_210.jpg')}" width='210' height='135')
         %a &nbsp;
-        
+         
       %p
         :markdown
-          Yoga har gett mig ökad **styrka**, **balans**, **koncentrations-förmåga**, **lugn** och **energi**. 
-          Jag började utbilda mig till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga kunde yoga tillsammans, 
-          men också för att kunna föra vidare och lära ut denna träningsform.
-          
+          Yoga har gett mig ökad **energi**, **balans**, **lugn**, **koncentrations-förmåga** och **styrka**. 
+          Jag utbildade mig till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga kunde göre det tillsammans, 
+          men också för att kunna dela med mig av denna metod som dagligen ger mig så mycket.
+           
           #{link_to 'Jonas Höglund', instructor_path(@jonas)}   
           Instruktör Nava Yoga-studio
-            
+             
 - content_for :popup do
   #video_popup.popup
-    #player  
+    #player
