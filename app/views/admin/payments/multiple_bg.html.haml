@@ -1,6 +1,6 @@
 %h1 Bankgiro inbetalningar
 - form_tag multiple_bg_admin_payments_path do
-  - (params[:size] || 10).times do |i|
+  - ((params[:size] || 10).to_i).times do |i|
     %p
       Ref nr:
       = text_field_tag "items[#{i}][id]", '', :style => 'width:100px'
