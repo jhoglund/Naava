@@ -18,6 +18,16 @@ class Admin::PaymentsController < Admin::AdminController
     end
   end
 
+  def search
+    @payment = Payment.find(params[:ref_id])
+    respond_to do |format|
+      format.html {
+        render :edit
+      }
+      format.xml  { render :xml => @payment }
+    end
+  end
+
   def new
     @payment = Payment.new
 
