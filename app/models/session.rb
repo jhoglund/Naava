@@ -104,15 +104,15 @@ class Session < ActiveRecord::Base
   end
     
   def next by_course=true
-    conditions = "timestamp(starts_at) > timestamp('#{starts_at.to_s(:db)}') AND status = 1"
-    conditions << " AND course_type_id = #{course_type_id}" if by_course
-    Session.find(:first, :conditions => conditions, :order => 'starts_at')
+    conditions = "timestamp(starts_at) > timestamp('#{starts_at.to_s(:db)}') AND sessions.status = 1 AND course_types.status = 1"
+    conditions << " AND sessions.course_type_id = #{course_type_id}" if by_course
+    Session.find(:first, :conditions => conditions, :order => 'starts_at', :include => :course_type)
   end
   
   def previous by_course=true
-    conditions = "timestamp(starts_at) < timestamp('#{starts_at.to_s(:db)}') AND status = 1"
-    conditions << " AND course_type_id = #{course_type_id}" if by_course
-    Session.find(:last, :conditions => conditions, :order => 'starts_at')
+    conditions = "timestamp(starts_at) < timestamp('#{starts_at.to_s(:db)}') AND sessions.status = 1 AND course_types.status = 1"
+    conditions << " AND sessions.course_type_id = #{course_type_id}" if by_course
+    Session.find(:last, :conditions => conditions, :order => 'starts_at', :include => :course_type)
   end
   
   def to_fullcalendar

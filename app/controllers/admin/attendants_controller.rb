@@ -4,7 +4,7 @@ class Admin::AttendantsController < Admin::AdminController
     if params[:session_id]
       @session = Session.find(params[:session_id])
     else
-      @sessions = Session.all(:order => 'starts_at')
+      @sessions = Session.active.all(:order => 'starts_at')
     end
     respond_to do |format|
       format.html do
