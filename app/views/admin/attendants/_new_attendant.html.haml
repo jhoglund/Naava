@@ -7,13 +7,13 @@
   = check_box_tag "#{participant_name}[attendants_attributes][0][status]", 1, 0
   = hidden_field_tag "#{participant_name}[attendants_attributes][0][session_id]", session.id
   = text_field_tag "#{participant_name}[name]"
-  = select_tag("#{radio_name}", options_for_select([['Obetalt', 'none'],['Kontant', 'cash'],['Kuppong', 'coupon'],['Gratis', 'free']]), :onchange => 'participant_payment_options(this)')
+  = select_tag("#{radio_name}", options_for_select([['Obetalt', 'none'],['Kontant', 'cash'],['Kuppong', 'coupon'],['Gratis', 'free']], 'free'), :onchange => 'participant_payment_options(this)')
   = link_to_function "Ta bort", "$(this).closest('li').remove()"
   |
   \#{link_to_function 'Kommentar', "$('##{id_prefix}_comment').toggle()"}
   %br/
   %p{:id => "#{id_prefix}_comment", :style => "display:none"}
-    = text_area_tag "#{participant_name}[attendants_attributes][0][comment]", '', :rows => 4
+    = text_area_tag "#{participant_name}[attendants_attributes][0][comment]", '', :rows => 4, :style => 'height:20px'
   %div{:style => "margin:5px 0 0 20px;"}
     %span{:id => "#{radio_name}_options"}
       %span{:id => "#{radio_name}_cash", :style => "display:none"}
@@ -21,6 +21,6 @@
       %span{:id => "#{radio_name}_coupon", :style => "display:none"}
         = select_tag "#{payment_name}[coupon][id]", options_from_collection_for_select(Coupon.active, 'id', 'to_s')
         = hidden_field_tag "#{payment_name}[coupon][value]", session.price
-      %span{:id => "#{radio_name}_free", :style => "display:none"}
-        = text_area_tag "#{payment_name}[free][note]", '', :rows => 5, :cols => 40, :placeholder => 'Anledning till gratis'
+      %span{:id => "#{radio_name}_free"}
+        = text_area_tag "#{payment_name}[free][note]", '', :rows => 5, :cols => 40, :placeholder => 'Anledning till gratis', :style => 'height:16px'
   = hidden_field_tag "#{booking_name}[disable_validation]", true
