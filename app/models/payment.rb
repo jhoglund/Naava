@@ -24,6 +24,12 @@ class Payment < ActiveRecord::Base
   named_scope :not_paid, :conditions => 'reciept_type IS NULL'
   named_scope :paid_or_not, :conditions => ''
   
+  named_scope :search, lambda {|query, not_paid|
+    { 
+      :conditions => "(payments.id LIKE '%#{query}%' OR payments.name LIKE '%#{query}%') AND reciept_type IS #{not_paid ? '' : 'NOT '}NULL" 
+    }
+  }
+  
   attr_writer :notify_by_mail, :free
   
   def description

@@ -1,8 +1,13 @@
 %h1 Payments
 - form_tag search_admin_payments_path do |f|
-  Ref nr: #{text_field_tag :ref_id, params[:ref_id]}
+  Ref nr OR Name: #{text_field_tag :query, params[:query]}
+  %br/
+  = label_tag :search_only_not_paid, "Search only for not paid"
+  = check_box_tag :search_only_not_paid, nil, !params[:search_only_not_paid].blank?
   %br/
   = submit_tag "Search"
+  %br/
+  %br/
 
 = select_tag(:show_payment, options_for_select([['Alla','paid_or_not'],['Betalda','paid'],['Obetalda','not_paid']], :selected => params[:show_payment]), :onchange => ' |
   var option;                                                                                                                                                           |
@@ -53,5 +58,6 @@
     %td
     %td
     %td
-= will_paginate @payments
-= page_entries_info @payments
+- if params[:action]=='index'
+  = will_paginate @payments
+  = page_entries_info @payments
