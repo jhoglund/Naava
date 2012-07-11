@@ -27,6 +27,35 @@ class Admin::PaymentsController < Admin::AdminController
       format.xml  { render :xml => @payment }
     end
   end
+  
+  def multiple_bg
+    respond_to do |format|
+      if request.get?
+        format.html
+      else
+        @payments = []
+        @errors = []
+        #render :text => 'ok' and return
+        params[:items].values.delete_if{|item| item[:id].blank? }.each do |item|
+         payment = Payment.find(item[:id])
+         payment.reciept = Bankgiro.new(:avinr => item[:avinr], :gross => item[:gross])
+         if payment.save
+           @payments << payment
+         else
+           @errors << payment
+         end
+        end
+        if @errors.blank?
+          flash[:success] = "#{@payments.size} paid"
+          format.html {
+            redirect_to(admin_payments_url) 
+          }
+        else
+          format.html
+        end
+      end
+    end
+  end
 
   def new
     @payment = Payment.new
