@@ -39,6 +39,7 @@ class Admin::PaymentsController < Admin::AdminController
         params[:items].values.delete_if{|item| item[:id].blank? }.each do |item|
          payment = Payment.find(item[:id])
          payment.reciept = Bankgiro.new(:avinr => item[:avinr], :gross => item[:gross])
+         payment.notify_by_mail = false
          if payment.save
            @payments << payment
          else
