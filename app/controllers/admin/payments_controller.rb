@@ -1,7 +1,7 @@
 class Admin::PaymentsController < Admin::AdminController
   before_filter :set_show_paid
   def index
-    @payments ||= Payment.send(params[:show_payment].to_sym).by_id(:desc).paginate(:page => params[:page])
+    @payments ||= Payment.send(params[:show_payment].to_sym).search(cookies[:payment_search_query]).by_id(:desc).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.haml
@@ -19,13 +19,13 @@ class Admin::PaymentsController < Admin::AdminController
   end
 
   def search
-    @payments = Payment.search(params[:query], params[:search_only_not_paid]=='on')
-    respond_to do |format|
-      format.html {
-        render :index
-      }
-      format.xml  { render :xml => @payments }
-    end
+    cookies[:payment_search_query] = params[:query]
+    redirect_to admin_payments_path
+  end
+  
+  def clear_search
+    cookies[:payment_search_query] = nil
+    redirect_to admin_payments_path
   end
   
   def multiple_bg

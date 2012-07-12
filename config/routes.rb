@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :coupons
     admin.resources :coupon_types
     admin.resources :participants, :collection => { :search => :post }
-    admin.resources :payments, :collection => { :search => [:post], :multiple_bg  => [:get,:post]}
+    admin.resources :payments, :collection => { :search => [:post], :multiple_bg  => [:get,:post], :clear_search => :get}
     admin.resources :bankgiros
     admin.resources :cashes
     admin.resources :attendants, :collection => { :search => [:post, :get] }

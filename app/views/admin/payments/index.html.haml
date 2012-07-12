@@ -1,11 +1,9 @@
 %h1 Payments
 - form_tag search_admin_payments_path do |f|
-  Ref nr OR Name: #{text_field_tag :query, params[:query]}
-  %br/
-  = label_tag :search_only_not_paid, "Search only for not paid"
-  = check_box_tag :search_only_not_paid, nil, !params[:search_only_not_paid].blank?
+  Ref nr OR Name: #{text_field_tag :query, cookies[:payment_search_query]}
   %br/
   = submit_tag "Search"
+  = link_to "Clear", clear_search_admin_payments_path
   %br/
   %br/
 
@@ -58,6 +56,5 @@
     %td
     %td
     %td
-- if params[:action]=='index'
-  = will_paginate @payments
-  = page_entries_info @payments
+= will_paginate @payments
+= page_entries_info @payments
