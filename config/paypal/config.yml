@@ -10,6 +10,14 @@ development:
   notification_url: 'https://www.sandbox.paypal.com/cgi-bin/webscr'
   <<: *DEFAULTS
 
+test:
+  host: web1.tunnlr.com:10236
+  business: jonas_1259594659_biz@stixy.com
+  paypal_cert: <%=  File.join(RAILS_ROOT,'config','paypal','paypal_cert_dev') %>
+  certid: YZUA2ZBT7MB96
+  notification_url: 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+  <<: *DEFAULTS
+
 production:
   host: www.navayoga.se
   business: jonas@stixy.com
