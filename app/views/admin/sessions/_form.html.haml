@@ -12,4 +12,4 @@
 %p
   = form.label :course
   %br/
-  = form.select :course_id, ['None',nil] + @cources.map{|c| [c.name, c.id ]}, { :selected => params[:course_id].to_i }, :selected => @session.course
+  = form.select :course_type_id, ['None',nil] + @cources.map{|c| [c.name, c.id ]}, { :selected => params[:course_type_id].to_i }, :selected => @session.course
