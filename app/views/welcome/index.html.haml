@@ -83,91 +83,48 @@
     .column
       .content
         .headline
-          %h1 Anmäl dig till höstens kurser
+          %h1 Snart börjar vårens klasser
         .intro
           %p
-            Vecka 34 börjar höstens kurser i Ashtanga Yoga, en fysisk yoga för dig som vill kombinera fysisk träning, balans, andning och mental avslappning.
+            Redan vecka 1 börjar vårens klasser. Yoga ger dig kombinerad fysisk träning, balans, andning och mental avslappning.
           %p
-            Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss på vår fortsättningskurs.
-          %p
-            .button-link(style="margin-top:20px")
-              = link_to 'Läs mer om höstens tider och anmäl dig här', sessions_path
+            Kom och prova på yoga hos oss för första gången, eller utvecklas vidare tillsammans med oss.
+
                      
 .columns.columns-eighteen-six
   .column
     .content
-      %h3 Höstens tider och klasser
+      %h3 Vårens tider och klasser
+      %p
+        Samtliga klasser är öppna för alla. Det är bara att dyka upp!!! Vid frågor kontakta Shannon på e-mail 
+        = mail_to 'shannon@navayoga.se'
     .columns-nine{ :style => 'margin-top:-12px;' }
       .column
         .content
           :markdown
-            * **Måndagar** 17:00 - 18:00 
-            Ashtanga yoga (seniorer och nybörjare)
             * **Måndagar** 18:30 - 20:00 
-            Ashtanga yoga (fortsättning och nybörjare)
+            Hatha yoga
             * **Tisdagar** 18:30 - 20:00 
-            Hatha yoga (fortsättning och nybörjare)
-            * **Onsdagar** 19:30 - 21:00 
-            Ashtanga yoga (fortsättning och nybörjare)
+            Gravidyoga (yogalärare är barnmorska)
+            * **Torsdagar** 16:30 - 17:45 
+            Senior yoga
       .column
         .content
           :markdown
-            * **Torsdagar** 18:30 - 20:00 
-            Gravidyoga (yogalärare är barnmorska)
-            * **Fredagar** 6:30 - 8:00 
-            Ashtanga yoga (fortsättning och nybörjare)
-            * **Lördagar** 14:00 - 15:30 
-            Hatha yoga (fortsättning och nybörjare)
-            * **Söndagar** 14:00 - 15:30 
-            Gravidyoga (yogalärare är barnmorska)
-          .button-link(style="margin-top:20px")
-            = link_to('Anmäl dig till en av höstens kurser', sessions_path)
+            * **Torsdagar** 18:00 - 19:30 
+            Ashtanga yoga
+            * **Fredagar** 7:00 - 8:00 
+            Open Studio / Mysore 
+
            
     .column-break
    
-    .columns-nine
+    .columns-eighteen
       .column
         .content
           %hr
-          .fb-like(data-href="http://www.facebook.com/pages/Nava-Yoga/127411713956193" data-send="false" data-width="310" data-show-faces="true" data-font="lucida grande")
-          %hr
-          :markdown
-            ### Ge någon lite yoga
-            Överraska någon med ett presentkort.
-            Du skriver enkelt ut presentkortet direkt på din skrivare.
- 
-          %ul
-            = list_of(@gift_certificate_types) do |gift_certificate|
-              = link_to("#{gift_certificate.title} (#{number_to_currency(gift_certificate.value, :precision => 0)})", new_gift_certificate_path(:coupon_type_id => gift_certificate.id))
+          .fb-like(data-href="http://www.facebook.com/pages/Nava-Yoga/127411713956193" data-send="false" data-width="650" data-show-faces="true" data-font="lucida grande")
            
-      .column.column-last
-        .content{:style => 'padding-top:12px'}
-          :javascript
-            new TWTR.Widget({
-              version: 2,
-              type: 'profile',
-              rpp: 3,
-              interval: 30000,
-              width: 'auto',
-              height: 200,
-              theme: {
-                shell: {
-                  background: '#d9d9d9',
-                  color: '#ffffff'
-                },
-                tweets: {
-                  background: '#ffffff',
-                  color: '#333333',
-                  links: '#30709e'
-                }
-              },
-              features: {
-                scrollbar: true,
-                loop: false,
-                live: false,
-                behavior: 'all'
-              }
-            }).render().setUser('NavaYogaStudio').start();
            
  
   .column.column-last
@@ -181,9 +138,6 @@
           Yoga har gett mig ökad **energi**, **balans**, **lugn**, **koncentrations-förmåga** och **styrka**. 
           Jag utbildade mig till yoga-instruktör eftersom jag ville skapa en plats där vi som gillar yoga kunde göre det tillsammans, 
           men också för att kunna dela med mig av denna metod som dagligen ger mig så mycket.
-           
-          #{link_to 'Jonas Höglund', instructor_path(@jonas)}   
-          Instruktör Nava Yoga-studio
              
 - content_for :popup do
   #video_popup.popup
