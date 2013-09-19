@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+  def redirect_to_new_nava
+    redirect_to "http://navayoga.weebly.com"
+  end
+  
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
