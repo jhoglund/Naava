@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
-
+  # in routes.rb
+  map.to_new_nava '/', :controller => "application_controller", :action => "redirect_to_new_nava"
 
   map.resource :user_session
   map.login '/login', :controller => 'user_sessions', :action => 'new'
