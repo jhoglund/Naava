@@ -1,6 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  # Redirect to new Nava site
+  def redirect_to_new_nava
+    redirect_to "http://navayoga.weebly.com"
+  end
+  
   # Capitalizes a string that may include markup
   def capitalize str=''
     str.sub(/(>(.))|(^\w)/){|s| s.upcase }
